@@ -1,0 +1,84 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global/}
+    \entry{einstein2016}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3ebf53e52a3ce84f0ffb8553200a6a63}{%
+           family={Einstein},
+           familyi={E\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{fullhash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{authornamehash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{authorfullhash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \field{sortinit}{E}
+      \field{sortinithash}{07bbd5a529b5beaa311df5be05b874bc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{J. Irreproducible Results}
+      \field{title}{On the Relative Value of Relatives}
+      \field{volume}{17}
+      \field{year}{2016}
+      \field{pages}{4711\bibrangedash 4721}
+      \range{pages}{11}
+    \endentry
+    \entry{heisenberg2015}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=93ed8b754e9b3f332468bbbfa56e7602}{%
+           family={Heisenberg},
+           familyi={H\bibinitperiod},
+           given={Werner},
+           giveni={W\bibinitperiod}}}%
+        {{hash=c32fd98f2e1a3c3c9b08d579f34898d6}{%
+           family={Dirac},
+           familyi={D\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=d8dd71fe9dafefe942ea59295dee0ec4}{%
+           family={Schrödinger},
+           familyi={S\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{50c4b5971c1d51e27d1368568d7a46bd}
+      \strng{fullhash}{50c4b5971c1d51e27d1368568d7a46bd}
+      \strng{authornamehash}{50c4b5971c1d51e27d1368568d7a46bd}
+      \strng{authorfullhash}{50c4b5971c1d51e27d1368568d7a46bd}
+      \strng{editornamehash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{editorfullhash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Uncertain Society Annual Meeting}
+      \field{title}{To be or not to be}
+      \field{year}{2015}
+      \field{pages}{21\bibrangedash 22}
+      \range{pages}{2}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
