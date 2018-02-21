@@ -24,4 +24,5 @@ def convertData():
     target[target == 'M'] = 1.
     target[target == 'B'] = 0.
     target = np.squeeze(np.asarray(target))
+    target = target.astype(float)
     return data, target
