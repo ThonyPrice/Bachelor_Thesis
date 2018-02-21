@@ -4,31 +4,19 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 
 
+data, target = readData.convertData()
 
-data = readData.data()
-X = []
-for row in data:
-    print(row[2:])
-    X.append(row[2:])
+print(data)
 
-print(X)
-y = []
+print(target)
 
-
-
-for row in data:
-    if row[1] == "M":
-        y.append(1)
-    else:
-        y.append(0)
-
-
+X = data
+y = target
 
 print(X.shape)
+print(y.shape)
 
-X_new = SelectKBest(chi2, k=2).fit_transform(X, y)
-print(X_new.shape)
+X_new = SelectKBest(chi2, k=10).fit(X, y)
 
-
-
-print(X_new)
+print(X_new.get_support(True) )
+print(X_new.transform(X))
