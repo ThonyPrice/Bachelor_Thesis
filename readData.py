@@ -1,7 +1,7 @@
 import csv
 import numpy as np
 
-def data():
+def getData():
     dataReader = csv.reader(open("data.csv", newline=''), delimiter=',', quotechar='|')
     dataMartix = np.zeros(shape=(569,32), dtype=object)
     i = 0
