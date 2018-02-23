@@ -41,3 +41,10 @@ class readData(object):
         self.data = data
         self.targets = target
         self.labels = labels
+
+    def splitTrainTest(self, data, target, ratio: int):
+        '''
+        Example:
+        train_data, train_target, test_data, test_target = splitTrainTest(*args)
+        '''
+        return data[:ratio], target[:ratio], data[ratio:], target[ratio:]    
