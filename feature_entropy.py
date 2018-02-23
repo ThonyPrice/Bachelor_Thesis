@@ -14,7 +14,7 @@ def getLabels():
     return np.asarray(labels)
 
 def entropyFeatures():
-    data, target = getData()
+    data, target, label = getData()
     print("DATA: ", data)
     X, y = data.astype(float), target.astype(float)
     return mutual_info_classif(X, y)
