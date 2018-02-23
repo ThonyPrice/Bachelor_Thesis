@@ -4,29 +4,22 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 import numpy as np
 
-def select():
+def select(k):
     data, target, labels = readData.convertData()
     X = data
 
     y = target
-    X_new = SelectKBest(chi2, k=3).fit(X, y)
-    return X_new, X, labels
+    X_new = SelectKBest(chi2, k).fit(X, y)
+    return X_new, X, labels, target
 
-def getBestFeatures():
-    X_new, X, labels = select()
+def getBestFeatures(k):
+    X_new, X, labels, target = select(k)
     feature = []
     for i in X_new.get_support(True):
         feature.append(labels[i])
     return feature
 
 
-def getX_new():
-    X_new, X, labels = select()
-    return X_new.transform(X)
-
-print(select())
-
-
-print(getBestFeatures())
-
-print(getX_new())
+def getX_new(k):
+    X_new, X, labels, target = select(k)
+    return X_new.transform(X), getBestFeatures(k), target
