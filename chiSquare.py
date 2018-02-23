@@ -1,11 +1,15 @@
-import readData
+from readData import readData
 from sklearn.datasets import load_iris
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 import numpy as np
 
 def select(k):
-    data, target, labels = readData.convertData()
+
+    data = readData().data
+    target = readData().targets
+    labels = readData().labels
+
     X = data
 
     y = target
