@@ -2,21 +2,31 @@ import readData
 from sklearn.datasets import load_iris
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
+import numpy as np
+
+def select():
+    data, target, labels = readData.convertData()
+    X = data
+
+    y = target
+    X_new = SelectKBest(chi2, k=3).fit(X, y)
+    return X_new, X, labels
+
+def getBestFeatures():
+    X_new, X, labels = select()
+    feature = []
+    for i in X_new.get_support(True):
+        feature.append(labels[i])
+    return feature
 
 
-data, target = readData.convertData()
+def getX_new():
+    X_new, X, labels = select()
+    return X_new.transform(X)
 
-print(data)
+print(select())
 
-print(target)
 
-X = data
-y = target
+print(getBestFeatures())
 
-print(X.shape)
-print(y.shape)
-
-X_new = SelectKBest(chi2, k=10).fit(X, y)
-
-print(X_new.get_support(True) )
-print(X_new.transform(X))
+print(getX_new())
