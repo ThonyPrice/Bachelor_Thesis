@@ -46,5 +46,6 @@ class readData(object):
         '''
         Example:
         train_data, train_target, test_data, test_target = splitTrainTest(*args)
+        This could be useful: http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split
         '''
         return data[:ratio], target[:ratio], data[ratio:], target[ratio:]    
