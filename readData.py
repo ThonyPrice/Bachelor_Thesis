@@ -12,7 +12,9 @@ def getData():
 
             i += 1
             labels = np.asarray(row[:-1]) # Remove last element (empty)
-            labels = np.delete(row, [1]) # Remove diagnosis
+            labels = np.delete(row, [0,1],) # Remove ID and Remove diagnosis form labels
+
+
 
         else:
             dataMartix[i-1] = row
@@ -25,7 +27,8 @@ def getData():
 def convertData():
     data, labels = getData()
     target = data[:, [1]]
-    data = np.delete(data, [1], 1)
+    data = np.delete(data, [0, 1], 1) #removes ID and removes target from data array
+    
     data = data.astype(float)
     target[target == 'M'] = 1.
     target[target == 'B'] = 0.
