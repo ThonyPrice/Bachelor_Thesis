@@ -1,6 +1,7 @@
 \documentclass{kththesis}
 
 \usepackage{blindtext} % This is just to get some nonsense text in this template, can be safely removed
+\usepackage{multirow}
 
 \usepackage{csquotes} % Recommended by biblatex
 \usepackage{biblatex}
@@ -74,7 +75,30 @@ Our research differ the work presented in \parencite{karabulut2012} in the size 
 
 Trials will be conducted with feature selection Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used in a Decision Tree (DT), Support Vector Machine (SVM), Probabilistic Method (PM) and a Artificial Neural Network (ANN). The main reason for using these four methods are that our knowledge in machine learning is limited and the four mentioned methods are the methods that we have previously studied. Also, the methods are well studied and there are several conducted studies which can be used for comparison.
 
-A comparison of the classification rate on the machine learning methods without any feature selection and with feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation criteria will primary be F1 score that conveys the balance between recall and precision of classification performance \parencite{muc1992}. Secondly, we will compare computational resources of the learning phase measured in time. The Breast Cancer Wisconsin (Diagnostic) Data Set \parencite{Dua:2017}, contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign or malignant.  
+\begin{table}[ht]
+\caption{All classifiers should be tested with each feature selection method.}
+\begin{center}
+\begin{tabular}{ |l|l| }
+\hline
+\multicolumn{2}{ |c| }{Implementations} \\
+\hline
+\multirow{4}{*}{Classifiers}
+ & Decision Tree \\
+ & Support Vector Machine \\
+ & Probibalistic Method \\
+ & Artificial Neural Network \\ \hline
+\multirow{2}{*}{Feature Selection by Wrapping}
+ & Recursive Feature Elimination (RFE) \\
+ & Sequential Feature Selector (SFS) \\ \hline
+\multirow{2}{*}{Feature Selection by Filter}
+ & Chi-square \\
+ & Entropy \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+A comparison of the classification rate on the machine learning methods without any feature selection and with feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation criteria will primary be F1 score that conveys the balance between recall and precision of classification performance \parencite{muc1992}. Secondly, we will compare computational resources of the learning phase measured in time. The Breast Cancer Wisconsin (Diagnostic) Data Set \parencite{Dua:2017}, contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign or malignant.
 
 \printbibliography[heading=bibintoc] % Print the bibliography (and make it appear in the table of contents)
 
