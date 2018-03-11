@@ -56,22 +56,25 @@
 
 \chapter{Introduction}
 
-We use the \emph{biblatex} package to handle our references.  We therefore use the
-command \texttt{parencite} to get a reference in parenthesis, like this
-\parencite{heisenberg2015}.  It is also possible to include the author
-as part of the sentence using \texttt{textcite}, like talking about
-the work of \textcite{einstein2016}.
-Test \parencite{kononenko2001}.
+% We use the \emph{biblatex} package to handle our references.  We therefore use the command \texttt{parencite} to get a reference in parenthesis, like this \parencite{heisenberg2015}.  It is also possible to include the author as part of the sentence using \texttt{textcite}, like talking about the work of \textcite{einstein2016}.
 
-\Blindtext
+Hospitals today are well equipped with data collection devices to do monitoring and data can be collected and shared in information systems. Collected data is a foundation for learning, both for medical personnel as well as for machines. As machine learning algorithms from the very beginning have been used to analyze medical data sets, machine learning is a well studied field within medical diagnosis \parencite{kononenko2001}. Computer aided diagnosis (CAD) makes use of machine learning techniques that learn a hypothesis, a statistical prediction about a patient's diagnose, from a large set of previously diagnosed examples in order to assist medical experts in making more accurate diagnostics more efficiently \parencite{li2007}.
+
+Breast cancer is a disease of major concern and is the leading cause of cancer deaths among women \parencite{althuis2005}. At present there are no effective ways to prevent breast cancer. However, efficient diagnosis in an early stage can increase the chance of full recovery. This makes early detection and diagnosis an important issue and screening mammography is the primary imaging modality for early detection of breast cancer \parencite{tabar2002}.
+
+Multiple studies of CAD on breast cancer have been conducted, primarily focusing on classifying mammography data as malignant or not, such those of \textcite{ramos2012} and \textcite{akay2009}. The act of feature selection, removing redundant or irrelevant features from a dataset, can provide classifiers to be faster, more cost-effective and accurate [8]. It is also explicitly mentioned as a topic in need of more research a studies on breast cancer classification by \textcite{akin2011}.
 
 \section{Research Question}
 
-\blindtext
+In our thesis we will study the impact of different feature selection methods on the classification rate of malignant breast cancer by different machine learning methods. Does the feature selection improve the accuracy of classification compared to using all features? Furthermore, in which machine learning methods does feature selection have the greatest impact? Our hypothesis is that overall the feature selection will improve the classification rate of all the machine learning methods used in this research scope. This hypothesis is based on previous research on this topic by \textcite{karabulut2012} where it was found that found classification improved by the use of filter methods for feature selection.
+
+Our research differ the work presented in \parencite{karabulut2012} in the size of data sets data sets. In our project we will only use one data set. Also, feature selection methods used in our research will not be restrained to filter methods, as in \parencite{karabulut2012}. Lasty, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM) which was not investigated by \parencite{karabulut2012}.
 
 \chapter{Methods}
 
-\blindtext
+Trials will be conducted with feature selection Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used in a Decision Tree (DT), Support Vector Machine (SVM), Probabilistic Method (PM) and a Artificial Neural Network (ANN). The main reason for using these four methods are that our knowledge in machine learning is limited and the four mentioned methods are the methods that we have previously studied. Also, the methods are well studied and there are several conducted studies which can be used for comparison.
+
+A comparison of the classification rate on the machine learning methods without any feature selection and with feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation criteria will primary be F1 score that conveys the balance between recall and precision of classification performance \parencite{muc1992}. Secondly, we will compare computational resources of the learning phase measured in time. The Breast Cancer Wisconsin (Diagnostic) Data Set \parencite{Dua:2017}, contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign or malignant.  
 
 \printbibliography[heading=bibintoc] % Print the bibliography (and make it appear in the table of contents)
 
