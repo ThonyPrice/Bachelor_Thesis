@@ -78,6 +78,30 @@
       \field{pages}{21\bibrangedash 22}
       \range{pages}{2}
     \endentry
+    \entry{kononenko2001}{article}{}
+      \name{author}{1}{}{%
+        {{hash=eefd93c204d9dda7d0a741720a54ca75}{%
+           family={Igor},
+           familyi={I\bibinitperiod},
+           given={Kononenko},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{eefd93c204d9dda7d0a741720a54ca75}
+      \strng{fullhash}{eefd93c204d9dda7d0a741720a54ca75}
+      \strng{authornamehash}{eefd93c204d9dda7d0a741720a54ca75}
+      \strng{authorfullhash}{eefd93c204d9dda7d0a741720a54ca75}
+      \field{sortinit}{I}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{1}
+      \field{journaltitle}{Artificial Intelligence in Medicine}
+      \field{title}{Machine learning for medical diagnosis: history, state of the art and perspective}
+      \field{volume}{23}
+      \field{year}{2001}
+      \field{pages}{89\bibrangedash 109}
+      \range{pages}{21}
+    \endentry
   \endsortlist
 \endrefsection
 \endinput
