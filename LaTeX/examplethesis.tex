@@ -2,6 +2,7 @@
 
 \usepackage{blindtext} % This is just to get some nonsense text in this template, can be safely removed
 \usepackage{multirow}
+\usepackage{graphicx}
 
 \usepackage{csquotes} % Recommended by biblatex
 \usepackage{biblatex}
@@ -137,7 +138,7 @@ Explain
 
 I guess we should focus here both on breast cancer diagnostics as well as progress in feature selection.
 
-\chapter{Methods}
+\chapter{Method}
 
 \section{Data set}
 
@@ -151,11 +152,29 @@ Detail on what algorithms we used
 
 What methods are implemented to measure the results, are we using mean, standard deviation, f1 score, anova, how many times do we run etc...
 
-\section{Results and analysis}
+\chapter{Results and analysis}
 
 \section{Classification impovements}
 
 Did classification improve, how, why
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{../plots/FS_by_Chi2.png}
+  \caption{Performance by selecting features by Chi2}
+  \label{fig:chi2}
+\end{figure}
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{../plots/FS_by_Entropy.png}
+  \caption{Performance by selecting features by Entropy}
+  \label{fig:entropy}
+\end{figure}
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{../plots/RFS.png}
+  \caption{Performance by selecting features by RFS}
+  \label{fig:rfs}
+\end{figure}
 
 \section{Best features}
 
