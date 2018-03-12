@@ -3,7 +3,7 @@ from readData import readData
 """
 Proposed functionallity of Main file
 
-1. Collect the data 
+1. Collect the data
 2. Shuffle and split with ratio x, for each x (could be .5, .6, .7, .8, .9)
     2.1 Perform feature selection by filtering
     2.2 Evaluate performance on classification (run 10 times and take average)
@@ -23,7 +23,7 @@ def main():
         for ratio in splits:
             # This call must be synced qith the not yet implemented
             # shuffleSplit in readData class
-            train_data, train_target, 
+            train_data, train_target,
             test_data, test_target = readData.shuffleSplit(ratio)
             # ---*--- Entropy features ---*---
             EntropyFeatures = EntropyFeatures(train_data, train_target)
