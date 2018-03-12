@@ -67,20 +67,25 @@ Multiple studies of CAD on breast cancer have been conducted, primarily focusing
 
 \section{Research Question}
 
-In our thesis we will study the impact of different feature selection methods on the classification rate of malignant breast cancer by different machine learning methods. Does the feature selection improve the accuracy of classification compared to using all features? Furthermore, in which machine learning methods does feature selection have the greatest impact? Our hypothesis is that overall the feature selection will improve the classification rate of all the machine learning methods used in this research scope. This hypothesis is based on previous research on this topic by \textcite{karabulut2012} where it was found that found classification improved by the use of filter methods for feature selection.
+In our thesis we will study the impact of different feature selection methods on the classification rate of malignant breast cancer by different machine learning methods. We aim to answer the following:
 
-Our research differ the work presented in \parencite{karabulut2012} in the size of data sets data sets. In our project we will only use one data set. Also, feature selection methods used in our research will not be restrained to filter methods, as in \parencite{karabulut2012}. Lasty, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM) which was not investigated by \parencite{karabulut2012}.
+\begin{itemize}
+  \item Does the feature selection improve the accuracy of classification compared to using all features?
+  \item In which machine learning methods does feature selection have the greatest impact?
+  \item What features are most important for accurate classification of breast cancer?
+\end{itemize}
+   Our hypothesis is that overall the feature selection will improve the classification rate of all the machine learning methods used in this research scope. This hypothesis is based on previous research on this topic by \textcite{karabulut2012} where it was found that found classification improved by the use of filter methods for feature selection.
+Our research differ the work presented in \parencite{karabulut2012} in the size of data sets data sets. In our project we will only use one data set and thus put more emphasis on breast cancer. The previous work did only investigate feature selection methods by filtering which we will extend with by implementing wrapper methods. Lasty, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM) which was not discussed by \parencite{karabulut2012}.
 
-\chapter{Methods}
+\section{Approach}
 
-Trials will be conducted with feature selection Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used in a Decision Tree (DT), Support Vector Machine (SVM), Probabilistic Method (PM) and a Artificial Neural Network (ANN). The main reason for using these four methods are that our knowledge in machine learning is limited and the four mentioned methods are the methods that we have previously studied. Also, the methods are well studied and there are several conducted studies which can be used for comparison.
+Trials will be conducted with feature selection Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used in a Decision Tree (DT), Support Vector Machine (SVM), Probabilistic Method (PM) and a Artificial Neural Network (ANN). See summary of implementations in \ref{table:methods}. The main reason for using these four methods \textbf{[insert better motivation here]} are that our knowledge in machine learning is limited and the four mentioned methods are the methods that we have previously studied. Also, the methods are well studied and there are several conducted studies which can be used for comparison.
 
 \begin{table}[ht]
-\caption{All classifiers should be tested with each feature selection method.}
 \begin{center}
 \begin{tabular}{ |l|l| }
 \hline
-\multicolumn{2}{ |c| }{Implementations} \\
+\multicolumn{2}{ |c| }{\textbf{Implementations}} \\
 \hline
 \multirow{4}{*}{Classifiers}
  & Decision Tree \\
@@ -95,10 +100,78 @@ Trials will be conducted with feature selection Wrapper methods and feature sele
  & Entropy \\
 \hline
 \end{tabular}
+\caption{All classifiers should be tested with each feature selection method.}
+\label{table:methods}
 \end{center}
 \end{table}
 
 A comparison of the classification rate on the machine learning methods without any feature selection and with feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation criteria will primary be F1 score that conveys the balance between recall and precision of classification performance \parencite{muc1992}. Secondly, we will compare computational resources of the learning phase measured in time. The Breast Cancer Wisconsin (Diagnostic) Data Set \parencite{Dua:2017}, contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212).
+
+\section{Outline}
+
+In the Background section earlier work on the topic will be more thouroughly presented on order to clearify how this thesis relates to the field. The following chapter, Methods will detail the methods used to achive the results that are presented in chapter 4.
+
+\chapter{Background}
+
+\section{Computer Aided Diagnostics}
+
+Explain what it is
+
+\section{Breast Cancer}
+
+Deepen the readers udnderstanding of the topic
+
+\section{Feature Selection}
+
+Why is this important
+
+\subsection{Filter methods}
+
+Explain
+
+\subsection{Wrapper methods}
+
+Explain
+
+\section{Related Work}
+
+I guess we should focus here both on breast cancer diagnostics as well as progress in feature selection.
+
+\chapter{Methods}
+
+\section{Data set}
+
+More detail on the data set goes here
+
+\section{Implementation}
+
+Detail on what algorithms we used
+
+\section{Evaluation}
+
+What methods are implemented to measure the results, are we using mean, standard deviation, f1 score, anova, how many times do we run etc...
+
+\section{Results and analysis}
+
+\section{Classification impovements}
+
+Did classification improve, how, why
+
+\section{Best features}
+
+Could we tell which features contributes most to correct classification, how, why those
+
+\section{Source of errors}
+
+What can have caused faulty results, can our results be trusted?
+
+\chapter{Discussion}
+
+Let's discuss here
+
+\chapter{Conclusion}
+
+I guess this will be the last thing we write
 
 \printbibliography[heading=bibintoc] % Print the bibliography (and make it appear in the table of contents)
 
