@@ -53,8 +53,8 @@ def plotFilter(rez, fs_method):
     plt.xlabel('# features')
     plt.tight_layout()
     plt.suptitle(fs_method)
+    plt.savefig('plots/%s.png' % (fs_method.replace(" ", "_")), bbox_inches='tight')
     plt.show()
-    plt.savefig('plots/%s.png' % (fs_method), bbox_inches='tight')
 
 def evaluate_wrapper():
     print("Evaluating FS by RFS")
@@ -84,8 +84,8 @@ def evaluate_wrapper():
     plt.xlabel('# features')
     plt.tight_layout()
     plt.suptitle("Feature selection by RFS")
-    plt.show()
     plt.savefig('plots/RFS.png', bbox_inches='tight')
+    plt.show()
 
 # load dataset
 dataframe = pandas.read_csv("data.csv")
