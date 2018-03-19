@@ -4,11 +4,11 @@ from sklearn import metrics
 
 class SVM(object):
 
-    """docstring for DecisionTree..."""
+    """docstring for SVM..."""
 
     def __init__(self, data, target):
         # Split into test and training data
-        #permutate data? 
+        #permutate data?
         ratio = 0.6
         split = int(len(data)*ratio)
         self.train_data = data[:split]
