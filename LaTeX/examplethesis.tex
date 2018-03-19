@@ -64,7 +64,7 @@ Hospitals today are well equipped with data collection devices to do monitoring 
 
 Breast cancer is a disease of major concern and is the leading cause of cancer deaths among women \parencite{althuis2005}. At present there are no effective ways to prevent breast cancer. However, efficient diagnosis in an early stage can increase the chance of full recovery. This makes early detection and diagnosis an important issue and screening mammography is the primary imaging modality for early detection of breast cancer \parencite{tabar2001}.
 
-Multiple studies of CAD on breast cancer have been conducted, primarily focusing on classifying mammography data as malignant or not, such those of \textcite{ramos2012} and \textcite{akay2009}. The act of feature selection, removing redundant or irrelevant features from a dataset, can provide classifiers to be faster, more cost-effective and accurate [8]. It is also explicitly mentioned as a topic in need of more research a studies on breast cancer classification by \textcite{akin2011}.
+Multiple studies of CAD on breast cancer have been conducted, primarily focusing on classifying mammography data as malignant or not, such those of \textcite{ramos2012} and \textcite{akay2009}. The act of feature selection, removing redundant or irrelevant features from a dataset, can provide classifiers to be faster, more cost-effective and accurate [8]. It is also explicitly mentioned as a topic in need of more research in a studies on breast cancer classification by \textcite{akin2011}.
 
 \section{Research Question}
 
@@ -142,7 +142,23 @@ I guess we should focus here both on breast cancer diagnostics as well as progre
 
 \section{Data set}
 
-More detail on the data set goes here
+The dataset used in this theises, Breast Cancer Wisconsin (Diagnostic) data set, was donated 1995 to UCI  Machine Learning Repository \parencite{Dua:2017} by one of its creators, Nick Street. It contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attribute discribes ten real-value features which are:
+
+\begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+	\item \textbf{Radius:} Mean of distances from center to points on the perimeter.
+	\item \textbf{Texture:} Standard deviation of gray-scale values.
+	\item \textbf{Smoothness:} Local variation in radius lengths.
+  \item \textbf{Compactness:} perimeter\textsuperscript{2} / area - 1.
+  \item \textbf{Concavity:} Severity of concave portions of the contour.
+  \item \textbf{Concave points:} Number of concave portions of the contour.
+  \item \textbf{Fractal dimension:} Coastline approximation - 1.
+  \item \textbf{Perimeter:} Local variation in radius lengths.
+  \item \textbf{Area}
+  \item \textbf{Symmetry}
+\end{itemize}
+
+
+
 
 \section{Implementation}
 
