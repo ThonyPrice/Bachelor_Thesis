@@ -124,15 +124,15 @@ A study in Sweden by \textcite{tabar2001} found breast carcinoma mortality was r
 
 \section{Feature Selection}
 
-The benefits of selecting a subset of all avaliable features are manyfold, among other it facilitates data visualization and data understanding, reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features it is essential to work with the data \parencite{guyon2003}.
+The benefits of selecting a subset of all avaliable features are manyfold, among other it facilitates data visualization and data understanding, reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features it is essential to work with a subset of the data to produce results. \parencite{guyon2003}.
 
 \subsection{Filter methods}
 
-Explain
+Filters evaluate each feature independent from the classifier, rank the features after evaluation and take the superior ones. The evaluation can be perfomed by many methods such as Information Gain and Variance \parencite{guyon2003}.
 
 \subsection{Wrapper methods}
 
-Explain
+Wrappers utilize the learning machine of interest as a black box to score subsets of variable according to their predictive power \parencite{guyon2003}. The issue is as datasets become very large this method might be overly computational intense as finding the optimal subset is considered to be NP-hard \parencite{amaldi1998}.
 
 \section{Related Work}
 
