@@ -48,97 +48,100 @@ The purpose of this litterature review is to build a foundation of knowledge for
 \noindent
 \textbf{Title:} Improve Computer-Aided Diagnosis With Machine Learning Techniques Using Undiagnosed Samples \cite{li2007}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} This report defines the term computer-aided diagnosis (CAD). The authors explain how machine learniing is applied by learning hypothesis. They propose a extension of random forest called Co-Forest
+to estimate the labeling confidence of undiagnosed samples and
+easily produce the final hypothesis. Case studies on three medical data sets and a successful application to microcalcification detection for breast cancer diagnosis show that
+undiagnosed samples are helpful in building CAD systems.
 \\
-\textbf{Usage:}
+\textbf{Usage:} We use the term CAD and should refer to this report when introducing it. The paper motivates machine learning to enhance medical diagnosis which strengthen the relevance of our work. They have also implemented methods to diagnose breast cancer.
 \\\par
 
 \noindent
 \textbf{Title:} Global trends in breast cancer incidence and mortality 1973–1997 \cite{althuis2005}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} Explains the global trends in breast cancer.
 \\
-\textbf{Usage:}
+\textbf{Usage:} Use this data to motivate the importance of our work because breast cancer is very common and a leading cause of death.
 \\\par
 
 \noindent
 \textbf{Title:} Beyond randomized controlled trials - Organized mammographic screening substantially reduces breast carcinoma mortality \cite{tabar2001}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} Proves the excellent results of mammography in terms of reduced mortality by 63\% when screening was introduced.
 \\
-\textbf{Usage:}
+\textbf{Usage:} Use this as motivation for screening, why it is important and thus makes our work relevant.
 \\\par
 
 \noindent
 \textbf{Title:} Discovering Mammography-based Machine Learning Classifiers for Breast Cancer Diagnosis \cite{ramos2012}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} This work explores the design of mammography-based machine learning classifiers (MLC) and proposes a new method to build MLC for breast cancer diagnosis. We massively evaluated MLC configurations to classify features vectors extracted from segmented regions (pathological lesion or normal tissue) on craniocaudal (CC) and/or mediolateral oblique (MLO) mammography image views, providing BI-RADS diagnosis. Around 20,000 MLC configurations were evaluated, obtaining classifiers achieving an area under the ROC curve of 0.996 when combining features vectors extracted from CC and MLO views of the same case.
 \\
-\textbf{Usage:}
+\textbf{Usage:} Very similar to our work, has a good introduction we can take inspiration from and along att the MLC configurations they used some might be similar to our. We might be able to compare our results with theirs. We can also take inspiration from the validation methods they've used, see if we can find the datasets they used etc. I think this has a high priority in our litterature review.
 \\\par
 
 \noindent
 \textbf{Title:} Classifier ensemble construction with rotation forest to improve medical diagnosis performance of machine learning algorithms \cite{akin2011}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} Feature dimension of three datasets is reduced using correlation based feature selection (CFS) algorithm. Second, classification performances of 30 machine learning algorithms are calculated for three datasets. Third, 30 classifier ensembles are constructed based on RF algorithm to assess performances of respective classifiers with the same disease data. All the experiments are carried out with leave-one-out validation strategy and the performances of the 60 algorithms are evaluated using three metrics; classification accuracy (ACC), kappa error (KE) and area under the receiver operating characteristic (ROC) curve (AUC).
 \\
-\textbf{Usage:}
+\textbf{Usage:} In the concusion the authors writes: \textit{The high number of the algorithms requires a more specific evaluation study to test the effect of the feature selection on classification accuracy.} wich we can use to motivate our work. Overall their work is very similar to ours and a lot of inspiration can be taken from this paper.
 \\\par
 
 \noindent
 \textbf{Title:} Support vector machines combined with feature selection for breast cancer diagnosis \cite{akay2009}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} From abstract: In this paper, breast cancer diagnosis based on a SVM-based method combined with feature selection has been proposed. Experiments have been conducted on different training-test partitions of the Wisconsin breast cancer dataset (WBCD), which is commonly used among researchers who use machine learning methods for breast cancer diagnosis. The performance of the method is evaluated using classification accuracy, sensitivity, specificity, positive and negative predictive values, receiver operating characteristic (ROC) curves and confusion matrix. The results show that the highest classification accuracy (99.51\%) is obtained for the SVM model that contains five features, and this is very promising compared to the previously reported results
 \\
-\textbf{Usage:}
+\textbf{Usage:} Super similar to ours, we should explain their results thuroughly and how our work will differ/build upon theirs, like applying more FS methods.
 \\\par
 
 \noindent
 \textbf{Title:} A comparative study on the effect of feature selection on classification accuracy \cite{karabulut2012}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} From abstract: Feature selection provides classifiers to be fast, cost-effective, and more accurate. In this paper the effect of feature selection on the accuracy of NaiveBayes, Artificial Neural Network as Multilayer Perceptron, and J48 decision tree classifiers is presented. These classifiers are compared with fifteen real datasets which are pre-processed with feature selection methods. Up to 15.55\% improvement in classification accuracy is observed, and Multilayer Perceptron appears to be the most sensitive classifier to feature selection.
 \\
-\textbf{Usage:}
+\textbf{Usage:} Vary similar, I think we should put emphasis on this report in our literature review and explain their results how we can biuld upon those and how our work will differ.
 \\\par
 
 \noindent
 \textbf{Title:} MUC-4 Evaluation metrics \cite{muc1992}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} -
 \\
-\textbf{Usage:}
+\textbf{Usage:} This is a report from a conference where the F1 score measurement was introduced, we refer to this when we explain what F1 score is and hy we use it.
 \\\par
 
 \noindent
 \textbf{Title:} {UCI} Machine Learning Repository \cite{dua:2017}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} -
 \\
-\textbf{Usage:}
+\textbf{Usage:} Source of the dataset.
 \\\par
 
 \noindent
 \textbf{Title:} Radiographer involvement in mammography image interpretation: A survey of United Kingdom practice \cite{culpan2016}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} A peper on the methods used by radiologist and what problems exist in this practices.
 \\
-\textbf{Usage:}
+\textbf{Usage:} This we refer to when motivating why ML methods is necessary in terms of making diagnosis more efficient.
 \\\par
 
 \noindent
 \textbf{Title:} Breast Cancer in Low- and Middle-Income Countries: Why We Need Pathology Capability to Solve This Challenge \cite{martei2018}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} See title.
 \\
-\textbf{Usage:}
+\textbf{Usage:} Again, strengthens the motivation of our work.
 \\\par
 
-\noindent 
+\noindent
 \textbf{Title:} An introduction to variable and feature selection \cite{guyon2003}.
 \\
-\textbf{Notes:}
+\textbf{Notes:} A thurough explanation what feature selection is and how it works.
 \\
-\textbf{Usage:}
+\textbf{Usage:} -
 \\\par
 
 \subsection{Conclusion}
