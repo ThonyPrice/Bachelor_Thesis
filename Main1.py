@@ -11,6 +11,7 @@ from sklearn.feature_selection import chi2
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.model_selection import StratifiedKFold
 from sklearn.feature_selection import RFECV
+from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import pprint as pp
 
 def evaluate_filter(f, fs_method):
@@ -87,6 +88,25 @@ def evaluate_wrapper():
     plt.savefig('plots/updated_RFS.png', bbox_inches='tight')
     plt.show()
 
+def evaluate_sbs(fs_method):
+    print("Evaluating", fs_method)
+    # evaluate each model in turn
+    rez = {'CART':[], 'SVM':[], 'NB':[], 'ANN':[]}
+    results = []
+    names = []
+    scoring = 'accuracy'
+    features = list(range(5, X.shape[1]))
+    for num_features in features:
+        for name, model in models:
+            kfold = model_selection.KFold(n_splits=10, random_state=seed)
+            sbs = SFS(  model, k_features=num_features, forward=True, floating=False,
+                        scoring='accuracy', cv=10, n_jobs=-1)
+            sbs = sbs.fit(X, Y)
+            rez[name].append((num_features, sbs.k_score_))
+            msg = "#features: %f, Model: %s:  %f " % (num_features, name, sbs.k_score_)
+            print(msg)
+    plotFilter(rez, fs_method)
+
 # load dataset
 dataframe = pandas.read_csv("data.csv")
 dataframe = dataframe.drop(['id'], axis=1)
@@ -102,7 +122,10 @@ models = []
 models.append(('CART', DecisionTreeClassifier()))
 models.append(('SVM', SVC()))
 models.append(('NB', GaussianNB()))
-models.append(('ANN', MLPClassifier()))
+# models.append(('ANN', MLPClassifier()))
+
+# Evaluate SBS
+evaluate_sbs('FS by SBS')
 
 # Evaluate Chi2
 f = lambda x: SelectKBest(chi2, k=x).fit_transform(X, Y)
@@ -112,7 +135,7 @@ evaluate_filter(f, 'FS by Chi2')
 f = lambda x: SelectKBest(mutual_info_classif, k=x).fit_transform(X, Y)
 evaluate_filter(f, 'FS by Entropy')
 
-# Set SVM kernel to linear to funtion with RFS
-models = [models[0]] + [('SVM', SVC(kernel='linear'))] + models[2:]
-# Evaluate RFE
-evaluate_wrapper()
+# # Set SVM kernel to linear to funtion with RFS
+# models = [models[0]] + [('SVM', SVC(kernel='linear'))] + models[2:]
+# # Evaluate RFE
+# evaluate_wrapper()
