@@ -79,16 +79,10 @@ In our thesis we will study the impact of different feature selection methods on
   \item In which machine learning methods does feature selection have the greatest impact?
   \item What features are most important for accurate classification of breast cancer?
 \end{itemize}
-<<<<<<< HEAD
 
 Our hypothesis is that overall the feature selection will improve the classification rate of the machine learning methods used in the context of breast cancer classification. This hypothesis is based on previous research reported by \textcite{karabulut2012}, where it was found that classification accuracy on 15 different datasets was increased by the use of filter methods for feature selection.
 
 Our research differs from the work presented in \parencite{karabulut2012} in the amount of datasets used and amount of classification methods. In our project we will put more emphasis on breast cancer using only datasets of that type. The previous work only investigated feature selection methods by filtering which we will extend by implementing wrapper methods. Lastly, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM), which was not discussed by \parencite{karabulut2012}.
-=======
-   Our hypothesis is that overall the feature selection will improve the classification rate of the machine learning methods used in the context of breast cancer classification. This hypothesis is based on previous research reported by \textcite{karabulut2012}, where it was found that classification accuracy on 15 different data sets was increased by the use of filter methods for feature selection.
-
-Our research differs from the work presented in \parencite{karabulut2012} in the amount of data sets used and amount of classification methods. In our project we will only use one data set and thus put more emphasis on breast cancer. The previous work did only investigate feature selection methods by filtering which we will extend with by implementing wrapper methods. Lastly, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM) which was not discussed by \parencite{karabulut2012}.
->>>>>>> 44d81de005f04c899c69d3291af5028e121515e3
 
 \section{Approach}
 
@@ -118,11 +112,11 @@ Trials will be conducted with feature selection Wrapper methods and feature sele
 \end{center}
 \end{table}
 
-A comparison of the classification rate on the machine learning methods without any feature selection and with feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation criteria will primary be F1 score that conveys the balance between recall and precision of classification performance \parencite{muc1992}. Secondly, we will compare computational resources of the learning phase measured in time. The Breast Cancer Wisconsin (Diagnostic) dataset \parencite{dua:2017}, contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212).
+A comparison of the classification rate on the machine learning methods without any feature selection and with feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation criteria will primary be F1 score that conveys the balance between recall and precision of classification performance \parencite{muc1992}.[add more info here] Several datasets with different types of features will be evaluated. For more information on the datasets see chapter \ref{sec:Datasets}
 
-\section{Outline} %add chapter 5 and 6
+\section{Outline}
 
-In the Background section earlier work on the topic will be more thoroughly presented on order to clarify how this thesis relates to the field. The following chapter, Methods will detail the methods used to achieve the results that are presented in chapter 4.
+In the Background section earlier work on the topic will be more thoroughly presented on order to clarify how this thesis relates to the field. The following chapter, Methods will detail the methods used to achieve the results that are presented in chapter 4. Chapter 5 analyzes the result and finally chapter 6 draws conclusion based on the analysis.
 
 \chapter{Background}
 
@@ -149,11 +143,11 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 
 The benefits of selecting a subset of all available features are manyfold, among other it facilitates data visualization and data understanding, reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features it is essential to work with a subset of the data to produce results. \parencite{guyon2003}.
 
-\subsection{Filter methods}
+\subsection{Filter methods} %expand
 
 Filters evaluate each feature independent from the classifier, rank the features after evaluation and take the superior ones. The evaluation can be performed by many methods such as Information Gain and Variance \parencite{guyon2003}.
 
-\subsection{Wrapper methods}
+\subsection{Wrapper methods} %expand
 
 Wrappers utilize the learning machine of interest as a black box to score subsets of variable according to their predictive power \parencite{guyon2003}. The issue is as datasets become very large this method might be overly computational intense as finding the optimal subset is considered to be NP-hard \parencite{amaldi1998}.
 
@@ -163,7 +157,7 @@ The paper Discovering Mammography-based Machine Learning Classifiers for Breast 
 
 
 
-In 2011 a study by Akin Ozcift and Arif Gulten \parencite{akin2011} demonstrated that ensemble learning can be used in computer aided diagnostics (CAD) to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets. The datasets and their improvement were:
+\textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets. The datasets and their improvement were:
 
 \begin{itemize}
   \item Diabetes: improvement of 2.32\%
@@ -171,7 +165,7 @@ In 2011 a study by Akin Ozcift and Arif Gulten \parencite{akin2011} demonstrated
   \item Parkinson's: improvement of 2.7\%
 \end{itemize}
 
-The improved accuracy demonstrates the effect of feature selection on classification accuracy.\\
+They found that the improved accuracy on every dataset demonstrates the positive effect of feature selection on classification accuracy.\\
 
 Abdel-Ilah and {\v{S}}ahinbegovi{\'{c}} \parencite{Abdel-Ilah2017} used the Wisconsin breast cancer database to investigate the optimal number of hidden layers and neurons for a feed forward back propagation network (FFBPN). Using three different transfer functions: Logsig, Tansig and Pureline. The highest accuracy was 98\% using 3 hidden layers and 21 neurons. Suggestion was made to further investigate different parameters of ANNs to find their effect on the dataset.
 
@@ -183,7 +177,9 @@ The results show that Multilayer perceptron benefited the most from feature sele
 
 \chapter{Method}
 
-\section{dataset}
+\section{Datasets}
+\label{sec:Datasets}
+
 
 The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features which are:
 
