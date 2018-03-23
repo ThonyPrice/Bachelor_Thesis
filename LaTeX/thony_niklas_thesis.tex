@@ -79,14 +79,20 @@ In our thesis we will study the impact of different feature selection methods on
   \item In which machine learning methods does feature selection have the greatest impact?
   \item What features are most important for accurate classification of breast cancer?
 \end{itemize}
+<<<<<<< HEAD
 
 Our hypothesis is that overall the feature selection will improve the classification rate of the machine learning methods used in the context of breast cancer classification. This hypothesis is based on previous research reported by \textcite{karabulut2012}, where it was found that classification accuracy on 15 different datasets was increased by the use of filter methods for feature selection.
 
 Our research differs from the work presented in \parencite{karabulut2012} in the amount of datasets used and amount of classification methods. In our project we will put more emphasis on breast cancer using only datasets of that type. The previous work only investigated feature selection methods by filtering which we will extend by implementing wrapper methods. Lastly, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM), which was not discussed by \parencite{karabulut2012}.
+=======
+   Our hypothesis is that overall the feature selection will improve the classification rate of the machine learning methods used in the context of breast cancer classification. This hypothesis is based on previous research reported by \textcite{karabulut2012}, where it was found that classification accuracy on 15 different data sets was increased by the use of filter methods for feature selection.
+
+Our research differs from the work presented in \parencite{karabulut2012} in the amount of data sets used and amount of classification methods. In our project we will only use one data set and thus put more emphasis on breast cancer. The previous work did only investigate feature selection methods by filtering which we will extend with by implementing wrapper methods. Lastly, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM) which was not discussed by \parencite{karabulut2012}.
+>>>>>>> 44d81de005f04c899c69d3291af5028e121515e3
 
 \section{Approach}
 
-Trials will be conducted with feature selection Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used in a Decision Tree (DT), Support Vector Machine (SVM), Probabilistic Method (PM) and a Artificial Neural Network (ANN). See summary of implementations in \ref{table:methods}. The main reason for using these four methods \textbf{[insert better motivation here]} are that our knowledge in machine learning is limited and the four mentioned methods are the methods that we have previously studied. Also, the methods are well studied and there are several conducted studies which can be used for comparison.
+Trials will be conducted with feature selection Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used with different classifiers to evaluate their performance. To broaden the base for comparison we use classifiers from different disciplines, Decision Tree (Logic Based Algorithms), ANN (Perceptron-Based Techniques), Naive Bayes (Statistical Learning Algorithms) and SVM (Support Vector Machines) \parencite{wallace2007}. Feature selection methods and classifiers are denoted in table \ref{table:methods}.
 
 \begin{table}[ht]
 \begin{center}
