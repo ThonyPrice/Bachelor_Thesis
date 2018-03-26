@@ -72,17 +72,17 @@ Multiple studies of CAD on breast cancer have been conducted, primarily focusing
 
 \section{Research Question}
 
-In our thesis we will study the impact of different feature selection methods on the classification rate of malignant breast cancer by different machine learning methods. We aim to answer the following:
+This paper studies the impact of different feature selection methods on the classification rate of malignant breast cancer by different machine learning methods. We aim to answer the following:
 
 \begin{itemize}
   \item Does the feature selection improve the accuracy of classification compared to using all features?
-  \item In which machine learning methods does feature selection have the greatest impact?
+  \item In which machine learning methods does feature selection have the greatest impact on classification rate?
   \item What features are most important for accurate classification of breast cancer?
 \end{itemize}
 
 Our hypothesis is that overall the feature selection will improve the classification rate of the machine learning methods used in the context of breast cancer classification. This hypothesis is based on previous research reported by \textcite{karabulut2012}, where it was found that classification accuracy on 15 different datasets was increased by the use of filter methods for feature selection.
 
-Our research differs from the work presented in \parencite{karabulut2012} in the amount of datasets used and amount of classification methods. In our project we will put more emphasis on breast cancer using only datasets of that type. The previous work only investigated feature selection methods by filtering which we will extend by implementing wrapper methods. Lastly, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM), which was not discussed by \parencite{karabulut2012}.
+Our research differs from the work presented by \textcite{karabulut2012} in the amount of datasets used and amount of classification methods. In our project we will put more emphasis on breast cancer using only datasets of that type. The previous work only investigated feature selection methods by filtering which we will extend by implementing wrapper methods. Lastly, the research scope in this thesis includes a study of the effect of different feature selection methods on Support Vector Machines (SVM), which was not discussed by \parencite{karabulut2012}.
 
 \section{Approach}
 
@@ -116,19 +116,19 @@ A comparison of the classification rate on the machine learning methods without 
 
 \section{Outline}
 
-In the Background section earlier work on the topic will be more thoroughly presented on order to clarify how this thesis relates to the field. The following chapter, Methods will detail the methods used to achieve the results that are presented in chapter 4. Chapter 5 analyzes the result and finally chapter 6 draws conclusion based on the analysis.
+In the Background section earlier work on the topic will be more thoroughly presented in order to clarify how this thesis relates to the field. The following chapter, Methods will detail the methods used to achieve the results that are presented in chapter 4. Chapter 5 contains an analysis of the results and finally in chapter 6 conclusions are drawn based on the analysis.
 
 \chapter{Background}
 
 \section{Computer Aided Diagnostics}
 
-Machine learning techniques have been successfully applied to computer-aided diagnosis where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To make a CAD system samples with diagnosis i used for learning. In the case of breast cancer diagnosis a radiologist label scans which then can be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
+Machine learning techniques have been successfully applied to computer-aided diagnosis where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To construct a CAD system, samples with an established diagnosis is used for learning. To establish a diagnosis for breast cancer a radiologist examines scans and labels them as either benign or malignant cancer. These scans can then be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
 
 \section{Breast Cancer} %add Fine needle aspiration in this chapter?
 
-A study in Sweden by \textcite{tabar2001} found breast carcinoma mortality was reduced by 63\% after mammography was introduced. This clearly emphasize the benefits of screening which had resulted in a increased usage of the method to detect and diagnose breast cancer. The increasing demand for mammography image interpretation lead to a shortage of medical radiologist to perform this task and consequently non medical personnel supplement the mammography image interpretation (MII) \parencite{culpan2016}. As breast cancer continues to be the leading cause of cancer mortality among women and more efficient diagnostics and pathology is high on demand the need of low-cost point-of-care is very much needed as stated by \textcite{martei2018}.\\
+A study by \textcite{tabar2001} found breast cancer mortality was reduced by 63\% after mammography was introduced. This clearly emphasize the benefits of screening which had resulted in a increased usage of the method to detect and diagnose breast cancer. The increasing demand for mammography image interpretation lead to a shortage of medical radiologist to perform this task and consequently non medical personnel supplement the mammography image interpretation (MII) \parencite{culpan2016}. Breast cancer continues to be the leading cause of cancer mortality among women. This calls for more efficient diagnostics and pathology. The demand of low-cost point-of-care is very much needed as stated by \textcite{martei2018}.\\
 
-Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sampling cells, staining them and examine under a microscope \parencite{FNA}. An example of such sample can be seen in \ref{fig:fna_nuclei}. The cell samples can be evaluated within 24 hours and the method is cost-effective and can be used as a preoperative tool for investigation of tumors. The method is also complication-free and has been widely used for the past 60 years.
+A diagnostic tool is Fine needle aspiration (FNA), it is used to aspirate cell samples by sampling cells from a patient, staining them and examine under a microscope \parencite{FNA}. An example can be seen in \ref{fig:fna_nuclei}. The cell samples can be evaluated within 24 hours and the method is cost-effective and can be used as a preoperative tool for investigation of tumors. FNA is also complication-free and has been widely used for the past 60 years \parencite{FNA}.
 
 \begin{figure}[ht!]
   \centering
@@ -141,11 +141,11 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 
 \section{Feature Selection}
 
-The benefits of selecting a subset of all available features are manyfold, among other it facilitates data visualization and data understanding, reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features it is essential to work with a subset of the data to produce results. \parencite{guyon2003}.
+The benefits of selecting a subset of all available features are manyfold, it facilitates data visualization and data understanding, reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features it is essential to work with a subset of the data to produce results. \parencite{guyon2003}.
 
 \subsection{Filter methods} %expand
 
-Filters evaluate each feature independent from the classifier, rank the features after evaluation and take the superior ones. The evaluation can be performed by many methods such as Information Gain and Variance \parencite{guyon2003}.
+Filters evaluate each feature independent from the classifier, rank the features after evaluation and select the superior ones. The evaluation can be performed by many methods such as Information Gain and Variance \parencite{guyon2003}.
 
 \subsection{Wrapper methods} %expand
 
@@ -154,8 +154,6 @@ Wrappers utilize the learning machine of interest as a black box to score subset
 \section{Related Work}
 
 The paper \textit{Discovering Mammography-based Machine Learning Classifiers for Breast Cancer Diagnosis} \parencite{ramos2012} uses 20,000 machine learning classification configurations to evaluated their ability to correctly classify malignant cancer. They built a database containing 286 cases and found classifiers that scored with an area of 0.996 under the Receiver operating characteristic (ROC) curve.
-
-
 
 \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets. The datasets and their improvement were:
 
