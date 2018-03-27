@@ -6,6 +6,7 @@
 
 \usepackage{csquotes} % Recommended by biblatex
 \usepackage{biblatex}
+\usepackage{chngpage}
 \addbibresource{references.bib} % The file containing our references, in BibTeX format
 
 
@@ -207,6 +208,11 @@ The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, w
   \item \textbf{Symmetry}
 \end{itemize}
 
+
+\subsection{Royal Hallamshire Hospital}
+
+Fine needle aspirates of breast lumps (FNAB) was collected from 692 patients at Royal Hallamshire Hospital, Sheffield, during 1992 - 1993. From the FNABs 10 features listed below was marked as present or non present. These features along with the patients's age defines the attributes of the dataset. In addition, the final outcome of benign disease or malignancy was confirmed by open biopsy where this result was available.
+
 \subsection{MIAS database}
 
 Mias database contains results from XX data points with 5 features: Character of background tissue, Class of abnormality, X coordinate of centre of abnormality, Y coordinate of centre of abnormality, Approximate radius (in pixels). The features was extracted from 1024x1024 pixel images.
@@ -214,7 +220,50 @@ Mias database contains results from XX data points with 5 features: Character of
 
 \subsection{U.S. National Center for Biotechnology Information}
 
-The data contains information on 1919 microRNAs in 122 different cases. 
+The data contains information on 1919 microRNAs in 122 different cases.
+
+\subsection{Erlangen-Nuremberg}
+
+Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006. It contains three features assessed as a discrete value from a double-review by physicians along with the patients' age.
+
+
+% Table with information on Datasets
+\medskip
+\begin{table}[ht!]
+\begin{adjustwidth}{-5.in}{-5.in}
+\begin{center}
+   \begin{tabular}{l*{4}{l}}
+   \hline
+   Dataset         &
+   \# of examples  &
+   \# of features  &
+   Ratio (B/M)     &
+   Type            \\
+   \hline
+   Wisconsin                   &
+   569                         &
+   32                          &
+   357/212                     &
+   Continous                   \\
+   Royal Hallamshire Hospital  &
+   692                         &
+   11                          &
+   457/235                     &
+   Binary                      \\
+   Erlangen-Nuremberg          &
+   961                         &
+   5                           &
+   516/445                     &
+   Discrete                    \\
+  \hline
+  \end{tabular}
+  \caption{Datasets}
+  \label{table:datasets_info}
+\end{center}
+\end{adjustwidth}
+\end{table}
+
+
 
 \section{Implementation}
 
