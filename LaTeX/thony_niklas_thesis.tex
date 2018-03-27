@@ -199,6 +199,10 @@ The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, w
 
 Fine needle aspirates of breast lumps (FNAB) was collected from 692 patients at Royal Hallamshire Hospital, Sheffield, during 1992 - 1993. From the FNABs 10 features listed below was marked as present or non present. These features along with the patients's age defines the attributes of the dataset. In addition, the final outcome of benign disease or malignancy was confirmed by open biopsy where this result was available.
 
+\subsection{Erlangen-Nuremberg}
+
+Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006. It contains three features assessed as a discrete value from a double-review by physicians along with the patients' age.
+
 % Table with information on Datasets
 \medskip
 \begin{table}[ht!]
@@ -206,22 +210,27 @@ Fine needle aspirates of breast lumps (FNAB) was collected from 692 patients at 
 \begin{center}
   \begin{tabular}{l*{4}{l}}
   \hline
-  Dataset             &
-  \# of examples      &
-  \# of features      &
-  Partitioning (B/M)  &
-  Type                \\
+  Dataset         &
+  \# of examples  &
+  \# of features  &
+  Ratio (B/M)     &
+  Type            \\
   \hline
   Wisconsin                   &
   569                         &
   32                          &
   357/212                     &
-  Discrete                    \\
+  Continous                   \\
   Royal Hallamshire Hospital  &
   692                         &
   11                          &
   457/235                     &
   Binary                      \\
+  Erlangen-Nuremberg          &
+  961                         &
+  5                           &
+  516/445                     &
+  Discrete                    \\
   \hline
   \end{tabular}
   \caption{Datasets}
