@@ -3,6 +3,7 @@
 \usepackage{blindtext} % This is just to get some nonsense text in this template, can be safely removed
 \usepackage{multirow}
 \usepackage{graphicx}
+\usepackage{chngpage}
 
 \usepackage{csquotes} % Recommended by biblatex
 \usepackage{biblatex}
@@ -178,7 +179,7 @@ The results show that Multilayer perceptron benefited the most from feature sele
 \section{Datasets}
 \label{sec:Datasets}
 
-
+\subsection{Wisconsin}
 The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features which are:
 
 \begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
@@ -194,28 +195,41 @@ The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, w
   \item \textbf{Symmetry}
 \end{itemize}
 
+\subsection{Royal Hallamshire Hospital}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 % Table with information on Datasets
-\begin{tabular}{l*{4}{l}}
-\hline
-Dataset         &
-\# of examples  &
-\# of features  &
-Type            &
-\# of classes   \\
-\hline
-Wisconsin                   &
-569                         &
-32                          &
-Discrete                    &
-2                           \\
-Royal Hallamshire Hospital  &
-692                         &
-10                          &
-Binary                      &
-2                           \\
-\hline
-\end{tabular}
+\medskip
+\begin{table}[ht!]
+\begin{adjustwidth}{-.5in}{-.5in}
+\begin{center}
+  \begin{tabular}{l*{4}{l}}
+  \hline
+  Dataset         &
+  \# of examples  &
+  \# of features  &
+  Type            &
+  \# of classes   \\
+  \hline
+  Wisconsin                   &
+  569                         &
+  32                          &
+  Discrete                    &
+  2                           \\
+  Royal Hallamshire Hospital  &
+  692                         &
+  10                          &
+  Binary                      &
+  2                           \\
+  \hline
+  \end{tabular}
+  \caption{Datasets}
+  \label{table:datasets_info}
+\end{center}
+\end{adjustwidth}
+\end{table}
+
 
 \section{Implementation}
 
