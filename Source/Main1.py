@@ -1,4 +1,5 @@
 import pandas
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.pipeline import Pipeline
 from sklearn import model_selection
@@ -10,9 +11,11 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import RFECV
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import pprint as pp
+import sys
 
 def evaluate_filter(f, fs_method):
     print("Evaluating", fs_method)
@@ -54,7 +57,7 @@ def plotFilter(rez, fs_method):
     plt.xlabel('# features')
     plt.tight_layout()
     plt.suptitle(fs_method)
-    plt.savefig('plots/updated_%s.png' % (fs_method.replace(" ", "_")), bbox_inches='tight')
+    plt.savefig('../plots/updated_%s.png' % (fs_method.replace(" ", "_")), bbox_inches='tight')
     plt.show()
 
 def evaluate_wrapper():
@@ -95,20 +98,39 @@ def evaluate_sbs(fs_method):
     results = []
     names = []
     scoring = 'accuracy'
-    features = list(range(5, X.shape[1]))
+    features = list(range(1, X.shape[1]))
+    # features = list(range(1, 5))
     for num_features in features:
         for name, model in models:
+            sfs1 = SFS(model,
+                   k_features=num_features,
+                   forward=True,
+                   floating=False,
+                   scoring=scoring,
+                   cv=10,
+                   n_jobs = 1)
+            X_new = sfs1.fit_transform(X, Y)
             kfold = model_selection.KFold(n_splits=10, random_state=seed)
-            sbs = SFS(  model, k_features=num_features, forward=True, floating=False,
-                        scoring='accuracy', cv=10, n_jobs=-1)
-            sbs = sbs.fit(X, Y)
-            rez[name].append((num_features, sbs.k_score_))
-            msg = "#features: %f, Model: %s:  %f, feature_idx: %s " % (num_features, name, sbs.k_score_, sbs.k_feature_idx_)
+            cv_results = model_selection.cross_val_score(model, X_new, Y, cv=kfold, scoring=scoring)
+            results.append(cv_results)
+            rez[name].append((num_features, cv_results.mean()))
+            names.append(name)
+            msg = "#features: %f, Model: %s:  %f (%f)" % (num_features, name, cv_results.mean(), cv_results.std())
             print(msg)
+    # features = list(range(5, X.shape[1]))
+    # for num_features in features:
+    #     for name, model in models:
+    #         kfold = model_selection.KFold(n_splits=10, random_state=seed)
+    #         sbs = SFS(  model, k_features=num_features, forward=True, floating=False,
+    #                     scoring='accuracy', cv=10, n_jobs=-1)
+    #         sbs = sbs.fit(X, Y)
+    #         rez[name].append((num_features, sbs.k_score_))
+    #         msg = "#features: %f, Model: %s:  %f, feature_idx: %s " % (num_features, name, sbs.k_score_, sbs.k_feature_idx_)
+    #         print(msg)
     plotFilter(rez, fs_method)
 
 # load dataset
-dataframe = pandas.read_csv("data.csv")
+dataframe = pandas.read_csv("../Data/data_FNA.csv")
 dataframe = dataframe.drop(['id'], axis=1)
 array = dataframe.values
 X = array[:,1:]
@@ -123,11 +145,11 @@ models = []
 models.append(('CART', DecisionTreeClassifier()))
 models.append(('SVM', SVC()))
 models.append(('NB', GaussianNB()))
-# models.append(('ANN', MLPClassifier()))
+models.append(('ANN', MLPClassifier()))
 
 # Evaluate SBS
 evaluate_sbs('FS by SBS')
-
+sys.exit('Early exit')
 # Evaluate Chi2
 f = lambda x: SelectKBest(chi2, k=x).fit_transform(X, Y)
 evaluate_filter(f, 'FS by Chi2')
