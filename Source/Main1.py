@@ -16,6 +16,7 @@ from sklearn.feature_selection import RFECV
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import pprint as pp
 import sys
+import json
 
 def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test):
     print("Evaluating", fs_method)
@@ -42,6 +43,13 @@ def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test):
             rez[name].append((num_features, model_score))
             msg = "#features: %i, Model: %s:  %f (%f)" % (num_features, name, model_score, 0.0)
             print(msg)
+
+    filename = fs_method + '.json'
+    print(filename)
+
+    with open(filename, 'w') as fp:
+        json.dump(rez, fp)
+
     plotFilter(rez, fs_method)
 
 def plotFilter(rez, fs_method):
