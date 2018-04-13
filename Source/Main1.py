@@ -17,27 +17,30 @@ from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import pprint as pp
 import sys
 
-def evaluate_filter(f, fs_method):
+def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test):
     print("Evaluating", fs_method)
     # evaluate each model in turn
     rez = {'CART':[], 'SVM':[], 'NB':[], 'ANN':[]}
-    results = []
-    names = []
     scoring = 'accuracy'
     features = list(range(1, X.shape[1]))
     for num_features in features:
-        X_new, X_mask = f(num_features)
-        t = X_test[:,X_mask]
-        X_test = t
+        X_tr, X_mask = f(num_features)
+        print('X_tr: ', np.shape(X_tr))
+        X_mask = np.nonzero(X_mask)
+        X_te = X_test[:,X_mask[0]]
         for name, model in models:
-            kfold = model_selection.KFold(n_splits=10, random_state=seed)
-            cv_results = model_selection.cross_val_score(model, X_new, Y, cv=kfold, scoring=scoring)
-            model.fit(X_new, Y)
-            cv_results = model.score(X_test, Y_test)
-            results.append(cv_results)
-            rez[name].append((num_features, model.score(X_test, Y_test)))
-            names.append(name)
-            msg = "#features: %f, Model: %s:  %f (%f)" % (num_features, name, cv_results.mean(), cv_results.std())
+            # kfold = model_selection.KFold(n_splits=10, random_state=seed)
+            # cv_results = model_selection.cross_val_score(model, X_tr, Y_tr, cv=kfold, scoring=scoring)
+            model.fit(X_tr, Y_tr)
+            # y_pred = model.predict(X_test)
+            # model_score = model.score(X_te, Y_test)
+            kfold = model_selection.KFold(n_splits=100, random_state=seed)
+            cv_results = model_selection.cross_val_score(model, X_te, Y_test, cv=kfold, scoring=scoring)
+            model_score = cv_results.mean()
+
+            # model_mse = model.f1_score(X_test, Y_test)
+            rez[name].append((num_features, model_score))
+            msg = "#features: %i, Model: %s:  %f (%f)" % (num_features, name, model_score, 0.0)
             print(msg)
     plotFilter(rez, fs_method)
 
@@ -74,7 +77,7 @@ def evaluate_wrapper():
             kfold = model_selection.KFold(n_splits=10, random_state=seed)
             rfecv = RFECV(estimator=model, step=1, cv=kfold,
                           scoring=scoring)
-            rfecv.fit(X, Y)
+            rfecv.fit(X, Y_tr)
             data = list(zip(list(range(1, len(rfecv.grid_scores_) + 1)), rfecv.grid_scores_))
             rez[name] = data
             msg = "Model: %s:  %f (%f)" % (name, rfecv.grid_scores_.mean(), rfecv.grid_scores_.std())
@@ -140,7 +143,10 @@ dataframe = dataframe.drop(['id'], axis=1)
 array = dataframe.values
 X = array[:,1:]
 Y = array[:,0]
-X, X_test, Y, Y_test = train_test_split(X, Y, test_size=0.2, random_state=seed)
+Y[Y == 'B'] = 0
+Y[Y == 'M'] = 1
+Y = Y.astype('int')
+X_tr, X_test, Y_tr, Y_test = train_test_split(X, Y, test_size=0.25, random_state=seed)
 
 # prepare models
 models = []
@@ -153,12 +159,12 @@ models.append(('ANN', MLPClassifier()))
 # evaluate_sbs('FS by SBS')
 # sys.exit('Early exit')
 # Evaluate Chi2
-f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X, Y), SelectKBest(chi2, k=x).fit(X, Y).get_support())
-evaluate_filter(f, 'FS by Chi2')
+f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X_tr, Y_tr), SelectKBest(chi2, k=x).fit(X_tr, Y_tr).get_support())
+evaluate_filter(f, 'FS by Chi2', X_tr, X_test, Y_tr, Y_test)
 
 # Evaluate Entropy
-f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X, Y), SelectKBest(mutual_info_classif, k=x).fit(X, Y).get_support())
-evaluate_filter(f, 'FS by Entropy')
+f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X_tr, Y_tr), SelectKBest(mutual_info_classif, k=x).fit(X_tr, Y_tr).get_support())
+evaluate_filter(f, 'FS by Entropy', X_tr, X_test, Y_tr, Y_test)
 
 # # Set SVM kernel to linear to funtion with RFS
 # models = [models[0]] + [('SVM', SVC(kernel='linear'))] + models[2:]
