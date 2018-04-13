@@ -26,12 +26,16 @@ def evaluate_filter(f, fs_method):
     scoring = 'accuracy'
     features = list(range(1, X.shape[1]))
     for num_features in features:
-        X_new = f(num_features)
+        X_new, X_mask = f(num_features)
+        t = X_test[:,X_mask]
+        X_test = t
         for name, model in models:
             kfold = model_selection.KFold(n_splits=10, random_state=seed)
             cv_results = model_selection.cross_val_score(model, X_new, Y, cv=kfold, scoring=scoring)
+            model.fit(X_new, Y)
+            cv_results = model.score(X_test, Y_test)
             results.append(cv_results)
-            rez[name].append((num_features, cv_results.mean()))
+            rez[name].append((num_features, model.score(X_test, Y_test)))
             names.append(name)
             msg = "#features: %f, Model: %s:  %f (%f)" % (num_features, name, cv_results.mean(), cv_results.std())
             print(msg)
@@ -129,16 +133,14 @@ def evaluate_sbs(fs_method):
     #         print(msg)
     plotFilter(rez, fs_method)
 
+seed = 7
 # load dataset
 dataframe = pandas.read_csv("../Data/data_FNA.csv")
 dataframe = dataframe.drop(['id'], axis=1)
 array = dataframe.values
 X = array[:,1:]
 Y = array[:,0]
-
-
-# prepare configuration for cross validation test harness
-seed = 7
+X, X_test, Y, Y_test = train_test_split(X, Y, test_size=0.2, random_state=seed)
 
 # prepare models
 models = []
@@ -147,15 +149,15 @@ models.append(('SVM', SVC()))
 models.append(('NB', GaussianNB()))
 models.append(('ANN', MLPClassifier()))
 
-# Evaluate SBS
-evaluate_sbs('FS by SBS')
-sys.exit('Early exit')
+# # Evaluate SBS
+# evaluate_sbs('FS by SBS')
+# sys.exit('Early exit')
 # Evaluate Chi2
-f = lambda x: SelectKBest(chi2, k=x).fit_transform(X, Y)
+f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X, Y), SelectKBest(chi2, k=x).fit(X, Y).get_support())
 evaluate_filter(f, 'FS by Chi2')
 
 # Evaluate Entropy
-f = lambda x: SelectKBest(mutual_info_classif, k=x).fit_transform(X, Y)
+f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X, Y), SelectKBest(mutual_info_classif, k=x).fit(X, Y).get_support())
 evaluate_filter(f, 'FS by Entropy')
 
 # # Set SVM kernel to linear to funtion with RFS
