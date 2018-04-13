@@ -1,5 +1,6 @@
 import pandas
 import numpy as np
+import DataLoader
 import matplotlib.pyplot as plt
 from sklearn.pipeline import Pipeline
 from sklearn import model_selection
@@ -25,17 +26,18 @@ def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test):
     features = list(range(1, X.shape[1]))
     for num_features in features:
         X_tr, X_mask = f(num_features)
-        print('X_tr: ', np.shape(X_tr))
         X_mask = np.nonzero(X_mask)
         X_te = X_test[:,X_mask[0]]
         for name, model in models:
-            # kfold = model_selection.KFold(n_splits=10, random_state=seed)
-            # cv_results = model_selection.cross_val_score(model, X_tr, Y_tr, cv=kfold, scoring=scoring)
-            model.fit(X_tr, Y_tr)
+            kfold = model_selection.KFold(n_splits=10)
+            # model_selection.fit(X_tr, Y_tr)
+            model_selection.cross_val_score(model, X_tr, Y_tr, cv=kfold, scoring=scoring)
+            cv_results = model_selection.cross_val_score(model, X_te, Y_test, cv=kfold, scoring=scoring)
+
             # y_pred = model.predict(X_test)
             # model_score = model.score(X_te, Y_test)
-            kfold = model_selection.KFold(n_splits=100, random_state=seed)
-            cv_results = model_selection.cross_val_score(model, X_te, Y_test, cv=kfold, scoring=scoring)
+            # kfold = model_selection.KFold(n_splits=100, random_state=seed)
+            # cv_results = model_selection.cross_val_score(model, X_te, Y_test, cv=kfold, scoring=scoring)
             model_score = cv_results.mean()
 
             # model_mse = model.f1_score(X_test, Y_test)
@@ -136,17 +138,14 @@ def evaluate_sbs(fs_method):
     #         print(msg)
     plotFilter(rez, fs_method)
 
-seed = 7
+seed = 5
 # load dataset
-dataframe = pandas.read_csv("../Data/data_FNA.csv")
-dataframe = dataframe.drop(['id'], axis=1)
-array = dataframe.values
-X = array[:,1:]
-Y = array[:,0]
-Y[Y == 'B'] = 0
-Y[Y == 'M'] = 1
-Y = Y.astype('int')
+DATA = DataLoader.DataLoader()
+X, Y = DATA.FNA_gb
 X_tr, X_test, Y_tr, Y_test = train_test_split(X, Y, test_size=0.25, random_state=seed)
+print('X_test M/B ratio: ', np.size(np.where(X_test==0))/np.size(X_test)*100, '%')
+
+
 
 # prepare models
 models = []
