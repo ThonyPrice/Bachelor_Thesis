@@ -168,11 +168,11 @@ models.append(('ANN', MLPClassifier()))
 # sys.exit('Early exit')
 # Evaluate Chi2
 f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X_tr, Y_tr), SelectKBest(chi2, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FS by Chi2', X_tr, X_test, Y_tr, Y_test, data_name)
+evaluate_filter(f, 'FSbyChi2', X_tr, X_test, Y_tr, Y_test, data_name)
 
 # Evaluate Entropy
 f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X_tr, Y_tr), SelectKBest(mutual_info_classif, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FS by Entropy', X_tr, X_test, Y_tr, Y_test, data_name)
+evaluate_filter(f, 'FSbyEntropy', X_tr, X_test, Y_tr, Y_test, data_name)
 
 # # Set SVM kernel to linear to funtion with RFS
 # models = [models[0]] + [('SVM', SVC(kernel='linear'))] + models[2:]
