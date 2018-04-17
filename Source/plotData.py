@@ -1,11 +1,7 @@
-
-
-
 import json
 import numpy as np
 import DataLoader as DataLoader
 import matplotlib.pyplot as plt
-
 
 
 def readJson(filename):
@@ -37,13 +33,11 @@ def plotFilter1(rez, filename):
     plt.tight_layout()
     plt.suptitle(filename)
     plt.savefig('../plots/%s.png' %(filename+'_subplots'), bbox_inches='tight')
+    plt.close()
 
 
-def plotFilter2(rez, filename):
+def plotFilter2(rez,filename):
     # Plot algorithmic comparsion
-
-    rez = readJson(filename) #read json data
-
 
     plt.ylabel('Mean accuracy')
     plt.xlabel('# features')
@@ -56,23 +50,27 @@ def plotFilter2(rez, filename):
     plt.legend()
     plt.suptitle(filename)
     plt.savefig('../plots/%s.png' %(filename+'_combined'))
+    plt.close()
 
 
 
 
-def plot(filename):
+def plot(path,filename):
 
-    rez = readJson(filename)
+    rez = readJson(path+filename)
     plotFilter1(rez, filename)
     plotFilter2(rez, filename)
+
 
 
 DATA = DataLoader.DataLoader()
 
 list_data_names= DATA.list_names
 
+path = "../Json/"
+
 
 
 for name in list_data_names:
-    for method in ['_FSbyChi2', '_FSbyEntropy']
-    plot(name+method+'.json')
+    for method in ['_Chi2', '_Entropy']:
+        plot(path, name+method+'.json')
