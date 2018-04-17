@@ -19,7 +19,7 @@ import pprint as pp
 import sys
 import json
 
-def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test):
+def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test, data_name):
     print("Evaluating", fs_method)
     # evaluate each model in turn
     rez = {'CART':[], 'SVM':[], 'NB':[], 'ANN':[]}
@@ -46,8 +46,8 @@ def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test):
             msg = "#features: %i, Model: %s:  %f (%f)" % (num_features, name, model_score, 0.0)
             print(msg)
 
-    filename = fs_method + '.json'
-    print(filename)
+    filename = data_name + '_' + fs_method + '.json'
+    # print(filename)
 
     with open(filename, 'w') as fp:
         json.dump(rez, fp)
@@ -150,6 +150,7 @@ seed = 5
 # load dataset
 DATA = DataLoader.DataLoader()
 X, Y = DATA.FNA_gb
+data_name = DATA.FNA_gb_name
 X_tr, X_test, Y_tr, Y_test = train_test_split(X, Y, test_size=0.25, random_state=seed)
 print('X_test M/B ratio: ', np.size(np.where(X_test==0))/np.size(X_test)*100, '%')
 
@@ -167,11 +168,11 @@ models.append(('ANN', MLPClassifier()))
 # sys.exit('Early exit')
 # Evaluate Chi2
 f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X_tr, Y_tr), SelectKBest(chi2, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FS by Chi2', X_tr, X_test, Y_tr, Y_test)
+evaluate_filter(f, 'FS by Chi2', X_tr, X_test, Y_tr, Y_test, data_name)
 
 # Evaluate Entropy
 f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X_tr, Y_tr), SelectKBest(mutual_info_classif, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FS by Entropy', X_tr, X_test, Y_tr, Y_test)
+evaluate_filter(f, 'FS by Entropy', X_tr, X_test, Y_tr, Y_test, data_name)
 
 # # Set SVM kernel to linear to funtion with RFS
 # models = [models[0]] + [('SVM', SVC(kernel='linear'))] + models[2:]
