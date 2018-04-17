@@ -14,7 +14,12 @@ class DataLoader(object):
         self.FNA_gb_name = 'FNA_gb'
         self.GSE58606_data = self.loadData2()
         self.GSE58606_data_name = 'GSE58606_data'
-        self.list_names = [self.FNA_gb_name,self.Cleaned_data_name,self.Data_mias_name,self.GSE58606_data_name]
+        self.list_names = [ self.Data_mias_name,
+                            self.Cleaned_data_name,
+                            self.FNA_gb_name,
+                            self.data_FNA_name,
+                            self.GSE58606_data_name
+                        ]
 
     def loadData1(self):
         dataframe = pandas.read_csv("../Data/data_FNA.csv")
