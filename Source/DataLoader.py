@@ -14,6 +14,7 @@ class DataLoader(object):
         self.FNA_gb_name = 'FNA_gb'
         self.GSE58606_data = self.loadData2()
         self.GSE58606_data_name = 'GSE58606_data'
+        self.list_names = [self.FNA_gb_name,self.Cleaned_data_name,self.Data_mias_name,self.GSE58606_data_name]
 
     def loadData1(self):
         dataframe = pandas.read_csv("../Data/data_FNA.csv")
@@ -62,7 +63,7 @@ class DataLoader(object):
         Y = array[:,2]
         Y[Y == 'B'] = 0
         Y[Y == 'M'] = 1
-        print(X)
+        #print(X)
         Y = Y.astype('int')
         return X, Y
 
@@ -72,7 +73,7 @@ class DataLoader(object):
         X = array[:,0:-1]
         X[X == 'Absent'] = 0
         X[X == 'Present'] = 1
-        print(X)
+        #print(X)
         Y = array[:,-1]
         Y[Y == 'Benign'] = 0
         Y[Y == 'Malignant'] = 1
