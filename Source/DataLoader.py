@@ -63,7 +63,6 @@ class DataLoader(object):
         Y = array[:,2]
         Y[Y == 'B'] = 0
         Y[Y == 'M'] = 1
-        #print(X)
         Y = Y.astype('int')
         return X, Y
 
@@ -73,7 +72,6 @@ class DataLoader(object):
         X = array[:,0:-1]
         X[X == 'Absent'] = 0
         X[X == 'Present'] = 1
-        #print(X)
         Y = array[:,-1]
         Y[Y == 'Benign'] = 0
         Y[Y == 'Malignant'] = 1
