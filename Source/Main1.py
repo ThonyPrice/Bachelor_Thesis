@@ -153,29 +153,9 @@ def evaluateMethod(f, f_name, models, Xtr, Xtest, Ytr, Ytest, data_name):
     filename = data_name + '_' + f_name + '.json'
     return results, filename
 
-<<<<<<< HEAD
 def dumpJson(results, fname, path):
     with open(path+fname, 'w') as fp:
         json.dump(results, fp)
-=======
-# prepare models
-models = []
-models.append(('CART', DecisionTreeClassifier()))
-models.append(('SVM', SVC()))
-models.append(('NB', GaussianNB()))
-models.append(('ANN', MLPClassifier()))
-
-# # Evaluate SBS
-# evaluate_sbs('FS by SBS')
-# sys.exit('Early exit')
-# Evaluate Chi2
-f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X_tr, Y_tr), SelectKBest(chi2, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FSbyChi2', X_tr, X_test, Y_tr, Y_test, data_name)
-
-# Evaluate Entropy
-f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X_tr, Y_tr), SelectKBest(mutual_info_classif, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FSbyEntropy', X_tr, X_test, Y_tr, Y_test, data_name)
->>>>>>> ec1497a56147ab4c720a462d9eb6fcb139e3ea8d
 
 if __name__ == '__main__':
     main()
