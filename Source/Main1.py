@@ -19,95 +19,7 @@ import pprint as pp
 import sys
 import json
 
-def evaluate_filter(f, fs_method, X_tr, X_test, Y_tr, Y_test, data_name):
-    print("Evaluating", fs_method)
-    # evaluate each model in turn
-    rez = {'CART':[], 'SVM':[], 'NB':[], 'ANN':[]}
-    scoring = 'accuracy'
-    features = list(range(1, X.shape[1]))
-    for num_features in features:
-        X_tr, X_mask = f(num_features)
-        X_mask = np.nonzero(X_mask)
-        X_te = X_test[:,X_mask[0]]
-        for name, model in models:
-            kfold = model_selection.KFold(n_splits=10)
-            # model_selection.fit(X_tr, Y_tr)
-            model_selection.cross_val_score(model, X_tr, Y_tr, cv=kfold, scoring=scoring)
-            cv_results = model_selection.cross_val_score(model, X_te, Y_test, cv=kfold, scoring=scoring)
-
-            # y_pred = model.predict(X_test)
-            # model_score = model.score(X_te, Y_test)
-            # kfold = model_selection.KFold(n_splits=100, random_state=seed)
-            # cv_results = model_selection.cross_val_score(model, X_te, Y_test, cv=kfold, scoring=scoring)
-            model_score = cv_results.mean()
-
-            # model_mse = model.f1_score(X_test, Y_test)
-            rez[name].append((num_features, model_score))
-            msg = "#features: %i, Model: %s:  %f (%f)" % (num_features, name, model_score, 0.0)
-            print(msg)
-
-    filename = data_name + '_' + fs_method + '.json'
-    # print(filename)
-
-    with open(filename, 'w') as fp:
-        json.dump(rez, fp)
-
-    plotFilter(rez, fs_method)
-
-def plotFilter(rez, fs_method):
-    # Plot algorithmic comparsion
-    plt.subplot(2, 2, 1)
-    plt.plot(*zip(*rez['CART']))
-    plt.title('CART')
-    plt.ylabel('Mean accuracy')
-    plt.subplot(2, 2, 2)
-    plt.plot(*zip(*rez['SVM']))
-    plt.title('SVM')
-    plt.subplot(2, 2, 3)
-    plt.plot(*zip(*rez['NB']))
-    plt.title('NB')
-    plt.xlabel('# features')
-    plt.ylabel('Mean accuracy')
-    plt.subplot(2, 2, 4)
-    plt.plot(*zip(*rez['ANN']))
-    plt.title('ANN')
-    plt.xlabel('# features')
-    plt.tight_layout()
-    plt.suptitle(fs_method)
-    plt.savefig('../plots/updated_%s.png' % (fs_method.replace(" ", "_")), bbox_inches='tight')
-    plt.show()
-
-def evaluate_wrapper():
-    print("Evaluating FS by RFS")
-    # evaluate each model in turn
-    rez = {'CART':[], 'SVM':[], 'NB':[], 'ANN':[]}
-    scoring = 'accuracy'
-    for name, model in models:
-        try:
-            kfold = model_selection.KFold(n_splits=10, random_state=seed)
-            rfecv = RFECV(estimator=model, step=1, cv=kfold,
-                          scoring=scoring)
-            rfecv.fit(X, Y_tr)
-            data = list(zip(list(range(1, len(rfecv.grid_scores_) + 1)), rfecv.grid_scores_))
-            rez[name] = data
-            msg = "Model: %s:  %f (%f)" % (name, rfecv.grid_scores_.mean(), rfecv.grid_scores_.std())
-            print(msg)
-        except:
-            print("Model %s can't use RFS" % (name))
-    plt.subplot(1, 2, 1)
-    plt.plot(*zip(*rez['CART']))
-    plt.title('CART')
-    plt.ylabel('Mean accuracy')
-    plt.xlabel('# features')
-    plt.subplot(1, 2, 2)
-    plt.plot(*zip(*rez['SVM']))
-    plt.title('SVM')
-    plt.xlabel('# features')
-    plt.tight_layout()
-    plt.suptitle("Feature selection by RFS")
-    plt.savefig('plots/updated_RFS.png', bbox_inches='tight')
-    plt.show()
-
+# TODO: Integrate this function into new structure
 def evaluate_sbs(fs_method):
     print("Evaluating", fs_method)
     # evaluate each model in turn
@@ -146,35 +58,104 @@ def evaluate_sbs(fs_method):
     #         print(msg)
     plotFilter(rez, fs_method)
 
-seed = 5
-# load dataset
-DATA = DataLoader.DataLoader()
-X, Y = DATA.FNA_gb
-data_name = DATA.FNA_gb_name
-X_tr, X_test, Y_tr, Y_test = train_test_split(X, Y, test_size=0.25, random_state=seed)
-print('X_test M/B ratio: ', np.size(np.where(X_test==0))/np.size(X_test)*100, '%')
 
+def main():
+    # --- < Set parameters> ---
+    seed = 5
+    test_size = 0.25
+    path = '../Json/'
+    # --- </Set parameters> ---
 
+    # --- < Load all data> ---
+    DATA = DataLoader.DataLoader()
+    all_Data = [DATA.FNA_gb,
+                DATA.Cleaned_data,
+                DATA.Data_mias,
+                DATA.data_FNA,
+                DATA.GSE58606_data
+    ]
+    all_Data_names = [  DATA.FNA_gb_name,
+                        DATA.Cleaned_data_name,
+                        DATA.Data_mias_name,
+                        DATA.data_FNA_name,
+                        DATA.GSE58606_data_name
+    ]
+    # all_Data_names = DATA.list_names
+    # --- </Load all data > ---
 
-# prepare models
-models = []
-models.append(('CART', DecisionTreeClassifier()))
-models.append(('SVM', SVC()))
-models.append(('NB', GaussianNB()))
-models.append(('ANN', MLPClassifier()))
+    # --- < Prepare classifiers > ---
+    models = []
+    models.append(('CART', DecisionTreeClassifier()))
+    models.append(('SVM', SVC()))
+    models.append(('NB', GaussianNB()))
+    models.append(('ANN', MLPClassifier()))
+    # --- </Prepare classifiers > ---
 
-# # Evaluate SBS
-# evaluate_sbs('FS by SBS')
-# sys.exit('Early exit')
-# Evaluate Chi2
-f = lambda x: (SelectKBest(chi2, k=x).fit_transform(X_tr, Y_tr), SelectKBest(chi2, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FS by Chi2', X_tr, X_test, Y_tr, Y_test, data_name)
+    # --- < Collect feature selection methods > ---
+    fs_methods = []
+    fs_methods.append((chi2Function(), 'chi2'))
+    fs_methods.append((entropyFunction(), 'entropy'))
+    # TODO: Add SBS and SFS here!
+    # --- </Collect feature selection methods > ---
 
-# Evaluate Entropy
-f = lambda x: (SelectKBest(mutual_info_classif, k=x).fit_transform(X_tr, Y_tr), SelectKBest(mutual_info_classif, k=x).fit(X_tr, Y_tr).get_support())
-evaluate_filter(f, 'FS by Entropy', X_tr, X_test, Y_tr, Y_test, data_name)
+    # --- < Run >
+    for dataset, data_name in zip(all_Data, all_Data_names):
+        print('Preparing the ' + data_name + ' data set...')
+        X, y = dataset
+        Xtr, Xtest, Ytr, Ytest = splitData(X, y, test_size, seed)
+        # Check distribbution in test data
+        # print('X_test M/B ratio: ', np.size(np.where(Xtest==0))/np.size(Xtest)*100, '%')
+        for method, method_name in fs_methods:
+            results, fname = evaluateMethod(method, method_name, models,
+                Xtr, Xtest, Ytr, Ytest, data_name
+            )
+        dumpJson(results, fname, path)
+    # --- </Run >
 
-# # Set SVM kernel to linear to funtion with RFS
-# models = [models[0]] + [('SVM', SVC(kernel='linear'))] + models[2:]
-# # Evaluate RFE
-# evaluate_wrapper()
+def splitData(X, y, test_size, seed):
+    return train_test_split(X, y, test_size=test_size, random_state=seed)
+
+def chi2Function():
+    f = lambda x, X, Y: (
+        SelectKBest(chi2, k=x).fit_transform(X, Y),
+        SelectKBest(chi2, k=x).fit(X, Y).get_support()
+    )
+    return f
+
+def entropyFunction():
+    f = lambda x, X, Y: (
+        SelectKBest(mutual_info_classif, k=x).fit_transform(X, Y),
+        SelectKBest(mutual_info_classif, k=x).fit(X, Y).get_support()
+    )
+    return f
+
+def evaluateMethod(f, f_name, models, Xtr, Xtest, Ytr, Ytest, data_name):
+    print('Evaluating ' + f_name + '...')
+    results = {'CART':[], 'SVM':[], 'NB':[], 'ANN':[]}
+    scoring = 'accuracy'
+    for num_features in range(1, Xtr.shape[1]):
+        Xtr_subset, X_mask = f(num_features, Xtr, Ytr)
+        X_mask = np.nonzero(X_mask)
+        Xtest_subset = Xtest[:,X_mask[0]]
+        for name, model in models:
+            model.fit(Xtr_subset, Ytr)
+            kfold = model_selection.KFold(n_splits=10)
+            cv_results = model_selection.cross_val_score(
+                model, Xtest_subset, Ytest, cv=kfold, scoring=scoring
+            )
+            model_score = cv_results.mean()
+            model_error = cv_results.std()
+            results[name].append((num_features, model_score))
+            msg = "#features: %i, Model: %s:  %f (%f)" % (
+                num_features, name, model_score, model_error
+            )
+            print(msg)
+    filename = data_name + '_' + f_name + '.json'
+    return results, filename
+
+def dumpJson(results, fname, path):
+    with open(path+fname, 'w') as fp:
+        json.dump(results, fp)
+
+if __name__ == '__main__':
+    main()
