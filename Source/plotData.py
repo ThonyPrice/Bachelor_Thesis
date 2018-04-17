@@ -72,5 +72,5 @@ path = "../Json/"
 
 
 for name in list_data_names:
-    for method in ['_Chi2', '_Entropy']:
+    for method in ['_chi2', '_entropy', '_sbs', '_sfs']:
         plot(path, name+method+'.json')
