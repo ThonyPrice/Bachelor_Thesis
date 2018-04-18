@@ -5,12 +5,11 @@ import DataLoader as DataLoader
 import matplotlib.pyplot as plt
 
 
-pandas.read_json
-
 
 def table(path, filename):
 
     X = pandas.read_json(path+filename)
+
     df = pandas.DataFrame(X)
 
     #use: \input{../tables/Cleaned_data_Chi2.json} in tex
