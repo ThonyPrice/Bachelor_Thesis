@@ -163,27 +163,26 @@ Wrappers utilize the learning machine of interest as a black box to score subset
 
 \section{Related Work}
 
-The paper Discovering Mammography-based Machine Learning Classifiers for Breast Cancer Diagnosis \parencite{ramos2012} uses 20,000 machine learning classification configurations to evaluated their ability to correctly classify malignant cancer. They built a database containing 286 cases and found classifiers that scored with an area of 0.996 under the Receiver operating characteristic (ROC) curve.
+The application of machine learning onto breast cancer classification is a well studied one. Since machine learning proved valuable empirical results breast cancer datasets have been widely used to assess the performance of a multitude of classification strategies and methods. [Insert ref. to early paper here]. \\
 
+\noindent
+Exhaustive studies for optimal Classifiers has been made as by \parencite{ramos2012} which tested 20,000 classification configurations to evaluated their ability to correctly classify malignant cancer. The achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve.\\
 
+\noindent
+With a foundation of well performing classifiers studies investigating more fine tuned approaches building upon earlier results were being made. \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets by nearly 3\%.\\
 
-\textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets. The datasets and their improvement were:
+\noindent
+\textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network. The highest accuracy acheived was 98\% using 3 hidden layers and 21 neurons with three distinct transer functions. \\
 
-\begin{itemize}
-  \item Diabetes: improvement of 2.32\%
-  \item Heart diseases: improvement of 2.97\%
-  \item Parkinson's: improvement of 2.7\%
-\end{itemize}
+\noindent
+\textcite{akay2009} investigated the performance of classification of a SVM with a RBF kernel using feature selection, filtering by F-score. They achieved a classification accuracy of 99.51\% which accordingly was among the highest scores recorded by then (2007). \\
+% Add method which achieved the result
 
-They found that the improved accuracy on every dataset demonstrates the positive effect of feature selection on classification accuracy.\\
+\noindent
+\textcite{karabulut2012} made a comparative study on the effect of feature selection on classification accuracy and found up to 15.55\% improvement on classification rates. The study used only filter algorithms for feature selection, among those were both information and Chi-square. The study applied the selected features on three classification methods, Naive Bayes, Artificial Neural Network as Multilayer Perceptron, and J48 decision tree classifier on 15 different datasets including WBCD. \\
 
-Abdel-Ilah and {\v{S}}ahinbegovi{\'{c}} \parencite{Abdel-Ilah2017} used the Wisconsin breast cancer database to investigate the optimal number of hidden layers and neurons for a feed forward back propagation network (FFBPN). Using three different transfer functions: Logsig, Tansig and Pureline. The highest accuracy was 98\% using 3 hidden layers and 21 neurons. Suggestion was made to further investigate different parameters of ANNs to find their effect on the dataset.
-
-\textcite{akay2009} investigated the performance of classification of a SVM with a RBF kernel using feature selection by F-score on the Wisconsin Breast Cancer dataset (WBCD). They achieved a classification accuracy of 99.51\% which accordingly was among the highest scores recorded by then (2007). The highest classification rates was yielded by a model consisting of five features independently of how the test and training data was split. \\
-
-\textcite{karabulut2012} made a comparative study on the effect of feature selection on classification accuracy and found up to 15.55\% improvement on classification rates. The study used filter algorithms for feature selection, those were; Information Gain, Gain Ratio, Symmetrical Uncertainty, Relief-F, One-R and Chi-square. The study applied the selected features on three classification methods, Naive Bayes, Artificial Neural Network as Multilayer Perceptron, and J48 decision tree classifier on 15 different datasets including WBCD.
-
-The results show that Multilayer perceptron benefited the most from feature selection by Chi-square, Naive Bayes by Gain Ratio and J48 by Information Gain. The study did not discuss optimal number of features.
+\noindent
+Building upon this foundation of work our study seeks to complete the field by providing further investigation of unreported selection methods such as SBS and SFS and review their performance on a combination of classifiers from the previous research presented here.
 
 \chapter{Method}
 
@@ -275,37 +274,8 @@ What methods are implemented to measure the results, are we using mean, standard
 
 % Pawel: Describe all configurations of classifiers and feature selection methods, discuss how you choose parameters, train them (on what data with what algorithms etc.)
 
-\chapter{Results and analysis}
-
-\section{Classification impovements}
-
-Did classification improve, how, why
-
-\begin{figure}[ht!]
-  \includegraphics[width=\linewidth]{../plots/FS_by_Chi2.png}
-  \caption{Performance by selecting features by Chi2}
-  \label{fig:chi2}
-\end{figure}
-
-\begin{figure}[ht!]
-  \includegraphics[width=\linewidth]{../plots/FS_by_Entropy.png}
-  \caption{Performance by selecting features by Entropy}
-  \label{fig:entropy}
-\end{figure}
-
-\begin{figure}[ht!]
-  \includegraphics[width=\linewidth]{../plots/RFS.png}
-  \caption{Performance by selecting features by RFS}
-  \label{fig:rfs}
-\end{figure}
-
-\section{Best features}
-
-Could we tell which features contributes most to correct classification, how, why those
-
-\section{Source of errors}
-
-What can have caused faulty results, can our results be trusted?
+% --- RESULTS AND ANALYSIS CHAPTER ---
+\input{chapter4_results}
 
 \chapter{Discussion}
 
