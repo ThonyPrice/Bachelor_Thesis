@@ -22,6 +22,7 @@ def main():
     path = '../Json/'
     ann_maxiter = 2000
     ann_epsilon = 1e-6
+    reverse_datasets = False
     # --- </Set parameters> ---
 
     # --- < Load all data> ---
@@ -33,6 +34,8 @@ def main():
                 DATA.GSE58606_data
     ]
     all_Data_names = DATA.list_names
+    if reverse_datasets:
+        all_Data, all_Data_names = all_Data[::-1], all_Data_names[::-1]
     # --- </Load all data > ---
 
     # --- < Prepare classifiers > ---

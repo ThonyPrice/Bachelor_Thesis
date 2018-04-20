@@ -49,7 +49,7 @@ def plotFilter2(rez,filename):
 
     plt.legend()
     plt.suptitle(filename)
-    plt.savefig('../plots/%s.png' %(filename+'_combined'))
+    plt.savefig('../plots/%s.png' %(filename.strip('.json')+'_combined'))
     plt.close()
 
 
@@ -58,7 +58,7 @@ def plotFilter2(rez,filename):
 def plot(path,filename):
 
     rez = readJson(path+filename)
-    plotFilter1(rez, filename)
+    # plotFilter1(rez, filename)
     plotFilter2(rez, filename)
 
 
