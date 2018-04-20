@@ -10,28 +10,18 @@ def mkTable(path, list_data_names):
     for classifier in classifiers:
         data_row_vals = []
         for dataset in list_data_names:
-            data_col_vals = []
-            data_ful_vals = []
+            data_col_vals, data_ful_vals = [], []
             for method in ['_Chi2', '_Entropy','_sbs', '_sfs']:
                 f_name = path + dataset + method +'.json'
                 data_col_vals.append(getMax(f_name, classifier))
                 data_ful_vals.append(getFull(f_name, classifier))
+
             data_col_vals.append(max(data_ful_vals))
             df = pd.DataFrame({dataset : data_col_vals})
             data_row_vals.append(df)
 
         df = pd.concat(data_row_vals, axis=1)
-        df = df.rename({0 : 'Chi2',
-                        1 : 'Entropy',
-                        2 : 'SBS',
-                        3 : 'SFS',
-                        4 : 'Full'
-        }, axis = 'index')
-        df = df.rename({list_data_names[0] : 'MIAS',
-                        list_data_names[1] : 'EN',
-                        list_data_names[2] : 'RHH',
-                        list_data_names[3] : 'WBCD'
-        }, axis = 'columns')
+        df = renameLabels(df, list_data_names)
         print(df)
         mkLaTeX(df, classifier)
 
@@ -60,6 +50,20 @@ def getFull(f_name, classifier):
     df = pd.DataFrame(X)
     df = df.applymap(lambda x : x[1])
     return df[classifier][len(df)-1]
+
+def renameLabels(df, list_data_names):
+    df = df.rename({0 : 'Chi2',
+                    1 : 'Entropy',
+                    2 : 'SBS',
+                    3 : 'SFS',
+                    4 : 'Full'
+    }, axis = 'index')
+    df = df.rename({list_data_names[0] : 'MIAS',
+                    list_data_names[1] : 'EN',
+                    list_data_names[2] : 'RHH',
+                    list_data_names[3] : 'WBCD'
+    }, axis = 'columns')
+    return df
 
 def main():
     DATA = DataLoader.DataLoader()
