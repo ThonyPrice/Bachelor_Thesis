@@ -4,27 +4,18 @@ import numpy as np
 import DataLoader as DataLoader
 import matplotlib.pyplot as plt
 
-
-
 def table(path, filename):
 
     X = pandas.read_json(path+filename)
-
-    print(X)
-
-
-
     df = pandas.DataFrame(X)
-
-
+    df = df.applymap(lambda x : x[1])
+    df = df.max()
+    print(df)
 
     #use: \input{../tables/Cleaned_data_Chi2.json} in tex
 
-
     def f1(x):
-
         return '%1.5f' % x[1]
-
 
     with open("../tables/" + filename + '.tex','w') as tf:
         tf.write(df.to_latex(buf=None, columns=None, col_space=None, header=True, index=True, na_rep='NaN',
