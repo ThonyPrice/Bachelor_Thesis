@@ -1,0 +1,201 @@
+\chapter{Results and analysis}
+
+\section{Classification improvements}
+
+Results of classification accuracy of each classifier with each feature selection method on every possible subset of attributes was recorded during the experiments. The results are presented both in form of tables and plots. The tables showcases the best performance achieved by each feature selection method compared to full dataset. The plots illustrates accuracy of each feature selection method in respect to number of attributes.\\
+
+\noindent Tables \ref{table:ANN}, \ref{table:NB} and \ref{table:SVM} show classification accuracy is improved or equal to the results of using a full set of features on all datasets tested. Only in naive Bayes \ref{table:NB} is there one dataset that performed better without feature selection. \\
+
+% --- Tables ---
+\begin{table}
+  \input{../tables/ANN} \\
+  \caption{Classification accuracy achieved by ANN was improved on all datasets by the use of some feature selection method}
+  \label{table:ANN}
+  \vspace{1em}
+
+  \input{../tables/CART} \\
+  \caption{All datasets except MIAS benefited from feature selection using CART Decision Tree classifier}
+  \label{table:CART}
+  \vspace{1em}
+
+  \input{../tables/NB} \\
+  \caption{Naive Bayes sees improvement or equivalent accuracy by feature selection on every dataset}
+  \label{table:NB}
+  \vspace{1em}
+
+  \input{../tables/SVM} \\
+  \caption{Classification accuracy achieved by SVM was improved or equivalent on every dataset with use of feature selection}
+  \label{table:SVM}
+\end{table}
+% ---/Tables ---
+
+\noindent Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots i.e. \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features. \\
+
+\noindent The general characteristic of every plot is that the ANN performs the worst of all the classifiers. The ANN also provides the least consistent results with strong fluctuations in the results. \\
+
+\noindent Chi2 in combination reveals a loss in accuracy with CART when using more than 23 attributes as seen in plot \ref{fig:WBCD_chi2}. It indicates a preference of more attributes on the RHH dataset in \ref{fig:RHH_chi2}. \\
+
+\noindent Feature selection by Entropy shows clear performance on a subset compared to all features in \ref{fig:EN_entropy}. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy sees little to no improvement when increasing the number of attributes.
+
+\noindent Comment on SBS plots... \\
+
+\noindent Comment on SFS plots...
+
+% --- Plots ---
+\begin{figure*}[htbp!]
+  \centering
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Cleaned_data_chi2_combined.png}
+      \caption[]%
+      {{\small Dataset EN using Chi2}}
+      \label{fig:EN_chi2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/data_FNA_chi2_combined.png}
+      \caption[]%
+      {{\small Dataset WBCD using Chi2}}
+      \label{fig:WBCD_chi2}
+  \end{subfigure}
+  \vskip\baselineskip
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Data_mias_chi2_combined.png}
+      \caption[]%
+      {{\small Dataset MIAS using Chi2}}
+      \label{fig:MIAS_chi2}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/FNA_gb_chi2_combined.png}
+      \caption[]%
+      {{\small Dataset RHH using Chi2}}
+      \label{fig:RHH_chi2}
+  \end{subfigure}
+
+  \caption[ The average and standard deviation of critical parameters ]
+  {Combined plots of all datasets comparing each classifier when using chi2 for feature selection.}
+  \label{fig:plots_chi2}
+\end{figure*}
+
+\begin{figure*}[htbp!]
+  \centering
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Cleaned_data_entropy_combined.png}
+      \caption[Network2]%
+      {{\small Dataset EN using Entropy}}
+      \label{fig:EN_entropy}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/data_FNA_entropy_combined.png}
+      \caption[]%
+      {{\small Dataset WBCD using Entropy}}
+      \label{fig:WBCD_entropy}
+  \end{subfigure}
+  \vskip\baselineskip
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Data_mias_entropy_combined.png}
+      \caption[]%
+      {{\small Dataset MIAS using Entropy}}
+      \label{fig:MIAS_entropy}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/FNA_gb_entropy_combined.png}
+      \caption[]%
+      {{\small Dataset RHH using Entropy}}
+      \label{fig:RHH_entropy}
+  \end{subfigure}
+  \caption[]
+  {{\small Combined plots of all datasets comparing each classifier when using Entropy for feature selection.}}
+  \label{fig:plots_entropy}
+\end{figure*}
+
+\begin{figure*}[htbp!]
+  \centering
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Cleaned_data_sb_combined.png}
+      \caption[]%
+      {{\small Dataset EN using SBS}}
+      \label{fig:EN_sbs}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/data_FNA_sb_combined.png}
+      \caption[]%
+      {{\small Dataset WBCD using SBS}}
+      \label{fig:WBCD_sbs}
+  \end{subfigure}
+  \vskip\baselineskip
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Data_mias_sb_combined.png}
+      \caption[]%
+      {{\small Dataset MIAS using SBS}}
+      \label{fig:MIAS_sbs}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/FNA_gb_sb_combined.png}
+      \caption[]%
+      {{\small Dataset RHH using SBS}}
+      \label{fig:RHH_sbs}
+  \end{subfigure}
+  \caption[]
+  {{\small Combined plots of all datasets comparing each classifier when using SBS for feature selection.}}
+  \label{fig:plots_sbs}
+\end{figure*}
+
+\begin{figure*}[htbp!]
+  \centering
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Cleaned_data_sf_combined.png}
+      \caption[]%
+      {{\small Dataset EN using SFS}}
+      \label{fig:EN_sfs}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/data_FNA_sf_combined.png}
+      \caption[]%
+      {{\small Dataset WBCD using SFS}}
+      \label{fig:WBCD_sfs}
+  \end{subfigure}
+  \vskip\baselineskip
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/Data_mias_sf_combined.png}
+      \caption[]%
+      {{\small Dataset MIAS using SFS}}
+      \label{fig:MIAS_sfs}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.475\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../plots_1d/FNA_gb_sf_combined.png}
+      \caption[]%
+      {{\small Dataset RHH using SFS}}
+      \label{fig:RHH_sfs}
+  \end{subfigure}
+  \caption[]
+  {{\small Combined plots of all datasets comparing each classifier when using SFS for feature selection.}}
+  \label{fig:plots_sfs}
+\end{figure*}
+% ---/Plots ---
+
+\section{Source of errors}
+
+What can have caused faulty results, can our results be trusted?

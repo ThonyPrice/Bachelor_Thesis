@@ -1,0 +1,93 @@
+\chapter{Method}
+
+\section{Datasets}
+\label{sec:Datasets}
+
+
+\subsection{Wisconsin}
+
+The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features which are:
+
+% Skip this extended description the dataset?
+% \begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+% 	\item \textbf{Radius:} Mean of distances from center to points on the perimeter.
+% 	\item \textbf{Texture:} Standard deviation of gray-scale values.
+% 	\item \textbf{Smoothness:} Local variation in radius lengths.
+%   \item \textbf{Compactness:} perimeter\textsuperscript{2} / area - 1.
+%   \item \textbf{Concavity:} Severity of concave portions of the contour.
+%   \item \textbf{Concave points:} Number of concave portions of the contour.
+%   \item \textbf{Fractal dimension:} Coastline approximation - 1.
+%   \item \textbf{Perimeter:} Local variation in radius lengths.
+%   \item \textbf{Area}
+%   \item \textbf{Symmetry}
+% \end{itemize}
+
+
+\subsection{Royal Hallamshire Hospital}
+
+Fine needle aspirates of breast lumps (FNAB) was collected from 692 patients at Royal Hallamshire Hospital, Sheffield, during 1992 - 1993. The FNABs 10 features of the FNABs was marked as present or non present. These features along with the patients's age defines the attributes of the dataset. In addition, the final outcome of benign disease or malignancy was confirmed by open biopsy where this result was available.
+
+\subsection{MIAS database}
+
+Mias database contain results from 119 data points with 5 features: Character of background tissue, Class of abnormality, X coordinate of centre of abnormality, Y coordinate of centre of abnormality, Approximate radius (in pixels). The features was extracted from 1024x1024 pixel images.
+
+% Skip RNA dataset
+% \subsection{U.S. National Centre for Biotechnology Information}
+%
+% The data contains information on 1919 microRNAs in 122 different cases.
+
+\subsection{Erlangen-Nuremberg}
+
+Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006. It contains three features assessed as a discrete value from a double-review by physicians along with the patients' age.
+
+% Table with information on Datasets
+\medskip
+\begin{table}[ht!]
+\begin{adjustwidth}{-5.in}{-5.in}
+\begin{center}
+   \begin{tabular}{l*{4}{l}}
+   \hline
+   Dataset         &
+   \# examples  &
+   \# features  &
+   Ratio (B/M)     &
+   Type            \\
+   \hline
+   Wisconsin (WBCD)						 &
+   569                         &
+   32                          &
+   357/212                     &
+   Continous                   \\
+   Royal Hallamshire Hospital (RHH)  &
+   692                         &
+   11                          &
+   457/235                     &
+   Binary                      \\
+   Erlangen-Nuremberg (EN)     &
+   961                         &
+   5                           &
+   516/445                     &
+   Discrete                    \\
+   MIAS         							 &
+   119                         &
+   5                           &
+   68/51                     	 &
+   Discrete                    \\
+  \hline
+  \end{tabular}
+  \caption{Datasets}
+  \label{table:datasets_info}
+\end{center}
+\end{adjustwidth}
+\end{table}
+
+
+\section{Implementation}
+
+Detail on what algorithms we used...
+
+\section{Evaluation}
+
+What methods are implemented to measure the results, are we using mean, standard deviation, f1 score, anova, how many times do we run etc...
+
+% Pawel: Describe all configurations of classifiers and feature selection methods, discuss how you choose parameters, train them (on what data with what algorithms etc.)
