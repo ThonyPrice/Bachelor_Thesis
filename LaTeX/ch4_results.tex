@@ -2,9 +2,9 @@
 
 \section{Classification improvements}
 
-Results of classification accuracy of each classifier with each feature selection method on every possible subset of attributes was recorded during the experiments. The results are presented both in form of tables and plots. The tables showcases the best performance achieved by each feature selection method compared to full dataset. The plots illustrates accuracy of each feature selection method in respect to number of attributes.\\
+Results of classification accuracy of each classifier with each feature selection method on every possible subset of attributes was recorded during the experiments. The results are presented both in form of tables and plots. The tables showcases the best performance achieved by each feature selection method compared to full dataset. The plots illustrates accuracy of each feature selection method in respect to number of attributes.
 
-\noindent Tables \ref{table:ANN}, \ref{table:NB} and \ref{table:SVM} show classification accuracy is improved or equal to the results of using a full set of features on all datasets tested. Only in naive Bayes \ref{table:NB} is there one dataset that performed better without feature selection. \\
+Tables \ref{table:ANN}, \ref{table:NB} and \ref{table:SVM} show classification accuracy is improved or equal to the results of using a full set of features on all datasets tested. Only in naive Bayes \ref{table:NB} is there one dataset that performed better without feature selection.
 
 % --- Tables ---
 \begin{table}
@@ -29,7 +29,7 @@ Results of classification accuracy of each classifier with each feature selectio
 \end{table}
 % ---/Tables ---
 
-\noindent Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots i.e. \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features. \\
+Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots i.e. \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features.
 
 The general characteristic of every plot is that the ANN performs the worst of all the classifiers. The ANN also provides the least consistent results with strong fluctuations in the results.
 
@@ -38,7 +38,6 @@ Chi2 in combination reveals a loss in accuracy with CART when using more than 23
 Feature selection by Entropy shows clear performance on a subset compared to all features in \ref{fig:EN_entropy}. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy sees little to no improvement when increasing the number of attributes.
 
 For both NB and ANN there is an decrease in accuracy using all features in \ref{fig:EN_sbs}. However, both CART and SVM seems to prefer all features for an higher accuracy. In \ref{fig:WBCD_sbs} SVM has an strong decrease in performance using increasingly more features. CART and NB has a slight improvement using more features up to 27 where they starts to drop in there accuracy rate.  ANN has a very fluctuating scoring performance but has its highest accuracy using all features.  In the MIAS dataset using SBS shown in figure \ref{fig:MIAS_sbs} both SVM and NB prefers using all the features. ANN and CART has there highest performance using three features. In the plot \ref{fig:RHH_sbs} there seems to be an general trend that more features give an higher accuracy. CART drops slightly in accuracy at 9 or more features. NB drops in accuracy as well using the full dataset. ANN performs best using seven features.
-
 
 The figure \ref{fig:plots_sfs} using SFS have a similar result to figure \ref{fig:plots_sbs} using SBS. The main differences are in \ref{fig:WBCD_sfs} where the best result for ANN is using only 24 features instead of the full dataset and in figure \ref{fig:RHH_sfs} where the best result for ANN have four features instead of seven.
 
