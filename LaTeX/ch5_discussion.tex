@@ -1,14 +1,21 @@
 \chapter{Discussion}
 
-FNA is not that good compared to CNB \parencite{Topps2018}.
+% FNA is not that good compared to CNB \parencite{Topps2018}.
 
-Ideas for discussion topics:
-\begin{itemize}
-  \item \textbf{Our research question: } Does the feature selection improve the accuracy of classification compared to using all features?
-  \item Our results show that feature selection in almost every instance provided equal or improved results compared to using the full dataset.
-  \item However, ambiguous results among the classifiers might indicate the combination of classifier and FS method must be selected with care
-  \item \textbf{Our research question: } In which machine learning methods does feature selection have the greatest impact?
-  \item Our results displayed a lot of fluctuation in the results of datasets with small number of features and in the ANN classifier
-  \item FS might infer more tuning of classifier is required
-  \item With that said, the largest improvement was seen in the XYZ method...  
-\end{itemize}
+The discussion will be substantiated from our research questions:
+
+\begin{enumerate}
+  \item Does the feature selection improve the accuracy of classification compared to using all features?
+  \item In which machine learning methods does feature selection have the greatest impact?
+\end{enumerate}
+
+\textbf{1.} As stated in the results in all instances but one applying feature selection provided at least equally good accuracy on the dataset compared to using the full dataset.
+
+However, while some feature selection method nearly always outperform the classifier with the full dataset it does not apply to all FS methods. This unambiguity is clearly illustrated by the plots. This gives an indication that to achieve a better performance the feature selection method must be selected carefully during supervised learning.
+
+As mentioned in source of errors \ref{sec:source_of_errors} using default classifiers might cause the fluctuation in our results. A classifier with $n$ attributes might need very different parameters than the same classifier with $n + 1$ parameters to achieve optimal performance.
+
+\textbf{2.} More text. Which datasets saw the largest improvements from FS? Which classifier benefited the most?
+
+% - Ideas for discussion topics:
+% - Using a validation set and only optimise classifier parameters of the best performing FS methods may result in fast empirical advancement towards good learning?
