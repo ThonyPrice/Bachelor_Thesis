@@ -31,7 +31,7 @@ Fine needle aspirates of breast lumps (FNAB) was collected from 692 patients at 
 
 Mias database contain results from 119 data points with 5 features: Character of background tissue, Class of abnormality, X coordinate of centre of abnormality, Y coordinate of centre of abnormality, Approximate radius (in pixels). The features was extracted from 1024x1024 pixel images.
 
-% Skip RNA dataset
+% Skip RNA dataset?
 % \subsection{U.S. National Centre for Biotechnology Information}
 %
 % The data contains information on 1919 microRNAs in 122 different cases.
@@ -85,11 +85,39 @@ Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at t
 \section{Implementation}
 
 \subsection{Classifiers}
-All classifiers was implemented using Sklearn's library. \textbf{[insert: reference]} All setting of each classifier is presented in table \textbf{[insert: table reference]}.
+All classifiers was implemented with Scikit \parencite{scikit-learn}. The parameters of every classifier was left to default. The parametrs default values are found in table \ref{table:classifier_params}.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l | r | l }
+\multicolumn{3}{ c }{\textbf{Classifier parameters}} \\
+\hline
+\multirow{3}{*}{ANN: Multi-layer Perceptron}
+  & Hidden layers & 2 \\
+  & Layer size & 100 \\
+  & Activation & ReLU \\
+  & Solver & Adam \\ \hline
+\multirow{3}{*}{Decision Tree: CART}
+  & Criterion & Gini \\
+  & Splitter & Best \\
+  & Max depth & None \\ \hline
+\multirow{3}{*}{Naive Bayes}
+  & Type & Gaussian \\
+  & Priors & None \\ \hline
+\multirow{3}{*}{SVM}
+  & Kernel & Rbf \\
+  & Degree & 3 \\
+  & Penalty & 1.0 \\ \hline
+\end{tabular}
+\caption{Parameters of each classifier used}
+\label{table:classifier_params}
+\end{center}
+\end{table}
+
 
 \subsection{Feature selection}
 
-We've used sklearn for filtering methods and mlextend for the Wrapper methods...
+TBD
 
 \section{Evaluation}
 
