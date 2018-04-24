@@ -92,19 +92,19 @@ All classifiers was implemented with Scikit \parencite{scikit-learn}. The parame
 \begin{tabular}{ l | r | l }
 \multicolumn{3}{ c }{\textbf{Classifier parameters}} \\
 \hline
-\multirow{3}{*}{ANN: Multi-layer Perceptron}
+\multirow{1}{*}{ANN: Multi-layer Perceptron}
   & Hidden layers & 2 \\
   & Layer size & 100 \\
   & Activation & ReLU \\
   & Solver & Adam \\ \hline
-\multirow{3}{*}{Decision Tree: CART}
+\multirow{1}{*}{Decision Tree: CART}
   & Criterion & Gini \\
   & Splitter & Best \\
   & Max depth & None \\ \hline
-\multirow{3}{*}{Naive Bayes}
+\multirow{1}{*}{Naive Bayes}
   & Type & Gaussian \\
   & Priors & None \\ \hline
-\multirow{3}{*}{SVM}
+\multirow{1}{*}{SVM}
   & Kernel & Rbf \\
   & Degree & 3 \\
   & Penalty & 1.0 \\ \hline
@@ -117,10 +117,11 @@ All classifiers was implemented with Scikit \parencite{scikit-learn}. The parame
 
 \subsection{Feature selection}
 
-TBD
+The feature selection consisted of two parts. First, the filter methods which was implemented with the \textit{Select K best} method, provided by Scikit \parencite{scikit-learn}. Second, the wrapper methods which was implemented with the \textit{SequentialFeatureSelector} method, provided in mlextend library \parencite{mlextend}.
+
 
 \section{Evaluation}
 
-What methods are implemented to measure the results, are we using mean, standard deviation, f1 score, anova, how many times do we run etc...
+During experiments each dataset is loaded and split into training and test data with a ratio of 3:1. The same training and test data is used for every classifier. Each classifier is tested iteratively with each filter method. The accuracy is the computed mean of 10 fold cross validation on the test set.
 
 % Pawel: Describe all configurations of classifiers and feature selection methods, discuss how you choose parameters, train them (on what data with what algorithms etc.)
