@@ -9,6 +9,8 @@ def mkTable(path, list_data_names):
     classifiers = ['CART', 'SVM', 'NB', 'ANN']
     for classifier in classifiers:
         data_row_vals = []
+        filter_sum = []
+        dataset_diff = []
         for dataset in list_data_names:
             data_col_vals, data_ful_vals = [], []
             for method in ['_Chi2', '_Entropy','_sbs', '_sfs']:
@@ -21,8 +23,35 @@ def mkTable(path, list_data_names):
             data_row_vals.append(df)
 
         df = pd.concat(data_row_vals, axis=1)
-        df = renameLabels(df, list_data_names)
+
         print(df)
+
+
+        print("-----row diff-------")
+        sum_row = df.sum(axis=1)
+        diff_row = sum_row - sum_row.iloc[4]
+        print(diff_row)
+
+
+        print("------col diff------")
+
+
+        sum_colms = df.sum(axis=0)
+        for i in range(4):
+            diff_colmn = (((sum_colms.iloc[i] - df.iloc[4,i]) / 4) - df.iloc[4,i])
+            dataset_diff.append(diff_colmn)
+
+
+        # print(filter_sum)
+        print(dataset_diff)
+        df = pd.concat([df, diff_row], axis=1)
+
+        print(df)
+        df_dataset_diff = pd.DataFrame({'col':dataset_diff})
+        print(df_dataset_diff)
+        df = pd.concat([df, df_dataset_diff], axis=1)
+        print(df)
+        df = renameLabels(df, list_data_names)
         mkLaTeX(df, classifier)
 
 def mkLaTeX(df, classifier):
@@ -31,8 +60,8 @@ def mkLaTeX(df, classifier):
         tf.write(df.to_latex(
             buf=None, columns=None, col_space=None,
             header=True, index=True, na_rep='NaN',
-            formatters=[f1,f1,f1,f1], float_format=True, sparsify=None,
-            index_names=True, bold_rows=False, column_format='|l|l|l|l|l|',
+            formatters=[f1,f1,f1,f1,f1,f1], float_format=True, sparsify=None,
+            index_names=True, bold_rows=False, column_format='|l|l|l|l|l|l|l|',
             longtable=None, escape=None, encoding=None, decimal='.',
             multicolumn=None, multicolumn_format=None, multirow=False)
         )
@@ -61,7 +90,9 @@ def renameLabels(df, list_data_names):
     df = df.rename({list_data_names[0] : 'MIAS',
                     list_data_names[1] : 'EN',
                     list_data_names[2] : 'RHH',
-                    list_data_names[3] : 'WBCD'
+                    list_data_names[3] : 'WBCD',
+                    0 : 'Row differences',
+                    'col' : 'Dataset diff'
     }, axis = 'columns')
     return df
 
