@@ -200,4 +200,8 @@ The figure \ref{fig:plots_sfs} using SFS have a similar result to figure \ref{fi
 \section{Source of errors}
 \label{sec:source_of_errors}
 
-What can have caused faulty results, can our results be trusted?
+There are two main factor that may risk propagate error into the results, libraries and datasets.
+
+The libraries provide all functionality of the classifiers and the filter selection methods, thus a major part of the implementation. A implementation built upon faulty methods can not provide any significant results. We use two libraries. The Scikit library \parencite{scikit-learn} is well renowned widely used in both industry and research thus inspire confidence in its robustness. The mlxtend library is used for SBS and SFS methods and is still a open source with less coverage than Scikit \parencite{mlextend}. Still it has a active community and many release versions indication it's well managed.
+
+The datasets...
