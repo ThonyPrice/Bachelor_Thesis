@@ -5,8 +5,7 @@ import numpy as np
 import pandas as pd
 import sys
 from operator import add
-
-# Copied imports
+# Necessay ANOVA imports
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
 from statsmodels.graphics.factorplots import interaction_plot
@@ -40,7 +39,7 @@ def manipulateData(datasets, path):
             df4 = pd.DataFrame.from_records(data['SVM'])
             attributes, _ = df1.shape
             mean_accuracy_for_each_attribute = []
-            for i in range(attributes):
+            for i in range(attributes-1):
                 # Iterate over each attribute
                 mean_each_fold_all_classifiers = list(map(sum, zip(
                     df1.iloc[i,1],
@@ -48,120 +47,58 @@ def manipulateData(datasets, path):
                     df3.iloc[i,1],
                     df4.iloc[i,1]
                 )))
+                # Average each fold over classifiers
                 mean_each_fold_all_classifiers \
                     = [x/4 for x in mean_each_fold_all_classifiers]
-                mean_accuracy_all_folds_all_clssifiers \
+                # Mean of all folds
+                mean_accuracy_all_folds_all_classifiers \
                     = np.asarray(mean_each_fold_all_classifiers).mean()
-                results.append([
-                    data_name,
-                    method_name,
-                    mean_accuracy_all_folds_all_clssifiers
-                ])
-            # results.append(mean_accuracy_for_each_attribute)
-    df = pd.DataFrame.from_records(results)
-    df = renameLabels2(df)
-    print(df)
-    anova_val = computeAnova(df)
-            # sys.exit(0)
-
-            # results.append((file, np.asarray(mean_accuracy_for_each_attribute).mean()))
-            # results.append((file, np.asarray(mean_values).max()))
-            # results.append([data_name, method_name, np.asarray(mean_accuracy_for_each_attribute).max()])
-            # results.append(mean_accuracy_for_each_attribute)
+                mean_accuracy_for_each_attribute.append(
+                    mean_accuracy_all_folds_all_classifiers
+                )
+            # Add max of accuracies over number of attributes
+            results.append([
+                np.asarray(mean_accuracy_for_each_attribute).max(),
+                data_name,
+                method_name
+            ])
 
     df = pd.DataFrame.from_records(results)
-    print(df)
-
-    # print(df.iloc[1])
-    sys.exit(0)
-    df = renameLabels2(df)
-    print(df)
     return df
-    # sys.exit(0)
-    # for tup in results:
-    #     print(tup)
-    #
-    l1, l2, l3, l4 = [], [], [], []
-    for i in range(4):
-        l1.append(results[4*i][1])
-        l2.append(results[4*i+1][1])
-        l3.append(results[4*i+2][1])
-        l4.append(results[4*i+3][1])
-
-    x = ['D1', 'D2','D3','D4']
-    plt.plot(x, l1, label='Chi2')
-    plt.plot(x, l2, label='Entropy')
-    plt.plot(x, l3, label='SBS')
-    plt.plot(x, l4, label='SFS')
-    plt.legend()
-    # plt.show()
-    df = pd.DataFrame.from_records([l1, l2, l3, l4])
-    df = renameLabels(df)
-    print(df)
-    return df
-
-def mkDataFrame(acc_data, d_name, m_name):
-    atts = len(acc_data)
-    df = pd.DataFrame.from_records([
-        [d_name]*atts,
-        [m_name]*atts,
-        acc_data
-    ]).transpose()
-    return df
-
-def calc2way(data):
-    print(type(data))
-    print('TYPE: ', type(data.iloc[1,0]))
-    formula = 'accuracy ~ dataset + method'
-    model = ols(formula, data).fit()
-    print('model: ', model)
-    aov_table = anova_lm(model, typ=2)
-    eta_squared(aov_table)
-    omega_squared(aov_table)
-    print(aov_table)
-    sys.exit(0)
-
-def computeAnova(data):
-    print(type(data))
-    print('TYPE: ', type(data.iloc[1,2]))
-    formula = 'accuracy ~ dataset + method'
-    model = ols(formula, data).fit()
-    aov_table = anova_lm(model, typ=2)
-    eta_squared(aov_table)
-    omega_squared(aov_table)
-    print(aov_table)
 
 def readJson(filename):
     with open(filename) as json_data:
         data = json.load(json_data)
     return data
 
-def renameLabels(df):
-    df = df.rename({0 : 'Chi2',
-                    1 : 'Entropy',
-                    2 : 'SBS',
-                    3 : 'SFS',
-    }, axis = 'columns')
-    df = df.rename({0 : 'MIAS',
-                    1 : 'EN',
-                    2 : 'RHH',
-                    3 : 'WBCD'
-    }, axis = 'index')
-    return df
+def plotData(df):
+    d1, d2, d3, d4 = [], [], [], []
+    for i in range(4):
+        d1.append(df.iloc[i*4+0,0])
+        d2.append(df.iloc[i*4+1,0])
+        d3.append(df.iloc[i*4+2,0])
+        d4.append(df.iloc[i*4+3,0])
+    print(d1)
+    x_axis = ['EN (4)', 'MIAS (5)', 'RHH (10)', 'WBCD (30)']
+    plt.plot(x_axis, d1, marker='^', label='Chi2')
+    plt.plot(x_axis, d2, marker='^', label='Entropy')
+    plt.plot(x_axis, d3, marker='^', label='SBS')
+    plt.plot(x_axis, d4, marker='^', label='SFS')
+    plt.suptitle('Mean accuarcy comparing datasets & FS-methods')
+    plt.xlabel('Dataset (#features)')
+    plt.ylabel('Mean accuracy over classifiers')
+    plt.legend()
+    plt.show()
+    return
 
-def renameLabels2(df):
-    df = df.rename({0 : 'dataset',
-                    1 : 'method',
-                    2 : 'accuracy'
-    }, axis = 'columns')
-    return df
-
-def renameLabels3(df):
-    df = df.rename({0 : 'accuracy',
-                    1 : 'dataset',
-                    2 : 'method'
-    }, axis = 'columns')
-    return df
+def computeAnova(data):
+    formula = 'accuracy ~ dataset + method'
+    model = ols(formula, data).fit()
+    aov_table = anova_lm(model, typ=2)
+    eta_squared(aov_table)
+    omega_squared(aov_table)
+    print(aov_table)
+    return
 
 def eta_squared(aov):
     aov['eta_sq'] = 'NaN'
@@ -174,17 +111,23 @@ def omega_squared(aov):
     aov['omega_sq'] = (aov[:-1]['sum_sq']-(aov[:-1]['df']*mse))/(sum(aov['sum_sq'])+mse)
     return aov
 
-def plotAnova(df):
-    pass
+def renameCols(df):
+    df = df.rename({0 : 'accuracy',
+                    1 : 'dataset',
+                    2 : 'method'
+    }, axis = 'columns')
+    return df
 
 def main():
-    # --- Where to collect data? ---
-    path = '../Json2/'
-
+    path = '../Json2/' # Where to collect data? ---
     files = getFilesByDataset(path)
     df = manipulateData(files, path)
+    print('\n---*--- Plotting data ---*---\n')
+    plotData(df)
+    print('\n---*--- Computing anova ---*---\n')
+    df = renameCols(df)
     df = computeAnova(df)
-    plotAnova(df)
+    print('\n---*--- EOF ---*---\n')
 
 if __name__ == '__main__':
     main()
