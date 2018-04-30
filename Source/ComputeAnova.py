@@ -119,7 +119,7 @@ def plot_fill(x, y, err, label):
     ax.fill_between(x,
         [y[i]+err[i] for i in range(len(y))],
         [y[i]-err[i] for i in range(len(y))],
-        facecolor=color, alpha=0.2
+        facecolor=color, alpha=0.1
     )
 
 def computeAnova(data):
