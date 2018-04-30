@@ -55,6 +55,29 @@ def plotWithStd(rez, filename):
     plt.savefig(path + '%s.png' %(filename.strip('.json')+'_combined'))
     plt.close()
 
+def plotWithStdFill(rez, filename):
+    # Plot combined comparisions for each classifier with errorbars
+    path = '../plots_with_std_fill/'
+    plt.ylabel('Mean accuracy')
+    plt.xlabel('# features')
+    for classifier in ['ANN', 'CART', 'NB', 'SVM']:
+        features, mean, std = extractData(rez, classifier)
+        plot_fill(features, mean, std, classifier)
+    plt.legend()
+    plt.suptitle(filename)
+    plt.savefig(path + '%s.png' %(filename.strip('.json')+'_combined'))
+    plt.close()
+
+def plot_fill(x, y, err, label):
+    ax = plt.gca()
+    color = next(ax._get_lines.prop_cycler)['color']
+    plt.plot(x, y, marker='^', label=label, color=color)
+    ax.fill_between(x,
+        [y[i]+err[i] for i in range(len(y))],
+        [y[i]-err[i] for i in range(len(y))],
+        facecolor=color, alpha=0.1
+    )
+
 def readJson(filename):
     with open(filename) as json_data:
         data = json.load(json_data)
@@ -73,7 +96,8 @@ def plot(path,filename):
     rez = readJson(path+filename)
     # plotFilter1(rez, filename)
     # plotFilter2(rez, filename)
-    plotWithStd(rez, filename)
+    # plotWithStd(rez, filename)
+    plotWithStdFill(rez, filename)
 
 def main():
     # --- Where to collect data? ---
