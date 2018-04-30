@@ -108,7 +108,7 @@ def plotData(df):
     plt.ylabel('Mean accuracy over classifiers')
     plt.legend()
     # plt.show()
-    plt.savefig('../plots_with_std/%s.png' %('comp_acc_datasets'))
+    plt.savefig('../plots_with_std_fill/%s.png' %('comp_acc_datasets'))
     plt.close()
     return
 
