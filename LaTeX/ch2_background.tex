@@ -24,15 +24,28 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 
 \section{Machine learning}
 
-The field of machine learning is concerned with automated discoveries of regularities in data with use of computer algorithms. These regularities can then be used to take actions such as classifying the data into different categories or making predictions. \parencite{Bishop}. As the data may differ from hand written digits to population growth to medical data the computer algorithms differ too. The algorithms used in this report is detailed below.
+The field of machine learning is concerned with automated discoveries of regularities in data with use of computer algorithms. These regularities can then be used to take actions such as classifying the data into different categories or making predictions \parencite{Bishop:2006}. As the data may differ from hand written digits to population growth to medical data the computer algorithms differ too. The algorithms used in this report is detailed below.
 
 \subsection{Artificial neural networks}
 
-A artificial neural network (ANN) is a learning model that conceptually consists of a network of nodes and connections.
+The term artificial neural networks (ANN) originates from the structure of the algorithm. The structure vaguely mimics the biological network of a human brain \parencite{Bishop:2006}. A representation of such network visualised as in figure \ref{fig:ANN_representation}. The learning process of an ANN is conceptually two parts, feed forward and back propagation.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\linewidth]{images/ANN_representation.jpg}
+  \caption{Insert image caption here, see LaTeX comment.}
+  \label{fig:ANN_representation}
+\end{figure}
+
+% Image found at page 228 in Bishop book: http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
+
+When feeding forward initially the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer a linear transformation is applied to the signal involving two parameters conclusive to the layer, wight and bias, thus transforming the signal. The transformed signal is sent through a activation function amplifying or reducing the signal based on its current value, producing a new output. The current output is then considered the input for a new set of weights and biases forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities of each possible output of the network \parencite{Bishop:2006}.
+
+Back propagation is where an ANN is tuning the wights and biases to produce sensible outputs in relation to the input. Feeding an input of training data forward an error can be computed from the difference between the received output probabilities and the expected output. The error is in turn propagated backwards tuning the parameters to produce the expected output instead. Repeating this process for all training data network increases its prediction accuracy \parencite{Bishop:2006}.
 
 \subsection{Decision Trees}
 
-Text here.
+Text here...
 
 \subsection{Naive Bayes}
 
