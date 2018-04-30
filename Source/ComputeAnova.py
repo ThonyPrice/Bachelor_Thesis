@@ -58,9 +58,10 @@ def manipulateData(datasets, path):
                 )
             # Add max of accuracies over number of attributes
             results.append([
-                np.asarray(mean_accuracy_for_each_attribute).max(),
+                np.asarray(mean_accuracy_for_each_attribute).mean(),
                 data_name,
-                method_name
+                method_name,
+                np.asarray(mean_accuracy_for_each_attribute).std()
             ])
 
     df = pd.DataFrame.from_records(results)
@@ -73,23 +74,53 @@ def readJson(filename):
 
 def plotData(df):
     d1, d2, d3, d4 = [], [], [], []
+    e1, e2, e3, e4 = [], [], [], []
     for i in range(4):
+        # Append acc
         d1.append(df.iloc[i*4+0,0])
         d2.append(df.iloc[i*4+1,0])
         d3.append(df.iloc[i*4+2,0])
         d4.append(df.iloc[i*4+3,0])
+        # Append std
+        e1.append(df.iloc[i*4+0,3])
+        e2.append(df.iloc[i*4+1,3])
+        e3.append(df.iloc[i*4+2,3])
+        e4.append(df.iloc[i*4+3,3])
     print(d1)
     x_axis = ['EN (4)', 'MIAS (5)', 'RHH (10)', 'WBCD (30)']
-    plt.plot(x_axis, d1, marker='^', label='Chi2')
-    plt.plot(x_axis, d2, marker='^', label='Entropy')
-    plt.plot(x_axis, d3, marker='^', label='SBS')
-    plt.plot(x_axis, d4, marker='^', label='SFS')
+    # --- Plot with std fill ---
+    plot_fill(x_axis, d1, e1, 'Chi2')
+    plot_fill(x_axis, d2, e2, 'Entropy')
+    plot_fill(x_axis, d3, e3, 'SBS')
+    plot_fill(x_axis, d4, e4, 'SFS')
+    # --- Plot w std bars ---
+    # plt.errorbar(x_axis, d1, e1, marker='^', label='Chi2')
+    # plt.errorbar(x_axis, d2, e2, marker='^', label='Entropy')
+    # plt.errorbar(x_axis, d3, e3, marker='^', label='SBS')
+    # plt.errorbar(x_axis, d4, e4, marker='^', label='SFS')
+    # --- Plot w/o std ---
+    # plt.plot(x_axis, d1, e1, marker='^', label='Chi2')
+    # plt.plot(x_axis, d2, e2, marker='^', label='Entropy')
+    # plt.plot(x_axis, d3, e3, marker='^', label='SBS')
+    # plt.plot(x_axis, d4, e4, marker='^', label='SFS')
     plt.suptitle('Mean accuarcy comparing datasets & FS-methods')
     plt.xlabel('Dataset (#features)')
     plt.ylabel('Mean accuracy over classifiers')
     plt.legend()
-    plt.show()
+    # plt.show()
+    plt.savefig('../plots_with_std/%s.png' %('comp_acc_datasets'))
+    plt.close()
     return
+
+def plot_fill(x, y, err, label):
+    ax = plt.gca()
+    color = next(ax._get_lines.prop_cycler)['color']
+    plt.plot(x, y, marker='^', label=label, color=color)
+    ax.fill_between(x,
+        [y[i]+err[i] for i in range(len(y))],
+        [y[i]-err[i] for i in range(len(y))],
+        facecolor=color, alpha=0.2
+    )
 
 def computeAnova(data):
     formula = 'accuracy ~ dataset + method'
