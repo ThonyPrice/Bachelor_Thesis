@@ -32,12 +32,11 @@ The term artificial neural networks (ANN) originates from the structure of the a
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=\linewidth]{images/ANN_representation.jpg}
-  \caption{Insert image caption here, see LaTeX comment.}
+  \includegraphics[width=0.7\linewidth]{images/ANN_representation.jpg}
+  \caption{Network diagram for a two layer neural network. Image courtesy of \textcite{Bishop:2006}}
   \label{fig:ANN_representation}
 \end{figure}
 
-% TBD: Scale image down
 % Image found at page 228 in Bishop book: http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
 
 When feeding forward initially the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer a linear transformation is applied to the signal involving two parameters conclusive to the layer, wight and bias, thus transforming the signal. The transformed signal is sent through a activation function amplifying or reducing the signal based on its current value, producing a new output. The current output is then considered the input for a new set of weights and biases forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities of each possible output of the network \parencite{Bishop:2006}.
