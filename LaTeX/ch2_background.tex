@@ -37,6 +37,7 @@ The term artificial neural networks (ANN) originates from the structure of the a
   \label{fig:ANN_representation}
 \end{figure}
 
+% TBD: Scale image down
 % Image found at page 228 in Bishop book: http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
 
 When feeding forward initially the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer a linear transformation is applied to the signal involving two parameters conclusive to the layer, wight and bias, thus transforming the signal. The transformed signal is sent through a activation function amplifying or reducing the signal based on its current value, producing a new output. The current output is then considered the input for a new set of weights and biases forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities of each possible output of the network \parencite{Bishop:2006}.
@@ -45,7 +46,13 @@ Back propagation is where an ANN is tuning the wights and biases to produce sens
 
 \subsection{Decision Trees}
 
-Text here...
+Tree based methods involve stratifying or segmenting the predictor space into a number of simple regions. In order to make a prediction for a given observation, the mean or the mode of the training observations is used in the region to which it belongs. Since the set of splitting rules used
+to segment the predictor space can be summarised in a tree, these types of approaches are known as decision tree (DT) methods \parencite{James:2014}.
+
+DTs can be applied both to regression as well as classification problems. We focus on classification DTs as its the nature of the classification at hand in this report.
+
+To growing a classification tree recursive
+binary splitting is performed. The binary spilt is based on classification error rate on the training data. Since we plan classification to assign an observation in a given region to the most commonly occurring error rate class of training observations in that region, the classification error rate is simply the fraction of the training observations in that region that do not belong to the most common class.
 
 \subsection{Naive Bayes}
 
