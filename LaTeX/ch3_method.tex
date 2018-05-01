@@ -25,22 +25,25 @@ Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at t
 
 \section{Implementation}
 
-The implementation outline is a straightforward approach. Each dataset will be split into training and test data. For each classifier each FS-method will select all possible subsets in turn. The classifier will be trained on the subset and evaluated on the test data. A compact pseudocode is presented in algorithm \ref{alg:pseudo_code}. The steps is more more thoroughly detailed below. 
+The implementation outline is a straightforward approach. Each dataset will be split into training and test data. For each classifier each FS-method will select all possible subsets in turn. The classifier will be trained on the subset and evaluated on the test data. A compact pseudocode how results are produced is presented in algorithm \ref{alg:pseudo_code}. The steps is more more thoroughly detailed below. Measurements of how results will be evaluated is contained in \ref{Evaluation}.
 
 \input{snippets/implementation_pseudo}
 
-\subsection{Classifiers}
-All classifiers was implemented with Scikit \parencite{scikit-learn}. The parameters of every classifier was left to default. The parametrs default values are found in table \ref{table:classifier_params}.
+\subsection{Classifiers and parameters}
+All classifiers was imported from Scikit \parencite{scikit-learn}. All classifiers allow tuning by setting parameters of its behaviour. As tuning the parameters for any dataset and/or subset of attributes inflicts bias to the current state all parameters was left to default. Default parameters may cause suboptimal performance of a classifier. An optimal is not the intention of this experiment, the influence of feature selection is. Thus motivating the default parameter settings. Those values of the most influential parameters for each classifier can be found in table \ref{table:classifier_params}.
+% Move these setting to appendix as they don't contribute much here?
 
 \input{snippets/table_parameters}
 
-
 \subsection{Feature selection}
 
-The feature selection consisted of two parts. First, the filter methods which was implemented with the \textit{Select K best} method, provided by Scikit \parencite{scikit-learn}. Second, the wrapper methods which was implemented with the \textit{SequentialFeatureSelector} method, provided in mlextend library \parencite{mlextend}.
+Feature selection with filter methods was also imported from  Scikit \parencite{scikit-learn}. The library contains the method \"SelectKBest\" which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
+
+Feature selection with wrapper methods was implemented with the \"SequentialFeatureSelector\" method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was accuracy as that is what should be used to compare methods at a later stage.
 
 
 \section{Evaluation}
+\label{Evaluation}
 
 \textbf{ Pawel: Add formulas on how we evaluate and how results are produces. Also, section on ANOVA. }
 
