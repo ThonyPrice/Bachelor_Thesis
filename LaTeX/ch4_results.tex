@@ -201,7 +201,10 @@ The figure \ref{fig:plots_sfs} using SFS have a similar result to figure \ref{fi
 
 \section{Variation among datasets}
 
-Due to very unambiguous results achieved on different datasets an analysis among these differences was performed. The mean accuracy of each method with respect to dataset seems to show a correlation as visualised in plot \ref{fig:comp_acc_datasets}.
+Due to some unambiguous results achieved on different datasets an analysis among these differences was performed. The mean accuracy of each method with respect to dataset seems to show a correlation as visualised in plot \ref{fig:comp_acc_datasets}. The correlation is positive and therefore indicated datasets with a larger amount of features benefit more from feature selection than datasets with smaller amount of features seems to do.
+
+To really conclude this is the an investigation using analysis of variance (ANOVA) was performed. Averaging the results for all classifiers leaves datasets and FS methods as potential independent values. ANOVA tells us if this is the case. The computations resultet in table \ref{table:anova_values}. The null hypothesis is all datasets are alike regards to FS methods. The small \textit{F-value} on \textit{Datasets} indicates probability of rejecting our hypothesis is very low.
+\textbf{THIS NEED PROOF READING}
 
 % ANOVA plot
 \begin{figure}[ht!]
@@ -217,7 +220,7 @@ Due to very unambiguous results achieved on different datasets an analysis among
   \begin{center}
   \begin{tabular}{l|r|r|r|r|r|r|}
   \cline{2-7}
-  & $RSS$ & $df$ & $F$ & $P(F)$ & $\eta^2$ & $\omega^2$ \\ \cline{1-7}
+  & $RSS$ & $df$ & $F$ & $P(>F)$ & $\eta^2$ & $\omega^2$ \\ \cline{1-7}
   \multicolumn{1}{ |l| }{\textbf{Dataset}}
   & 0.1664 &  3.0 & 77.663 & 9.3990e-07 & 0.9191 & 0.9037 \\ \cline{1-7}
   \multicolumn{1}{ |l| }{\textbf{Method}}
