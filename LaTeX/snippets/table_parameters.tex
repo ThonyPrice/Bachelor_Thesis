@@ -1,0 +1,26 @@
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l | r | l }
+\multicolumn{3}{ c }{\textbf{Classifier parameters}} \\
+\hline
+\multirow{1}{*}{ANN: Multi-layer Perceptron}
+  & Hidden layers & 2 \\
+  & Layer size & 100 \\
+  & Activation & ReLU \\
+  & Solver & Adam \\ \hline
+\multirow{1}{*}{Decision Tree: CART}
+  & Criterion & Gini \\
+  & Splitter & Best \\
+  & Max depth & None \\ \hline
+\multirow{1}{*}{Naive Bayes}
+  & Type & Gaussian \\
+  & Priors & None \\ \hline
+\multirow{1}{*}{SVM}
+  & Kernel & Rbf \\
+  & Degree & 3 \\
+  & Penalty & 1.0 \\ \hline
+\end{tabular}
+\caption{Parameters of each classifier used}
+\label{table:classifier_params}
+\end{center}
+\end{table}

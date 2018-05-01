@@ -1,0 +1,19 @@
+\begin{algorithm}[H]
+  \For{$dataset \in Datasets$}{
+    xTrain, yTrain, xTest, yTest = Split($dataset$)\;
+    \For{$classifier \in Classifiers$}{
+      \For{$FS \in FSmethods$}{
+        \For{$num\leftarrow 1$ \KwTo allAtts(xTrain)}{
+          Xtr = selectAttsWithMethod(Xtrain, FS)\;
+          Xte = reshapeToAtts(Xtest, Xtr)\;
+          clf = train(classifier, Xtr)\;
+          fld = stratKFold(10)\;
+          res = score(clf, fld, Xte, yTest)\;
+          save(res)\;
+        }
+      }
+    }
+  }
+  \label{alg:pseudo_code}
+  \caption{IntervalRestriction\label{IR}}
+\end{algorithm}
