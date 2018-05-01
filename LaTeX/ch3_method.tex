@@ -126,4 +126,10 @@ The feature selection consisted of two parts. First, the filter methods which wa
 
 During experiments each dataset is loaded and split into training and test data with a ratio of 3:1. The same training and test data is used for every classifier. Each classifier is tested iteratively with each filter method. The accuracy is the computed mean of 10 fold cross validation on the test set.
 
+\subsection{Explaining differences between datasets}
+
+It is needful to evaluate the difference between datasets. The differences among the datasets allows to study how effects of FS-methods generalises between different data and if results are consistent. To explain any inconsistencies analysis of variance (ANOVA) test will be performed. ANOVA entails if differences in results between groups can be explained by variance or if there is a statistically significant difference between groups.
+
+The groups of interest are FS-methods and datasets. To quantify these groups we need a value for each dataset and FS-method. This value is computed in two steps. First, averaging accuracy of all classifiers given a fold of data with a given FS-method. Secondly, choose the best accuracy of a fold produced by subset of the data. Using these values with ANOVA a F-score can be computed. F-score measures the probability of rejecting the null hypothesis, that difference combinations of datasets and FS-methods are alike.
+
 % Pawel: Describe all configurations of classifiers and feature selection methods, discuss how you choose parameters, train them (on what data with what algorithms etc.)
