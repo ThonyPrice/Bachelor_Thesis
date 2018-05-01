@@ -45,11 +45,9 @@ Feature selection with wrapper methods was implemented with the \"SequentialFeat
 \section{Evaluation}
 \label{Evaluation}
 
-\textbf{ Pawel: Add formulas on how we evaluate and how results are produces. Also, section on ANOVA. }
+\subsection{Test data and accuracy}
 
-
-
-During experiments each dataset is loaded and split into training and test data with a ratio of 3:1. The same training and test data is used for every classifier. Each classifier is tested iteratively with each filter method. The accuracy is the computed mean of 10 fold cross validation on the test set.
+To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correct\_classified\_sample/all\_samples$. To ensure correct classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. Test data is maximised by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds.
 
 \subsection{Explaining differences between datasets}
 
