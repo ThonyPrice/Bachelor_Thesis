@@ -1,205 +1,85 @@
 \chapter{Results and analysis}
 
+The outline of the analysis address the overall effect of feature selection. Then, examination of each FS-method in respect to chosen classifier. Lastly, interaction between dataset characteristics and specific FS-methods are being presented. All analysis stems from results presented alongside.
+
+Results are presented both in form of tables and plots. The tables showcases the best performance achieved by each feature selection method in comparison to using full dataset, that is, utilising all features. The plots illustrates accuracy of each feature selection method in respect to number of attributes used. Plots are organised by FS-method.
+
+
 \section{Classification improvements}
 
-\textbf{ Pawel: Use 2-way ANOVA and post-hoc to investigate the impact of the datasets on the effectiveness of feature selection methods. }
+\subsection{Feature selection generally improves accuracy}
 
-Results of classification accuracy of each classifier with each feature selection method on every possible subset of attributes was recorded during the experiments. The results are presented both in form of tables and plots. The tables showcases the best performance achieved by each feature selection method compared to full dataset. The plots illustrates accuracy of each feature selection method in respect to number of attributes.
+Predominantly classification accuracy is improved for all classifiers tested in our scope by use of \textit{some} feature selection method. Results presented in tables corresponding to ANN \ref{table:ANN}, NB \ref{table:NB} and SVM \ref{table:SVM} entails comparing the best performing FS-method to a full dataset consistently results in equal or improved accuracy. Only in DT \ref{table:CART} one dataset exists that performed better without feature selection.
 
-Tables \ref{table:ANN}, \ref{table:NB} and \ref{table:SVM} show classification accuracy is improved or equal to the results of using a full set of features on all datasets tested. Only in naive Bayes \ref{table:NB} is there one dataset that performed better without feature selection.
+However, majority of the classifiers had some FS-method that achieved lower accuracy compared to full dataset. In 11 of 16 instances at least one FS-method performed worse. This suggests one have to select the combination of classifier and FS-method carefully. As no such combination proved consistently superior across all dataset the optimal classifier FS-combination may also depend on the data it is applied to.
 
 % --- Tables ---
-\begin{table}
+\begin{table}[htbp!]
   \input{../tables/ANN} \\
-  \caption{Classification accuracy achieved by ANN was improved on all datasets by the use of some feature selection method}
+  \caption[]%
+  {{\small Classification accuracy achieved by ANN was improved on all datasets by the use of some feature selection method.}}
   \label{table:ANN}
-  \vspace{1em}
+\end{table}
 
+\begin{table}[htbp!]
   \input{../tables/CART} \\
-  \caption{All datasets except MIAS benefited from feature selection using CART Decision Tree classifier}
+  \caption[]%
+  {{\small All datasets except MIAS benefited from feature selection using CART Decision Tree classifier.}}
   \label{table:CART}
-  \vspace{1em}
+\end{table}
 
+\begin{table}[htbp!]
   \input{../tables/NB} \\
-  \caption{Naive Bayes sees improvement or equivalent accuracy by feature selection on every dataset}
+  \caption[]%
+  {{\small Naive Bayes sees improvement or equivalent accuracy by feature selection on every dataset.}}
   \label{table:NB}
-  \vspace{1em}
+\end{table}
 
+\begin{table}[htbp!]
   \input{../tables/SVM} \\
-  \caption{Classification accuracy achieved by SVM was improved or equivalent on every dataset with use of feature selection}
+  \caption[]%
+  {{\small Classification accuracy achieved by SVM was improved or equivalent on every dataset with use of feature selection.}}
   \label{table:SVM}
 \end{table}
 % ---/Tables ---
 
-Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots i.e. \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features.
 
-The general characteristic of every plot is that the ANN performs the worst of all the classifiers. The ANN also provides the least consistent results with strong fluctuations in the results.
+\subsection{Differences among datasets, classifiers and FS-methods}
 
-Chi2 in combination reveals a loss in accuracy with CART when using more than 23 attributes as seen in plot \ref{fig:WBCD_chi2}. It indicates a preference of more attributes on the RHH dataset in \ref{fig:RHH_chi2}.
+There is a large variance between results depending on which dataset, classifier and FS-method that is applied. Dataset differences is addressed in section \ref{Variation_among_datasets}. Classifiers and FS methods variations presented in plots.
 
-Feature selection by Entropy shows clear performance on a subset compared to all features in \ref{fig:EN_entropy}. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy sees little to no improvement when increasing the number of attributes.
+Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots, like \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features.
 
-Using the wrapper method SBS both NB and ANN has an decrease in accuracy using all features in the EN dataset \ref{fig:EN_sbs}. However, both CART and SVM seems to prefer all features for an higher accuracy. In \ref{fig:WBCD_sbs} SVM has an strong decrease in performance using increasingly more features. CART and NB has a slight improvement using more features up to 27 where they starts to drop in there accuracy rate.  ANN has a very fluctuating scoring performance but has its highest accuracy using all features.  In the MIAS dataset using SBS shown in figure \ref{fig:MIAS_sbs} both SVM and NB prefers using all the features. ANN and CART has there highest performance using three features. In the plot \ref{fig:RHH_sbs} there seems to be an general trend that more features give an higher accuracy. CART drops slightly in accuracy at 9 or more features. NB drops in accuracy as well using the full dataset. ANN performs best using seven features.
+\subsubsection{Classifiers}
+
+ANN consistently performs the worst of all classifiers. The ANN also provides the least consistent results with strong fluctuations in the results as seen by the standard deviation margins. Such fluctuations may suggest issues regarding convergence.
+
+The decision tree shows consistent performance generally increasing performance with an increased amount of features. Although in cases like plot \ref{fig:WBCD_chi2} and \ref{fig:MIAS_sbs} an best accuracy is achieved with a subset of features displaying evident benefits of feature selection.
+
+% Naive Bayes
+
+The SVM appears to behave very differently in respect to dataset. Improvements are seen with a larger subset of attributes in the EN and MIAS dataset as seen in \ref{fig:EN_chi2} and \ref{fig:MIAS_sfs}. A negative trend on accuracy is observed on the WBCD datasets which might indicate an issue with dimensionality. In \ref{fig:RHH_sbs} an improved accuracy is evident with maximal accuracy achieved on a subset suggesting a positive effect of feature selection.
+
+\subsubsection{Feature selection methods}
+
+Chi2 in combination reveals with cart reveals a loss in accuracy when using more than 23 attributes as seen in plot \ref{fig:WBCD_chi2}. It indicates a preference of more attributes on the RHH dataset in \ref{fig:RHH_chi2}.
+
+\input{snippets/plots_chi2}
+
+Feature selection by Entropy shows clear performance improvement on a subset compared to all features in \ref{fig:EN_entropy}. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy sees little to no improvement when increasing the number of attributes.
+
+\input{snippets/plots_entropy}
+
+Using the wrapper method SBS both NB and ANN has a decrease in accuracy using all features in the EN dataset \ref{fig:EN_sbs}. However, both CART and SVM seems to prefer all features for an higher accuracy. In \ref{fig:WBCD_sbs} SVM has an strong decrease in performance using increasingly more features. CART and NB has a slight improvement using more features up to 27 where they starts to drop in there accuracy rate. ANN has a very fluctuating scoring performance but has its highest accuracy using all features.  In the MIAS dataset using SBS shown in figure \ref{fig:MIAS_sbs} both SVM and NB prefers using all the features. ANN and CART has there highest performance using three features. In the plot \ref{fig:RHH_sbs} there seems to be an general trend that more features give an higher accuracy. CART drops slightly in accuracy at 9 or more features. NB drops in accuracy as well using the full dataset. ANN performs best using seven features.
+
+\input{snippets/plots_sbs}
 
 The figure \ref{fig:plots_sfs} using SFS have a similar result to figure \ref{fig:plots_sbs} using SBS. The main differences are in \ref{fig:WBCD_sfs} where the best result for ANN is using only 24 features instead of the full dataset and in figure \ref{fig:RHH_sfs} where the best result for ANN have four features instead of seven.
 
-
-% --- Plots ---
-\begin{figure*}[htbp!]
-  \centering
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Cleaned_data_chi2_combined.png}
-      \caption[]%
-      {{\small Dataset EN using Chi2}}
-      \label{fig:EN_chi2}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/data_FNA_chi2_combined.png}
-      \caption[]%
-      {{\small Dataset WBCD using Chi2}}
-      \label{fig:WBCD_chi2}
-  \end{subfigure}
-  \vskip\baselineskip
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Data_mias_chi2_combined.png}
-      \caption[]%
-      {{\small Dataset MIAS using Chi2}}
-      \label{fig:MIAS_chi2}
-  \end{subfigure}
-  \quad
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/FNA_gb_chi2_combined.png}
-      \caption[]%
-      {{\small Dataset RHH using Chi2}}
-      \label{fig:RHH_chi2}
-  \end{subfigure}
-
-  \caption[ The average and standard deviation of critical parameters ]
-  {Combined plots of all datasets comparing each classifier when using chi2 for feature selection.}
-  \label{fig:plots_chi2}
-\end{figure*}
-
-\begin{figure*}[htbp!]
-  \centering
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Cleaned_data_entropy_combined.png}
-      \caption[Network2]%
-      {{\small Dataset EN using Entropy}}
-      \label{fig:EN_entropy}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/data_FNA_entropy_combined.png}
-      \caption[]%
-      {{\small Dataset WBCD using Entropy}}
-      \label{fig:WBCD_entropy}
-  \end{subfigure}
-  \vskip\baselineskip
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Data_mias_entropy_combined.png}
-      \caption[]%
-      {{\small Dataset MIAS using Entropy}}
-      \label{fig:MIAS_entropy}
-  \end{subfigure}
-  \quad
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/FNA_gb_entropy_combined.png}
-      \caption[]%
-      {{\small Dataset RHH using Entropy}}
-      \label{fig:RHH_entropy}
-  \end{subfigure}
-  \caption[]
-  {{\small Combined plots of all datasets comparing each classifier when using Entropy for feature selection.}}
-  \label{fig:plots_entropy}
-\end{figure*}
-
-\begin{figure*}[htbp!]
-  \centering
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Cleaned_data_sb_combined.png}
-      \caption[]%
-      {{\small Dataset EN using SBS}}
-      \label{fig:EN_sbs}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/data_FNA_sb_combined.png}
-      \caption[]%
-      {{\small Dataset WBCD using SBS}}
-      \label{fig:WBCD_sbs}
-  \end{subfigure}
-  \vskip\baselineskip
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Data_mias_sb_combined.png}
-      \caption[]%
-      {{\small Dataset MIAS using SBS}}
-      \label{fig:MIAS_sbs}
-  \end{subfigure}
-  \quad
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/FNA_gb_sb_combined.png}
-      \caption[]%
-      {{\small Dataset RHH using SBS}}
-      \label{fig:RHH_sbs}
-  \end{subfigure}
-  \caption[]
-  {{\small Combined plots of all datasets comparing each classifier when using SBS for feature selection.}}
-  \label{fig:plots_sbs}
-\end{figure*}
-
-\begin{figure*}[htbp!]
-  \centering
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Cleaned_data_sf_combined.png}
-      \caption[]%
-      {{\small Dataset EN using SFS}}
-      \label{fig:EN_sfs}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/data_FNA_sf_combined.png}
-      \caption[]%
-      {{\small Dataset WBCD using SFS}}
-      \label{fig:WBCD_sfs}
-  \end{subfigure}
-  \vskip\baselineskip
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/Data_mias_sf_combined.png}
-      \caption[]%
-      {{\small Dataset MIAS using SFS}}
-      \label{fig:MIAS_sfs}
-  \end{subfigure}
-  \quad
-  \begin{subfigure}[b]{0.475\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../plots_with_std_fill/FNA_gb_sf_combined.png}
-      \caption[]%
-      {{\small Dataset RHH using SFS}}
-      \label{fig:RHH_sfs}
-  \end{subfigure}
-  \caption[]
-  {{\small Combined plots of all datasets comparing each classifier when using SFS for feature selection.}}
-  \label{fig:plots_sfs}
-\end{figure*}
-% ---/Plots ---
+\input{snippets/plots_sfs}
 
 \section{Variation among datasets}
+\label{Variation_among_datasets}
 
 The mean accuracy of each method with respect to the datasets shows a positive correlation, as visualised in plot \ref{fig:comp_acc_datasets}. The correlation indicates datasets with a larger amount of features benefit more from feature selection than datasets with smaller amount of features.
 
@@ -212,7 +92,6 @@ ANOVA shows a statistical significance in the correlation due to the found value
   \caption{Datasets and accuracy displays evident correlation independently of applied FS method.}
   \label{fig:comp_acc_datasets}
 \end{figure}
-
 
 % Table with ANOVA computations
 \begin{table}[ht]
@@ -239,4 +118,4 @@ There are two main factor that may risk propagate error into the results, librar
 
 The libraries provide all functionality of the classifiers and the filter selection methods, thus a major part of the implementation. A implementation built upon faulty methods can not provide any significant results. We use two libraries. The Scikit library \parencite{scikit-learn} is well renowned widely used in both industry and research thus inspire confidence in its robustness. The mlxtend library is used for SBS and SFS methods and is still a open source with less coverage than Scikit \parencite{mlextend}. Still it has a active community and many release versions indicating it's well managed.
 
-The datasets...
+% Source of error can be expanded here, discuss effect of binary classification and chance of subsets containing only one class. This is addressed with stratifiedKfold but in data poor sets the problem can still remain
