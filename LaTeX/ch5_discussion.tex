@@ -1,21 +1,34 @@
 \chapter{Discussion}
 
-% FNA is not that good compared to CNB \parencite{Topps2018}.
+\section{Influence of feature selection}
 
-The discussion will be substantiated from our research questions:
+Feature selection is valuable strategy when it comes to classification of breast cancer. As stated in the results all instances but one provided equally good or improved accuracy on the dataset with feature selection compared to using the full dataset. Even in cases where results are equally good feature selection still provide benefits to the process. The benefits consists of potentially lessened effort collecting and processing attributes at data collection. As stated by \textcite{martei2018} there is a large demand of a more streamlined and efficient process when it comes to breast caner classification, feature selection may offer such a tool.
 
-\begin{enumerate}
-  \item Does the feature selection improve the accuracy of classification compared to using all features?
-  \item In which machine learning methods does feature selection have the greatest impact?
-\end{enumerate}
+Choosing the correct combination of classifier and FS-method is essential to produce good results. While some feature selection method nearly always outperform the classifier with the full dataset it does not apply to all FS methods. As filter methods proved computationally fast in comparison to wrappers as as well as better performing, suitable classifiers can be investigated efficiently to find a good subset of features.
 
-\textbf{1.} As stated in the results in all instances but one applying feature selection provided at least equally good accuracy on the dataset compared to using the full dataset.
+As mentioned in source of errors \ref{sec:source_of_errors} using default classifiers might cause the fluctuation and wide variance in the results. A classifier with $n$ attributes might need very different parameters than the same classifier with $n + 1$ parameters to achieve optimal performance. This raises an important question: should a high performing classifier and FS-method be found first then optimised by tuning or it it the other way around?
 
-However, while some feature selection method nearly always outperform the classifier with the full dataset it does not apply to all FS methods. This unambiguity is clearly illustrated by the plots. This gives an indication that to achieve a better performance the feature selection method must be selected carefully during supervised learning.
 
-As mentioned in source of errors \ref{sec:source_of_errors} using default classifiers might cause the fluctuation in our results. A classifier with $n$ attributes might need very different parameters than the same classifier with $n + 1$ parameters to achieve optimal performance.
+\section{Limitations}
 
-\textbf{2.} More text. Which datasets saw the largest improvements from FS? Which classifier benefited the most?
+Due to the limited amount of breast cancer datasets found and utilised in the study its difficult to confidently draw conclusions regarding all breast cancer classification at large.
 
-% - Ideas for discussion topics:
-% - Using a validation set and only optimise classifier parameters of the best performing FS methods may result in fast empirical advancement towards good learning?
+Limited resources has also resulted in a reduced subset of FS-methods studied. While having two methods of each FS-family, filters and wrappers, there are many more which may have produced different results than we have achieved.
+
+
+\section{Further research}
+
+Further investigation of a methodology of finding the best possible classifier and FS-method.
+
+More recent strategies of diagnosing breast cancer involves sampling microRNA from patients. Other diseases have been diagnosed with microRNA suggesting promising results of the method. As a sample of microRNA contains around 2 000 features selection may offer a huge benefit.
+
+
+\section{Ethical aspects}
+
+The data used in this report origin from patients that may be experience discomfort during mammographies, FNA sampling or with other method was used when collecting the data. The data also holds sensitive information ruling the patients future health.
+
+While circumstances of a patient potentially is very unpleasant such test is a tool to diagnose a patient and if needed discover cancer in time to take necessary action to improve a patients health. Data is to out knowledge never collected without a patients consent and carries no information that can allows identification.
+
+\section{Sustainability}
+
+Under construction...
