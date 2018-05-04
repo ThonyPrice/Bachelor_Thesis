@@ -14,28 +14,28 @@ Predominantly classification accuracy is improved for all classifiers tested in 
 However, majority of the classifiers had some FS-method that achieved lower accuracy compared to full dataset. In 11 of 16 instances at least one FS-method performed worse. This suggests one have to select the combination of classifier and FS-method carefully. As no such combination proved consistently superior across all dataset the optimal classifier FS-combination may also depend on the data it is applied to.
 
 % --- Tables ---
-\begin{table}[htbp!]
+\begin{table}[h]
   \input{../tables/ANN_tidy}
   \caption[]%
   {{\small Classification accuracy achieved by ANN was improved on all datasets by the use of some feature selection method.}}
   \label{table:ANN}
 \end{table}
 
-\begin{table}[htbp!]
+\begin{table}[h]
   \input{../tables/CART_tidy} \\
   \caption[]%
   {{\small All datasets except MIAS benefited from feature selection using CART Decision Tree classifier.}}
   \label{table:CART}
 \end{table}
 
-\begin{table}[htbp!]
+\begin{table}[h]
   \input{../tables/NB_tidy} \\
   \caption[]%
   {{\small Naive Bayes sees improvement or equivalent accuracy by feature selection on every dataset.}}
   \label{table:NB}
 \end{table}
 
-\begin{table}[htbp!]
+\begin{table}[h]
   \input{../tables/SVM_tidy} \\
   \caption[]%
   {{\small Classification accuracy achieved by SVM was improved or equivalent on every dataset with use of feature selection.}}
@@ -50,7 +50,7 @@ There is a large variance between results depending on which dataset, classifier
 
 Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots, like \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features.
 
-\begin{table}[htbp!]
+\begin{table}[hp]
   \input{snippets/gain_comparison}
   \caption[]%
   {{\small Ranking of which classifiers gained most accuracy when comparing feature selection to full dataset.}}
