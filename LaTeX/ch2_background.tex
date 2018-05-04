@@ -1,9 +1,70 @@
 \chapter{Background}
 
 
+\section{Machine learning}
+
+The field of machine learning is concerned with automated discoveries of regularities in data with use of computer algorithms. These regularities can then be used to take actions such as classifying the data into different categories or making predictions \parencite{Bishop:2006}. As the data may differ from hand written digits to population growth to medical data the computer algorithms differ too. The algorithms used in this report is detailed below.
+
+\subsection{Artificial neural networks}
+
+The term artificial neural networks (ANN) originates from the structure of the algorithm. The structure vaguely mimics the biological network of a human brain \parencite{Bishop:2006}. A representation of such network visualised as in figure \ref{fig:ANN_representation}. The learning process of an ANN is conceptually two parts, feed forward and back propagation.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=0.7\linewidth]{images/ANN_representation.jpg}
+  \caption{Network diagram for a two layer neural network. Image courtesy of \textcite{Bishop:2006}}
+  \label{fig:ANN_representation}
+\end{figure}
+
+% Image found at page 228 in Bishop book: http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
+
+When feeding forward initially the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer a linear transformation is applied to the signal involving two parameters conclusive to the layer, weight and bias, thus transforming the signal. The transformed signal is sent through a activation function amplifying or reducing the signal based on its current value, producing a new output. The current output is then considered the input for a new set of weights and biases forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities of each possible output of the network \parencite{Bishop:2006}.
+
+Back propagation is where an ANN is tuning the wights and biases to produce sensible outputs in relation to the input. Feeding an input of training data forward an error can be computed from the difference between the received output probabilities and the expected output. The error is in turn propagated backwards tuning the parameters to produce the expected output instead. Repeating this process for all training data network increases its prediction accuracy \parencite{Bishop:2006}.
+
+\subsection{Decision Trees}
+
+Tree based methods involve stratifying or segmenting the predictor space into a number of simple regions. In order to make a prediction for a given observation, the mean or the mode of the training observations is used in the region to which it belongs. Since the set of splitting rules used
+to segment the predictor space can be summarised in a tree, these types of approaches are known as decision tree (DT) methods \parencite{James:2014}.
+
+DTs can be applied both to regression as well as classification problems. We focus on classification DTs as its the nature of the classification at hand in this report.
+
+To growing a classification tree recursive
+binary splitting is performed. The binary spilt is based on classification error rate on the training data. Since we plan classification to assign an observation in a given region to the most commonly occurring error rate class of training observations in that region, the classification error rate is simply the fraction of the training observations in that region that do not belong to the most common class \parencite{James:2014}.
+
+\subsection{Naive Bayes}
+
+Under construction...
+
+\subsection{Support vector machines}
+
+Under construction...
+
+
+\section{Feature Selection}
+
+A feature is a variable that describes a data instance. A rectangular surface can be considered having two features, length and height. A rectangular volume three features, length, height and depth. More complex data instances such as a gene expression may have up to 60,000 features and such a complex feature space results in a much harder learning process. Thus one often wishes to select a subset of all available to reduce the dimensionality \parencite{guyon2003}.
+
+The benefits of selecting a subset of all available features are manyfold, among other it facilitates data visualisation and data understanding, reduces the measurement and storage requirements and reduces training and utilisation times. In cases with thousands of features like the example with gene expressions it is essential to work with a subset of the data to produce reliable results. \parencite{guyon2003}.
+
+
+\subsection{Filter methods}
+
+Filter methods are considered as a preprocessing step. That means a filter method evaluate features before data is applied to a learning machine or even before a deciding on a classifier. The evaluation is performed by doing variable ranking by some score such as information gain. The score results in a ranking of the attributes and a subset can be selected in order of the ranking \parencite{guyon2003}.
+
+There are both good and bad aspects of filter methods. The positive concerns that variable ranking makes filter methods very scalable and robust as the calculations only operated on as many variables as there are features and can be performed just once and tested on multiple classifiers making it very computational effective. On the other hand, a subset of features that by their own might be assessed an non informative by their own may in combination provide a lot of information to enable good learning \parencite{guyon2003}.
+
+
+\subsection{Wrapper methods}
+
+Wrapper methods differs a lot from filter methods. While filter methods evaluate the as a preprocessing independent of the classifier, wrapper does the opposite.
+
+Wrappers utilise the learning machine of interest as a black box to score subsets of variable according to their predictive power \parencite{guyon2003}. The issue is as datasets become very large this method might be overly computational intense as finding the optimal subset is considered to be NP-hard \parencite{amaldi1998}.
+
+
 \section{Computer Aided Diagnostics}
 
-Machine learning techniques have been successfully applied to computer-aided diagnosis where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To make a CAD system samples with diagnosis i used for learning. In the case of breast cancer diagnosis a radiologist put labels on a set of mammography scans. Labels that includes the diagnosis of the scan a possibly some attributes of the scan too. These scans togeather with the labels can then be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
+Machine learning techniques have been successfully applied to computer-aided diagnosis where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To make a CAD system samples with diagnosis i used for learning. In the case of breast cancer diagnosis a radiologist put labels on a set of mammography scans. These include the diagnosis of the scan and possibly some attributes connected to the scan too, such as patients age or other conditions. These scans together with the labels can then be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
 
 
 \section{Breast Cancer}
@@ -22,71 +83,9 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 % Image source: http://webcache.googleusercontent.com/search?q=cache:635J2rrIdWsJ:pages.cs.wisc.edu/~olvi/uwmp/cancer.html+&cd=1&hl=sv&ct=clnk&gl=se
 
 
-\section{Machine learning}
-
-The field of machine learning is concerned with automated discoveries of regularities in data with use of computer algorithms. These regularities can then be used to take actions such as classifying the data into different categories or making predictions \parencite{Bishop:2006}. As the data may differ from hand written digits to population growth to medical data the computer algorithms differ too. The algorithms used in this report is detailed below.
-
-\subsection{Artificial neural networks}
-
-The term artificial neural networks (ANN) originates from the structure of the algorithm. The structure vaguely mimics the biological network of a human brain \parencite{Bishop:2006}. A representation of such network visualised as in figure \ref{fig:ANN_representation}. The learning process of an ANN is conceptually two parts, feed forward and back propagation.
-
-\begin{figure}[ht!]
-  \centering
-  \includegraphics[width=0.7\linewidth]{images/ANN_representation.jpg}
-  \caption{Network diagram for a two layer neural network. Image courtesy of \textcite{Bishop:2006}}
-  \label{fig:ANN_representation}
-\end{figure}
-
-% Image found at page 228 in Bishop book: http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
-
-When feeding forward initially the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer a linear transformation is applied to the signal involving two parameters conclusive to the layer, wight and bias, thus transforming the signal. The transformed signal is sent through a activation function amplifying or reducing the signal based on its current value, producing a new output. The current output is then considered the input for a new set of weights and biases forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities of each possible output of the network \parencite{Bishop:2006}.
-
-Back propagation is where an ANN is tuning the wights and biases to produce sensible outputs in relation to the input. Feeding an input of training data forward an error can be computed from the difference between the received output probabilities and the expected output. The error is in turn propagated backwards tuning the parameters to produce the expected output instead. Repeating this process for all training data network increases its prediction accuracy \parencite{Bishop:2006}.
-
-\subsection{Decision Trees}
-
-Tree based methods involve stratifying or segmenting the predictor space into a number of simple regions. In order to make a prediction for a given observation, the mean or the mode of the training observations is used in the region to which it belongs. Since the set of splitting rules used
-to segment the predictor space can be summarised in a tree, these types of approaches are known as decision tree (DT) methods \parencite{James:2014}.
-
-DTs can be applied both to regression as well as classification problems. We focus on classification DTs as its the nature of the classification at hand in this report.
-
-To growing a classification tree recursive
-binary splitting is performed. The binary spilt is based on classification error rate on the training data. Since we plan classification to assign an observation in a given region to the most commonly occurring error rate class of training observations in that region, the classification error rate is simply the fraction of the training observations in that region that do not belong to the most common class.
-
-\subsection{Naive Bayes}
-
-Text here.
-
-\subsection{Support vector machines}
-
-Text here.
-
-\section{Feature Selection}
-
-A feature is a variable that describes a data instance. A rectangular surface can be considered having two features, length and height. A rectangular volume three features, length, height and depth. More complex data instances such as a gene expression may have up to 60,000 features and such a complex feature space results in a much harder learning process. Thus one often wishes to select a subset of all available to reduce the dimensionality \parencite{guyon2003}.
-
-The benefits of selecting a subset of all available features are manyfold, among other it facilitates data visualisation and data understanding, reduces the measurement and storage requirements and reduces training and utilisation times. In cases with thousands of features like the example with gene expressions it is essential to work with a subset of the data to produce reliable results. \parencite{guyon2003}.
-
-
-\subsection{Filter methods}
-
-Filter methods are considered as a preprocessing step. That means a filter method evaluate features before data is applied to a learning machine or even before a deciding on a classifier. The evaluation is performed by doing variable ranking by some score such as information gain. The score results in a ranking of the attributes and a subset can be selected in order of the ranking \parencite{guyon2003}.
-
-There are both good and bad aspects of filter methods. The positive concerns that variable ranking makes filter methods very scalable and robust as the calculations only operated on as many variables as there are features and can be performed just once and tested on multiple classifiers making it very computational effective. On the other hand, a subset of features that by their own might be assessed an non informative by their own may in combination provide a lot of information to enable good learning \parencite{guyon2003}.
-
-
-\subsection{Wrapper methods}
-
-\textbf{ Pawel: Add information on each classifier. At most 1/3 of a page describing their functionality on  vary high level }
-
-Wrapper methods differs a lot from filter methods. While filter methods evaluate the as a preprocessing independent of the classifier, wrapper does the opposite.
-
-Wrappers utilise the learning machine of interest as a black box to score subsets of variable according to their predictive power \parencite{guyon2003}. The issue is as datasets become very large this method might be overly computational intense as finding the optimal subset is considered to be NP-hard \parencite{amaldi1998}.
-
-
 \section{Related Work}
 
-\textbf{ Pawel: Make subsections where each section coves a specific topic. This can also be extended with almost another full page.}
+\textbf{ TBD: Make subsections where each section coves a specific topic. This can also be extended with almost another full page.}
 
 The application of machine learning onto breast cancer classification is a well studied one. Since machine learning proved valuable empirical results breast cancer datasets have been widely used to assess the performance of a multitude of classification strategies and methods. [Insert ref. to early paper here].
 
