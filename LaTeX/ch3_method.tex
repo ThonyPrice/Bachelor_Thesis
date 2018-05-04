@@ -6,7 +6,7 @@
 
 \subsection{Wisconsin}
 
-The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 32 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features which are:
+The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 30 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features.
 
 \subsection{Royal Hallamshire Hospital}
 
@@ -37,9 +37,9 @@ All classifiers was imported from Scikit \parencite{scikit-learn}. All classifie
 
 \subsection{Feature selection}
 
-Feature selection with filter methods was also imported from  Scikit \parencite{scikit-learn}. The library contains the method \"SelectKBest\" which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
+Feature selection with filtering methods was also imported from  Scikit \parencite{scikit-learn}. The library contains the method ``SelectKBest'' which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
 
-Feature selection with wrapper methods was implemented with the \"SequentialFeatureSelector\" method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was accuracy as that is what should be used to compare methods at a later stage.
+Feature selection with wrapper methods was implemented with the ``SequentialFeatureSelector'' method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was accuracy as that is what should be used to compare methods at a later stage.
 
 
 \section{Evaluation}
@@ -47,7 +47,9 @@ Feature selection with wrapper methods was implemented with the \"SequentialFeat
 
 \subsection{Test data and accuracy}
 
-To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correct\_classified\_sample/all\_samples$. To ensure correct classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. Test data is maximised by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds.
+To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correct\_classified\_samples/all\_samples$. To ensure correct classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. Test data is maximised by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds.
+
+To evaluate the impact of using feature selection the gain will be computed. The gain is computed as the ratio between best accuracy using FS and accuracy not using FS. The accumulated gains of a classifier gives a measure of how much it improved from feature selection and a basis to compare classifiers against each other.
 
 \subsection{Explaining differences between datasets}
 
