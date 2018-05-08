@@ -32,13 +32,36 @@ DTs can be applied both to regression as well as classification problems. We foc
 To growing a classification tree recursive
 binary splitting is performed. The binary spilt is based on classification error rate on the training data. Since we plan classification to assign an observation in a given region to the most commonly occurring error rate class of training observations in that region, the classification error rate is simply the fraction of the training observations in that region that do not belong to the most common class \parencite{James:2014}.
 
-\subsection{Naive Bayes}
+\subsection{Naïve Bayes}
 
-Under construction...
+Naïve Bayes (NB) have beens studied since the 1950 and is a supervised, probabilistic machine learning classifier. It uses the maximum posterior which statistically determines the probability of a data point, x, belonging to a certain class, y, given the observed data points:
+
+\[
+P(y|x) = \frac{P(x|y)P(y)}{P(x)}
+\]
+
+This formula can be read as:
+
+\[
+Posterior = \frac{Prior * Likelihood}{Evidence}
+\]
+
+The name of the methods originates from the fact that the maximum posterior is calculated with help of the Bayes' Theorem and the method is naïve in the aspect of it assuming that all features in the data are independent form each other. \parencite{george2012}
+
+skriv lite mer, förklara posterior?
 
 \subsection{Support vector machines}
 
-Under construction...
+Support vector machines (SVM) where developed in the 1990s and are base on the simpler maximal margin classifier. The maximal margin classifier creates a hyperplane to separate the data points of different classes from each other. The margin is the smallest perpendicular distance from the plane to the a data point. As the name of the method suggests the goal is to find the plane with the largest margin given the data set \textcite{James:2014}.
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=0.7\linewidth]{images/Margin_SVM.png}
+  \caption{Image of SVM margin. The red dots represent one class and the blue dots represent another class. The arrows indicates the maximal margin. Image courtesy of \textcite{James:2014}}
+  \label{fig:SVM_Margin}
+\end{figure}
+
+The support vector classifier is an extension to the maximal margin method to try to create a method with greater robustness and better classification to most training observations. In order to achieve this goal an slack variable in introduced to allow points to be on the wrong side of the margin. Lastly, a SVM converts the support vector classifier from a liner separator as to  a non-liner separator of data points by using so called Kernels. The classifier can now separate more complex data sets with higher accuracy since its not limited to create linear hyperplanes \textcite{James:2014}.
 
 
 \section{Feature Selection}
@@ -64,7 +87,7 @@ Wrappers utilise the learning machine of interest as a black box to score subset
 
 \section{Computer Aided Diagnostics}
 
-Machine learning techniques have been successfully applied to computer-aided diagnosis where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To make a CAD system samples with diagnosis i used for learning. In the case of breast cancer diagnosis a radiologist put labels on a set of mammography scans. These include the diagnosis of the scan and possibly some attributes connected to the scan too, such as patients age or other conditions. These scans together with the labels can then be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
+Machine learning techniques have been successfully applied to computer-aided diagnosis where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To create a CAD system, samples with a diagnos is firstly gathered and stored and then used for learning. In the case of breast cancer diagnosis a radiologist put labels on a set of mammography scans. These include the diagnosis of the scan and possibly some attributes connected to the scan too, such as patients age or other conditions. These scans together with the labels can then be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
 
 
 \section{Breast Cancer}
