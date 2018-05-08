@@ -1,3 +1,8 @@
+'''
+DO NOT RUN THIS FILE,
+RUN ComputeAnova.py INSTEAD
+'''
+
 import DataLoader
 import json
 import matplotlib.pyplot as plt
@@ -170,5 +175,7 @@ def main():
     print('***')
     plotAnova(df)
 
+
 if __name__ == '__main__':
-    main()
+    pass
+    # main()
