@@ -99,32 +99,19 @@ The mean accuracy of each method with respect to the datasets shows a positive c
 
 ANOVA shows a statistical significance in the correlation due to the found values of the test, table \ref{table:anova_values}. The significance is evident due to the very small value $P(>F)$, probability of not rejecting the null hypothesis. Thus we can confidently reject the null hypothesis which is datasets are significantly the same in respect to FS-methods.
 
-% ANOVA plot
-\begin{figure}[ht!]
-  \centering
-  \includegraphics[width=0.7\linewidth]{../plots_with_std_fill/comp_acc_datasets.png}
-  \caption{Datasets and accuracy displays evident correlation independently of applied FS method.}
-  \label{fig:comp_acc_datasets}
-\end{figure}
+% ANOVA plots
+\input{snippets/anova_plots}
+% \begin{figure}[ht!]
+%   \centering
+%   \includegraphics[width=0.7\linewidth]{../plots_with_std_fill/comp_acc_datasets.png}
+%   \caption{Datasets and accuracy displays evident correlation independently of applied FS method.}
+%   \label{fig:comp_acc_datasets}
+% \end{figure}
 
-% Table with ANOVA computations
-\begin{table}[ht]
-  \begin{center}
-  \begin{tabular}{l|r|r|r|r|r|r|}
-  \cline{2-7}
-  & $RSS$ & $df$ & $F$ & $P(>F)$ & $\eta^2$ & $\omega^2$ \\ \cline{1-7}
-  \multicolumn{1}{ |l| }{\textbf{Dataset}}
-  & 0.1664 &  3.0 & 77.663 & 9.3990e-07 & 0.9191 & 0.9037 \\ \cline{1-7}
-  \multicolumn{1}{ |l| }{\textbf{Method}}
-  & 0.0082 &  3.0 & 3.8336 & 5.0899e-02 & 0.0454 & 0.0334 \\ \cline{1-7}
-  \multicolumn{1}{ |l| }{\textbf{Residual}}
-  & 0.0064 &  9.0 \\ \cline{1-3}
-  \end{tabular}
-  \caption{ANOVA computations show there is a very low probability there is no difference among datasets when applying FS methods}
-  \label{table:anova_values}
-  \end{center}
-\end{table}
+% Tables with ANOVA computations
+\input{snippets/anova_dataset_fs}
 
+\input{snippets/anova_classif_fs}
 
 \section{Computation time}
 
