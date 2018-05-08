@@ -24,7 +24,8 @@ def getFilesByDataset(path):
 
 def IV_dataset_method(datasets, path):
     classifiers = ['ANN', 'CART', 'NB', 'SVM']
-    results = []
+    plot_results = []
+    anova_results = []
     for data_name, dataset in datasets:
         # Iterate over each dataset (i.e. Data_mias)
         for file in dataset:
@@ -39,6 +40,7 @@ def IV_dataset_method(datasets, path):
             df4 = pd.DataFrame.from_records(data['SVM'])
             attributes, _ = df1.shape
             mean_accuracy_for_each_attribute = []
+            anova_classifs = [[], [], [], []]
             for i in range(attributes-1):
                 # Iterate over each attribute
                 mean_each_fold_all_classifiers = list(map(sum, zip(
@@ -47,6 +49,11 @@ def IV_dataset_method(datasets, path):
                     df3.iloc[i,1],
                     df4.iloc[i,1]
                 )))
+                # Save value of each classif for ANOVA
+                anova_classifs[0].append(np.asarray(df1.iloc[i,1]).mean())
+                anova_classifs[1].append(np.asarray(df2.iloc[i,1]).mean())
+                anova_classifs[2].append(np.asarray(df3.iloc[i,1]).mean())
+                anova_classifs[3].append(np.asarray(df4.iloc[i,1]).mean())
                 # Average each fold over classifiers
                 mean_each_fold_all_classifiers \
                     = [x/4 for x in mean_each_fold_all_classifiers]
@@ -57,20 +64,27 @@ def IV_dataset_method(datasets, path):
                     mean_accuracy_all_folds_all_classifiers
                 )
             # Add max of accuracies over number of attributes
-            results.append([
+            plot_results.append([
                 np.asarray(mean_accuracy_for_each_attribute).mean(),
                 data_name,
                 method_name,
                 np.asarray(mean_accuracy_for_each_attribute).std()
             ])
+            # Add each classifiers max for ANOVA computations
+            for i in range(4):
+                anova_results.append((max(anova_classifs[i]), data_name, method_name))
 
-    df = pd.DataFrame.from_records(results)
+    plot_df = pd.DataFrame.from_records(plot_results)
+    anova_df = pd.DataFrame.from_records(anova_results)
     x_axis = ['EN (4)', 'MIAS (5)', 'RHH (10)', 'WBCD (30)']
-    return renameCols(df, 'dataset', 'method'), x_axis
+    return  renameCols(plot_df, 'dataset', 'method'), \
+            renameCols(anova_df, 'dataset', 'method'), \
+            x_axis
 
 def IV_classifier_method(datasets, path):
     classifiers = ['ANN', 'CART', 'NB', 'SVM']
-    results = []
+    plot_results = []
+    anova_results = []
     for classifier in classifiers:
         classifier_accs = []
         for data_name, dataset in datasets:
@@ -94,6 +108,16 @@ def IV_classifier_method(datasets, path):
                 )
             classifier_accs.append(dataset_accs)
         # Average classifier-method accuracies over datasets
+        # - Save every instance for ANOVA computations
+        methods = ['chi2', 'entropy', 'sbs', 'sfs']
+        for i in range(4):
+            for j in range(4):
+                anova_results.append((
+                    classifier_accs[j][i],
+                    classifier,
+                    methods[i]
+                ))
+        # - Save average and means for plotting
         avg, std = [0]*4, [0]*4
         for i in range(4):
             tmp = [
@@ -106,11 +130,14 @@ def IV_classifier_method(datasets, path):
             std[i] = np.asarray(tmp).std()
         methods = ['chi2', 'entropy', 'sbs', 'sfs']
         for i in range(4):
-            results.append((avg[i], classifier, methods[i], std[i]))
+            plot_results.append((avg[i], classifier, methods[i], std[i]))
 
-    df = pd.DataFrame.from_records(results)
+    plot_df = pd.DataFrame.from_records(plot_results)
+    anova_df = pd.DataFrame.from_records(anova_results)
     x_axis = ['ANN', 'CART', 'NB', 'SVM']
-    return renameCols(df, 'classifier', 'method'), x_axis
+    return  renameCols(plot_df, 'classifier', 'method'), \
+            renameCols(anova_df, 'classifier', 'method'), \
+            x_axis
 
 def readJson(filename):
     with open(filename) as json_data:
@@ -170,16 +197,15 @@ def plot_fill(x, y, err, label):
     )
 
 def computeAnova(data):
-    print(data)
     try:
-        formula = 'accuracy ~ dataset + method'
+        formula = 'accuracy ~ dataset * method'
         model = ols(formula, data).fit()
     except:
-        formula = 'accuracy ~ classifier + method'
+        formula = 'accuracy ~ classifier * method'
         model = ols(formula, data).fit()
     aov_table = anova_lm(model, typ=2)
-    # eta_squared(aov_table)
-    # omega_squared(aov_table)
+    eta_squared(aov_table)
+    omega_squared(aov_table)
     print(aov_table)
     return
 
@@ -202,22 +228,22 @@ def renameCols(df, a, b):
     }, axis = 'columns')
     return df
 
-def main():
+def main():    
     path = '../Json2/'  # Where to collect data?
-    plt_show = False    # Show plot?
+    plt_show = True    # Show plot?
     files = getFilesByDataset(path)
 
-    df, x_axis = IV_dataset_method(files, path)
+    plot_df, anova_df, x_axis = IV_dataset_method(files, path)
     print('\n---*--- Plotting data - Dataset/method ---*---\n')
-    plotData(df, x_axis, plt_show)
+    plotData(plot_df, x_axis, plt_show)
     print('\n---*--- Computing anova - Dataset/method ---*---\n')
-    df = computeAnova(df)
+    computeAnova(anova_df)
 
-    df, x_axis = IV_classifier_method(files, path)
+    plot_df, anova_df, x_axis = IV_classifier_method(files, path)
     print('\n---*--- Plotting data - Classifier/method ---*---\n')
-    plotData(df, x_axis, plt_show)
+    plotData(plot_df, x_axis, plt_show)
     print('\n---*--- Computing anova - Classifier/method ---*---\n')
-    df = computeAnova(df)
+    computeAnova(anova_df)
 
     print('\n---*--- EOF ---*---\n')
 
