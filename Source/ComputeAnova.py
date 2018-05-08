@@ -22,7 +22,7 @@ def getFilesByDataset(path):
         all_datasets.append(dataset)
     return all_datasets
 
-def manipulateData(datasets, path):
+def IV_dataset_method(datasets, path):
     classifiers = ['ANN', 'CART', 'NB', 'SVM']
     results = []
     for data_name, dataset in datasets:
@@ -65,14 +65,59 @@ def manipulateData(datasets, path):
             ])
 
     df = pd.DataFrame.from_records(results)
-    return df
+    x_axis = ['EN (4)', 'MIAS (5)', 'RHH (10)', 'WBCD (30)']
+    return renameCols(df, 'dataset', 'method'), x_axis
+
+def IV_classifier_method(datasets, path):
+    classifiers = ['ANN', 'CART', 'NB', 'SVM']
+    results = []
+    for classifier in classifiers:
+        classifier_accs = []
+        for data_name, dataset in datasets:
+            dataset_accs = []
+            # Iterate over each dataset (i.e. Data_mias)
+            for file in dataset:
+                # method_name = file.replace(path+data_name+'_', '') \
+                #                   .replace('.json', '')
+                data = readJson(file)
+                df1 = pd.DataFrame.from_records(data[classifier])
+                attributes, _ = df1.shape
+                mean_accuracy_for_each_attribute = []
+                for i in range(attributes-1):
+                    # Compute mean of all folds
+                    mean_accuracy_for_each_attribute.append(
+                        np.asarray(df1.iloc[i,1]).mean()
+                    )
+                # Add result of best perfoming #attributes
+                dataset_accs.append(
+                    (max(mean_accuracy_for_each_attribute))
+                )
+            classifier_accs.append(dataset_accs)
+        # Average classifier-method accuracies over datasets
+        avg, std = [0]*4, [0]*4
+        for i in range(4):
+            tmp = [
+                classifier_accs[0][i],
+                classifier_accs[1][i],
+                classifier_accs[2][i],
+                classifier_accs[3][i]
+            ]
+            avg[i] = np.asarray(tmp).mean()
+            std[i] = np.asarray(tmp).std()
+        methods = ['chi2', 'entropy', 'sbs', 'sfs']
+        for i in range(4):
+            results.append((avg[i], classifier, methods[i], std[i]))
+
+    df = pd.DataFrame.from_records(results)
+    x_axis = ['ANN', 'CART', 'NB', 'SVM']
+    return renameCols(df, 'classifier', 'method'), x_axis
 
 def readJson(filename):
     with open(filename) as json_data:
         data = json.load(json_data)
     return data
 
-def plotData(df):
+def plotData(df, x_axis, plt_show):
     d1, d2, d3, d4 = [], [], [], []
     e1, e2, e3, e4 = [], [], [], []
     for i in range(4):
@@ -86,8 +131,6 @@ def plotData(df):
         e2.append(df.iloc[i*4+1,3])
         e3.append(df.iloc[i*4+2,3])
         e4.append(df.iloc[i*4+3,3])
-    print(d1)
-    x_axis = ['EN (4)', 'MIAS (5)', 'RHH (10)', 'WBCD (30)']
     # --- Plot with std fill ---
     plot_fill(x_axis, d1, e1, 'Chi2')
     plot_fill(x_axis, d2, e2, 'Entropy')
@@ -107,8 +150,12 @@ def plotData(df):
     plt.xlabel('Dataset (#features)')
     plt.ylabel('Mean accuracy over classifiers')
     plt.legend()
-    # plt.show()
-    plt.savefig('../plots_with_std_fill/%s.png' %('comp_acc_datasets'))
+    if plt_show:
+        plt.show()
+    if 'ANN' in x_axis:
+        plt.savefig('../plots_with_std_fill/%s.png' %('comp_classif_datasets'))
+    else:
+        plt.savefig('../plots_with_std_fill/%s.png' %('comp_acc_datasets'))
     plt.close()
     return
 
@@ -123,11 +170,16 @@ def plot_fill(x, y, err, label):
     )
 
 def computeAnova(data):
-    formula = 'accuracy ~ dataset + method'
-    model = ols(formula, data).fit()
+    print(data)
+    try:
+        formula = 'accuracy ~ dataset + method'
+        model = ols(formula, data).fit()
+    except:
+        formula = 'accuracy ~ classifier + method'
+        model = ols(formula, data).fit()
     aov_table = anova_lm(model, typ=2)
-    eta_squared(aov_table)
-    omega_squared(aov_table)
+    # eta_squared(aov_table)
+    # omega_squared(aov_table)
     print(aov_table)
     return
 
@@ -142,22 +194,31 @@ def omega_squared(aov):
     aov['omega_sq'] = (aov[:-1]['sum_sq']-(aov[:-1]['df']*mse))/(sum(aov['sum_sq'])+mse)
     return aov
 
-def renameCols(df):
+def renameCols(df, a, b):
     df = df.rename({0 : 'accuracy',
-                    1 : 'dataset',
-                    2 : 'method'
+                    1 : a,
+                    2 : b,
+                    3 : 'std'
     }, axis = 'columns')
     return df
 
 def main():
-    path = '../Json2/' # Where to collect data? ---
+    path = '../Json2/'  # Where to collect data?
+    plt_show = False    # Show plot?
     files = getFilesByDataset(path)
-    df = manipulateData(files, path)
-    print('\n---*--- Plotting data ---*---\n')
-    plotData(df)
-    print('\n---*--- Computing anova ---*---\n')
-    df = renameCols(df)
+
+    df, x_axis = IV_dataset_method(files, path)
+    print('\n---*--- Plotting data - Dataset/method ---*---\n')
+    plotData(df, x_axis, plt_show)
+    print('\n---*--- Computing anova - Dataset/method ---*---\n')
     df = computeAnova(df)
+
+    df, x_axis = IV_classifier_method(files, path)
+    print('\n---*--- Plotting data - Classifier/method ---*---\n')
+    plotData(df, x_axis, plt_show)
+    print('\n---*--- Computing anova - Classifier/method ---*---\n')
+    df = computeAnova(df)
+
     print('\n---*--- EOF ---*---\n')
 
 if __name__ == '__main__':
