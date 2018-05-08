@@ -104,7 +104,7 @@ def IV_classifier_method(datasets, path):
                     )
                 # Add result of best perfoming #attributes
                 dataset_accs.append(
-                    (max(mean_accuracy_for_each_attribute))
+                    np.asarray(mean_accuracy_for_each_attribute).max()
                 )
             classifier_accs.append(dataset_accs)
         # Average classifier-method accuracies over datasets
@@ -115,7 +115,7 @@ def IV_classifier_method(datasets, path):
                 anova_results.append((
                     classifier_accs[j][i],
                     classifier,
-                    methods[i]
+                    methods[j]
                 ))
         # - Save average and means for plotting
         avg, std = [0]*4, [0]*4
@@ -173,16 +173,20 @@ def plotData(df, x_axis, plt_show):
     # plt.plot(x_axis, d2, e2, marker='^', label='Entropy')
     # plt.plot(x_axis, d3, e3, marker='^', label='SBS')
     # plt.plot(x_axis, d4, e4, marker='^', label='SFS')
-    plt.suptitle('Mean accuarcy comparing datasets & FS-methods')
-    plt.xlabel('Dataset (#features)')
-    plt.ylabel('Mean accuracy over classifiers')
-    plt.legend()
-    if plt_show:
-        plt.show()
     if 'ANN' in x_axis:
+        plt.suptitle('Max accuarcy of datasets - comparing Classifiers & FS-methods')
+        plt.xlabel('ML methods')
+        plt.ylabel('Max accuracy over FS methods')
+        plt.legend()
         plt.savefig('../plots_with_std_fill/%s.png' %('comp_classif_datasets'))
     else:
+        plt.suptitle('Mean accuarcy of classifiers - comparing Datasets & FS-methods')
+        plt.xlabel('Dataset (#features)')
+        plt.ylabel('Mean accuracy over classifiers')
+        plt.legend()
         plt.savefig('../plots_with_std_fill/%s.png' %('comp_acc_datasets'))
+    if plt_show:
+        plt.show()
     plt.close()
     return
 
@@ -228,7 +232,7 @@ def renameCols(df, a, b):
     }, axis = 'columns')
     return df
 
-def main():    
+def main():
     path = '../Json2/'  # Where to collect data?
     plt_show = True    # Show plot?
     files = getFilesByDataset(path)
