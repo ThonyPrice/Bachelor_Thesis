@@ -1,17 +1,57 @@
 \chapter{Results and analysis}
 
-The outline of the analysis address the overall effect of feature selection. Then, examination of FS-methods in respect to chosen classifier. Lastly, interaction between dataset characteristics and specific FS-methods are being presented. All analysis stems from results presented alongside.
+We performed classification with 4 different classifiers on 4 different datasets. In each dataset-classifier we measured each classification accuracy when applying 4 different feature selection (FS) methods. The aim is to investigate the impact of feature selection, and the interaction between different classifiers and FS-methods. To build a basis for comparisons classification accuracy was measured without FS too.
 
-Results are presented both in form of tables and plots. The tables showcases the best performance achieved by each feature selection method in comparison to using full dataset, that is, utilising all features. They include gain which is the ration between best accuracy using FS and accuracy not using FS. The plots illustrates accuracy of each feature selection method in respect to number of attributes used. Plots are organised by FS-method.
+\section{Variation among factors of experiments}
+\label{Variation_among_factors}
+
+Before analyzing the results we must consider potential interaction between the different factors involved in the experiment, these are:
+
+\begin{enumerate}
+  \item Datasets
+  \item Machine Learning classifiers
+  \item Feature selection methods
+\end{enumerate}
+
+As we have four of each the there are 64 different combinations of these factors. We are interested of two interactions in particular:
+
+\begin{itemize}
+  \item \textbf{1 * 3} Because this interaction renders...
+  \item \textbf{2 * 3} Because this interaction renders...
+\end{itemize}
+
+To study these interactions we performed anova... See below...
+
+\subsection{FS-methods is dataset dependent}
+
+Comparing the accuracy of each method with respect to the datasets shows a positive correlation, as visualised in plot \ref{fig:comp_acc_datasets}. The correlation indicates datasets with a larger amount of features benefit more from feature selection than datasets with smaller amount of features.
+
+% ANOVA plots
+\input{snippets/anova_plots}
+
+ANOVA shows a statistical significance in the correlation due to the found values of the test, table \ref{table:anova_values_data}. The significance is evident due to the very small value $P(>F)$, probability of not rejecting the null hypothesis. Thus we can confidently reject the null hypothesis which is datasets are significantly the same in respect to FS-methods.
+
+% ANOVA computations, dataset-fs
+\input{snippets/anova_dataset_fs}
+
+\subsection{FS-methods are classifier dependent}
+
+We regarded datasets as an independent variable and compared classification accuracy between different classifiers and FS-methods. The plot in \ref{fig:comp_classif_datasets} visualizes the correlation between different classifiers and FS-methods...
+
+Performing 2-way anova showed the interaction between classifier-fs combinations are significantly different with a p-value of X. The values are presented in table \ref{table:anova_values_classif}.
+
+This means... It is particularly interesting because wrapper methods uses classifiers as a black box and should to our understanding be classifier independent.
+
+\input{snippets/anova_classif_fs}
 
 
 \section{Classification improvements}
 
-\subsection{Feature selection generally improves accuracy}
+After performing classification with and without available FS-methods we compared the classification accuracies in tables \ref{table:ANN}, \ref{table:NB}, \ref{table:SVM} and \ref{table:CART}.
 
-Predominantly classification accuracy is improved for all classifiers tested in our scope by use of \textit{some} feature selection method. Results presented in tables corresponding to ANN \ref{table:ANN}, NB \ref{table:NB} and SVM \ref{table:SVM} entails comparing the best performing FS-method to a full dataset consistently results in equal or improved accuracy. Only in DT \ref{table:CART} one dataset exists that performed better without feature selection.
+The tables showed that predominantly classification accuracy is improved for all classifiers tested in our scope by use of \textit{some} feature selection method. Results presented in tables corresponding to ANN \ref{table:ANN}, NB \ref{table:NB} and SVM \ref{table:SVM} entails comparing the best performing FS-method to a full dataset consistently results in equal or improved accuracy. Only in DT \ref{table:CART} one dataset exists that performed better without feature selection.
 
-However, majority of the classifiers had some FS-method that achieved lower accuracy compared to full dataset. In 11 of 16 instances at least one FS-method performed worse. This suggests one have to select the combination of classifier and FS-method carefully. As no such combination proved consistently superior across all dataset the optimal classifier FS-combination may also depend on the data it is applied to.
+However, majority of the classifiers had some FS-method that achieved lower accuracy compared to full dataset. In 11 of 16 instances at least one FS-method performed worse. This is in line with our findings that FS-method is both dataset and classifier dependent. Further it suggests one have to select the combination of classifier and FS-method carefully.
 
 % --- Tables ---
 \begin{table}[h]
@@ -44,9 +84,9 @@ However, majority of the classifiers had some FS-method that achieved lower accu
 % ---/Tables ---
 
 
-\subsection{Differences among datasets and classifiers}
+\subsection{Differences among classifiers}
 
-There is a large variance between results depending on which dataset, classifier and FS-method that is applied. Dataset differences is addressed in section \ref{Variation_among_datasets}. Classifiers and FS methods variations presented in plots.
+We found there is a large variance between results depending on which dataset, classifier and FS-method that is applied. These findings was addressed in section \ref{Variation_among_factors}. Here we further analyze these differences.
 
 Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots, like \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features.
 
@@ -81,37 +121,6 @@ Naive Bayes had the least accumulated gain from feature selection as seen in tab
 
 \input{snippets/plots_sfs}
 
-% This was write  with old results and contains a lot of error - skip for now. Also, does it add to our subject comparing FS-methods?
-  % \subsubsection{Feature selection methods}
-  %
-  % Chi2 in combination reveals with DT reveals a loss in accuracy when using more than 23 attributes as seen in plot \ref{fig:WBCD_chi2}. It indicates a preference of more attributes on the RHH dataset in \ref{fig:RHH_chi2}.
-  %
-  % In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy sees little to no improvement when increasing the number of attributes.
-  %
-  % Using the wrapper method SBS both NB and ANN has a decrease in accuracy using all features in the EN dataset \ref{fig:EN_sbs}. However, both CART and SVM seems to prefer all features for an higher accuracy. In \ref{fig:WBCD_sbs} SVM has an strong decrease in performance using increasingly more features. CART and NB has a slight improvement using more features up to 27 where they starts to drop in there accuracy rate. ANN has a very fluctuating scoring performance but has its highest accuracy using all features.  In the MIAS dataset using SBS shown in figure \ref{fig:MIAS_sbs} both SVM and NB prefers using all the features. ANN and CART has there highest performance using three features. In the plot \ref{fig:RHH_sbs} there seems to be an general trend that more features give an higher accuracy. CART drops slightly in accuracy at 9 or more features. NB drops in accuracy as well using the full dataset. ANN performs best using seven features.
-  %
-  % The figure \ref{fig:plots_sfs} using SFS have a similar result to figure \ref{fig:plots_sbs} using SBS. The main differences are in \ref{fig:WBCD_sfs} where the best result for ANN is using only 24 features instead of the full dataset and in figure \ref{fig:RHH_sfs} where the best result for ANN have four features instead of seven.
-
-\section{Variation among datasets}
-\label{Variation_among_datasets}
-
-The mean accuracy of each method with respect to the datasets shows a positive correlation, as visualised in plot \ref{fig:comp_acc_datasets}. The correlation indicates datasets with a larger amount of features benefit more from feature selection than datasets with smaller amount of features.
-
-ANOVA shows a statistical significance in the correlation due to the found values of the test, table \ref{table:anova_values}. The significance is evident due to the very small value $P(>F)$, probability of not rejecting the null hypothesis. Thus we can confidently reject the null hypothesis which is datasets are significantly the same in respect to FS-methods.
-
-% ANOVA plots
-\input{snippets/anova_plots}
-% \begin{figure}[ht!]
-%   \centering
-%   \includegraphics[width=0.7\linewidth]{../plots_with_std_fill/comp_acc_datasets.png}
-%   \caption{Datasets and accuracy displays evident correlation independently of applied FS method.}
-%   \label{fig:comp_acc_datasets}
-% \end{figure}
-
-% Tables with ANOVA computations
-\input{snippets/anova_dataset_fs}
-
-\input{snippets/anova_classif_fs}
 
 \section{Computation time}
 
