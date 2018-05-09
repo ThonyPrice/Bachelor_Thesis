@@ -44,11 +44,9 @@ These results suggests one has to carefully select the classifier and FS-method 
 
 \section{Classification improvements}
 
-After performing classification with and without available FS-methods we compared the classification accuracies in tables \ref{table:ANN}, \ref{table:NB}, \ref{table:SVM} and \ref{table:CART}.
+After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. From this we can conclude that classification accuracy is equal or improved for all classifiers on all datasets tested in our scope by use of \textit{some} feature selection method. The only exception is the Mias dataset with Decision tree \ref{table:CART}, it performed worse with feature selection.
 
-The tables showed that predominantly classification accuracy is improved for all classifiers tested in our scope by use of \textit{some} feature selection method. Results presented in tables corresponding to ANN \ref{table:ANN}, NB \ref{table:NB} and SVM \ref{table:SVM} entails comparing the best performing FS-method to a full dataset consistently results in equal or improved accuracy. Only in DT \ref{table:CART} one dataset exists that performed better without feature selection.
-
-However, majority of the classifiers had some FS-method that achieved lower accuracy compared to full dataset. In 11 of 16 instances at least one FS-method performed worse. This is in line with our findings that FS-method is both dataset and classifier dependent. Further it suggests one have to select the combination of classifier and FS-method carefully.
+However, majority of the classifiers has some FS-method that achieved lower accuracy compared to full dataset. Again this is viewed in tables \ref{table:ANN}, \ref{table:CART}, \ref{table:NB} and \ref{table:SVM}. In 11 of 16 instances at least one FS-method performed worse. This is in line with our findings that FS-method is classifier dependent suggesting one have to select the combination of classifier and FS-method with care.
 
 % --- Tables ---
 \begin{table}[h]
@@ -68,7 +66,7 @@ However, majority of the classifiers had some FS-method that achieved lower accu
 \begin{table}[h]
   \input{../tables/NB_tidy} \\
   \caption[]%
-  {{\small Naive Bayes sees improvement or equivalent accuracy by feature selection on every dataset.}}
+  {{\small Na\"ive Bayes sees improvement or equivalent accuracy by feature selection on every dataset.}}
   \label{table:NB}
 \end{table}
 
@@ -80,6 +78,9 @@ However, majority of the classifiers had some FS-method that achieved lower accu
 \end{table}
 % ---/Tables ---
 
+\subsection{Improvement is significant}
+
+T-test goes here...
 
 \subsection{Differences among classifiers}
 
