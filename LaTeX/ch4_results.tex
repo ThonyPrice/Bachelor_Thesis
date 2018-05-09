@@ -54,7 +54,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
   \centering
   \input{../tables/ANN_tidy}
   \caption[]%
-  {{\small Classification accuracy achieved by ANN was improved on all datasets by the use of some feature selection method.}}
+  {{\small Classification accuracy achieved by ANN. Accuracy improved on all datasets by the use of some feature selection method. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
   \label{table:ANN}
 \end{table}
 
@@ -62,7 +62,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
   \centering
   \input{../tables/CART_tidy} \\
   \caption[]%
-  {{\small All datasets except MIAS benefited from feature selection using CART Decision Tree classifier.}}
+  {{\small All datasets except MIAS benefited in classification accuracy from feature selection using CART Decision Tree classifier. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
   \label{table:CART}
 \end{table}
 
@@ -70,7 +70,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
   \centering
   \input{../tables/NB_tidy} \\
   \caption[]%
-  {{\small Na\"ive Bayes sees improvement or equivalent accuracy by feature selection on every dataset.}}
+  {{\small Na\"ive Bayes sees improvement or equivalent accuracy by feature selection on every dataset. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
   \label{table:NB}
 \end{table}
 
@@ -78,7 +78,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
   \centering
   \input{../tables/SVM_tidy} \\
   \caption[]%
-  {{\small Classification accuracy achieved by SVM was improved or equivalent on every dataset with use of feature selection.}}
+  {{\small Classification accuracy achieved by SVM. Accuracy was improved or equivalent on every dataset with use of feature selection. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
   \label{table:SVM}
 \end{table}
 % ---/Tables ---
@@ -139,4 +139,4 @@ The libraries provide all functionality of the classifiers, filter selection met
 
 Because we use a multitude of datasets their differences may influence our results in a way that invalidates our findings. \textcite{c201416} claim that feature selection methods can only be compared on the same dataset. However our comparisons do not regard the performance of specific FS-methods but their impact at large. Also, these interactions is addressed in \ref{Variation_among_factors}.
 
-Due to varying number of examples of the datasets where some are rather small, evaluation by kFold may infer very small test batches and lead to skewed results. The impact may be enlarged considering our classification is binary. This influence is minimized by using stratified kFold but as no check of distribution of classes in test batches was made this might be a source of error. 
+Due to varying number of examples of the datasets where some are rather small, evaluation by kFold may infer very small test batches and lead to skewed results. The impact may be enlarged considering our classification is binary. This influence is minimized by using stratified kFold but as no check of distribution of classes in test batches was made this might be a source of error.
