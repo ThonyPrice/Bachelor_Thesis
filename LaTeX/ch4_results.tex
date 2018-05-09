@@ -22,7 +22,7 @@ Studying the interaction between datasets and FS-methods, we regarded these fact
 % ANOVA plots
 \input{snippets/anova_plots}
 
-To establish that FS-methods has a higher impact on datasets with more attributes 2-way analysis of variance (ANOVA) is performed. The results can be seen in \ref{table:anova_values_data}. The achieved p-value do not allow to conclude a significant difference of accuracy corresponding to dataset and FS-methods interaction. However, the p-value of Datasets allows to conclude accuracy is affected by dataset with a significance of 99.9\%.
+To establish that FS-methods has a higher impact on datasets with more attributes 2-way analysis of variance (ANOVA) is performed. The results can be seen in \ref{table:anova_values_data}. The achieved P-value do not allow to conclude a significant difference of accuracy corresponding to dataset and FS-methods interaction. However, the P-value of Datasets allows to conclude accuracy is affected by dataset with a significance of 99.9\%.
 
 % ANOVA computations, dataset-fs
 \input{snippets/anova_dataset_fs}
@@ -31,13 +31,15 @@ These results indicates that independently of which FS-method in our scope that 
 
 \subsection{FS-methods are classifier dependent}
 
-We regarded datasets as an independent variable and compared classification accuracy between different classifiers and FS-methods. The plot in \ref{fig:comp_classif_datasets} visualizes the correlation between different classifiers and FS-methods...
+To investigate the effect of feature selection on different classifiers we are interested in the interactions of these variables. First we are interested in the characteristics of the interaction, secondly if these characteristics are significant.
 
-Performing 2-way anova showed the interaction between classifier-fs combinations are significantly different with a p-value of X. The values are presented in table \ref{table:anova_values_classif}.
+First, we compare classification accuracy between different classifiers and FS-methods by plotting the mean accuracy over all datasets for each classifier-FS combination, \ref{fig:comp_classif_datasets}. The plot shows no clear correlation suggesting behavior of such combinations are independent.
 
-This means... It is particularly interesting because wrapper methods uses classifiers as a black box and should to our understanding be classifier independent.
+Secondly, to conclude interaction between classifiers and FS-methods is independent we performed 2-way ANOVA. The results can be viewed in table \ref{table:anova_values_classif}. Looking at the P-value for accuracy in relation to the interaction between Classifier:Method we can conclude that these interactions are independent with a confidence level of 95\%.
 
 \input{snippets/anova_classif_fs}
+
+These results suggests one has to carefully select the classifier and FS-method to achieve optimal results.
 
 
 \section{Classification improvements}
