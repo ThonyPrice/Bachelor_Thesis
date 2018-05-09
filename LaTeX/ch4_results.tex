@@ -1,6 +1,6 @@
 \chapter{Results and analysis}
 
-We performed classification with 4 different classifiers on 4 different datasets. In each dataset-classifier combination we measured classification accuracy when applying 4 different feature selection (FS) methods. The aim is to investigate the impact of feature selection, and the interaction between different classifiers and FS-methods. To build a basis for comparisons, classification accuracy was measured without FS too.
+We performed classification with four different classifiers on four different datasets. In each dataset-classifier combination we measured classification accuracy when applying four different feature selection (FS) methods. The aim is to investigate the impact of feature selection, and the interaction between different classifiers and FS-methods. To build a basis for comparisons, classification accuracy was measured without FS too.
 
 \section{Variation among factors of experiments}
 \label{Variation_among_factors}
@@ -13,16 +13,16 @@ Before analyzing the results we consider potential interactions between differen
   \item Feature selection methods
 \end{enumerate}
 
-Having 4 of each factor, there are 64 distinct combinations. We are particular interested in two of the interactions, Datasets:FS-methods and Classifiers:FS-methods.
+Having four of each factor, there are 64 distinct combinations. We are particular interested in two of the interactions, Datasets:FS-methods and Classifiers:FS-methods.
 
 \subsection{FS-methods is dataset dependent}
 
-Studying the interaction between datasets and FS-methods, we regarded these factors as independent variables (IVs). Each IV combination is represented by 4 values, the best accuracy achieved with current FS-method by each of the 4 classifiers. Plotting the mean values \ref{fig:comp_acc_datasets}, a positive correlation between all FS-methods and number of attributes in the dataset is evident. This indicates feature selection has a larger impact on classification accuracy when data has a higher dimensionality.
+Studying the interaction between datasets and FS-methods, we regarded these factors as independent variables (IVs). Each IV combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers. Plotting the mean values \ref{fig:comp_acc_datasets}, a positive correlation between all FS-methods and number of attributes in the dataset is evident. This indicates feature selection has a larger impact on classification accuracy when data has a higher dimensionality.
 
 % ANOVA plots
 \input{snippets/anova_plots}
 
-To establish that FS-methods has a higher impact on datasets with more attributes 2-way analysis of variance (ANOVA) is performed. The results can be seen in \ref{table:anova_values_data}. The achieved P-value do not allow to conclude a significant difference of accuracy corresponding to dataset and FS-methods interaction. However, the P-value of Datasets allows to conclude accuracy is affected by dataset with a significance of 99.9\%.
+To establish that FS-methods has a higher impact on datasets with more attributes two-way analysis of variance (ANOVA) is performed. The results can be seen in \ref{table:anova_values_data}. The achieved P-value do not allow to conclude a significant difference of accuracy corresponding to dataset and FS-methods interaction. However, the P-value of Datasets allows to conclude accuracy is affected by dataset with a significance of 99.9\%.
 
 % ANOVA computations, dataset-fs
 \input{snippets/anova_dataset_fs}
@@ -36,7 +36,7 @@ To investigate the effect of feature selection on different classifiers we are i
 
 First, we compare classification accuracy between different classifiers and FS-methods by plotting the mean accuracy over all datasets for each classifier-FS combination, \ref{fig:comp_classif_datasets}. The plot shows no clear correlation suggesting behavior of such combinations are independent.
 
-Secondly, to conclude interaction between classifiers and FS-methods is independent we performed 2-way ANOVA. The results can be viewed in table \ref{table:anova_values_classif}. Looking at the P-value for accuracy in relation to the interaction between Classifier:Method we can conclude that these interactions are independent with a confidence level of 95\%.
+Secondly, to conclude interaction between classifiers and FS-methods is independent we performed two-way ANOVA. The results can be viewed in table \ref{table:anova_values_classif}. Looking at the P-value for accuracy in relation to the interaction between Classifier:Method we can conclude that these interactions are independent with a confidence level of 95\%.
 
 \input{snippets/anova_classif_fs}
 
@@ -51,6 +51,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
 
 % --- Tables ---
 \begin{table}[h]
+  \centering
   \input{../tables/ANN_tidy}
   \caption[]%
   {{\small Classification accuracy achieved by ANN was improved on all datasets by the use of some feature selection method.}}
@@ -58,6 +59,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
 \end{table}
 
 \begin{table}[h]
+  \centering
   \input{../tables/CART_tidy} \\
   \caption[]%
   {{\small All datasets except MIAS benefited from feature selection using CART Decision Tree classifier.}}
@@ -65,6 +67,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
 \end{table}
 
 \begin{table}[h]
+  \centering
   \input{../tables/NB_tidy} \\
   \caption[]%
   {{\small Na\"ive Bayes sees improvement or equivalent accuracy by feature selection on every dataset.}}
@@ -72,6 +75,7 @@ However, majority of the classifiers has some FS-method that achieved lower accu
 \end{table}
 
 \begin{table}[h]
+  \centering
   \input{../tables/SVM_tidy} \\
   \caption[]%
   {{\small Classification accuracy achieved by SVM was improved or equivalent on every dataset with use of feature selection.}}
