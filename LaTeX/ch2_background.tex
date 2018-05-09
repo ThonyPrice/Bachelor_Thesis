@@ -34,7 +34,7 @@ binary splitting is performed. The binary spilt is based on classification error
 
 \subsection{Naïve Bayes}
 
-Naïve Bayes (NB) have beens studied since the 1950 and is a supervised, probabilistic machine learning classifier. It uses the maximum posterior which statistically determines the probability of a data point, x, belonging to a certain class, y, given the observed data points:
+Naïve Bayes (NB) have beens studied since the 1950 and is a supervised, probabilistic machine learning classifier. It uses the  posterior which statistically determines the probability of a data point, x, belonging to a certain class, y, given the observed data points:
 
 \[
 P(y|x) = \frac{P(x|y)P(y)}{P(x)}
@@ -108,18 +108,24 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 
 \section{Related Work}
 
-\textbf{ TBD: Make subsections where each section coves a specific topic. This can also be extended with almost another full page.}
+The application of machine learning onto medical diagnostic is a well studied one. Since machine learning proved valuable empirical results medical datasets have been widely used to assess the performance of a multitude of classification strategies and methods. Breast cancer is one of the disease commonly studied within the filed of machine learning \parencite{kononenko2001}.
 
-The application of machine learning onto breast cancer classification is a well studied one. Since machine learning proved valuable empirical results breast cancer datasets have been widely used to assess the performance of a multitude of classification strategies and methods. [Insert ref. to early paper here].
 
-Exhaustive studies for optimal Classifiers has been made as by \parencite{ramos2012} which tested 20,000 classification configurations to evaluated their ability to correctly classify malignant cancer. The achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve.
-% Add which method achieved the result above
+There are several was to optimize your machine learning methodology. \textcite{c201416} explains that feature selection algorithms can be used for a vast amount of benefits such as: simplicity, stability, number of reduced features, classification accuracy, storage and computational requirements. They also claim that comparison between different feature selection methods can only be done on one dataset at a time since the underlying algorithms depend on the structure of the data. Improvement in prediction accuracy was achieved in the paper by using feature selection for several datasets to demonstrate the applicability of feature selection techniques.
+
+\subsection{Optimization of classification accuracy in CAD}
+
+Exhaustive studies for optimal Classifiers has been made as by \parencite{ramos2012} which tested 20,000 classification configurations to evaluated their ability to correctly classify malignant cancer. The achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve. The method to achieve this result was an feed forward, back propagating ANN.
 
 With a foundation of well performing classifiers studies investigating more fine tuned approaches building upon earlier results were being made. \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets by nearly 3\%.
 
-\textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network. The highest accuracy acheived was 98\% using 3 hidden layers and 21 neurons with three distinct transfer functions.
+\textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network. The highest accuracy achieved was 98\% using 3 hidden layers and 21 neurons with three distinct transfer functions.
+
+\subsection{Optimization classification accuracy in CAD using feature selection}
 
 \textcite{akay2009} investigated the performance of classification of a SVM with a RBF kernel using feature selection, filtering by F-score. They achieved a classification accuracy of 99.51\% which accordingly was among the highest scores recorded by then (2007).
+
+\textcite{b20103177} demonstrated how  binary particle swarm optimization (BPSO) and genetic algorithm (GA) techniques as feature selection methods improved the accuracy for classifying coronary artery disease using a SVM. The feature selection methods only used 11 features and 12 features respectively compared to the full data set of 23 features and achieved an improvement of 2-4\% accuracy.
 
 \textcite{karabulut2012} made a comparative study on the effect of feature selection on classification accuracy and found up to 15.55\% improvement on classification rates. The study used only filter algorithms for feature selection, among those were both information and Chi-square. The study applied the selected features on three classification methods, Naive Bayes, Artificial Neural Network as Multilayer Perceptron, and J48 decision tree classifier on 15 different datasets including WBCD.
 
