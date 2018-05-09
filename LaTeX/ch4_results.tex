@@ -1,11 +1,11 @@
 \chapter{Results and analysis}
 
-We performed classification with 4 different classifiers on 4 different datasets. In each dataset-classifier we measured each classification accuracy when applying 4 different feature selection (FS) methods. The aim is to investigate the impact of feature selection, and the interaction between different classifiers and FS-methods. To build a basis for comparisons classification accuracy was measured without FS too.
+We performed classification with 4 different classifiers on 4 different datasets. In each dataset-classifier combination we measured classification accuracy when applying 4 different feature selection (FS) methods. The aim is to investigate the impact of feature selection, and the interaction between different classifiers and FS-methods. To build a basis for comparisons, classification accuracy was measured without FS too.
 
 \section{Variation among factors of experiments}
 \label{Variation_among_factors}
 
-Before analyzing the results we must consider potential interaction between the different factors involved in the experiment, these are:
+Before analyzing the results we consider potential interactions between different factors involved in the experiment, these are:
 
 \begin{enumerate}
   \item Datasets
@@ -13,26 +13,21 @@ Before analyzing the results we must consider potential interaction between the 
   \item Feature selection methods
 \end{enumerate}
 
-As we have four of each the there are 64 different combinations of these factors. We are interested of two interactions in particular:
-
-\begin{itemize}
-  \item \textbf{1 * 3} Because this interaction renders...
-  \item \textbf{2 * 3} Because this interaction renders...
-\end{itemize}
-
-To study these interactions we performed anova... See below...
+Having 4 of each factor, there are 64 distinct combinations. We are particular interested in two of the interactions, Datasets:FS-methods and Classifiers:FS-methods.
 
 \subsection{FS-methods is dataset dependent}
 
-Comparing the accuracy of each method with respect to the datasets shows a positive correlation, as visualised in plot \ref{fig:comp_acc_datasets}. The correlation indicates datasets with a larger amount of features benefit more from feature selection than datasets with smaller amount of features.
+Studying the interaction between datasets and FS-methods, we regarded these factors as independent variables (IVs). Each IV combination is represented by 4 values, the best accuracy achieved with current FS-method by each of the 4 classifiers. Plotting the mean values \ref{fig:comp_acc_datasets}, a positive correlation between all FS-methods and number of attributes in the dataset is evident. This indicates feature selection has a larger impact on classification accuracy when data has a higher dimensionality.
 
 % ANOVA plots
 \input{snippets/anova_plots}
 
-ANOVA shows a statistical significance in the correlation due to the found values of the test, table \ref{table:anova_values_data}. The significance is evident due to the very small value $P(>F)$, probability of not rejecting the null hypothesis. Thus we can confidently reject the null hypothesis which is datasets are significantly the same in respect to FS-methods.
+To establish that FS-methods has a higher impact on datasets with more attributes 2-way analysis of variance (ANOVA) is performed. The results can be seen in \ref{table:anova_values_data}. The achieved p-value do not allow to conclude a significant difference of accuracy corresponding to dataset and FS-methods interaction. However, the p-value of Datasets allows to conclude accuracy is affected by dataset with a significance of 99.9\%.
 
 % ANOVA computations, dataset-fs
 \input{snippets/anova_dataset_fs}
+
+These results indicates that independently of which FS-method in our scope that is applied, datasets with larger amount of features benefits more from feature selection when it comes to classification accuracy.
 
 \subsection{FS-methods are classifier dependent}
 
