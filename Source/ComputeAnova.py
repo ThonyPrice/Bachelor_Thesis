@@ -72,7 +72,11 @@ def IV_dataset_method(datasets, path):
             ])
             # Add each classifiers max for ANOVA computations
             for i in range(4):
-                anova_results.append((max(anova_classifs[i]), data_name, method_name))
+                anova_results.append((
+                    np.asarray(anova_classifs[i]).max(),
+                    data_name,
+                    method_name
+                ))
 
     plot_df = pd.DataFrame.from_records(plot_results)
     anova_df = pd.DataFrame.from_records(anova_results)
@@ -234,7 +238,7 @@ def renameCols(df, a, b):
 
 def main():
     path = '../Json2/'  # Where to collect data?
-    plt_show = True    # Show plot?
+    plt_show = False    # Show plot?
     files = getFilesByDataset(path)
 
     plot_df, anova_df, x_axis = IV_dataset_method(files, path)
