@@ -30,6 +30,7 @@ To establish that FS-methods has a higher impact on datasets with more attribute
 These results indicates that independently of which FS-method in our scope that is applied, datasets with larger amount of features benefits more from feature selection when it comes to classification accuracy.
 
 \subsection{FS-methods are classifier dependent}
+\label{sec:fs_methods_classifiers}
 
 To investigate the effect of feature selection on different classifiers we are interested in the interactions of these variables. First we are interested in the characteristics of the interaction, secondly if these characteristics are significant.
 
@@ -80,13 +81,14 @@ However, majority of the classifiers has some FS-method that achieved lower accu
 
 \subsection{Improvement is significant}
 
-T-test goes here...
+To ensure the suggestion that application of some FS-method improves classification accuracy t-test was performed. Regarding the accuracies achieved without feature selection as one distribution and best accuracies achieved with feature selection as the other.
+
+Performing the t-test the resulting P-value was 0.077. This allows us to reject the null hypothesis that the distributions are equal with a confidence level of 90\%. Thus proving improvement of classification accuracy by feature selection is statistically significant.
 
 \subsection{Differences among classifiers}
 
-We found there is a large variance between results depending on which dataset, classifier and FS-method that is applied. These findings was addressed in section \ref{Variation_among_factors}. Here we further analyze these differences.
-
-Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and \ref{fig:plots_sfs} represents one feature selection method. The subplots, like \ref{fig:RHH_chi2} visualises the classification accuracy on one dataset in respect to number of features.
+As addressed in section \ref{Variation_among_factors} classifiers behave differently depending on FS-method and datasets.
+In order to compare classification improvement among different FS-methods and datasets \textbf{Gain} is computed. Gain measures the improvement of FS as the ratio between best achieved FS accuracy and full dataset accuracy. The accumulated gain for each classifier is presented in \ref{table:gain_comparison}. Below these results and differences are analyzed in further detail with respect to each classifier.
 
 \begin{table}[hp]
   \input{snippets/gain_comparison}
@@ -97,7 +99,7 @@ Each plot \ref{fig:plots_chi2}, \ref{fig:plots_entropy}, \ref{fig:plots_sbs} and
 
 \subsubsection{Artificial Neural Network}
 
-Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.34 which was the highest among all classifiers. However, ANN consistently performs the worst of all classifiers in terms of accuracy. The ANN also provides the least consistent results with strong fluctuations in the results and wide standard deviation margins. Such fluctuations may suggest issues regarding convergence. These characteristics are evident in plot \ref{fig:WBCD_chi2}.
+Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.34 which was the highest among all classifiers. However, ANN consistently performs the worst of all classifiers in terms of accuracy. The ANN also provides the least consistent results with strong fluctuations in the results and wide standard deviation margins. Such fluctuations may suggest issues regarding convergence. These characteristics are evident in plot \ref{fig:WBCD_chi2} showcasing the accuracy by each FS-method as a function of number of attributes..
 
 \input{snippets/plots_chi2}
 
