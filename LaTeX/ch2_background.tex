@@ -108,22 +108,22 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 
 \section{Related Work}
 
-The application of machine learning onto medical diagnostic is a well studied one. Since machine learning proved valuable empirical results medical datasets have been widely used to assess the performance of a multitude of classification strategies and methods. Breast cancer is one of the disease commonly studied within the filed of machine learning \parencite{kononenko2001}.
-
-
-There are several was to optimize your machine learning methodology. \textcite{c201416} explains that feature selection algorithms can be used for a vast amount of benefits such as: simplicity, stability, number of reduced features, classification accuracy, storage and computational requirements. They also claim that comparison between different feature selection methods can only be done on one dataset at a time since the underlying algorithms depend on the structure of the data. Improvement in prediction accuracy was achieved in the paper by using feature selection for several datasets to demonstrate the applicability of feature selection techniques.
+The application of machine learning onto medical diagnostic is a well studied one. Since machine learning has proved valuable empirical results medical datasets have been widely used to assess the performance of a multitude of classification strategies and methods. Breast cancer is one of the disease commonly studied within the filed of machine learning \parencite{kononenko2001}.
 
 \subsection{Optimization of classification accuracy in CAD}
 
-Exhaustive studies for optimal Classifiers has been made as by \parencite{ramos2012} which tested 20,000 classification configurations to evaluated their ability to correctly classify malignant cancer. The achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve. The method to achieve this result was an feed forward, back propagating ANN.
+Exhaustive studies for optimal Classifiers has been made as by \parencite{ramos2012} which tested 20,000 classification configurations to evaluated their ability to correctly classify malignant cancer. They achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve. The method to achieve this result was a feed forward, back propagating ANN.
 
-With a foundation of well performing classifiers studies investigating more fine tuned approaches building upon earlier results were being made. \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets by nearly 3\%.
+With a foundation of well performing classifiers such as \parencite{ramos2012}, studies investigating more fine tuned approaches building upon earlier results has been made. \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets by nearly 3\%.
 
 \textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network. The highest accuracy achieved was 98\% using 3 hidden layers and 21 neurons with three distinct transfer functions.
 
 \subsection{Optimization classification accuracy in CAD using feature selection}
 
-\textcite{akay2009} investigated the performance of classification of a SVM with a RBF kernel using feature selection, filtering by F-score. They achieved a classification accuracy of 99.51\% which accordingly was among the highest scores recorded by then (2007).
+
+There are several ways to optimize a machine learning methodology. \textcite{c201416} explains that feature selection algorithms can be used for a vast amount of benefits such as: simplicity, stability, number of reduced features, classification accuracy, storage and computational requirements. They also claim that comparison between different feature selection methods can only be done on one dataset at a time since the underlying algorithms depend on the structure of the data. Improvement in prediction accuracy was achieved in the paper by using feature selection for several datasets to demonstrate the applicability of feature selection techniques.
+
+\textcite{akay2009} investigated the performance of classification of a SVM with a RBF kernel using feature selection, filtering by F-score. They achieved a classification accuracy of 99.51\% which accordingly was among the highest scores recorded by then (2007). It should be noted, the accuracy was measured on only one dataset meaning the result can not be generalized to datasets at large. The dataset was WBCD which will be included in our experiments.
 
 \textcite{b20103177} demonstrated how  binary particle swarm optimization (BPSO) and genetic algorithm (GA) techniques as feature selection methods improved the accuracy for classifying coronary artery disease using a SVM. The feature selection methods only used 11 features and 12 features respectively compared to the full data set of 23 features and achieved an improvement of 2-4\% accuracy.
 
