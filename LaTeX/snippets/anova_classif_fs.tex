@@ -1,21 +1,21 @@
 \begin{table}[h]
   \begin{center}
-  \begin{tabular}{l|r|r|r|r|r|r|}
-  \cline{2-7}
-  & $RSS$ & $df$ & $F$ & $P(>F)$ & $\eta^2$ & $\omega^2$ \\ \cline{1-7}
+  \begin{tabular}{l|r|r|r|r|l}
+  \cline{2-5}
+  & $RSS$ & $df$ & $F$ & $P(>F)$ \\ \cline{1-5}
   \multicolumn{1}{ |l| }{\textbf{Classifier}}
-  & 0.3336 &  3.0 & 16.491 & 1.6860e-07 & 0.2149 & 0.2010 \\
-  \cline{1-7}
+  & 0.3336 &  3.0 & 16.491 & 1.6860e-07 & *** \\
+  \cline{1-5}
   \multicolumn{1}{ |l| }{\textbf{Method}}
-  & 0.7383 &  3.0 & 36.495 & 1.9503e-12 & 0.4757 & 0.4607 \\
-  \cline{1-7}
+  & 0.7383 &  3.0 & 36.495 & 1.9503e-12 & *** \\
+  \cline{1-5}
   \multicolumn{1}{ |l| }{\textbf{Classifier:Method}}
-  & 0.1565 &  9.0 & 2.5783 & 1.6490e-02 & 0.1008 & 0.0614 \\
-  \cline{1-7}
+  & 0.1565 &  9.0 & 2.5783 & 1.6490e-02 & ** \\
+  \cline{1-5}
   \multicolumn{1}{ |l| }{\textbf{Residual}}
   & 0.3237 &  48.0 \\ \cline{1-3}
   \end{tabular}
-  \caption{ANOVA values of accuracy in relation to classifier, method and the interaction of classifiers and methods.}
+  \caption{ANOVA values of accuracy in relation to classifier, method and the interaction of classifiers and methods. $RSS$: Residual sum of squares. $df$: Degrees of Freedom. $F$: Mean Square for the Model divided by the Mean Square for Error (error/residual).  $P(>F)$: the significance probability associated with $F$. The stars indicate the range of significant level: 0 "***" 0.001 "**" 0.01 "*" 0.05 " . " 0.1 " " 1. }
   \label{table:anova_values_classif}
   \end{center}
 \end{table}
