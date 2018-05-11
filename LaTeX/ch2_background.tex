@@ -34,7 +34,7 @@ binary splitting is performed. The binary spilt is based on classification error
 
 \subsection{Naïve Bayes}
 
-Naïve Bayes (NB) have beens studied since the 1950 and is a supervised, probabilistic machine learning classifier. It uses the  posterior which statistically determines the probability of a data point, x, belonging to a certain class, y, given the observed data points:
+Naïve Bayes (NB) have beens studied since the 1950 and is a supervised, probabilistic machine learning classifier. It uses the  posterior which statistically determines the probability of a data point $x$ belonging to a certain class $y$ given the observed data points:
 
 \[
 P(y|x) = \frac{P(x|y)P(y)}{P(x)}
@@ -60,7 +60,7 @@ Support vector machines (SVM) where developed in the 1990s and are base on the s
   \label{fig:SVM_Margin}
 \end{figure}
 
-The support vector classifier is an extension to the maximal margin method to try to create a method with greater robustness and better classification to most training observations. In order to achieve this goal an slack variable in introduced to allow points to be on the wrong side of the margin. Lastly, a SVM converts the support vector classifier from a liner separator as to  a non-liner separator of data points by using so called Kernels. The classifier can now separate more complex data sets with higher accuracy since its not limited to create linear hyperplanes \textcite{James:2014}.
+The support vector classifier is an extension to the maximal margin method to try to create a method with greater robustness and better classification to most training observations. In order to achieve this goal an slack variable in introduced to allow points to be on the wrong side of the margin. Lastly, a SVM converts the support vector classifier from a liner separator as to  a non-liner separator of data points by using so called Kernels. The classifier can now separate more complex data sets with higher accuracy since its not limited to create linear hyperplanes \parencite{James:2014}.
 
 
 \section{Feature Selection}
@@ -115,7 +115,7 @@ Multiple studies exploring optimal classifiers for CAD has been conducted. \text
 
 With a foundation of well performing classifiers such as \parencite{ramos2012}, studies investigating more fine tuned approaches building upon earlier results has been made. \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets by nearly 3\%.
 
-\textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network. The highest accuracy achieved was 98\% using 3 hidden layers and 21 neurons with three distinct transfer functions.
+\textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network on the WBCD dataset. The highest accuracy achieved was 98\% using 3 hidden layers and 21 neurons with three distinct transfer functions.
 
 \subsection{Optimization classification accuracy in CAD using feature selection}
 
