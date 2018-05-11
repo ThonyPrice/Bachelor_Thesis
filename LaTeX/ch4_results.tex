@@ -37,17 +37,14 @@ Visualizing the values used in the ANOVA test we can spot the found correlation 
 \subsection{FS-methods are classifier dependent}
 \label{sec:fs_methods_classifiers}
 
-To investigate the effect of feature selection on different classifiers two-way ANOVA we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets.
-
-First we are interested in the characteristics of the interaction, secondly if these characteristics are significant.
-
-First, we compare classification accuracy between different classifiers and FS-methods by plotting the mean accuracy over all datasets for each classifier-FS combination, \ref{fig:comp_classif_datasets}. The plot shows no clear correlation suggesting behavior of such combinations are independent.
-
-Secondly, to conclude interaction between classifiers and FS-methods is independent we performed two-way ANOVA. The results can be viewed in table \ref{table:anova_values_classif}. Looking at the P-value for accuracy in relation to the interaction between Classifier:Method we can conclude that these interactions are independent with a confidence level of 95\%.
+To investigate the effect of feature selection on different classifiers we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The values are presented in \ref{table:anova_values_classif}.
 
 \input{snippets/anova_classif_fs}
 
-These results suggests one has to carefully select the classifier and FS-method to achieve optimal results.
+The significance of Classifier:Method allows to conclude there is a dependency between accuracy and the interaction between classifiers and methods. Plotting the values of the test hints visualizes this correlation \ref{fig:comp_classif_datasets}. To further analyze the interaction a Tukey's test \parencite{Haynes2013}. XXX
+
+
+This suggests one has to carefully select the classifier and FS-method to achieve optimal results.
 
 
 \section{Classification improvements}
