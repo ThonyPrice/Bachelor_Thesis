@@ -37,22 +37,20 @@ Visualizing the values used in the ANOVA test we can spot the found correlation 
 \subsection{FS-methods are classifier dependent}
 \label{sec:fs_methods_classifiers}
 
-To investigate the effect of feature selection on different classifiers two-way ANOVA we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets.
-
-First we are interested in the characteristics of the interaction, secondly if these characteristics are significant.
-
-First, we compare classification accuracy between different classifiers and FS-methods by plotting the mean accuracy over all datasets for each classifier-FS combination, \ref{fig:comp_classif_datasets}. The plot shows no clear correlation suggesting behavior of such combinations are independent.
-
-Secondly, to conclude interaction between classifiers and FS-methods is independent we performed two-way ANOVA. The results can be viewed in table \ref{table:anova_values_classif}. Looking at the P-value for accuracy in relation to the interaction between Classifier:Method we can conclude that these interactions are independent with a confidence level of 95\%.
+To investigate the effect of feature selection on different classifiers we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The values are presented in \ref{table:anova_values_classif}.
 
 \input{snippets/anova_classif_fs}
 
-These results suggests one has to carefully select the classifier and FS-method to achieve optimal results.
+The significance of both Classifier and Method concludes they independently effect what accuracy is achieved. Their interaction, Classifier:Method is significant too and allows to reason there is a dependency between accuracy and the interaction between classifiers and methods. Plotting the values used in the test visualizes this correlation \ref{fig:comp_classif_datasets}.
+
+To further analyze the interaction we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used. Only in the case of SVM difference in classification rate is seen with same classifier and different classification methods. In these instances wrapper methods performed 21\% and 33\% better than chi2.
+
+To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. When choosing SVM the choice of feature selection has greatest impact.
 
 
 \section{Classification improvements}
 
-After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. From this we can conclude that classification accuracy is equal or improved for all classifiers on all datasets tested in our scope by use of \textit{some} feature selection method. The only exception is the Mias dataset with Decision tree \ref{table:CART}, it performed worse with feature selection.
+After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measures in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy. From this we can conclude that classification accuracy is equal or improved for all classifiers on all datasets tested in our scope by use of \textit{some} feature selection method. The only exception is the Mias dataset with Decision tree \ref{table:CART}, it performed worse with feature selection.
 
 However, majority of the classifiers has some FS-method that achieved lower accuracy compared to full dataset. Again this is viewed in tables \ref{table:ANN}, \ref{table:CART}, \ref{table:NB} and \ref{table:SVM}. In 11 of 16 instances at least one FS-method performed worse. This is in line with our findings that FS-method is classifier dependent suggesting one have to select the combination of classifier and FS-method with care.
 
@@ -92,9 +90,17 @@ However, majority of the classifiers has some FS-method that achieved lower accu
 
 \subsection{Improvement is significant}
 
-To ensure the suggestion that application of some FS-method improves classification accuracy t-test was performed. Regarding the accuracies achieved without feature selection as one distribution and best accuracies achieved with feature selection as the other.
+To ensure the suggestion that application of some FS-method improves classification accuracy t-test was performed. The t-test values constitutes of the accuracies achieved without feature selection as one distribution. The other are the best accuracies achieved with feature selection. The t-test values are summarized in \ref{table:t_test_values}.
 
-Performing the t-test the resulting P-value was 0.077. This allows us to reject the null hypothesis that the distributions are equal with a confidence level of 90\%. Thus proving improvement of classification accuracy by feature selection is statistically significant.
+\begin{table}[h]
+  \centering
+  \input{snippets/t_test_values} \\
+  \caption[]%
+  {{\small The highest accuracy achieved by any FS-method on all classifier-dataset combinations and corresponding accuracies achieved without any feature selection (Full). T-test comparing the distributions results in significantly higher results by classification with feature selection.}}
+  \label{table:t_test_values}
+\end{table}
+
+Performing the t-test resulting P-value was 0.077. This allows us to reject the null hypothesis that the distributions are equal with a confidence level of 90\%. Thus, improvement of classification accuracy by feature selection is statistically significant.
 
 \subsection{Differences among classifiers}
 
