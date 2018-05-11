@@ -17,35 +17,35 @@ Having four of each factor, there are 64 distinct combinations. We are particula
 
 \subsection{Datasets with larger dimensionality achieves better classification accuracy}
 
-Studying the interaction between datasets and FS-methods, we regarded these factors as independent variables (IVs). Each IV combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers.
+Studying the interaction between datasets and FS-methods we regarded these factors as independent variables (IVs). Each IV combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers.
 
-Two-way analysis of variance (ANOVA) is performed on the IVs. The results are found in \ref{table:anova_values_data} and suggests three conclusions:
+Two-way analysis of variance (ANOVA) is performed on the IVs. The results are presented in \ref{table:anova_values_data} and suggests three conclusions:
 
 % ANOVA computations, dataset-fs
 \input{snippets/anova_dataset_fs}
 
 First, the significance of Dataset allows to conclude a dependency between accuracies and datasets is present. This is to be expected because different datasets provide varying basis for prediction. However, as all accuracies used in the test was obtained by feature selection this test gives no information on whether the correlation lies among the datasets themselves of the application of feature selection.
 
-Secondly, absent significance of Method conclude we can not reject that there is no correlation between FS-method and accuracy.
+Secondly, the absence of significance in Method mean we can not reject that there is no correlation between FS-method and accuracy.
 
 Thirdly, no significance of Dataset:Method indicates we can not reliably conclude that the interaction between datasets and methods has a correlation with achieved accuracy.
 
-Visualizing the values used in the ANOVA test we can spot the found correlation between datasets and accuracy \ref{fig:comp_acc_datasets}. The correlation appears positive in respect to number of attributes suggesting either feature selection has a larger impact on classification accuracy when data has a higher dimensionality or higher dimensioned datasets on their own lead to better accuracy.
+Visualizing the values used in the ANOVA test, the correlation between datasets and accuracy is apparent \ref{fig:comp_acc_datasets}. It is positive in respect to number of attributes suggesting either feature selection has a larger impact on classification accuracy when data has a higher dimensionality or higher dimensioned datasets on their own lead to better accuracy.
 
 \input{snippets/anova_plots}
 
-\subsection{FS-methods are classifier dependent}
+\subsection{Interaction between FS-methods and classifiers}
 \label{sec:fs_methods_classifiers}
 
-To investigate the effect of feature selection on different classifiers we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The values are presented in \ref{table:anova_values_classif}.
+To investigate the effect of feature selection on different classifiers we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The ANOVA result is presented in \ref{table:anova_values_classif}.
 
 \input{snippets/anova_classif_fs}
 
 The significance of both Classifier and Method concludes they independently effect what accuracy is achieved. Their interaction, Classifier:Method is significant too and allows to reason there is a dependency between accuracy and the interaction between classifiers and methods. Plotting the values used in the test visualizes this correlation \ref{fig:comp_classif_datasets}.
 
-To further analyze the interaction we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used. Only in the case of SVM difference in classification rate is seen with same classifier and different classification methods. In these instances wrapper methods performed 21\% and 33\% better than chi2.
+To further analyze the interaction of classifiers and FS-methods we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used. Only in the case of SVM difference in classification rate is seen with same classifier and different classification methods. In these instances wrapper methods performed 21\% and 33\% better than chi2.
 
-To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. When choosing SVM the choice of feature selection has greatest impact.
+To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. When choosing SVM, the choice of feature selection has greatest impact where wrapper methods perform better.
 
 
 \section{Classification improvements}
