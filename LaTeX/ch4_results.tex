@@ -15,19 +15,24 @@ Before analyzing the results we consider potential interactions between differen
 
 Having four of each factor, there are 64 distinct combinations. We are particular interested in two of the interactions, Datasets:FS-methods and Classifiers:FS-methods.
 
-\subsection{FS-methods is dataset dependent}
+\subsection{Datasets with larger dimensionality achieves better classification accuracy}
 
-Studying the interaction between datasets and FS-methods, we regarded these factors as independent variables (IVs). Each IV combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers. Plotting the mean values \ref{fig:comp_acc_datasets}, a positive correlation between all FS-methods and number of attributes in the dataset is evident. This indicates feature selection has a larger impact on classification accuracy when data has a higher dimensionality.
+Studying the interaction between datasets and FS-methods, we regarded these factors as independent variables (IVs). Each IV combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers.
 
-% ANOVA plots
-\input{snippets/anova_plots}
-
-To establish that FS-methods has a higher impact on datasets with more attributes two-way analysis of variance (ANOVA) is performed. The results can be seen in \ref{table:anova_values_data}. The achieved P-value do not allow to conclude a significant difference of accuracy corresponding to dataset and FS-methods interaction. However, the P-value of Datasets allows to conclude accuracy is affected by dataset with a significance of 99.9\%.
+Two-way analysis of variance (ANOVA) is performed on the IVs. The results are found in \ref{table:anova_values_data} and suggests three conclusions:
 
 % ANOVA computations, dataset-fs
 \input{snippets/anova_dataset_fs}
 
-These results indicates that independently of which FS-method in our scope that is applied, datasets with larger amount of features benefits more from feature selection when it comes to classification accuracy.
+First, the significance of Dataset allows to conclude a dependency between accuracies and datasets is present. This is to be expected because different datasets provide varying basis for prediction. However, as all accuracies used in the test was obtained by feature selection this test gives no information on whether the correlation lies among the datasets themselves of the application of feature selection.
+
+Secondly, absent significance of Method conclude we can not reject that there is no correlation between FS-method and accuracy.
+
+Thirdly, no significance of Dataset:Method indicates we can not reliably conclude that the interaction between datasets and methods has a correlation with achieved accuracy.
+
+Visualizing the values used in the ANOVA test we can spot the found correlation between datasets and accuracy \ref{fig:comp_acc_datasets}. The correlation appears positive in respect to number of attributes suggesting either feature selection has a larger impact on classification accuracy when data has a higher dimensionality or higher dimensioned datasets on their own lead to better accuracy.
+
+\input{snippets/anova_plots}
 
 \subsection{FS-methods are classifier dependent}
 \label{sec:fs_methods_classifiers}
