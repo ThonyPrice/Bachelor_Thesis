@@ -50,57 +50,21 @@ To conclude these results, they suggests one primarily has to carefully select t
 
 \section{Classification improvements}
 
-After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measures in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy. From this we can conclude that classification accuracy is equal or improved for all classifiers on all datasets tested in our scope by use of \textit{some} feature selection method. The only exception is the Mias dataset with Decision tree \ref{table:CART}, it performed worse with feature selection.
+After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measured in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy. From this we can conclude that classification accuracy is equal or improved for all classifiers on all datasets tested in our scope by use of \textit{some} feature selection method. The only exception is the Mias dataset with Decision tree \ref{table:CART}, it performed worse with feature selection.
 
 However, majority of the classifiers has some FS-method that achieved lower accuracy compared to full dataset. Again this is viewed in tables \ref{table:ANN}, \ref{table:CART}, \ref{table:NB} and \ref{table:SVM}. In 11 of 16 instances at least one FS-method performed worse. This is in line with our findings that FS-method is classifier dependent suggesting one have to select the combination of classifier and FS-method with care.
 
 % --- Tables ---
-\begin{table}[h]
-  \centering
-  \input{../tables/ANN_tidy}
-  \caption[]%
-  {{\small Classification accuracy achieved by ANN. Accuracy improved on all datasets by the use of some feature selection method. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
-  \label{table:ANN}
-\end{table}
-
-\begin{table}[h]
-  \centering
-  \input{../tables/CART_tidy} \\
-  \caption[]%
-  {{\small All datasets except MIAS benefited in classification accuracy from feature selection using CART Decision Tree classifier. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
-  \label{table:CART}
-\end{table}
-
-\begin{table}[h]
-  \centering
-  \input{../tables/NB_tidy} \\
-  \caption[]%
-  {{\small Na\"ive Bayes sees improvement or equivalent accuracy by feature selection on every dataset. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
-  \label{table:NB}
-\end{table}
-
-\begin{table}[h]
-  \centering
-  \input{../tables/SVM_tidy} \\
-  \caption[]%
-  {{\small Classification accuracy achieved by SVM. Accuracy was improved or equivalent on every dataset with use of feature selection. Rows represent feature selection method, columns represent dataset, bold font indicates the highest value.}}
-  \label{table:SVM}
-\end{table}
-% ---/Tables ---
+\input{snippets/combines_tables}
 
 \subsection{Improvement is significant}
 
 To ensure the suggestion that application of some FS-method improves classification accuracy t-test was performed. The t-test values constitutes of the accuracies achieved without feature selection as one distribution. The other are the best accuracies achieved with feature selection. The t-test values are summarized in \ref{table:t_test_values}.
 
-\begin{table}[h]
-  \centering
-  \input{snippets/t_test_values} \\
-  \caption[]%
-  {{\small The highest accuracy achieved by any FS-method on all classifier-dataset combinations and corresponding accuracies achieved without any feature selection (Full). T-test comparing the distributions results in significantly higher results by classification with feature selection.}}
-  \label{table:t_test_values}
-\end{table}
+\input{snippets/t_test_values}
 
-Performing the t-test resulting P-value was 0.077. This allows us to reject the null hypothesis that the distributions are equal with a confidence level of 90\%. Thus, improvement of classification accuracy by feature selection is statistically significant.
+
+Performing the t-test resulting a significant distinction between the distributions. This allows us to reject the null hypothesis that the distributions are equal with a confidence level of 90\%. Thus, improvement of classification accuracy by feature selection is statistically significant with an certainty of 90\%.
 
 \subsection{Differences among classifiers}
 
@@ -128,15 +92,14 @@ The decision tree shows consistent performance generally increasing performance 
 
 \subsubsection{Naïve Bayes}
 
-Naive Bayes had the least accumulated gain from feature selection as seen in table \ref{table:gain_comparison}. The largest improvement was seen in plot \ref{fig:EN_chi2} using 2 of 4 available attributes. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy sees little to no improvement when increasing the number of attributes.
+Naive Bayes had the least accumulated gain from feature selection as seen in table \ref{table:gain_comparison}. The largest improvement was seen in plot \ref{fig:EN_chi2} using 2 of 4 available attributes. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy presents little to no improvement when increasing the number of attributes.
 
-\subsection{Combined plots of mean accuracy}
 \input{snippets/plots_chi2}
 \input{snippets/plots_entropy}
 \input{snippets/plots_sbs}
 \input{snippets/plots_sfs}
 
-
+\newpage
 \section{Computation time}
 
 \textbf{Under construction, profiling not run yet.}

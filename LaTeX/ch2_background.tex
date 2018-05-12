@@ -12,7 +12,8 @@ The term artificial neural networks (ANN) originates from the structure of the a
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=0.7\linewidth]{images/ANN_representation.jpg}
-  \caption{Network diagram for a two layer neural network. Image courtesy of \textcite{Bishop:2006}}
+  \caption[]
+  {\small Network diagram for a two layer neural network. $X_D$ represents the input data which is linearly transformed by the weights $W_{MD}$ and bias $X_0$ and forwarded to the hidden units. From the hidden units the data is transformed in the same manner to the output layer $y_K$ which corresponds to the potential classes of the input data. Image courtesy of \textcite{Bishop:2006}.}
   \label{fig:ANN_representation}
 \end{figure}
 
@@ -46,7 +47,7 @@ This formula can be read as:
 Posterior = \frac{Prior * Likelihood}{Evidence}
 \]
 
-The name of the methods originates from the fact that the maximum posterior is calculated with help of the Bayes' Theorem and the method is naïve in the aspect of it assuming that all features in the data are independent form each other \parencite{george2012}.
+Where Prior is the prior probability of $y$ belonging to some distribution $\theta$, likelihood the probability of $x$ belonging to distribution $\theta$ when having observed $y$. The evidence is the probability of $\theta$ and finally the Posterior is the conditional probability of $y$ given $x$. The name of the methods originates from the fact that the maximum posterior is calculated with help of the Bayes' Theorem and the method is naïve in the aspect of it assuming that all features in the data are independent form each other \parencite{george2012}.
 
 
 \subsection{Support vector machines}
@@ -56,7 +57,8 @@ Support vector machines (SVM) where developed in the 1990s and are base on the s
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=0.7\linewidth]{images/Margin_SVM.png}
-  \caption{Image of SVM margin. The red dots represent one class and the blue dots represent another class. The arrows indicates the maximal margin. Image courtesy of \textcite{James:2014}}
+  \caption[]
+  {\small Image of SVM margin. The red dots represent one class and the blue dots represent another class. The arrows indicates the maximal margin. Image courtesy of \textcite{James:2014}.}
   \label{fig:SVM_Margin}
 \end{figure}
 
@@ -98,7 +100,8 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 \begin{figure}[ht!]
   \centering
   \includegraphics[]{images/fna_nuclei.png}
-  \caption{A caption of a FNA sample as seen through a microscope. Image courtesy of Wisconsin University}
+  \caption[]
+  {\small A caption of a FNA sample as seen through a microscope. The sample is collected from a breast lump by fine needle aspiration then stained to engender the features of the cells. Image courtesy of \textcite{dua:2017}.}
   \label{fig:fna_nuclei}
 \end{figure}
 

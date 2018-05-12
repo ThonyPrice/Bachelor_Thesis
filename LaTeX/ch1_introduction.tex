@@ -25,28 +25,7 @@ Our research differs from the work presented in \parencite{karabulut2012} in the
 
 Trials will be conducted with feature selection by using both Wrapper methods and feature selection Filter methods. The result of the feature selection methods will be used with different classifiers to evaluate their performance. To broaden the base for comparison we will use several classifiers, Decision Tree (DT) a logic based algorithms, Artificial Neural Network (ANN) a perceptron-based technique, Naïve Bayes (NB) a statistical learning algorithms and Support Vector Machines (SVM) \parencite{wallace2007}. These classifiers are also commonly used in CAD \parencite{ramos2012}, \parencite{akay2009}, \parencite{li2007}. Feature selection (FS) methods and classifiers are denoted in table \ref{table:methods}.
 
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{ l | l }
-\multicolumn{2}{ c }{\textbf{Implementations}} \\
-\hline
-\multirow{4}{*}{Classifiers}
- & Artificial Neural Network (ANN) \\
- & Decision Tree (DT) \\
- & Naïve Bayes (NB) \\
- & Support Vector Machine (SVM) \\ \hline
-\multirow{2}{*}{FS by Wrapping}
- & Sequential Backward FS (SBS) \\
- & Sequential Forward FS (SFS) \\ \hline
-\multirow{2}{*}{FS by Filtering}
- & Chi-square (Chi2) \\
- & Entropy \\
-\hline
-\end{tabular}
-\caption{All feature selection methods will be applied to each classifier  in the implementations}
-\label{table:methods}
-\end{center}
-\end{table}
+\input{snippets/methods}
 
 A comparison of the classification rate on the machine learning methods without using any feature selection and classification rate using feature selection will be conducted in order to establish the importance of feature selection in different machine learning approaches when classifying breast cancer. The evaluation of impact by FS will be measured by computing the ratio between best accuracy achieved with and without using feature selection. Several datasets with different types of features will be evaluated. Details on the datasets will be presented in section \ref{sec:Datasets}
 
