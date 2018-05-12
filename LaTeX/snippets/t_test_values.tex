@@ -1,17 +1,42 @@
-\begin{tabular}{|l|l|l|l|l|l}
-\cline{1-5}
-FS      & MIAS           & EN             & RHH            & WBCD           &         \\
-\cline{1-5}
-ANN     & 0.63           & 0.83           & 0.90           & 0.73           &         \\
-CART    & 0.67           & 0.83           & 0.92           & 0.97           &         \\
-NB      & 0.77           & 0.74           & 0.94           & 0.97           &         \\
-SFS     & 0.57           & 0.83           & 0.91           & 0.93           &         \\
-\cline{1-5}
-Full    & MIAS           & EN             & RHH            & WBCD           &         \\
-\cline{1-5}
-ANN     & 0.60           & 0.53           & 0.57           & 0.64           &         \\
-CART    & 0.77           & 0.69           & 0.90           & 0.94           &         \\
-NB      & 0.77           & 0.66           & 0.94           & 0.96           &         \\
-SFS     & 0.57           & 0.73           & 0.90           & 0.61           &         \\
-\cline{1-5}
-\end{tabular}
+\begin{table}[!htb]
+
+    \noindent\makebox[\textwidth]{%
+
+      \begin{subtable}{0.65\linewidth}
+        \centering
+          \begin{tabular}{|l|l|l|l|l|l}
+          \cline{1-5}
+          \textbf{FS}      & MIAS           & EN             & RHH            & WBCD           &         \\
+          \cline{1-5}
+          ANN     & 0.63           & 0.83           & 0.90           & 0.73           &         \\
+          CART    & 0.67           & 0.83           & 0.92           & 0.97           &         \\
+          NB      & 0.77           & 0.74           & 0.94           & 0.97           &         \\
+          SFS     & 0.57           & 0.83           & 0.91           & 0.93           &         \\
+          \cline{1-5}
+          \end{tabular}
+          \caption[]
+          \small{}
+      \end{subtable}%
+      \begin{subtable}{0.65\linewidth}
+        \centering
+          \begin{tabular}{|l|l|l|l|l|l}
+          \cline{1-5}
+          \textbf{Full}    & MIAS           & EN             & RHH            & WBCD           &         \\
+          \cline{1-5}
+          ANN     & 0.60           & 0.53           & 0.57           & 0.64           &         \\
+          CART    & 0.77           & 0.69           & 0.90           & 0.94           &         \\
+          NB      & 0.77           & 0.66           & 0.94           & 0.96           &         \\
+          SFS     & 0.57           & 0.73           & 0.90           & 0.61           &         \\
+          \cline{1-5}
+          \end{tabular}
+          \caption[]
+          \small{}
+      \end{subtable}
+    }
+
+    \caption[]%
+    {\small
+      (a) The highest accuracy achieved by any FS-method on all classifier-dataset combinations. (b) corresponding accuracies achieved without any feature selection on Full dataset. T-test comparing the distributions results in significantly higher results by classification with feature selection.}
+    \label{table:t_test_values}
+
+\end{table}
