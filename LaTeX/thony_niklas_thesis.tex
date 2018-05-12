@@ -7,6 +7,7 @@
 \usepackage{chngpage}
 \usepackage{csquotes} % Recommended by biblatex
 \usepackage{float}
+\usepackage[final]{pdfpages}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{longtable}
@@ -34,6 +35,7 @@
 
 \begin{document}
 % Frontmatter includes the titlepage, abstracts and table-of-contents
+\includepdf[pages=-]{../Data/front_cover.pdf}
 \frontmatter
 \titlepage
 
@@ -102,5 +104,7 @@
 \newpage
 \section{Tukey's test}
 \input{../tables/Tukeys_test}
+
+\includepdf[pages=-]{../Data/back_cover.pdf}
 
 \end{document}
