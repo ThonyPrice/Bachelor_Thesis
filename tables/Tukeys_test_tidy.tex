@@ -1,28 +1,143 @@
-\begin{tabular}{|l|l|l|l|l|l|}
-\toprule
-       Classif:method &   diff &    lwr &    upr &     p & sign \\
-\midrule
-      NB:sbs-ANN:chi2 &   0.36 &   0.15 &   0.57 &  0.00 &  *** \\
-      NB:sfs-ANN:chi2 &   0.40 &   0.19 &   0.61 &  0.00 &  *** \\
-     NB:sbs-CART:chi2 &   0.27 &   0.06 &   0.48 &  0.00 &   ** \\
-     NB:sfs-CART:chi2 &   0.31 &   0.10 &   0.52 &  0.00 &  *** \\
-     CART:sbs-NB:chi2 &   0.32 &   0.11 &   0.53 &  0.00 &  *** \\
-      SVM:sbs-NB:chi2 &   0.30 &   0.09 &   0.51 &  0.00 &  *** \\
-     CART:sfs-NB:chi2 &   0.35 &   0.14 &   0.56 &  0.00 &  *** \\
-    CART:sbs-SVM:chi2 &   0.35 &   0.14 &   0.56 &  0.00 &  *** \\
-     SVM:sbs-SVM:chi2 &   0.33 &   0.12 &   0.54 &  0.00 &  *** \\
-    CART:sfs-SVM:chi2 &   0.38 &   0.17 &   0.59 &  0.00 &  *** \\
-     SVM:sfs-SVM:chi2 &   0.21 &   0.00 &   0.42 &  0.05 &    * \\
-   NB:sbs-ANN:entropy &   0.31 &   0.10 &   0.52 &  0.00 &  *** \\
-   NB:sfs-ANN:entropy &   0.35 &   0.14 &   0.56 &  0.00 &  *** \\
-  NB:sfs-CART:entropy &   0.23 &   0.02 &   0.44 &  0.02 &    * \\
-  CART:sbs-NB:entropy &   0.25 &   0.04 &   0.46 &  0.01 &   ** \\
-   SVM:sbs-NB:entropy &   0.23 &   0.02 &   0.44 &  0.02 &    * \\
-  CART:sfs-NB:entropy &   0.28 &   0.07 &   0.49 &  0.00 &   ** \\
- CART:sfs-SVM:entropy &   0.19 &  -0.01 &   0.40 &  0.09 &    . \\
-       NB:sbs-ANN:sbs &   0.25 &   0.04 &   0.46 &  0.01 &   ** \\
-       NB:sfs-ANN:sbs &   0.29 &   0.08 &   0.50 &  0.00 &  *** \\
-     ANN:sfs-CART:sbs &  -0.25 &  -0.46 &  -0.04 &  0.01 &   ** \\
-       NB:sfs-ANN:sfs &   0.28 &   0.07 &   0.49 &  0.00 &   ** \\
-\bottomrule
-\end{tabular}
+\begin{center}
+\begin{longtable}{|l|c|c|c|c|l}
+\caption{
+  Values of Tukey's test computed on the fitted ANOVA of accuracy in relation to interaction between Classifiers and Methods. Values are sorted by descending significance. diff: Difference between means. lwr: Lower bound of confidence interval. upr: Upper bound of confidence interval. p: Significance probability. The stars indicate the range of significant level: 0 "***" 0.001 "**" 0.01 "*" 0.05 " . " 0.1 " " 1.
+}
+\label{table:Tukey_values}\\
+\cline{1-5}
+\textbf{Classif:method} & \textbf{diff} & \textbf{lwr} & \textbf{upr} & \textbf{p} & \\
+\cline{1-5}
+\endfirsthead
+\multicolumn{6}{c}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+
+\cline{1-5}
+\textbf{Classif:method} & \textbf{diff} & \textbf{lwr} & \textbf{upr} & \textbf{p} & \\
+\cline{1-5}
+\endhead
+\cline{1-5} \multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+\cline{1-5}
+\endlastfoot
+        CART:sfs-ANN:chi2 &   0.40 &   0.19 &   0.61 &  0.000 &  *** \\
+          NB:sfs-ANN:chi2 &   0.40 &   0.19 &   0.61 &  0.000 &  *** \\
+        CART:sfs-SVM:chi2 &   0.38 &   0.17 &   0.59 &  0.000 &  *** \\
+          NB:sfs-SVM:chi2 &   0.38 &   0.17 &   0.59 &  0.000 &  *** \\
+        CART:sbs-ANN:chi2 &   0.37 &   0.16 &   0.58 &  0.000 &  *** \\
+          NB:sbs-ANN:chi2 &   0.36 &   0.15 &   0.57 &  0.000 &  *** \\
+        CART:sbs-SVM:chi2 &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+         SVM:sbs-ANN:chi2 &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+     CART:sfs-ANN:entropy &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+         CART:sfs-NB:chi2 &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+       NB:sfs-ANN:entropy &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+           NB:sfs-NB:chi2 &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+          NB:sbs-SVM:chi2 &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+         SVM:sbs-SVM:chi2 &   0.33 &   0.12 &   0.54 &  0.000 &  *** \\
+     CART:sbs-ANN:entropy &   0.32 &   0.11 &   0.53 &  0.000 &  *** \\
+         CART:sbs-NB:chi2 &   0.32 &   0.11 &   0.53 &  0.000 &  *** \\
+       CART:sfs-CART:chi2 &   0.31 &   0.10 &   0.52 &  0.000 &  *** \\
+       NB:sbs-ANN:entropy &   0.31 &   0.10 &   0.52 &  0.000 &  *** \\
+           NB:sbs-NB:chi2 &   0.31 &   0.10 &   0.52 &  0.000 &  *** \\
+         NB:sfs-CART:chi2 &   0.31 &   0.10 &   0.52 &  0.000 &  *** \\
+      SVM:sbs-ANN:entropy &   0.30 &   0.09 &   0.51 &  0.001 &  *** \\
+          SVM:sbs-NB:chi2 &   0.30 &   0.09 &   0.51 &  0.001 &  *** \\
+         CART:sfs-ANN:sbs &   0.29 &   0.08 &   0.50 &  0.001 &  *** \\
+           NB:sfs-ANN:sbs &   0.29 &   0.08 &   0.50 &  0.001 &  *** \\
+      CART:sfs-NB:entropy &   0.28 &   0.07 &   0.49 &  0.001 &   ** \\
+         CART:sfs-ANN:sfs &   0.28 &   0.07 &   0.49 &  0.001 &   ** \\
+        NB:sfs-NB:entropy &   0.28 &   0.07 &   0.49 &  0.001 &   ** \\
+           NB:sfs-ANN:sfs &   0.28 &   0.07 &   0.49 &  0.001 &   ** \\
+       CART:sbs-CART:chi2 &   0.28 &   0.07 &   0.49 &  0.002 &   ** \\
+         NB:sbs-CART:chi2 &   0.27 &   0.06 &   0.48 &  0.002 &   ** \\
+        SVM:sbs-CART:chi2 &   0.26 &   0.05 &   0.47 &  0.004 &   ** \\
+         CART:sbs-ANN:sbs &   0.26 &   0.05 &   0.47 &  0.004 &   ** \\
+      CART:sbs-NB:entropy &   0.25 &   0.04 &   0.46 &  0.007 &   ** \\
+           NB:sbs-ANN:sbs &   0.25 &   0.04 &   0.46 &  0.007 &   ** \\
+         ANN:sfs-CART:sbs &  -0.25 &  -0.46 &  -0.04 &  0.007 &   ** \\
+        NB:sbs-NB:entropy &   0.24 &   0.03 &   0.45 &  0.010 &    * \\
+           ANN:sfs-NB:sbs &  -0.24 &  -0.45 &  -0.03 &  0.011 &    * \\
+          SVM:sbs-ANN:sbs &   0.24 &   0.03 &   0.45 &  0.012 &    * \\
+       SVM:sbs-NB:entropy &   0.23 &   0.02 &   0.44 &  0.018 &    * \\
+          ANN:sfs-SVM:sbs &  -0.23 &  -0.44 &  -0.02 &  0.019 &    * \\
+    CART:sfs-CART:entropy &   0.23 &   0.02 &   0.44 &  0.022 &    * \\
+         SVM:sfs-ANN:chi2 &   0.23 &   0.02 &   0.44 &  0.024 &    * \\
+      NB:sfs-CART:entropy &   0.23 &   0.02 &   0.44 &  0.024 &    * \\
+         SVM:sfs-SVM:chi2 &   0.21 &   0.00 &   0.42 &  0.049 &    * \\
+     SVM:entropy-ANN:chi2 &   0.21 &  -0.00 &   0.41 &  0.061 &    . \\
+    CART:sbs-CART:entropy &   0.20 &  -0.01 &   0.41 &  0.090 &    . \\
+     CART:sfs-SVM:entropy &   0.19 &  -0.01 &   0.40 &  0.095 &    . \\
+       NB:sfs-SVM:entropy &   0.19 &  -0.02 &   0.40 &  0.101 &      \\
+     SVM:entropy-SVM:chi2 &   0.19 &  -0.02 &   0.40 &  0.116 &      \\
+      NB:sbs-CART:entropy &   0.19 &  -0.02 &   0.40 &  0.125 &      \\
+     SVM:sbs-CART:entropy &   0.18 &  -0.03 &   0.39 &  0.191 &      \\
+         SVM:sfs-CART:sfs &  -0.17 &  -0.38 &   0.04 &  0.208 &      \\
+      SVM:sfs-ANN:entropy &   0.17 &  -0.04 &   0.38 &  0.208 &      \\
+          SVM:sfs-NB:chi2 &   0.17 &  -0.04 &   0.38 &  0.214 &      \\
+    CART:entropy-ANN:chi2 &   0.17 &  -0.04 &   0.38 &  0.218 &      \\
+           SVM:sfs-NB:sfs &  -0.17 &  -0.38 &   0.04 &  0.218 &      \\
+     CART:sbs-SVM:entropy &   0.16 &  -0.05 &   0.37 &  0.293 &      \\
+    CART:entropy-SVM:chi2 &   0.16 &  -0.05 &   0.37 &  0.354 &      \\
+       NB:sbs-SVM:entropy &   0.16 &  -0.05 &   0.37 &  0.372 &      \\
+  SVM:entropy-ANN:entropy &   0.15 &  -0.06 &   0.36 &  0.396 &      \\
+      SVM:entropy-NB:chi2 &   0.15 &  -0.06 &   0.36 &  0.404 &      \\
+      SVM:sbs-SVM:entropy &   0.14 &  -0.07 &   0.35 &  0.500 &      \\
+         SVM:sfs-CART:sbs &  -0.14 &  -0.35 &   0.07 &  0.514 &      \\
+        SVM:sfs-CART:chi2 &   0.14 &  -0.07 &   0.35 &  0.603 &      \\
+           SVM:sfs-NB:sbs &  -0.13 &  -0.34 &   0.07 &  0.609 &      \\
+          SVM:sfs-SVM:sbs &  -0.12 &  -0.33 &   0.09 &  0.740 &      \\
+ CART:entropy-ANN:entropy &   0.12 &  -0.09 &   0.33 &  0.765 &      \\
+     CART:entropy-NB:chi2 &   0.12 &  -0.09 &   0.33 &  0.773 &      \\
+         ANN:sfs-ANN:chi2 &   0.12 &  -0.09 &   0.33 &  0.785 &      \\
+      NB:entropy-ANN:chi2 &   0.12 &  -0.09 &   0.33 &  0.798 &      \\
+          SVM:sfs-ANN:sbs &   0.12 &  -0.09 &   0.33 &  0.817 &      \\
+    SVM:entropy-CART:chi2 &   0.11 &  -0.10 &   0.32 &  0.826 &      \\
+         ANN:sbs-ANN:chi2 &   0.11 &  -0.10 &   0.32 &  0.865 &      \\
+       SVM:sfs-NB:entropy &   0.11 &  -0.10 &   0.32 &  0.880 &      \\
+          SVM:sfs-ANN:sfs &   0.11 &  -0.10 &   0.32 &  0.889 &      \\
+         ANN:sfs-SVM:chi2 &   0.10 &  -0.11 &   0.31 &  0.910 &      \\
+      NB:entropy-SVM:chi2 &   0.10 &  -0.11 &   0.31 &  0.918 &      \\
+      ANN:sbs-SVM:entropy &  -0.10 &  -0.30 &   0.11 &  0.953 &      \\
+         ANN:sbs-SVM:chi2 &   0.09 &  -0.12 &   0.30 &  0.954 &      \\
+       CART:chi2-ANN:chi2 &   0.09 &  -0.12 &   0.30 &  0.969 &      \\
+   SVM:entropy-NB:entropy &   0.09 &  -0.12 &   0.30 &  0.976 &      \\
+      ANN:sfs-SVM:entropy &  -0.09 &  -0.30 &   0.12 &  0.979 &      \\
+   CART:entropy-CART:chi2 &   0.08 &  -0.13 &   0.29 &  0.986 &      \\
+       SVM:chi2-CART:chi2 &  -0.07 &  -0.28 &   0.13 &  0.994 &      \\
+      ANN:sfs-ANN:entropy &   0.07 &  -0.14 &   0.28 &  0.998 &      \\
+          ANN:sfs-NB:chi2 &   0.07 &  -0.14 &   0.28 &  0.998 &      \\
+   NB:entropy-ANN:entropy &   0.07 &  -0.14 &   0.28 &  0.999 &      \\
+       NB:entropy-NB:chi2 &   0.07 &  -0.14 &   0.28 &  0.999 &      \\
+     ANN:sbs-CART:entropy &  -0.06 &  -0.27 &   0.15 &  0.999 &      \\
+      ANN:sbs-ANN:entropy &   0.06 &  -0.15 &   0.27 &  1.000 &      \\
+          ANN:sbs-NB:chi2 &   0.06 &  -0.15 &   0.27 &  1.000 &      \\
+  NB:entropy-CART:entropy &  -0.06 &  -0.26 &   0.15 &  1.000 &      \\
+     ANN:sfs-CART:entropy &  -0.05 &  -0.26 &   0.16 &  1.000 &      \\
+     SVM:sfs-CART:entropy &   0.05 &  -0.16 &   0.26 &  1.000 &      \\
+         NB:chi2-ANN:chi2 &   0.05 &  -0.16 &   0.26 &  1.000 &      \\
+     ANN:entropy-ANN:chi2 &   0.05 &  -0.16 &   0.26 &  1.000 &      \\
+         CART:sfs-SVM:sbs &   0.05 &  -0.16 &   0.26 &  1.000 &      \\
+           NB:sfs-SVM:sbs &   0.05 &  -0.16 &   0.26 &  1.000 &      \\
+          CART:sfs-NB:sbs &   0.04 &  -0.17 &   0.25 &  1.000 &      \\
+    ANN:entropy-CART:chi2 &  -0.04 &  -0.25 &   0.17 &  1.000 &      \\
+        NB:chi2-CART:chi2 &  -0.04 &  -0.25 &   0.17 &  1.000 &      \\
+            NB:sfs-NB:sbs &   0.04 &  -0.17 &   0.25 &  1.000 &      \\
+         SVM:chi2-NB:chi2 &  -0.04 &  -0.25 &   0.17 &  1.000 &      \\
+     ANN:entropy-SVM:chi2 &   0.04 &  -0.17 &   0.25 &  1.000 &      \\
+ SVM:entropy-CART:entropy &   0.03 &  -0.18 &   0.24 &  1.000 &      \\
+        CART:sfs-CART:sbs &   0.03 &  -0.18 &   0.24 &  1.000 &      \\
+          NB:sfs-CART:sbs &   0.03 &  -0.18 &   0.24 &  1.000 &      \\
+        SVM:chi2-ANN:chi2 &   0.02 &  -0.19 &   0.23 &  1.000 &      \\
+          NB:sfs-CART:sfs &  -0.00 &  -0.21 &   0.21 &  1.000 &      \\
+       ANN:sfs-NB:entropy &   0.00 &  -0.21 &   0.21 &  1.000 &      \\
+          NB:sbs-CART:sbs &  -0.01 &  -0.22 &   0.20 &  1.000 &      \\
+         SVM:sbs-CART:sbs &  -0.02 &  -0.23 &   0.19 &  1.000 &      \\
+          ANN:sfs-ANN:sbs &   0.01 &  -0.20 &   0.22 &  1.000 &      \\
+      SVM:sfs-SVM:entropy &   0.02 &  -0.19 &   0.23 &  1.000 &      \\
+       ANN:sbs-NB:entropy &  -0.01 &  -0.22 &   0.20 &  1.000 &      \\
+      ANN:entropy-NB:chi2 &  -0.00 &  -0.21 &   0.21 &  1.000 &      \\
+        ANN:sbs-CART:chi2 &   0.02 &  -0.19 &   0.23 &  1.000 &      \\
+        ANN:sfs-CART:chi2 &   0.03 &  -0.18 &   0.24 &  1.000 &      \\
+           SVM:sbs-NB:sbs &  -0.01 &  -0.22 &   0.20 &  1.000 &      \\
+     NB:entropy-CART:chi2 &   0.03 &  -0.18 &   0.24 &  1.000 &      \\
+\end{longtable}
+\end{center}
