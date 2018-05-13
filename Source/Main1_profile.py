@@ -81,7 +81,6 @@ def main():
             results, fname = evaluateMethod(method_name, models,
                 Xtr, Xtest, Ytr, Ytest, data_name
             )
-        sys.exit(0)
         # dumpJson(results, fname, path)
     # --- </Run >
     print('---*-*-*--- EOF ---*-*-*---')
