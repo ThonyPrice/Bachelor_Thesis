@@ -5,102 +5,91 @@ import DataLoader as DataLoader
 import matplotlib.pyplot as plt
 import sys
 
-def mkTable(path, list_data_names):
-    classifiers = ['CART', 'SVM', 'NB', 'ANN']
+def getFilesByDataset(path):
+    list_data_names = DataLoader.DataLoader().list_names[:-1]
+    all_datasets = []
+    for name in list_data_names:
+        for method in ['_chi2', '_entropy', '_sbs', '_sfs']:
+            all_datasets.append(path + name + method + '.json')
+    return all_datasets
+
+def readJson(filename):
+    with open(filename) as json_data:
+        data = json.load(json_data)
+    return data
+
+def getMaxAndFull(f_name, classifier):
+    data = readJson(f_name)
+    accs = [i[2] for i in data[classifier]]
+    return (max(accs[:-1]), accs[-1])
+
+def concludeRow(file, classifier, dataset_vals, all_values):
+    _, max = getMaxAndFull(file, classifier)
+    dataset_vals.append(max)
+    all_values.append(dataset_vals)
+    return ([], all_values)
+
+def mkTable(path, files):
+    classifiers = ['ANN', 'CART', 'NB', 'SVM']
     for classifier in classifiers:
-        data_row_vals = []
-        filter_sum = []
-        dataset_diff = []
-        for dataset in list_data_names:
-            data_col_vals, data_ful_vals = [], []
-            for method in ['_Chi2', '_Entropy','_sbs', '_sfs']:
-                f_name = path + dataset + method +'.json'
-                data_col_vals.append(getMax(f_name, classifier))
-                data_ful_vals.append(getFull(f_name, classifier))
+        # --- Extract data for each classifier ---
+        all_values = []
+        dataset_vals = []
+        for i, file in enumerate(files):
+            if len(dataset_vals) == 4:
+                dataset_vals, all_values = concludeRow(
+                    file, classifier, dataset_vals, all_values
+                )
+            acc, _ = getMaxAndFull(file, classifier)
+            dataset_vals.append(acc)
+        _, all_values = concludeRow(
+            file, classifier, dataset_vals, all_values
+        )
 
-            data_col_vals.append(max(data_ful_vals))
-            df = pd.DataFrame({dataset : data_col_vals})
-            data_row_vals.append(df)
+        # --- Mk DataFrame ---
+        df = pd.DataFrame.from_records(all_values)
+        df = df.transpose()
+        df = renameLabels(df)
 
-        df = pd.concat(data_row_vals, axis=1)
+        # --- Include Gain row ---
+        fs_accs = df[:4].max()
+        full_accs = df.loc['Full']
+        gain = (fs_accs/full_accs)-1
+        df.loc['Gain'] = gain
 
-        print(df)
-
-
-        print("-----row diff-------")
-        sum_row = df.sum(axis=1)
-        diff_row = sum_row - sum_row.iloc[4]
-        print(diff_row)
-
-
-        print("------col diff------")
-
-
-        sum_colms = df.sum(axis=0)
-        for i in range(4):
-            diff_colmn = (((sum_colms.iloc[i] - df.iloc[4,i]) / 4) - df.iloc[4,i])
-            dataset_diff.append(diff_colmn)
-
-
-        # print(filter_sum)
-        print(dataset_diff)
-        df = pd.concat([df, diff_row], axis=1)
-
-        print(df)
-        df_dataset_diff = pd.DataFrame({'col':dataset_diff})
-        print(df_dataset_diff)
-        df = pd.concat([df, df_dataset_diff], axis=1)
-        print(df)
-        df = renameLabels(df, list_data_names)
         mkLaTeX(df, classifier)
 
 def mkLaTeX(df, classifier):
-    f1 = lambda x : '%1.5f' % x
+    f1 = lambda x : '%1.2f' % x
     with open("../tables/" + classifier + '.tex','w') as tf:
         tf.write(df.to_latex(
             buf=None, columns=None, col_space=None,
             header=True, index=True, na_rep='NaN',
-            formatters=[f1,f1,f1,f1,f1,f1], float_format=True, sparsify=None,
+            formatters=[f1,f1,f1,f1,f1], float_format=True, sparsify=None,
             index_names=True, bold_rows=False, column_format='|l|l|l|l|l|l|l|',
             longtable=None, escape=None, encoding=None, decimal='.',
             multicolumn=None, multicolumn_format=None, multirow=False)
         )
 
-def getMax(f_name, classifier):
-    X = pd.read_json(f_name)
-    df = pd.DataFrame(X)
-    df = df.applymap(lambda x : x[1])
-    df = df.drop(df.index[len(df)-1])
-    idx = df.columns.get_loc(classifier)
-    return df[classifier].max()
-
-def getFull(f_name, classifier):
-    X = pd.read_json(f_name)
-    df = pd.DataFrame(X)
-    df = df.applymap(lambda x : x[1])
-    return df[classifier][len(df)-1]
-
-def renameLabels(df, list_data_names):
+def renameLabels(df):
     df = df.rename({0 : 'Chi2',
                     1 : 'Entropy',
                     2 : 'SBS',
                     3 : 'SFS',
                     4 : 'Full'
     }, axis = 'index')
-    df = df.rename({list_data_names[0] : 'MIAS',
-                    list_data_names[1] : 'EN',
-                    list_data_names[2] : 'RHH',
-                    list_data_names[3] : 'WBCD',
-                    0 : 'Row differences',
-                    'col' : 'Dataset diff'
+    df = df.rename({0 : 'MIAS',
+                    1 : 'EN',
+                    2 : 'RHH',
+                    3 : 'WBCD'
     }, axis = 'columns')
     return df
 
 def main():
-    DATA = DataLoader.DataLoader()
-    list_data_names = DATA.list_names[:-1]
-    path = "../Json_1d_run/"
-    mkTable(path, list_data_names)
+    path = "../Json2/"
+    files = getFilesByDataset(path)
+    path = "../Json2/"
+    mkTable(path, files)
     print('---EOF---')
 
 if __name__ == '__main__':
