@@ -80,7 +80,7 @@ The absence in the significance among the t-test results may be a consequence of
 
 \subsection{Differences among classifiers}
 
-As addressed in section \ref{Variation_among_factors} classifiers behave differently depending on FS-method and datasets. We also found in \ref{sec:Investigation_improvement} t-test scores indicates such differences. Ranking the accumulated gain of each classifier from tables \ref{combines_tables}, we find the same order as indicated by the t-test. The ranking is found in \ref{table:gain_comparison}. We'll look at each classifier in turn:
+As addressed in section \ref{Variation_among_factors} classifiers behave differently depending on FS-method and datasets. We also found in \ref{sec:Investigation_improvement} t-test scores indicates such differences. Ranking the accumulated gain of each classifier from tables \ref{table:combines_tables}, we construct table \ref{table:gain_comparison}. We'll look at each classifier in turn:
 
 \begin{table}[hp]
   \input{snippets/gain_comparison}
@@ -91,9 +91,11 @@ As addressed in section \ref{Variation_among_factors} classifiers behave differe
 
 \subsubsection{Artificial Neural Network}
 
-Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.34 which was the highest among all classifiers. However, ANN consistently performs the worst of all classifiers in terms of accuracy. The ANN also provides the least consistent results with strong fluctuations in the results and wide standard deviation margins. Such fluctuations may suggest issues regarding convergence. These characteristics are evident in plot \ref{fig:WBCD_chi2} showcasing the accuracy by each FS-method as a function of number of attributes..
+Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.2 which was the highest among all classifiers. However, ANN consistently performs the worst of all classifiers in terms of accuracy. The ANN also provides the least consistent results with strong fluctuations in the results and wide standard deviation margins. Such fluctuations may suggest issues regarding convergence. These characteristics are evident in plot \ref{fig:WBCD_chi2} showcasing the accuracy by each FS-method as a function of number of attributes. Disregarding these facts, t-test show an significant increase in classification accuracy when feature selection is applied.
 
 \subsubsection{Support Vector Machine}
+
+SVM improves accuracy in two out of four datasets \ref{table:SVM}. In these datasets the best perforamce is achieved by using wrapper methods. These findings are in line with Tukeys's test \ref{table:t_test_result} where wrapper showed superior performance.
 
 The SVM behaves very differently in respect to each dataset. Improvements are seen with a larger subset of attributes in the EN and MIAS dataset as seen in \ref{fig:EN_chi2} and \ref{fig:MIAS_sfs}. A negative trend on accuracy is observed on the WBCD datasets which might indicate an issue with dimensionality. In \ref{fig:RHH_sbs} an improved accuracy is evident with maximal accuracy achieved on a subset suggesting a positive effect of feature selection.
 
@@ -105,10 +107,10 @@ The decision tree shows consistent performance generally increasing performance 
 
 Naïve Bayes had the least accumulated gain from feature selection as seen in table \ref{table:gain_comparison}. The largest improvement was seen in plot \ref{fig:EN_chi2} using 2 of 4 available attributes. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy presents little to no improvement when increasing the number of attributes.
 
-\input{snippets/plots_chi2}
-\input{snippets/plots_entropy}
-\input{snippets/plots_sbs}
-\input{snippets/plots_sfs}
+\input{snippets/plots_ANN}
+\input{snippets/plots_CART}
+\input{snippets/plots_NB}
+\input{snippets/plots_SVM}
 
 \newpage
 \section{Computation time}
