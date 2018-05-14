@@ -22,8 +22,8 @@
 
 % --- TITLE & FRONT PAGE ---
 
-\title{Feature Selection Methods for Classification of Breast Cancer}
-\alttitle{Attributurvalsmetoder för klassificering av bröstcancer }
+\title{Evaluation of Feature Selection Methods for Machine Learning Classification of Breast Cancer}
+\alttitle{Evaluering av Attributurvalsmetoder för klassificering av bröstcancer med maskininlärning}
 \author{Niklas Lindqvist\newline Thony Price}
 \email{nlinq@kth.se\newline thonyp@kth.se}
 \supervisor{Pawel Herman}
@@ -44,7 +44,10 @@
 
 \begin{abstract}
 
-  Breast cancer is the leading cause of cancer deaths among women today but computer aided diagnosis has proved efficient in assisting medical experts to set an early diagnosis improving the chance of recovery. Computer aided diagnostics utilises machine learning to make a prediction whether a patient has a benign or malignant cancer. In the process a patients data is put into machine learning algorithms and a classification is made. Applying feature selection the algorithms can be fed data with lower dimensionality and produce a more accurate result. We have found that vanilla Naïve Bayes, Support vector machine, artificial neural network and decision tree all had a higher maximum classification accuracy of XX \% when using feature selection.
+  Breast cancer is the leading cause of cancer deaths among women today but computer aided diagnosis has proved efficient in assisting medical experts to set an early diagnosis improving the chance of recovery. Computer aided diagnostics utilises machine learning to make a prediction whether a patient has a benign or malignant cancer. In the process a patients data is put into machine learning algorithms and a classification is made. Applying feature selection the algorithms can be fed data with lower dimensionality and can produce a more accurate result. In this report we conducted experiments with four different feature selection methods and four classifiers on four datasets.
+
+  We found that Artificial neural networks have a significant increase in classification accuracy of breast cancer using feature selection. The maximum improvement in accuracy was 51\% using the feature selection method Entropy and data from Royal Hallamshire Hospital. Artificial neural networks do not show any correlation to a specific feature selection method but varies from case to case. Using Naïve Bayes, support vector machine and Decision trees no increase in accuracy using feature selection could be statistically proven for all datasets. However, in some observations these classifiers manifested increased classification accuracy with feature selection compared to using all features of the dataset.
+
 \end{abstract}
 
 
