@@ -43,7 +43,14 @@ To investigate the effect of feature selection on different classifiers we perfo
 
 The significance of both Classifier and Method concludes they independently effect what accuracy is achieved. Their interaction, Classifier:Method is significant too and allows to reason there is a dependency between accuracy and the interaction between classifiers and methods. Plotting the values used in the test visualizes this correlation \ref{fig:comp_classif_datasets}.
 
-To further analyze the interaction of classifiers and FS-methods we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used. Only in the case of SVM difference in classification rate is seen with same classifier and different classification methods. In these instances wrapper methods performed 21\% and 33\% better than chi2.
+To further analyze the interaction of classifiers and FS-methods we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used.
+
+
+The result indicates that some FS methods has a superior classification accuracy. 
+
+
+\input{snippets/table_t_test_results}
+
 
 To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. When choosing SVM, the choice of feature selection has greatest impact where wrapper methods perform better.
 
