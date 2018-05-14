@@ -62,14 +62,17 @@ After performing classification with and without FS-methods, all results of each
 % --- Tables ---
 \input{snippets/combines_tables}
 
-\subsection{Improvement is significant}
+\subsection{Investigation of improvement significance}
 
-To ensure the suggestion that application of some FS-method improves classification accuracy t-test was performed. The t-test values constitutes of the accuracies achieved without feature selection as one distribution. The other are the best accuracies achieved with feature selection. The t-test values are summarized in \ref{table:t_test_values}.
+To study the effect of feature selection on classification accuracy we perform a t-test. The t-test values constitutes of the accuracies achieved without feature selection as one distribution. The other are the best accuracies achieved with feature selection. The t-test values are summarized in \ref{table:t_test_values}.
 
 \input{snippets/t_test_values}
 
+Running the test the comparing results of all classifiers t-stat value suggests a 28\% increased performance when applying feature selection, see \ref{table:ttest_result}. However, significance in insufficient to reject the null hypothesis that the distributions are equal. Consequently we can not conclude feature selection significantly improves classification accuracy based on our data.
 
-Performing the t-test a significant distinction between the distributions can not be drawn. This does not allows us to reject the null hypothesis that the distributions are equal. This implies that the conclusion that improvement of classification accuracy by feature selection can not be drawn.
+To further analyze the differences performed t-test comparing each accuracy by each individual classifier, with and without feature selection. The tests concluded an significant improvement of ANN, non significant improvement of NB and non significant decline of CART when comparing feature selection to the full dataset.
+
+More text.
 
 \subsection{Differences among classifiers}
 
