@@ -1,12 +1,14 @@
 \chapter{Discussion}
 
-[ Remind the reader of key finding ]
+In the experiments ANN, Decision Tree, Na\"ive Bayes and SVM classifiers was used to classify begin or malignant breast tumors. The classification accuracy was compared between using or not using feature selection. The feature selection (FS) methods included in the tests were filter by Chi2 or Entropy and wrapping by SBS or SFS.
+
+The results could not prove there was a significant increase in classification accuracy using FS when considering all classifiers together. Studying usage of FS combined with ANN we found a significant increase in accuracy compared to using ANN without FS. It leaves the conclusion effect FS is dependent on classifier used.
 
 \section{Influence of feature selection}
 
-Feature selection is valuable strategy when it comes to classification of breast cancer. As stated in the results all instances but one provided equally good or improved accuracy on the dataset with feature selection compared to using the full dataset. Even in cases where results are equally good feature selection still provide benefits to the process. The benefits consists of potentially lessened effort gathering and processing less attributes at data collection. As stated by \textcite{martei2018} there is a large demand of a more streamlined and efficient process when it comes to breast cancer classification, feature selection seems to offer benefits to include such process.
+As stated in the results all classifiers but CART had indication of improved classification accuracy. However, only ANN had a statistically significant increase. In our experiments ANN increased its accuracy on all datasets by using FS. The benefits of using FS when applying ANN consists of potentially lessened effort gathering and processing less attributes at data collection. Another benefit is lessened computation time. As stated by \textcite{martei2018} there is a large demand of a more streamlined and efficient process when it comes to breast cancer classification, feature selection seems to offer benefits to ANN in such process.
 
-Our findings suggests choosing the correct combination of classifier and FS-method is essential. While some feature selection method nearly always outperform the classifier with the full dataset it does not apply to all FS methods. As filter methods proved computationally fast in comparison to wrappers, suitable classifiers can be investigated efficiently to find a good subset of features with filter methods.
+Analytical tests of the results showed choosing the suitable classifier for the dataset rendered the largest effect on accuracy. Secondarily in the classifiers NB, CART and SVM, choice of FS-method made a significant difference. In these classifiers wrappers generated better accuracy than filter methods. However, it poses a dilemma. As filter methods proved computationally fast in comparison to wrappers, suitable classifiers can be investigated efficiently to find a good subset of features with filter methods. But the downside of this advantage is a signifi...
 
 If wrapper methods are to be used there may be a large benefit in constructing a search approach for the NP-hard part of the problem instead of evaluating the full search space. Such a study has been conducted by \textcite{panthong2015} and improved both classification accuracy and reduced runtime.
 
