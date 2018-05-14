@@ -17,6 +17,7 @@ import numpy as np
 import pandas
 import pickle
 import sys
+import warnings
 from sklearn import model_selection
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
@@ -27,6 +28,9 @@ from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+
+if not sys.warnoptions:
+        warnings.simplefilter("ignore")
 
 def main():
 
@@ -106,7 +110,7 @@ def entropyFunction(x, X, Y, model):
 
 def sfsFunction(x, X, Y, model, Xtr, Ytr):
     sXs = SFS(model, k_features=x, forward=True,
-            floating=False, n_jobs = 1)
+            floating=False, n_jobs = -1)
     return (
         sXs.fit_transform(Xtr, Ytr),
         sXs
@@ -114,7 +118,7 @@ def sfsFunction(x, X, Y, model, Xtr, Ytr):
 
 def sbsFunction(x, X, Y, model, Xtr, Ytr):
     sXs = SFS(model, k_features=x, forward=False,
-            floating=False, n_jobs = 1)
+            floating=False, n_jobs = -1)
     return (
         sXs.fit_transform(Xtr, Ytr),
         sXs

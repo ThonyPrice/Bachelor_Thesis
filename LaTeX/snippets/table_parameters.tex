@@ -7,18 +7,38 @@
   & Hidden layers & 2 \\
   & Layer size & 100 \\
   & Activation & ReLU \\
-  & Solver & Adam \\ \hline
+  & Solver & Adam \\
+  & alpha & 0.0001 \\
+  & batch size & auto \\
+  & learning rate & constant \\
+  & learning rate init & 0.001 \\
+  & power t & 0.5 \\
+  & tolerance & 1e-4 \\
+  & beta1 & 0.9 \\
+  & beta2 & 0.999 \\
+  & epsilon & 1e-8 \\ \hline
 \multirow{1}{*}{Decision Tree: CART}
   & Criterion & Gini \\
   & Splitter & Best \\
-  & Max depth & None \\ \hline
+  & Max depth & None \\
+  & min samples split & 2 \\
+  & min samples leaf & 1 \\
+  & min weight fraction leaf & 0 \\
+  & max features & None \\
+  & random state & None \\
+  & max leaf nodes  & None \\
+  & min impurity decrease & 0 \\
+  & class weigh & None \\
+  & presort & False \\ \hline
 \multirow{1}{*}{Naive Bayes}
   & Type & Gaussian \\
   & Priors & None \\ \hline
 \multirow{1}{*}{SVM}
   & Kernel & Rbf \\
-  & Degree & 3 \\
-  & Penalty & 1.0 \\ \hline
+  & Gamma & auto \\
+  & Penalty & 1.0 \\
+  & Shrinking & True \\
+  & Tolerance & 1e-3 \\\hline
 \end{tabular}
 \caption{Most defining parameters of each classifier used}
 \label{table:classifier_params}
