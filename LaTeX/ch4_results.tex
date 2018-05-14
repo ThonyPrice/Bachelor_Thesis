@@ -13,7 +13,7 @@ Before analyzing the results we consider potential interactions between differen
   \item Feature selection methods
 \end{enumerate}
 
-Having four of each factor, there are 64 distinct combinations. We are particular interested in two of the interactions, Datasets:FS-methods and Classifiers:FS-methods.
+Having four of each factor, there are 64 distinct combinations. In our scope we are particular interested in the interactions Classifiers:FS-methods. However, we will begin with looking at Datasets:FS-methods to evaluate the datasets influence on the classification accuracy.
 
 \subsection{Datasets with larger dimensionality achieves better classification accuracy}
 
@@ -46,18 +46,16 @@ The significance of both Classifier and Method concludes they independently effe
 To further analyze the interaction of classifiers and FS-methods we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used.
 
 
-The result indicates that wrapper methods has a superior classification accuracy compared to filter methods in some cases. In table \ref{table:t_test_result} the classifiers who benefits from certain wrapper methods compared to filter methods are displayed.
+The result indicates that wrapper methods has a superior classification accuracy compared to filter methods in some cases. In table \ref{table:t_test_result} the classifiers who benefits from certain wrapper methods is compared to filter methods.
 
 
 \input{snippets/table_t_test_results}
 
-To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. If using NB or CART and the goal is to achieve a high classification accuracy SBS or SFS should be preferred over Chi2 and Entropy. If SVM is used SBS is preferred over Chi2 and Entropy with regards to classification rate.
+To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. If using NB or CART and the goal is to achieve a high classification accuracy SBS or SFS should be preferred over Chi2 and Entropy. If SVM is used SBS is preferred over Chi2 and Entropy with regard to classification rate.
 
 \section{Classification improvements}
 
-After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measured in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy. From this we can conclude that classification accuracy is equal or improved for all classifiers on all datasets tested in our scope by use of \textit{some} feature selection method. The only exception is the Mias dataset with Decision tree \ref{table:CART}, it performed worse with feature selection.
-
-However, majority of the classifiers has some FS-method that achieved lower accuracy compared to full dataset. Again this is viewed in tables \ref{table:ANN}, \ref{table:CART}, \ref{table:NB} and \ref{table:SVM}. In 11 of 16 instances at least one FS-method performed worse. This is in line with our findings that FS-method is classifier dependent suggesting one have to select the combination of classifier and FS-method with care.
+After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measured in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy.
 
 % --- Tables ---
 \input{snippets/combines_tables}
@@ -69,7 +67,7 @@ To ensure the suggestion that application of some FS-method improves classificat
 \input{snippets/t_test_values}
 
 
-Performing the t-test resulting a significant distinction between the distributions. This allows us to reject the null hypothesis that the distributions are equal with a confidence level of 90\%. Thus, improvement of classification accuracy by feature selection is statistically significant with an certainty of 90\%.
+Performing the t-test a significant distinction between the distributions can not be drawn. This does not allows us to reject the null hypothesis that the distributions are equal. This implies that the conclusion that improvement of classification accuracy by feature selection can not be drawn.
 
 \subsection{Differences among classifiers}
 
