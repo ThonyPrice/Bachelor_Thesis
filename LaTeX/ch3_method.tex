@@ -3,10 +3,11 @@
 \section{Datasets}
 \label{sec:Datasets}
 
+\input{snippets/table_datasets}
 
 \subsection{Wisconsin}
 
-The dataset used in this thesis, Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 30 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features.
+The Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 30 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features.
 
 \subsection{Royal Hallamshire Hospital}
 
@@ -18,27 +19,25 @@ Mias database contain results from 119 data points with 5 features: Character of
 
 \subsection{Erlangen-Nuremberg}
 
-Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006. It contains three features assessed as a discrete value from a double-review by physicians along with the patients' age.
-
-\input{snippets/table_datasets}
+Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006. It contains four features assessed as a discrete value from a double-review by physicians along with the patients' age.
 
 
 \section{Implementation}
 
-The implementation outline is a straightforward approach. Each dataset will be split into training and test data. For each classifier each FS-method will select all possible subsets in turn. The classifier will be trained on the subset and evaluated on the test data. A compact pseudocode how results are produced is presented in algorithm \ref{alg:pseudo_code}. The steps is more more thoroughly detailed below. Measurements of how results will be evaluated is contained in \ref{Evaluation}.
+Each dataset will be split into training and test data. For each classifier each FS-method will select all possible subsets in turn. The classifier will be trained on the subset and evaluated on the test data. A compact pseudocode how results are produced is presented in algorithm \ref{alg:pseudo_code}. The steps is more thoroughly detailed below. Measurements of how results will be evaluated is contained in \ref{Evaluation}.
 
 \input{snippets/implementation_pseudo}
 
 \subsection{Classifiers and parameters}
-All classifiers was imported from Scikit \parencite{scikit-learn}. All classifiers allow tuning by setting parameters of its behaviour. As tuning the parameters for any dataset and/or subset of attributes inflicts bias to the current state all parameters was left to default. Default parameters may cause suboptimal performance of a classifier. An optimal is not the intention of this experiment, the influence of feature selection is. Thus motivating the default parameter settings. Those values of the most influential parameters for each classifier can be found in table \ref{table:classifier_params}.
+All classifiers was imported from Scikit \parencite{scikit-learn}. All classifiers allow tuning by setting parameters of its behaviour. As tuning the parameters for any dataset and/or subset of attributes inflicts bias to the current state all parameters was left to default. Default parameters may cause suboptimal performance of a classifier. However, an optimal performance is not the intention of this experiment, the influence of feature selection is. Thus motivating the default parameter settings. Those values of the most influential parameters for each classifier can be found in appendix \ref{table:classifier_params}.
 % Move these setting to appendix as they don't contribute much here?
 
 
 \subsection{Feature selection}
 
-Feature selection with filtering methods was also imported from  Scikit \parencite{scikit-learn}. The library contains the method ``SelectKBest'' which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
+Feature selection with filtering methods was imported from  Scikit \parencite{scikit-learn}. The library contains the method ``SelectKBest'' which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
 
-Feature selection with wrapper methods was implemented with the ``SequentialFeatureSelector'' method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was accuracy as that is what should be used to compare methods at a later stage.
+Feature selection with wrapper methods was implemented with the ``SequentialFeatureSelector'' method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was classification accuracy as that is what should be used to compare methods at a later stage.
 
 
 \section{Evaluation}
@@ -46,7 +45,7 @@ Feature selection with wrapper methods was implemented with the ``SequentialFeat
 
 \subsection{Test data and accuracy}
 
-To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correct\_classified\_samples/all\_samples$. To ensure correct classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. Test data is maximised by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds.
+To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correctly\:classified\:samples/all\_samples$. To ensure fair comparison classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. Test data consist of 30\% of dataset. It is maximized by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds.
 
 To evaluate the impact of using feature selection the gain will be computed. The gain is computed as the ratio between best accuracy using FS and accuracy not using FS. The accumulated gains of a classifier gives a measure of how much it improved from feature selection and a basis to compare classifiers against each other.
 

@@ -1,14 +1,14 @@
 \chapter{Discussion}
 
-In the experiments ANN, Decision Tree, Na\"ive Bayes and SVM classifiers was used to classify begin or malignant breast tumors. The classification accuracy was compared between using or not using feature selection. The feature selection (FS) methods included in the tests were filter by Chi2 or Entropy and wrapping by SBS or SFS.
+In the experiments ANN, DT, NB and SVM classifiers was used to classify begin or malignant breast tumors. The classification accuracy was compared between using or not using feature selection. The feature selection (FS) methods included in the tests were filter by Chi2 or Entropy and wrapping by SBS or SFS.
 
 The results could not prove there was a significant increase in classification accuracy using FS when considering all classifiers together. Studying usage of FS combined with ANN we found a significant increase in accuracy compared to using ANN without FS. It leaves the conclusion effect FS is dependent on classifier used.
 
 \section{Influence of feature selection}
 
-As stated in the results all classifiers but CART had indication of improved classification accuracy. However, only ANN had a statistically significant increase. In our experiments ANN increased its accuracy on all datasets by using FS. The benefits of using FS when applying ANN consists of potentially lessened effort gathering and processing less attributes at data collection. Another benefit is lessened computation time. As stated by \textcite{martei2018} there is a large demand of a more streamlined and efficient process when it comes to breast cancer classification, feature selection seems to offer benefits to ANN in such process.
+As stated in the results all classifiers but CART had indication of improved classification accuracy. However, only ANN had a statistically significant increase. In our experiments ANN increased its accuracy on all datasets by using FS. The benefits of using FS when applying ANN consists of potentially lessened effort gathering and processing less attributes at data collection. Another benefit is lessened computation time, as found in the results section \ref{sec:cumtime}. As stated by \textcite{martei2018} there is a large demand of a more streamlined and efficient process when it comes to breast cancer classification, feature selection seems to offer benefits to ANN in such process.
 
-Analytical tests of the results showed choosing the suitable classifier for the dataset rendered the largest effect on accuracy. Secondarily in the classifiers NB, CART and SVM, choice of FS-method made a significant difference. In these classifiers wrappers generated better accuracy than filter methods. However, it poses a dilemma. As filter methods proved computationally fast in comparison to wrappers, suitable classifiers can be investigated efficiently to find a good subset of features with filter methods. But the downside of this advantage is a heavily prolonged computation time at training as showed in \ref{table:cpu}.
+Analytical tests of the results showed choosing the suitable classifier for the dataset rendered the largest effect on accuracy. Secondarily in the classifiers NB, CART and SVM, choice of FS-method made a significant difference. In these classifiers wrappers generated better accuracy than filter methods. However, it poses a dilemma. As filter methods proved computationally fast in comparison to wrappers, suitable classifiers can be investigated efficiently to find a good subset of features with filter methods. But the downside of this advantage is a heavily prolonged computation time at training as showed in table \ref{table:cpu}.
 
 If wrapper methods are to be used there may be a large benefit in constructing a search approach for the NP-hard part of the problem instead of evaluating the full search space. Such a study has been conducted by \textcite{panthong2015} and improved both classification accuracy and reduced runtime. Another approach is not searching the through all possible subset but with some domain knowledge narrow a span of parameters which in turn restricts number of computations.
 
@@ -22,7 +22,7 @@ On average FS improved the result of the ANN classifier by 30\%. This result can
 
 \section{Limitations}
 
-Due to the limited amount of breast cancer datasets found and utilized in the study its difficult to confidently draw conclusions regarding all breast cancer classification at large.
+Due to the limited amount of breast cancer datasets found and utilized in the study its difficult to confidently draw conclusions regarding all breast cancer classification at large as dataset may vary from the ones used in this report.
 
 Limited resources has also resulted in a reduced subset of FS-methods studied. While having two methods of each FS-family, filters and wrappers, there are many more which may have produced different results than we have achieved.
 
