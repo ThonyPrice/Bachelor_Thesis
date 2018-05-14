@@ -1,45 +1,42 @@
+import sys
 from scipy import stats
 
 # Data - Copied from tabls in report
-acc_full = [
-    0.6,
-    0.52714,
-    0.57320,
-    0.64143,
-    0.76667,
-    0.68786,
-    0.89608,
-    0.93714,
-    0.76667,
-    0.65976,
-    0.93639,
-    0.95905,
-    0.56667,
-    0.72690,
-    0.89641,
-    0.61381
-]
+acc_fs_ann = [0.59, 0.84, 0.90, 0.74]
+acc_fs_car = [0.70, 0.84, 0.94, 0.98]
+acc_fs_nbs = [0.75, 0.75, 0.96, 0.98]
+acc_fs_svm = [0.59, 0.84, 0.94, 0.94]
 
-acc_fs = [
-    0.63333,
-    0.83214,
-    0.90196,
-    0.72810,
-    0.7,
-    0.83214,
-    0.91895,
-    0.96524,
-    0.76667,
-    0.74071,
-    0.93693,
-    0.97286,
-    0.56667,
-    0.83214,
-    0.91373,
-    0.92952
-]
+acc_full_ann = [0.57, 0.68, 0.51, 0.41]
+acc_full_car = [0.75, 0.95, 0.95, 0.95]
+acc_full_nbs = [0.57, 0.93, 0.96, 0.96]
+acc_full_svm = [0.74, 0.90, 0.64, 0.64]
 
-print('--- Student t-test ---')
-t_stat, prob = (stats.ttest_ind(acc_full, acc_fs))
+acc_fs = acc_fs_ann+acc_fs_car+acc_fs_nbs+acc_fs_svm
+acc_full = acc_full_ann+acc_full_car+acc_full_nbs+acc_full_svm
+
+
+print('--- Student t-test [FULL] ---')
+t_stat, prob = (stats.ttest_ind(acc_fs, acc_full))
+print(  't-stat: ', t_stat, '\n', \
+        'prob: ', prob)
+
+print('--- Student t-test [ANN] ---')
+t_stat, prob = (stats.ttest_ind(acc_fs_ann, acc_full_ann))
+print(  't-stat: ', t_stat, '\n', \
+        'prob: ', prob)
+
+print('--- Student t-test [CART] ---')
+t_stat, prob = (stats.ttest_ind(acc_fs_car, acc_full_car))
+print(  't-stat: ', t_stat, '\n', \
+        'prob: ', prob)
+
+print('--- Student t-test [NB] ---')
+t_stat, prob = (stats.ttest_ind(acc_fs_nbs, acc_full_nbs))
+print(  't-stat: ', t_stat, '\n', \
+        'prob: ', prob)
+
+print('--- Student t-test [SVM] ---')
+t_stat, prob = (stats.ttest_ind(acc_fs_svm, acc_full_svm))
 print(  't-stat: ', t_stat, '\n', \
         'prob: ', prob)
