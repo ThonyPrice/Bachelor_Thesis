@@ -1,19 +1,25 @@
-\begin{table}[ht]
+\begin{table}[htbp]
 \begin{center}
-\begin{tabular}{ l | l | l }
-\multicolumn{3}{ c } {SBS}{SFS} \\
-\hline
-\multirow{1}{*}{Chi2}
-  & NB (row 12) & NB (row 27)  \\
-  & CART (row 17) & CART (row 41) \\
-  & SVM (row 44) & \\ \hline
-\multirow{1}{*}{Entropy}
-  & SVM (row 14)  & NB (row 36)\\
-  & NB (row 19)   & CART (row 46) \\
-  & CART(row 29) & \\ \hline
+\begin{tabular}{|l|c|c|c|c|l}
+\cline{1-5}
+\textbf{Classif:method} & \textbf{diff} & \textbf{lwr} & \textbf{upr} & \textbf{p} & \\
+\cline{1-5}
+           NB:sfs-NB:chi2 &   0.35 &   0.14 &   0.56 &  0.000 &  *** \\
+         SVM:sbs-SVM:chi2 &   0.33 &   0.12 &   0.54 &  0.000 &  *** \\
+       CART:sfs-CART:chi2 &   0.31 &   0.10 &   0.52 &  0.000 &  *** \\
+           NB:sbs-NB:chi2 &   0.31 &   0.10 &   0.52 &  0.000 &  *** \\
+        NB:sfs-NB:entropy &   0.28 &   0.07 &   0.49 &  0.001 &   ** \\
+       CART:sbs-CART:chi2 &   0.28 &   0.07 &   0.49 &  0.002 &   ** \\
+        NB:sbs-NB:entropy &   0.24 &   0.03 &   0.45 &  0.010 &    * \\
+    CART:sfs-CART:entropy &   0.23 &   0.02 &   0.44 &  0.022 &    * \\
+         SVM:sfs-SVM:chi2 &   0.21 &   0.00 &   0.42 &  0.049 &    * \\
+    CART:sbs-CART:entropy &   0.20 &  -0.01 &   0.41 &  0.090 &    . \\
+\cline{1-5}
 \end{tabular}
 \caption[]
-{\small Classification methods with higher accuracy using wrapper methods compared to filter methods. The rows refers to the results in table A.2 }
+{\small
+  Significant values of Tukey's test where classifiers are the same. diff shows wrapper methods (sfs and sbs) perform at least 20\% better than filter methods (chi2 and entropy). The increased performance is present in classifiers CART, NB and SVM. diff: Difference between means. lwr: Lower bound of confidence interval. upr: Upper bound of confidence interval. p: Significance probability. The stars indicate the range of significant level: 0 "***" 0.001 "**" 0.01 "*" 0.05 " . " 0.1 " " 1.
+}
 \label{table:t_test_result}
 \end{center}
 \end{table}
