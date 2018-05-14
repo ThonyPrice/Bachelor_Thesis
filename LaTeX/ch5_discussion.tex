@@ -14,7 +14,7 @@ If wrapper methods are to be used there may be a large benefit in constructing a
 
 As mentioned in source of errors \ref{sec:source_of_errors} using default classifiers might cause the observed fluctuation and variance in the results. A classifier with $n$ attributes might need very different parameters than the same classifier with $n + 1$ parameters to achieve optimal performance. This raises an important question, should a a classifier be tuned and optimized before applying feature selection, after or during features are selected. Before may raise the problem mentioned above, during logically offer the best results but in some cases infeasible computation time and after may miss feature subsets which could have performed better if search had been made with different parameters.
 
-\subsection{Comparing classification accuracy}
+\section{Comparing classification accuracy}
 
 Reports that achieve high classification accuracy such as \textcite{akay2009} decide on one classifier and FS-method and optimize the parameters of the classifier to both the FS-method and the dataset. It results in high performance but leaves the question how such classifier and FS combinations should be chosen and how they perform on other data.
 
