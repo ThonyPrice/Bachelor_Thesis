@@ -91,21 +91,21 @@ As addressed in section \ref{Variation_among_factors} classifiers behave differe
 
 \subsubsection{Artificial Neural Network}
 
-Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.2 which was the highest among all classifiers. However, ANN consistently performs the worst of all classifiers in terms of accuracy. The ANN also provides the least consistent results with strong fluctuations in the results and wide standard deviation margins. Such fluctuations may suggest issues regarding convergence. These characteristics are evident in plot \ref{fig:WBCD_chi2} showcasing the accuracy by each FS-method as a function of number of attributes. Disregarding these facts, t-test show an significant increase in classification accuracy when feature selection is applied.
+Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.2 which was the highest among all classifiers. However, ANN consistently performs the worst of all classifiers in terms of accuracy. The ANN also provides the least consistent results with strong fluctuations in the results and wide standard deviation margins. Such fluctuations may suggest issues regarding convergence. These characteristics are evident in plot \ref{fig:ANN_WBCD} showcasing the accuracy by each FS-method as a function of number of attributes. Disregarding these facts, t-test show an significant increase in classification accuracy when feature selection is applied.
 
 \subsubsection{Support Vector Machine}
 
-SVM improves accuracy in two out of four datasets \ref{table:SVM}. In these datasets the best perforamce is achieved by using wrapper methods. These findings are in line with Tukeys's test \ref{table:t_test_result} where wrapper showed superior performance.
+SVM improves accuracy in two out of four datasets \ref{table:SVM}. In these datasets the best perforamce is achieved by using wrapper methods. These findings are in line with Tukeys's test \ref{table:t_test_result} where wrappers show superior performance.
 
-The SVM behaves very differently in respect to each dataset. Improvements are seen with a larger subset of attributes in the EN and MIAS dataset as seen in \ref{fig:EN_chi2} and \ref{fig:MIAS_sfs}. A negative trend on accuracy is observed on the WBCD datasets which might indicate an issue with dimensionality. In \ref{fig:RHH_sbs} an improved accuracy is evident with maximal accuracy achieved on a subset suggesting a positive effect of feature selection.
+The SVM behaves differently in respect to each dataset. Improvements are seen with a larger subset of attributes in the EN dataset \ref{fig:SVM_EN}. A negative trend on accuracy is observed on the WBCD dataset \ref{fig:SVM_WBCD} which might indicate an issue with dimensionality. In \ref{fig:SVM_RHH} an improved accuracy is evident with maximal accuracy achieved on a subset suggesting a positive effect of feature selection.
 
 \subsubsection{Decision Tree}
 
-The decision tree shows consistent performance generally increasing performance with an increased amount of features. Although in cases like plot \ref{fig:WBCD_chi2} and \ref{fig:MIAS_sbs} best accuracy is achieved with a subset of features displaying evident benefits of feature selection.
+The decision tree shows consistent performance, generally increasing accuracy with an increased amount of features. Although in cases like plot \ref{fig:CART_MIAS} and \ref{fig:CART_EN} best accuracy is achieved with a subset of features displaying evident benefits of feature selection.
 
 \subsubsection{Naïve Bayes}
 
-Naïve Bayes had the least accumulated gain from feature selection as seen in table \ref{table:gain_comparison}. The largest improvement was seen in plot \ref{fig:EN_chi2} using 2 of 4 available attributes. In plots \ref{fig:WBCD_entropy} and \ref{fig:RHH_entropy} the accuracy presents little to no improvement when increasing the number of attributes.
+In plot \ref{fig:NB_WBCD} the accuracy presents little to no improvement when increasing the number of attributes. From the plots it is difficult to determine the preference of wrapper methods which was suggested by ANOVA \ref{Variation_among_factors}.
 
 \input{snippets/plots_ANN}
 \input{snippets/plots_CART}
