@@ -5,17 +5,19 @@
 % 1. Does the feature selection improve the accuracy of classification compared to using all features?
 
 
-Applying feature selection methods provides an improved classification accuracy on benign or malignant breast cancer. The result was consistent over a multitude of classifiers, feature selection methods and datasets. The improved accuracy was dependent on a classifier and feature selection method used, as well as which dataset being used on. Results indicate one needs to select these variables carefully to see improvements and further investigation on such methodology is needed.
+Applying feature selection methods provides an improved classification accuracy on benign or malignant breast cancer when using an Artificial Neural Network classifier. The improvement of ANN was consistent over multiple datasets. No correlation between accuracy achieved be ANN and what FS-method used was found suggesting it is case-to-case dependent.
+
+When using classifiers Decision Tree, Na\"ive Bayes and Support Vector Machine no increase, or decrease by using feature selection is significantly evident over multiple datasets. In some observations these classifiers manifested increased classification accuracy with feature selection compared to using the full dataset. The feature selection methods that improve these methods the most are generally wrappers such as SFS and SBS although they demand large computational time compared to filter methods.
 
 % 2. In which machine learning methods does feature selection have the greatest impact?
 
-The machine learning that overall benefited most from feature selection in terms of accuracy was Artificial neural network. On four different datasets with significantly different compositions in all cases accuracy was improved. The larges improvement was 58\% when applying feature selection by entropy on the Erlangen-Nuremberg dataset.
+The machine learning that overall benefited most from feature selection in terms of accuracy was Artificial Neural Network. On four different datasets with significantly different compositions, accuracy was improved. The largest improvement was by a 51\% increase when applying feature selection by entropy.
 
 
 \section{Further research}
 
 Further investigation of a methodology of finding the best possible classifier and FS-method.
 
-As mentioned in the discussion an important question to be answered is: Should a high performing classifier and FS-method be found first then optimized by tuning or it it the other way around? This question could be researched in further studies. 
+As mentioned in the discussion an important question to be answered is wether a high performing classifier and FS-method be found first then optimized by tuning or it it the other way around.
 
-More recent strategies of diagnosing breast cancer involves sampling microRNA from patients. Other diseases have been diagnosed with microRNA suggesting promising results of the method. As a sample of microRNA contains around 2 000 features, selection may offer a huge benefit in line with our findings that a increased number of feature benefits more from feature selection.
+More recent strategies of diagnosing breast cancer involves sampling microRNA from patients. Other diseases have been diagnosed with by this strategy and presented promising results. As a sample of microRNA contains around 2 000 features, selection may offer a huge benefit in line with our findings that a increased number of feature benefits more from feature selection.
