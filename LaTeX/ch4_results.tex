@@ -15,7 +15,7 @@ Before analyzing the results we consider potential interactions between differen
 
 Having four of each factor, there are 64 distinct combinations. We are particular interested in two of the interactions, Datasets:FS-methods and Classifiers:FS-methods.
 
-\subsection{Datasets with larger dimensionality achieves better classification accuracy}
+\subsection{Datasets with larger dimensionality achieves better classification accuracy with feature selection}
 
 Studying the interaction between datasets and FS-methods we regarded these factors as independent variables (IVs). Each IV combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers.
 
@@ -43,15 +43,13 @@ To investigate the effect of feature selection on different classifiers we perfo
 
 The significance of both Classifier and Method concludes they independently effect what accuracy is achieved. Their interaction, Classifier:Method is significant too and allows to reason there is a dependency between accuracy and the interaction between classifiers and methods. Plotting the values used in the test visualizes this correlation \ref{fig:comp_classif_datasets}.
 
-To further analyze the interaction of classifiers and FS-methods we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the difference among the groups lies mainly in which classifier is used.
+To further analyze the interaction of classifiers and FS-methods we performed post-hoc analysis by Tukey's test \parencite{Haynes2013}. The significant results \ref{table:Tukey_values} show the differences among the groups lies mainly in which classifier is used. This is evident as a 37 of the 47 groups that are significantly different in \ref{table:Tukey_values}, use different classifiers.
 
-
-The result indicates that wrapper methods has a superior classification accuracy compared to filter methods in some cases. In table \ref{table:t_test_result} the classifiers who benefits from certain wrapper methods compared to filter methods are displayed.
-
+The groups in Tukey's test which are significantly different while using same classifier are summarized in \ref{table:t_test_result}. The diff indicated mean difference in accuracy between the first- and second group. From this we can conclude wrapper methods has a superior classification accuracy compared to filter methods in some cases. These cases concern the classifiers CART, NB and SVM.
 
 \input{snippets/table_t_test_results}
 
-To conclude these results, they suggests one primarily has to carefully select the classifier to use for classification. If using NB or CART and the goal is to achieve a high classification accuracy SBS or SFS should be preferred over Chi2 and Entropy. If SVM is used SBS is preferred over Chi2 and Entropy with regards to classification rate.
+To conclude these results, they suggest one primarily has to carefully select the classifier as this factor has the largest impact on classification rate. If the classifier is NB or CART and the goal is to achieve a high classification accuracy SBS or SFS should be preferred over Chi2 and Entropy. If SVM is used, SBS is preferred over Chi2 and Entropy with regards to classification rate.
 
 \section{Classification improvements}
 
