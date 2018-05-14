@@ -1,0 +1,40 @@
+
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|l|c|c|c}
+\cline{1-3}
+\textbf{Classifier} & \textbf{t-stat} & \textbf{P}\\
+\cline{1-3}
+          ANN &   2.55 &   0.04  &  * \\
+          All &   1.28 &   0.21 &    \\
+          SVM &   0.95 &   0.38 &   \\
+          NB &   0.04 &   0.97 &     \\
+          CART &   -0.43 &  0.68 &   \\
+\cline{1-3}
+\end{tabular}
+\caption[]
+{\small
+  Significant values of t-test on Classifiers.  t-stat is a ratio between the difference between two groups and the difference within the groups. P: Significance probability. The stars indicate the range of significant level: 0 "***" 0.001 "**" 0.01 "*" 0.05 " . " 0.1 " " 1.
+}
+\label{table:ttest_result}
+\end{center}
+\end{table}
+
+
+%
+% --- Student t-test [FULL] ---
+% t-stat:  1.277837907846637
+%  prob:  0.21110632421181863
+% --- Student t-test [ANN] ---
+% t-stat:  2.5510324322268363
+%  prob:  0.043430149329747425
+% --- Student t-test [CART] ---
+% t-stat:  -0.4377851091863364
+%  prob:  0.676862029454676
+% --- Student t-test [NB] ---
+% t-stat:  0.04364357804719851
+%  prob:  0.9666047126659922
+% --- Student t-test [SVM] ---
+% t-stat:  0.9474693713881566
+%  prob:  0.379979860939623
