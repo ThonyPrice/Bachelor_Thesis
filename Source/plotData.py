@@ -1,7 +1,16 @@
 import json
+import sys
 import numpy as np
 import DataLoader as DataLoader
 import matplotlib.pyplot as plt
+
+def getFilesByDataset(path):
+    list_data_names = DataLoader.DataLoader().list_names[:-1]
+    all_datasets = []
+    for name in list_data_names:
+        for method in ['_chi2', '_entropy', '_sbs', '_sfs']:
+            all_datasets.append(path + name + method + '.json')
+    return all_datasets
 
 def plotFilter1(rez, filename):
     # Plot each dataset/classifier/fs-method by itself
@@ -68,6 +77,21 @@ def plotWithStdFill(rez, filename):
     plt.savefig(path + '%s.png' %(filename.strip('.json')+'_combined'))
     plt.close()
 
+def mk4plot(data, filename):
+    # Plot combined comparisions for each classifier with errorbars
+    path = '../plots_with_std_fill/'
+    plt.ylabel('Mean accuracy')
+    plt.xlabel('# features')
+    methods = ['chi2', 'entropy', 'sbs', 'sfs']
+    dsets_name = ['d1', 'd2', 'd3', 'd4']
+    for j, dataset in enumerate(data):
+        for i, d in enumerate(dataset):
+            features, mean, std = d
+            plot_fill(features, mean, std, methods[i])
+        plt.legend()
+        plt.savefig(path + filename + dsets_name[j] + '.png')
+        plt.close()
+
 def plot_fill(x, y, err, label):
     ax = plt.gca()
     color = next(ax._get_lines.prop_cycler)['color']
@@ -100,8 +124,25 @@ def plot(path,filename):
     plotWithStdFill(rez, filename)
 
 def main():
-    # --- Where to collect data? ---
+    # --- Group by classifier ---
     path = "../Json2/"
+    files = getFilesByDataset(path)
+    DATA = DataLoader.DataLoader()
+    list_data_names= DATA.list_names[:-1]
+    for classifier in ['ANN', 'CART', 'NB', 'SVM']:
+        plots = []
+        for dataset in list_data_names:
+            plot_one_dataset = []
+            for method in ['_chi2', '_entropy', '_sbs', '_sfs']:
+                f_name = path + dataset + method + '.json'
+                data = readJson(f_name)
+                data = extractData(data, classifier)
+                plot_one_dataset.append(data)
+            plots.append(plot_one_dataset)
+        mk4plot(plots, classifier)
+
+    sys.exit(0)
+    # --- Group by FS method ---
     DATA = DataLoader.DataLoader()
     list_data_names= DATA.list_names
     for name in list_data_names:
