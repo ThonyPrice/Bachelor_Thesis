@@ -2,7 +2,7 @@
 
 ## Agenda
 
-I'm Thony, this is Niklas. In this presentation we'll present a method which we've found increases the accuracy when it comes to diagnosing breast cancer. 
+I'm Thony, this is Niklas. In this presentation we'll present a method which we've found increases the accuracy when it comes to diagnosing breast cancer.
 
 During the presentation we'll address Why we've conducted the study.
 
@@ -65,8 +65,12 @@ And the why of our thesis motivated by answering these questions.
 
 ## Method
 
-Data was collected from four different databases. They all contained different types of features on breast cancer from various patients. An example is the Wisconsin database, displayed here, that contained 30 different features from a Fine Needle Aspiration. (Fine Needle Aspiration is when you extracts tissue from the breast tumor with the help of a needle.)
+To make sure that our results were on a more universal level we chose to use four different datasets. Only using one dataset would only conclude that feature selection is improving accuracy on a single dataset for a certain classifier.     
+
+Data was collected from the four different databases. They all contained different types of features on breast cancer from various patients. An example is the Wisconsin database, displayed here, that contained 30 different features from a Fine Needle Aspiration. (Fine Needle Aspiration is when you extracts tissue from the breast tumor with the help of a needle.)
 
 The data was then preprocess with the help of four different feature selection methods. Two filter methods, Entropy and chi2, and two wrapper methods, Sequential Forward Selection and Sequential Backward Selection. An example is the Wisconsin data that is preprocessed by the Entropy method generating 30 different results depending on how many features we choose to select.
 
-Lastly, the data is used as input in all the machine learning classifiers for training. The algorithms work there magic and can after training create prediction on test data from the same database as the input data originated from. Now we can calculate the accuracy of the predictions for eace combination of dataset, feature selection method and machine learning classifier and create a accuracy table.  Our Wisconsin dataset that used the Entropy filter method, can now use the artificial neural network to contribute with its part in the accuracy table.  
+Lastly, the data is used as input in all the machine learning classifiers for training. The algorithms work there magic and can after training create prediction on test data from the same database as the input data originated from. Now we can calculate the accuracy of the predictions for eace combination of dataset, feature selection method and machine learning classifier and create a accuracy table.  Our Wisconsin dataset that used the Entropy filter method, can now use the artificial neural network to contribute with its part in the accuracy table.
+
+This makes it a combination of 800 classification accuracy results.  
