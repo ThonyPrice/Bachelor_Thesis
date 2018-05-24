@@ -27,7 +27,9 @@ That is, Computer aided diagnostics
 
 ## CAD and Machine Learning
 
-Text
+Computer aided diagnostics utilizes machine learning to the classification and assist medial experts in their decision.
+
+The high level concept of machine lerning begins with data. Lets take the example of a mammographic scan. Lots of images are collected and labeled by radiologists to...
 
 
 
