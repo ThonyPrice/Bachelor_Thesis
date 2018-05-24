@@ -29,7 +29,14 @@ That is, Computer aided diagnostics
 
 Computer aided diagnostics utilizes machine learning to the classification and assist medial experts in their decision.
 
-The high level concept of machine lerning begins with data. Lets take the example of a mammographic scan. Lots of images are collected and labeled by radiologists to...
+The high level concept of machine lerning begins with data. Lets take the example of a mammographic scan. Lots of images are collected and labeled by radiologists to have a key for each datapoint.
+
+A Machine Learning algorithm is trained on this data. It predicts a classification based on an image and by having the key it iteratively can fine tune its parameters to become more accurate.
+
+This trained model can then be used to classify new images and in such a way be utilized as an predictor.
+
+## Feature selecton
+
 
 
 
