@@ -2,11 +2,11 @@
 
 ## Agenda
 
-I'm name1 and this is name2. We've found that feature selection significantly increases the classification accuracy of breast cancer when using an artificial neural network.
+I'm Thony, this is Niklas. In this presentation we'll present a method which we've found increases the accuracy when it comes to diagnosing breast cancer. 
 
-In this presentation we'll first tell you why this study was made.
+During the presentation we'll address Why we've conducted the study.
 
-Then, how we achieved our results, by what methods and proof of thier trustworthiness.
+Then, How we achieved our results, by what methods and proof of thier trustworthiness.
 
 And last what these results conclude and should be put into context.
 
@@ -34,6 +34,8 @@ The high level concept of machine lerning begins with data. Lets take the exampl
 A Machine Learning algorithm is trained on this data. It predicts a classification based on an image and by having the key it iteratively can fine tune its parameters to become more accurate.
 
 This trained model can then be used to classify new images and in such a way be utilized as an predictor.
+
+Overgang!
 
 ## Feature selection
 
