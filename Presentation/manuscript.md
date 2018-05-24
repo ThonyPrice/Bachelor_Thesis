@@ -69,4 +69,16 @@ Data was collected from four different databases. They all contained different t
 
 The data was then preprocess with the help of four different feature selection methods. Two filter methods, Entropy and chi2, and two wrapper methods, Sequential Forward Selection and Sequential Backward Selection. An example is the Wisconsin data that is preprocessed by the Entropy method generating 30 different results depending on how many features we choose to select.
 
-Lastly, the data is used as input in all the machine learning classifiers for training. The algorithms work there magic and can after training create prediction on test data from the same database as the input data originated from. Now we can calculate the accuracy of the predictions for eace combination of dataset, feature selection method and machine learning classifier and create a accuracy table.  Our Wisconsin dataset that used the Entropy filter method, can now use the artificial neural network to contribute with its part in the accuracy table.  
+Lastly, the data is used as input in all the machine learning classifiers for training. The algorithms work there magic and can after training create prediction on test data from the same database as the input data originated from. Now we can calculate the accuracy of the predictions for eace combination of dataset, feature selection method and machine learning classifier and create a accuracy table.  Our Wisconsin dataset that used the Entropy filter method, can now use the artificial neural network to contribute with its part in the accuracy table. 
+
+## Classification improvements
+
+Comparing the accuracy ahieved be the best feature selection method to the accuracy when using all features these are the results. Each bar is a distict dataset and the hight represents the increase or decrease in percent compared to using all features.
+
+Its evident that ANN benefits the consistently by feature selection, performing students t-test also ensures the increase is significant. 
+
+The other classifiers benefit on some datasets and worsens the results on others, t-test concluded none neither an increase or decrase can be concluded on theese classifiers.
+
+## Further analysis
+
+More text...
