@@ -1,0 +1,14 @@
+\ProvidesPackage{beamerthemeKTH}[2016/06/21]
+\mode<presentation>
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=20mm}
+
+\pgfdeclareimage[height=37mm]{kthprofil}{kthgraphics/KTH-profil-linjer}
+\pgfdeclareimage[height=15mm]{kthplatta}{kthgraphics/KTH-platta}
+\pgfdeclareimage[height=15mm]{kthlogo}{kthgraphics/KTH-logo}
+\pgfdeclareimage[height=12mm]{kthlogosmall}{kthgraphics/KTH-logo}
+
+\usebackgroundtemplate{\vbox{\null\vspace{5mm}
+  \hspace{5mm}\pgfuseimage{kthlogo}\par
+  \vspace{47mm}\hbox{\hspace{-65mm}\pgfuseimage{kthprofil}}}}
