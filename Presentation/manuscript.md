@@ -35,10 +35,33 @@ A Machine Learning algorithm is trained on this data. It predicts a classificati
 
 This trained model can then be used to classify new images and in such a way be utilized as an predictor.
 
-## Feature selecton
+## Feature selection
 
+To explain feature selection let's continue with the example of the image. If the resolution is 256 by 256 the total dimension of the image is 256 squared.
 
+Each pixel represents a dimension of the input to a machine learning model. As some features (in this case pixels) might not contain any useful information they can be considered redundant and don't add to the learning of a model.
 
+Previous studies has shown reducing the amount of features can in cases improve the accuracy and significantly reduce the computation time.
 
+We studied two types of feature selection methods.
 
+### Filter methods
+
+Where all features are ranked based on some condition, such as Entropy. The ranking is made as a preprocessing step and is independent of what Machine Learning classifier are to be used.
+
+### Wrapper methods
+
+Features are evaluated in conjunction with a classifier. That is each feature is tested with an calssifier and are selected based on some condition, such as highest scoring accuracy.
+
+## Why?
+
+Adding these pices of information we naturally asked, can feature selection improve the accuracy of classification of breast cancer?
+
+And in this case one would like to know, in which classification methods is this improvement present?
+
+And the why of our thesis motivated by answering these questions.
+
+## Method
+
+Text...
 
