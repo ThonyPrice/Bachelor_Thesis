@@ -84,24 +84,22 @@ This makes it a combination of 800 classification accuracy results. But how shou
 
 Comparing the accuracy achieved be the best feature selection method to the accuracy when using all features these are the results. Each bar is a distinct dataset. The height represents the ratio of increase or decrease in accuracy compared to using all features.
 
-Its evident that ANN benefits the consistently by feature selection, performing students t-test also ensures the increase is significant.
+Its evident that ANN benefits consistently by feature selection on every dataset, performing students t-test also ensures this increase is significant.
 
-The other classifiers benefit on some datasets and worsens the results on others, t-test concluded none neither an increase or decrease can be concluded on these classifiers.
+The other classifiers benefit on some datasets and worsens the results on others. However, neither an increase or decrease can be statistically concluded on these classifiers.
 
-With the results of the t-test and obvious appearance of this bar chart the conclusion seems kinda obvious? This is not the case, further analysis is needed!
-
+With these results the conclusion seems kinda obvious? Not at all, further analysis is needed!
+--
 ## Further analysis
-
-More text...
 
 Consider we have three factors at play here. The datasets, feature selection methods and classifiers. The results could me a manifistation of prefrerence to ANN of the datasets or an interaction of datasets and feature selection methods.
 
-We ran an Analysis of Variance, ANOVA, test to conclude the between which of these factors the interction is significant in respect to accuracy.
+We ran an Analysis of Variance test to conclude the between which of these factors the interaction is significant in respect to accuracy.
+--
+We found that the interaction between classifier and feature selection method indeed has a significant significant effect on what accuracy to expect. Because of this, we're confident our results are trustworthy.
 
-As we found that the interaction between classifier and feature selection method indeed has a significant interaction with expected accuracy. Thus rendering our result trustworthy. *Rewrite!*
-
-As we now have proven these results, Niklas will tell you *what* these results conclude and how to put them into context.
-
+With these results proven, Niklas will tell you *what* these results conclude and how to put them into context.
+--
 ## Conclusion an Discussion
 
 Applying feature selection methods to a Artificial Neural Network provides an improved classification accuracy of benign or malignant breast cancer.
