@@ -109,12 +109,19 @@ Applying feature selection methods to a Artificial Neural Network provides an im
 This is an important result since it shows that Feature selection is an significant part of optimizing ANN for breast cancer. However, we have to remember that we did not use all possible feature- data for breast cancer. There are of course other methods for extracting data then the once used in our datasets. On new promising method is extracting RNA- data from patients blood samples. The RNA data contains over 1900 features for each patient. Our methodology could be used for evaluating the effect of feature selection on that type of data as well or be expanded to trying to getting state of the art results in regard to breast cancer classification. However, that would require a lot of computational power which brings us to our next subject.
 
 Should you use wrapper or filter methods?
-well, the methods that improve our result the most where generally the wrappers, if looking at the number of combinations. But you have to take into a count the demand large computational time for wrappers compared to filter methods. Basically 99%-100% of our computational time went to the wrapper methods. If we where to only use filter methods we could have expanded the research to more datasets.  
+well, the methods that improve our result the most where generally the wrappers, if looking at the number of combinations. But you have to take into a count the demand large computational time for wrappers compared to filter methods. Basically 99% of our computational time went to the wrapper methods. If we where to only use filter methods we could have expanded the research to more then two filter methods four datasets.
 
+To summarize:
+
+Why did we conduct this study, well CAD, Machine learning and Feature selection all shows great potential to help in the fight agains breast cancer.
+
+We tried 64 combinations of methodology for classification and extracted 800 results. Did rigorous evaluation of the results to prove there reliability and could draw the conclusion:   
+
+what, Applying feature selection methods to a Artificial Neural Network provides an improved classification accuracy of benign or malignant breast cancer.
 
 Before wrapping up this presentation we want you to remember one more thing:
 
-Using all the data does not always bring the beat results.
+Using all the data does not always bring the best results.
 
 <!--
 
