@@ -73,4 +73,16 @@ The data was then preprocess with the help of four different feature selection m
 
 Lastly, the data is used as input in all the machine learning classifiers for training. The algorithms work there magic and can after training create prediction on test data from the same database as the input data originated from. Now we can calculate the accuracy of the predictions for eace combination of dataset, feature selection method and machine learning classifier and create a accuracy table.  Our Wisconsin dataset that used the Entropy filter method, can now use the artificial neural network to contribute with its part in the accuracy table.
 
-This makes it a combination of 800 classification accuracy results.  
+This makes it a combination of 800 classification accuracy results.
+
+## Classification improvements
+
+Comparing the accuracy ahieved be the best feature selection method to the accuracy when using all features these are the results. Each bar is a distict dataset and the hight represents the increase or decrease in percent compared to using all features.
+
+Its evident that ANN benefits the consistently by feature selection, performing students t-test also ensures the increase is significant.
+
+The other classifiers benefit on some datasets and worsens the results on others, t-test concluded none neither an increase or decrase can be concluded on theese classifiers.
+
+## Further analysis
+
+More text...
