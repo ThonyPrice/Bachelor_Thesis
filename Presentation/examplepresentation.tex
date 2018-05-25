@@ -54,17 +54,17 @@
   \begin{columns}[T]
     \begin{column}{.5\textwidth}
       \begin{block}{}
-        \includegraphics[width=\textwidth]{images/example-image-a.png}\\
-        Mammography scan image
+        \includegraphics[width=\textwidth]{images/fna_nuclei.png}\\
+        Stained tumour cells under microscope
       \end{block}
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{block}{}
         \begin{itemize}
-          \item Benign or malignant tumours\pause
           \item Leading cause of cancer death\pause
-          \item Time consuming\pause
-          \item Radiologist only 70\% accurate\pause
+          \item Early detection - important!
+          \item Detect tumour - then classify\pause
+          \item Humans - only 70\% accurate\pause
         \end{itemize}
         \vspace{0.02\textheight}
         \textbf{Solution:} Computer Aided Diagnostics
@@ -86,11 +86,19 @@
       \begin{block}{}
         \textbf{CAD:} Let the computers do classification to assist radiologist in diagnostics.
         \begin{itemize}
+          \item Data with labels\pause
           \item Select model\pause
-          \item Train\pause
-          \item Predict\pause
-          \item Preprocess\pause
+          \begin{itemize}
+            \item Artificial Neural Network
+            \item Decision Tree
+            \item Na\"ive Bayes'
+            \item Support Vector Machine
+          \end{itemize}
+          \item Train the model\pause
+          \item Make predictions\pause
         \end{itemize}
+        \vspace{0.02\textheight}
+        What \textit{is} the input?
       \end{block}
     \end{column}
   \end{columns}
@@ -187,7 +195,7 @@
 
   Applying feature selection methods provides an improved classification accuracy on benign or malignant breast cancer when using an Artificial Neural Network classifier. \pause
 
-  When using classifiers Decision Tree, Na\"ive Bayes and Support Vector Machine no increase, or decrease of accuracy could be proven using feature selection . 
+  When using classifiers Decision Tree, Na\"ive Bayes and Support Vector Machine no increase, or decrease of accuracy could be proven using feature selection .
 
 
   These results allows us to conclude (repeat results from earlier slide here)

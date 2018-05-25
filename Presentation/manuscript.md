@@ -2,44 +2,46 @@
 
 ## Agenda
 
-I'm Thony, this is Niklas. In this presentation we'll present a method which we've found increases the accuracy when it comes to diagnosing breast cancer.
+I'm Thony, this is Niklas. In this presentation we'll present a method which we've found increase the accuracy when it comes to diagnosing breast cancer.
 
-During the presentation we'll address Why we've conducted the study.
+During the presentation we'll address *Why* we have conducted the study.
 
-Then, How we achieved our results, by what methods and proof of thier trustworthiness.
+Then, *How* we achieved our results, what methods we used and how it validates our findings.
 
-And last what these results conclude and should be put into context.
+Lastly we will present *what* these results conclude, how they are put context and *what* you could use them for.
 
 ## About breast cancer
 
-Something about tumours... They can be either benign or malignant, that is fatal or harmless(?)
+To explain why we have done this study we need some background. Today breast cancer is the leading cause of cancer deaths among women. It origins from tumours which can be either benign or malignant. Where the former is relatively harmless and the latter could be fatal.
 
-Today breast cancer is the leading cause of cancer deaths among women. However, early detection increases the chaces of survival and recovery.
+Currently there is no cure to prevent breast cancer but early detection drastically increases the chances of recovery.
 
-The common way of classifying breast cancer mammography screenings. An image as the one here is produced and radiologist examine it to determine if a tumour is benign or malignant.
+The common way of detecting breast cancer is by mammography screenings. To classify a detected tumour a method is sampling cells from the tumour, staining a view under a microscope. Such as the image here. Medical experts can then use these images to examine if the tumour is benign or malignant.
 
-The process is both time consuming and studies has shown there is a large shortage of radiologists as mammographies are increasingly used.
+Problem is, humans are slow and there is a shortage of this expertise. Studies has estimated an accuracy at about 70% in detection by radiologists.
 
-Other studies has measured the accuracy of radiologist and estimated it to 70%. There has been work made to make this process more efficient.
-
-That is, Computer aided diagnostics
+The solution is, Computer aided diagnostics
 
 
 ## CAD and Machine Learning
 
-Computer aided diagnostics utilizes machine learning to the classification and assist medial experts in their decision.
+Computer aided diagnostics utilises machine learning to do the classification and assist medial experts in their decisions.
 
-The high level concept of machine lerning begins with data. Lets take the example of a mammographic scan. Lots of images are collected and labeled by radiologists to have a key for each datapoint.
+We will not go into detail on machine learning but illustrate the high level concept. It begins with data.
 
-A Machine Learning algorithm is trained on this data. It predicts a classification based on an image and by having the key it iteratively can fine tune its parameters to become more accurate.
+Lets take the example of a the image we saw in the previous slide. The data is the image and the label is if the sample was benign or malignant. Lots of such images-key pairs are collected and is then used as the input.
 
-This trained model can then be used to classify new images and in such a way be utilized as an predictor.
+Next we select a model. A machine learning model is the design of the algorithm that will make the predictions. These are a four commonly used in Computer Aided Diagnostics.
 
-Overgang!
+Then we can train this model on the input data. It predicts a classification based on an image and by having the key it iteratively can fine tune its parameters to become more accurate.
+
+This trained model can then be used to classify new images and in such a way be utilised as an predictor.
+
+So, each the input is an image. What *is* an image?
 
 ## Feature selection
 
-To explain feature selection let's continue with the example of the image. If the resolution is 256 by 256 the total dimension of the image is 256 squared.
+We can explain an image as constituting of features. If the resolution is 256 by 256 the total dimension of the image is 256 squared.
 
 Each pixel represents a dimension of the input to a machine learning model. As some features (in this case pixels) might not contain any useful information they can be considered redundant and don't add to the learning of a model.
 
@@ -91,6 +93,4 @@ Consider we have three factors at play here. The datasets, feature selection met
 
 We ran an Analysis of Variance, ANOVA, test to conclude the between which of these factors the interction is significant in respect to accuracy.
 
-As we found that the interaction between classifier and feature selection method indeed has a significant interaction with expected accuracy. Thus rendering our result trustworthy. 
-
-
+As we found that the interaction between classifier and feature selection method indeed has a significant interaction with expected accuracy. Thus rendering our result trustworthy.
