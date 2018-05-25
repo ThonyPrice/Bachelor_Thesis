@@ -83,6 +83,14 @@ Its evident that ANN benefits the consistently by feature selection, performing 
 
 The other classifiers benefit on some datasets and worsens the results on others, t-test concluded none neither an increase or decrase can be concluded on theese classifiers.
 
+With the t-test results of the t-test and obvious appearence of this bar chart the conclusion seems kinda obvious? This is not the case, further analysis is needed.
+
 ## Further analysis
 
-More text...
+Consider we have three factors at play here. The datasets, feature selection methods and classifiers. The results could me a manifistation of prefrerence to ANN of the datasets or an interaction of datasets and feature selection methods.
+
+We ran an Analysis of Variance, ANOVA, test to conclude the between which of these factors the interction is significant in respect to accuracy.
+
+As we found that the interaction between classifier and feature selection method indeed has a significant interaction with expected accuracy. Thus rendering our result trustworthy. 
+
+

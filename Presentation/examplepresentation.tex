@@ -150,15 +150,26 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{\hfill 2-way ANOVA}
-
-  2-way ANOVA show the accuracy is dependent on the interaction between chosen FS method and classifier.
-  (Insert ANOVA image here)
-\end{frame}
-
-\begin{frame}
-  \frametitle{\hfill Tukey's test}
-  Significant difference among wrappers and filters
+  \frametitle{\hfill Proving the improvement - 2 way ANOVA}
+  Three factors; Datasets, Feature selection methods, Classifiers.\\
+  Which of these affect our results?\pause
+  \vspace{0.02\textheight}\\
+  \makebox[1.15\textwidth]{
+  \begin{columns}[T]
+    \begin{column}{.35\textwidth}
+      \begin{block}{}
+        ANOVA entails interaction between classifiers and feature selection method has a significant effect on accuracy.
+        \vspace{0.02\textheight}\\
+        Image: Visualising the interaction
+      \end{block}
+    \end{column}
+    \begin{column}{.65\textwidth}
+      \begin{block}{}
+        \includegraphics[width=\textwidth]{images/comp_classif_datasets.png}\\
+      \end{block}
+    \end{column}
+  \end{columns}
+  }
 \end{frame}
 
 \begin{frame}
