@@ -30,7 +30,7 @@ Computer aided diagnostics utilises machine learning to do the classification an
 
 We will not go into detail on machine learning but illustrate the high level concept. It begins with data.
 --
-Lets take the example of a the image we saw in the previous slide. The data is the image and the label is if the sample was benign or malignant. Lots of such images-key pairs are collected and is then used as the input.
+*ADD IMAGE INTO ML CONCEPT PIC* Lets take the example of a the image we saw in the previous slide. The data is the image and the label is if the sample was benign or malignant. Lots of such images-key pairs are collected and is then used as the input.
 --
 Next we select a model. A machine learning model is the design of the algorithm that will make the predictions. These four are models which is commonly used in Computer Aided Diagnostics.
 --
@@ -54,7 +54,7 @@ By *Feature selection*!
 In this study we decided to study feature selection methods from 2 types of "families".
 --
 ### Filter methods
-First filter methods. Here all features are ranked based on some condition, such as Entropy. It creates a ordered list of the most valuable features. The ranking is made as a preprocessing step and is independent of what Machine Learning classifier are to be used.
+First filter methods. Here all features are ranked based on some condition, such as Entropy. It creates a ordered list of the most valuable features. The ranking is made as a preprocessing step and is independent of what Machine Learning classifier is to be used.
 --
 ### Wrapper methods
 
@@ -82,7 +82,7 @@ This makes it a combination of 800 classification accuracy results. But how shou
 
 ## Classification improvements
 
-Comparing the accuracy achieved be the best feature selection method to the accuracy when using all features these are the results. Each bar is a distinct dataset. The height represents the ratio of increase or decrease in accuracy compared to using all features.
+Comparing the accuracy achieved be the best feature selection method to the accuracy when using all features these are the results. Each bar is a distinct dataset. The height represents the ratio of increase or decrease in accuracy compared to using all features, that is, without feature selection.
 
 Its evident that ANN benefits consistently by feature selection on every dataset, performing students t-test also ensures this increase is significant.
 
@@ -92,11 +92,11 @@ With these results the conclusion seems kinda obvious? Not at all, further analy
 --
 ## Further analysis
 
-Consider we have three factors at play here. The datasets, feature selection methods and classifiers. The results could me a manifistation of prefrerence to ANN of the datasets or an interaction of datasets and feature selection methods.
+Consider we have three factors at play here. The datasets, feature selection methods and classifiers. The results could me a manifistation of prefrerence to ANN of the datasets or an interaction between datasets and feature selection methods.
 
-We ran an Analysis of Variance test to conclude the between which of these factors the interaction is significant in respect to accuracy.
+We ran an Analysis of Variance test to conclude between which of these factors the interaction is significant in respect to accuracy.
 --
-We found that the interaction between classifier and feature selection method indeed has a significant significant effect on what accuracy to expect. Because of this, we're confident our results are trustworthy.
+We found that the interaction between classifier and feature selection method indeed has a significant effect on what accuracy to expect. Because of this, we're confident our results are trustworthy.
 
 With these results proven, Niklas will tell you *what* these results conclude and how to put them into context.
 --
@@ -104,23 +104,19 @@ With these results proven, Niklas will tell you *what* these results conclude an
 
 Applying feature selection methods to a Artificial Neural Network provides an improved classification accuracy of benign or malignant breast cancer.
 
-This is an important result since it shows that Feature selection is an significant part of optimizing ANN for breast cancer. However, we have to remember that we did not use all possible feature- data for breast cancer. There are of course other methods for extracting data then the once used in our datasets. On new promising method is extracting RNA- data from patients blood samples. The RNA data contains over 1900 features for each patient. Our methodology could be used for evaluating the effect of feature selection on that type of data as well or be expanded to trying to getting state of the art results in regard to breast cancer classification. However, that would require a lot of computational power which brings us to our next subject.
+This is an important result since it shows that Feature selection is an significant part of optimizing ANN for breast cancer. However, we have to remember that there is a multitude of methods to diagnose breast cancer of which we've only tested a few. On new promising method is extracting RNA- data from patients blood samples. The RNA data contains over 1900 features for each patient. Our methodology could be used for evaluating the effect of feature selection on that type of data as well or be expanded to trying to getting state of the art results in regard to breast cancer classification. However, that would require a lot of computational power which brings us to our next subject.
 
 Should you use wrapper or filter methods?
 well, the methods that improve our result the most where generally the wrappers, if looking at the number of combinations. But you have to take into a count the demand large computational time for wrappers compared to filter methods. Basically 99% of our computational time went to the wrapper methods. If we where to only use filter methods we could have expanded the research to more then two filter methods four datasets.
 
 To summarize:
 
-Why did we conduct this study, well CAD, Machine learning and Feature selection all shows great potential to help in the fight agains breast cancer.
+Why did we conduct this study? Well CAD, Machine learning and Feature selection all shows great potential to help in the fight agains breast cancer.
 
 We tried 64 combinations of methodology for classification and extracted 800 results. Did rigorous evaluation of the results to prove there reliability and could draw the conclusion:   
 
-what, Applying feature selection methods to a Artificial Neural Network provides an improved classification accuracy of benign or malignant breast cancer.
+Applying feature selection methods to a Artificial Neural Network provides an improved classification accuracy of benign or malignant breast cancer.
 
 Before wrapping up this presentation we want you to remember one more thing:
 
 Using all the data does not always bring the best results.
-
-<!--
-
-When using classifiers Decision Tree, Na\"ive Bayes and Support Vector Machine no increase, or decrease of accuracy could be proven using feature selection. -->
