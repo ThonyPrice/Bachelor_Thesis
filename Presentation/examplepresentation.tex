@@ -84,15 +84,15 @@
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{block}{}
-        \textbf{CAD:} Let the computers do classification to assist radiologist in diagnostics.
+        \textbf{CAD:} Let the computers do classification to assist radiologist in diagnostics.\pause
         \begin{itemize}
           \item Data with labels\pause
-          \item Select model\pause
+          \item Select model
           \begin{itemize}
             \item Artificial Neural Network
             \item Decision Tree
             \item Na\"ive Bayes'
-            \item Support Vector Machine
+            \item Support Vector Machine\pause
           \end{itemize}
           \item Train the model\pause
           \item Make predictions\pause
@@ -104,9 +104,57 @@
   \end{columns}
 \end{frame}
 
+% Input with all features
+\begin{frame}
+  \frametitle{\hfill Input and its features}
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        \includegraphics[width=\textwidth]{images/example-image-a.png}\\
+        Input image with all features
+      \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        \begin{itemize}
+          \item All features:\\
+            $192\times120=23040$
+        \end{itemize}
+        \vspace{0.02\textheight}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% Input with removed features
+\begin{frame}
+  \frametitle{\hfill Input and its features}
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        \includegraphics[width=\textwidth]{images/example-image-a.png}\\
+        Input image with subset of features
+      \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{block}{}
+        \begin{itemize}
+          \item All features:\\
+            $192\times120=23040$
+          \item Subset of features:\\
+            $9000$\pause
+          \item How decide what to remove?\\
+          \textbf{Feature selection}
+        \end{itemize}
+        \vspace{0.02\textheight}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}
   \frametitle{\hfill Feature selection}
-  Reduced amount of features may improve models\pause
+  Two families of feature selection methods was studied\pause
   \begin{columns}[T]
     \begin{column}{.5\textwidth}
       \begin{block}{Filter methods}
