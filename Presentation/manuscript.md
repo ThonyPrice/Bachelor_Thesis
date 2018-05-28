@@ -1,65 +1,111 @@
 # Manuscript for presentation
 
+Hello! I'm Thony, this is Niklas.
+
+:arrow_forward: Next
+
 ## Agenda
 
-I'm Thony, this is Niklas. In this presentation we'll present a method which we've found increase the accuracy when it comes to diagnosing breast cancer.
---
+In this presentation we'll present a method which we've found increase the accuracy when it comes to diagnosing breast cancer.
+
+:arrow_forward: Next
+
 During the presentation we'll address *Why* we have conducted the study.
---
+
+:arrow_forward: Next
+
 Then, *How* we achieved our results.
---
+
+:arrow_forward: Next
+
 And lastly, *what* these results conclude, how they are put context and *what* you could use them for.
 
 To begin explain *why* we did this study we need some background, staring with breast cancer.
---
+
+:arrow_forward: Next
+
 ## About breast cancer
 
 Today breast cancer is the leading cause of cancer deaths among women. It origins from tumours which can be either benign or malignant. The benign form is relatively harmless. Malignant could be fatal.
---
-Currently there is no cure to prevent breast cancer, but early detection drastically increases the chances of recovery.
---
-The common way of diagnosing breast cancer is first detecting a tumour by mammography screenings. To classify a detected tumour *one* method is sampling cells from the tumour, staining them, and view under a microscope. Such as the image here. Medical experts can then use these images to examine if the tumour is benign or malignant.
---
+
+:arrow_forward: Next
+
+Currently there is no cure to prevent breast cancer, but early detection drastically increases the chance of recovery.
+
+:arrow_forward: Next
+
+The common way of diagnosing breast cancer is first detecting a tumour by mammography screening. To classify a detected tumour *one* method is sampling cells from the tumour, staining them, and view under a microscope. Such as the image here. Medical experts can then use these images to examine if the tumour is benign or malignant.
+
+:arrow_forward: Next
+
 Problem is, humans are slow and there is a shortage of this expertise. Studies has estimated an accuracy at about 70% in detection by radiologists.
---
-But there is a solution: Computer aided diagnostics
---
+
+:arrow_forward: Next
+
+But there is a solution which addresses these issues: Computer aided diagnostics
+
+:arrow_forward: Next
+
 ## CAD and Machine Learning
 
 Computer aided diagnostics utilises machine learning to do the classification and assist medial experts in their decisions.
 
 We will not go into detail on machine learning but illustrate the high level concept. It begins with data.
---
-*ADD IMAGE INTO ML CONCEPT PIC* Lets take the example of a the image we saw in the previous slide. The data is the image and the label is if the sample was benign or malignant. Lots of such images-key pairs are collected and is then used as the input.
---
+
+:arrow_forward: Next
+
+Lets take the example of a the image we saw in the previous slide. The data is the image and the label is if the sample was benign or malignant. Lots of such images-key pairs are collected and is then used as the input.
+
+:arrow_forward: Next
+
 Next we select a model. A machine learning model is the design of the algorithm that will make the predictions. These four are models which is commonly used in Computer Aided Diagnostics.
---
+
+:arrow_forward: Next
+
 Then we can train this model on the input data. It predicts a classification based on an image, and by having the key it iteratively can fine tune its parameters to become more accurate.
---
+
+:arrow_forward: Next
+
 This trained model can then be used to classify new images and in such a way be utilised as an predictor!
---
+
+:arrow_forward: Next
+
 So, each the input is an image. What *is* an image really?
 What does the input data look like?
---
+
+:arrow_forward: Next
+
 ## Input and its features
 
 So, the image is built up by pixels. In this example we have 256 by 200 pixels. This results in an input dimension of 51 200. But do all of these pixels include valuable information?
---
+
+:arrow_forward: Next
+
 Let's remove the pixels which do not include any cells, our input dimension is now vastly reduced.
---
+
+:arrow_forward: Next
+
 Previous studies has shown reducing the amount of features can in some cases improve the accuracy, and significantly reduce the computation time. But how do we decide on what features to keep?
 By *Feature selection*!
---
+
+:arrow_forward: Next
+
 ## Feature selection
 In this study we decided to study feature selection methods from 2 types of "families".
---
+
+:arrow_forward: Next
+
 ### Filter methods
 First filter methods. Here all features are ranked based on some condition, such as Entropy. It creates a ordered list of the most valuable features. The ranking is made as a preprocessing step and is independent of what Machine Learning classifier is to be used.
---
+
+:arrow_forward: Next
+
 ### Wrapper methods
 
 Secondly Wrapper methods. Here features are evaluated in conjunction with a classifier. That is, each subset of features is tested with a classifier and is selected based on some condition, such as highest scoring accuracy.
---
+
+:arrow_forward: Next
+
 ## Why?
 
 So adding these pieces of information we naturally asked, can feature selection improve the accuracy of classification on breast cancer?
@@ -67,7 +113,9 @@ So adding these pieces of information we naturally asked, can feature selection 
 In which classification methods is this suggested improvement present?
 
 Niklas will tell you *How* we approached these questions.
---
+
+:arrow_forward: Next
+
 ## Method
 
 To make sure that our results were on a more universal level we chose to use four different datasets. Only using one dataset would only conclude that feature selection is improving accuracy on a single dataset for a certain classifier.     
@@ -89,17 +137,23 @@ Its evident that ANN benefits consistently by feature selection on every dataset
 The other classifiers benefit on some datasets and worsens the results on others. However, neither an increase or decrease can be statistically concluded on these classifiers.
 
 With these results the conclusion seems kinda obvious? Not at all, further analysis is needed!
---
+
+:arrow_forward: Next
+
 ## Further analysis
 
 Consider we have three factors at play here. The datasets, feature selection methods and classifiers. The results could me a manifistation of prefrerence to ANN of the datasets or an interaction between datasets and feature selection methods.
 
 We ran an Analysis of Variance test to conclude between which of these factors the interaction is significant in respect to accuracy.
---
+
+:arrow_forward: Next
+
 We found that the interaction between classifier and feature selection method indeed has a significant effect on what accuracy to expect. Because of this, we're confident our results are trustworthy.
 
 With these results proven, Niklas will tell you *what* these results conclude and how to put them into context.
---
+
+:arrow_forward: Next
+
 ## Conclusion an Discussion
 
 Applying feature selection methods to a Artificial Neural Network provides an improved classification accuracy of benign or malignant breast cancer.
