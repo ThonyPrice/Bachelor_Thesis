@@ -3,9 +3,9 @@
 
 \section{Breast Cancer}
 
-A study in Sweden by \textcite{tabar2001} found breast carcinoma mortality was reduced by 63\% after mammography was introduced. This clearly emphasize the benefits of screening which had resulted in a increased usage of the method to detect and diagnose breast cancer. The increasing demand for mammography image interpretation lead to a shortage of medical radiologist to perform this task and consequently non medical personnel supplement the mammography image interpretation \parencite{culpan2016}. As breast cancer still continues to be the leading cause of cancer mortality among women and more efficient diagnostics and pathology is high on demand the need of low-cost point-of-care is very much needed as stated by \textcite{martei2018}.
+A study in Sweden by \textcite{tabar2001} found breast carcinoma mortality was reduced by 63\% after mammography was introduced. This clearly emphasize the benefits of screening which has resulted in an increased usage of this method to detect and diagnose breast cancer. The increasing demand for mammography image interpretation has lead to a shortage of medical radiologist to perform this task, consequently non medical personnel supplement the mammography image interpretation \parencite{culpan2016}. As breast cancer still continues to be the leading cause of cancer mortality among women and more efficient diagnostics and pathology is high on demand, the need of low-cost point-of-care is very large \parencite{martei2018}.
 
-Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sampling cells, staining them and examine under a microscope \parencite{FNA}. An example of such sample can be seen in \ref{fig:fna_nuclei}. The cell samples can be evaluated within 24 hours and the method is cost-effective and can be used as a preoperative tool for investigation of tumors. The method is also complication-free and has been widely used for the past 60 years.
+Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sampling cells from a tumour, then staining them, and examine under a microscope \parencite{FNA}. An example of such sample can be seen in figure \ref{fig:fna_nuclei}. The cell samples can be evaluated within 24 hours and the method is cost-effective and can be used as a preoperative tool for investigation of tumours. The method is also complication-free and has been widely used for the past 60 years.
 
 \begin{figure}[ht!]
   \centering
@@ -18,16 +18,16 @@ Fine needle aspiration (FNA) is a diagnostic tool to aspirate cell samples by sa
 
 \section{Computer Aided Diagnostics}
 
-Machine learning techniques have been successfully applied to computer aided diagnostics where it by a computerized procedure provides a second objective opinion for the assistance of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To create a CAD system, samples with a diagnose is firstly gathered, and stored, then used for learning. In the case of breast cancer diagnosis a radiologist put labels on a set of mammography scans. These include the diagnosis of the scan and possibly additional attributes connected to the scan too, such as patients age or other conditions. These scans together with the labels can then be used to learn a hypothesis whether a undiagnosed sample is benign or malignant cancer \parencite{li2007}.
+Machine learning techniques have been successfully applied to computer aided diagnostics (CAD). By a computerized procedure it provides a second, objective opinion of medical image interpretation and diagnosis \parencite{li2007}, \parencite{ni2016}. To create a CAD system, samples with a diagnose is firstly gathered and stored, then used for learning. In the case of breast cancer detection, a radiologist put labels on a set of mammography scans. These include the diagnosis of the scan and possibly additional attributes connected to the scan too, such as patients age or other conditions. These scans together with the labels can then be used to learn a hypothesis whether a undiagnosed sample contains benign or malignant cancer \parencite{li2007}.
 
 
-\section{Machine learning}
+\section{Machine Learning}
 
-The field of machine learning is concerned with automated discoveries of regularities in data with use of computer algorithms. These regularities can then be used to take actions such as classifying data into different categories or making predictions \parencite{Bishop:2006}. As the data may differ from images to population growth to medical data, the computer algorithms differ too. The algorithms used in this report is detailed below.
+The field of machine learning is concerned with automated discoveries of regularities in data with use of computer algorithms. These regularities can then be used to take actions, such as classifying data into different categories or making predictions \parencite{Bishop:2006}. As the data may differ from images to population growth to medical data, the computer algorithms differ too. The algorithms used in this report is detailed below.
 
-\subsection{Artificial neural networks}
+\subsection{Artificial Neural Networks}
 
-The term artificial neural networks (ANN) originates from the structure of the algorithm. The structure vaguely mimics the biological network of a human brain \parencite{Bishop:2006}. A representation of such network is visualized as in figure \ref{fig:ANN_representation}. The learning process of an ANN is conceptually two parts, feed forward and back propagation.
+The term artificial neural networks (ANN) originates from the structure of the algorithm. The structure vaguely mimics the biological network of a human brain \parencite{Bishop:2006}. A representation of such network is visualized in figure \ref{fig:ANN_representation}. The learning process of an ANN is conceptually two parts, feed forward and back propagation.
 
 \begin{figure}[ht!]
   \centering
@@ -39,9 +39,9 @@ The term artificial neural networks (ANN) originates from the structure of the a
 
 % Image found at page 228 in Bishop book: http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf
 
-When initially feeding forward the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer a linear transformation is applied to the signal involving two parameters conclusive to the layer, weight and bias, thus transforming the signal. The transformed signal is sent through a activation function amplifying or reducing the signal based on its current value, producing a new output. The output is then considered the input for a new set of weights and biases forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities of each possible output of the network \parencite{Bishop:2006}.
+When initially feeding forward the data constitutes the input of the network. The input signal is equal to the dimensionality of the data. Forwarding the signal to the first layer, a linear transformation is applied to the signal involving two parameters conclusive to the layer, weight and bias. The transformed signal is sent through an activation function amplifying or reducing the signal based on its current value, producing a new output. This output is then considered the input for a new set of weights and biases, then forwarding the signal repeatedly in the same manner until reaching the final layer. In the final layer the signal is converted to probabilities, one for each possible output of the network \parencite{Bishop:2006}.
 
-Back propagation is where an ANN is tuning the wights and biases to produce sensible outputs in relation to the input. Feeding an input of training data forward an error can be computed from the difference between the received output probabilities and the expected output. The error is in turn propagated backwards, tuning the parameters to produce the expected output instead. Repeating this process for all training data the network can increase its prediction accuracy by tuning itself to the data \parencite{Bishop:2006}.
+Back propagation is where an ANN is tuning its wights and biases to produce sensible outputs in relation to the input. Feeding an input of training data forward, an error can be computed from the difference between the received output probabilities and the expected output. The error is in turn propagated backwards, tuning the parameters to produce the expected output instead. Repeating this process for all training data the network can increase its prediction accuracy by tuning itself to the data \parencite{Bishop:2006}.
 
 \subsection{Decision Trees}
 
@@ -55,7 +55,7 @@ binary splitting is performed. The binary spilt is based on classification error
 
 \subsection{Naïve Bayes}
 
-Naïve Bayes (NB) have beens studied since the 1950s and is a supervised, probabilistic machine learning classifier. It uses the  posterior which statistically determines the probability of a data point $x$ belonging to a certain class $y$ given the observed data points:
+Naïve Bayes (NB) have beens studied since the 1950s and is a supervised, probabilistic machine learning classifier. It uses the posterior which statistically determines the probability of a data point $x$ belonging to a certain class $y$ given the observed data points:
 
 \[
 P(y|x) = \frac{P(x|y)P(y)}{P(x)}
@@ -67,12 +67,12 @@ This formula can be read as:
 Posterior = \frac{Prior * Likelihood}{Evidence}
 \]
 
-Where Prior is the prior probability of $y$ belonging to some distribution $\theta$, likelihood the probability of $x$ belonging to distribution $\theta$ when having observed $y$. The evidence is the probability of $\theta$ and finally the Posterior is the conditional probability of $y$ given $x$. The name of the methods originates from the fact that the maximum posterior is calculated with help of the Bayes' Theorem and the method is naïve in the aspect of it assuming that all features in the data are independent form each other \parencite{george2012}.
+Where Prior is the prior probability of $y$ belonging to some distribution $\theta$, likelihood the probability of $x$ belonging to distribution $\theta$ when having observed $y$. The evidence is the probability of $\theta$, and finally the Posterior is the conditional probability of $y$ given $x$. The name of the methods originates from the fact that the maximum posterior is calculated with help of the Bayes' Theorem and the method is naïve in the aspect of it assuming that all features in the data are independent form each other \parencite{george2012}.
 
 
-\subsection{Support vector machines}
+\subsection{Support Vector Machines}
 
-Support vector machines (SVM) were developed in the 1990s and are based on the simpler maximal margin classifier. The maximal margin classifier creates a hyperplane to separate the data points of different classes from each other. The margin is the smallest perpendicular distance from the plane to a data point. As the name of the method suggests the goal is to find the plane with the largest margin given the data set \parencite{James:2014}.
+Support vector machines (SVM) were developed in the 1990s and are based on the simpler maximal margin classifier. The maximal margin classifier creates a hyperplane to separate the data points of different classes from each other. The margin is the smallest perpendicular distance from the plane to a data point. As the name of the method suggests, the goal is to find the plane with the largest margin given the data set \parencite{James:2014}.
 
 \begin{figure}[ht!]
   \centering
@@ -82,46 +82,44 @@ Support vector machines (SVM) were developed in the 1990s and are based on the s
   \label{fig:SVM_Margin}
 \end{figure}
 
-The support vector classifier is an extension to the maximal margin method to try create a method with greater robustness and better classification to most training observations. In order to achieve this goal an slack variable in introduced to allow points to be on the wrong side of the margin. Lastly, a SVM converts the support vector classifier from a liner separator as to  a non-liner separator of data points by using so called Kernels. The classifier can now separate more complex data sets with higher accuracy since its not limited to create linear hyperplanes \parencite{James:2014}.
+The support vector classifier is an extension to the maximal margin method to try create a method with greater robustness and better classification to most training observations. In order to achieve this goal, a slack variable in introduced to allow points to be on the wrong side of the margin. Lastly, a SVM converts the support vector classifier from a liner separator to a non-linear separator by using so called Kernels. The classifier can now separate more complex data sets with higher accuracy since its not limited to create linear hyperplanes \parencite{James:2014}.
 
 
 \section{Feature Selection}
 
-A feature is a variable that describes a data instance. A rectangular surface can be considered having two features, length and height. A rectangular volume can be considered having three features: length, height and depth. More complex data instances such as a gene expression may have up to 60,000 features and such a complex feature space results in a much harder learning process. Thus, many times it is preferable to select a subset of all available features to reduce the dimensionality \parencite{guyon2003}.
+A feature is a variable that describes a data instance. A rectangular surface can be considered having two features, length and height. A rectangular volume can be considered having three features: length, height and depth. More complex data instances, such as a gene expression may have up to $60\,000$ features, such vast feature space results in a much harder learning process. Thus, many times it is preferable to select a subset of all available features to reduce the dimensionality \parencite{guyon2003}.
 
-The benefits of selecting a subset of all available features are manyfold, among other it facilitates data visualization and data understanding. It reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features like the example with gene expressions it is essential to work with a subset of the data to produce reliable results \parencite{guyon2003}.
-
-
-\subsection{Filter methods}
-
-Filter methods are considered as a preprocessing step. That means a filter method evaluate features before data is applied to a learning machine or even before a deciding on a classifier. The evaluation is performed by doing variable ranking by some score, such as information gain. The score results in a ranking of the attributes and a subset can be selected in order of the ranking \parencite{guyon2003}.
-
-There are both good and bad aspects of filter methods. The positive concerns variable ranking make filter methods very scalable and robust as the calculations only operated on as many variables as there are features and can be performed just once and tested on multiple classifiers making it very computational effective. On the other hand, a subset of features that independently might be assessed an non informative may in combination with other features provide a lot of information to enable good learning \parencite{guyon2003}.
+The benefits of selecting a subset of all available features are manyfold, among other it facilitates data visualization and data understanding. It reduces the measurement and storage requirements and reduces training and utilization times. In cases with thousands of features, like the example with gene expressions, it is essential to work with a subset of the data to produce reliable results \parencite{guyon2003}.
 
 
-\subsection{Wrapper methods}
+\subsection{Filter Methods}
+
+Filter methods are considered a preprocessing step. That means a filter method evaluate features before data is applied to a learning machine, or even before a deciding on a classifier. The evaluation is performed by doing variable ranking by some score, such as information gain. The score results in a ranking of the attributes and a subset can be selected in order of the ranking \parencite{guyon2003}.
+
+There are both good and bad aspects of filter methods. The positive concerns variable ranking make filter methods very scalable and robust, as the calculations only operates on as many variables as there are features. They can be performed just once and tested on multiple classifiers making it very computational effective. On the other hand, a subset of features that independently might be assessed an non informative, may in combination with other features provide a lot of information to enable good learning \parencite{guyon2003}.
+
+
+\subsection{Wrapper Methods}
 
 Wrapper methods differs significantly from filter methods. While filter methods are evaluated as a preprocessing step, independent of the classifier, wrapper are evaluated dependent on the classifier.
 
-Wrappers utilize the learning machine of interest as a black box to score subsets of variable according to their predictive power \parencite{guyon2003}. The issue is that as datasets become large this method might be overly computational intense as finding the optimal subset is considered to be NP-hard \parencite{amaldi1998}.
-
+Wrappers utilize the learning machine of interest as a black box to score subsets of variables according to their predictive power \parencite{guyon2003}. The issue is that as datasets become large this method might be overly computational intense, as finding the optimal subset is considered to be NP-hard \parencite{amaldi1998}.
 
 % Image source: http://webcache.googleusercontent.com/search?q=cache:635J2rrIdWsJ:pages.cs.wisc.edu/~olvi/uwmp/cancer.html+&cd=1&hl=sv&ct=clnk&gl=se
-
 
 \section{Related Work}
 
 Medical datasets have been widely used to assess the performance of a multitude of classification strategies and methods. Breast cancer is one of the disease commonly studied within the filed of machine learning \parencite{kononenko2001}.
 
-\subsection{Optimization of classification accuracy in CAD}
+\subsection{Optimization of Classification Accuracy in CAD}
 
-Multiple studies exploring optimal classifiers for CAD have been conducted. \textcite{ramos2012} tested 20,000 classifier configurations to evaluate their ability to correctly classify malignant cancer. They achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve. The method to achieve this result was a feed forward, back propagating ANN.
+Multiple studies exploring optimal classifiers for CAD have been conducted. \textcite{ramos2012} tested $20\,000$ classifier configurations to evaluate their ability to correctly classify malignant cancer. They achieved a result of 0.996 under the Receiver operating characteristic (ROC) curve. The method to achieve this result was a feed forward, back propagating ANN.
 
 With a foundation of well performing classifiers such as \parencite{ramos2012}, studies investigating more fine tuned approaches building upon earlier results have been made. \textcite{akin2011} demonstrated that ensemble learning can be used in CAD to improve the performance of a rotation forest classifier. Using three different dataset and 30 classifying algorithms the average accuracy improved on all datasets by nearly 3\%.
 
 \textcite{Abdel-Ilah2017} reported further improvements on ANNs by investigating the optimal number of hidden layers and neurons for a feed forward back propagation network on the WBCD dataset which is included in our experiments as well. The highest accuracy achieved was 98\% using 3 hidden layers and 21 neurons with three distinct transfer functions.
 
-\subsection{Optimization classification accuracy in CAD using feature selection}
+\subsection{Optimization Classification Accuracy in CAD using Feature Selection}
 
 
 There are several ways to optimize a machine learning methodology. \textcite{c201416} explains that feature selection algorithms can be used for a vast amount of benefits such as: simplicity, stability, classification accuracy, storage and computational requirements. They also claim that comparison between different feature selection methods can only be done on one dataset at a time since the underlying algorithms depend on the structure of the data. Improvement in prediction accuracy was achieved in the paper by using feature selection for several datasets to demonstrate the applicability of feature selection techniques.
