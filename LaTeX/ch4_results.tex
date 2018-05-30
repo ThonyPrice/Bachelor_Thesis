@@ -1,8 +1,8 @@
-\chapter{Results and analysis}
+\chapter{Results and Analysis}
 
-We performed classification with four different classifiers on four different datasets. In each dataset-classifier combination we measured classification accuracy when applying four different feature selection (FS) methods. The aim is to investigate the impact of feature selection on classification accuracy, and the interaction between different classifiers and FS-methods. To build a basis for comparisons, classification accuracy was measured without FS too.
+We performed classification with four different classifiers on four different datasets. In each dataset-classifier combination we measured classification accuracy when applying four different feature selection (FS) methods. The aim is to investigate the impact of feature selection on classification accuracy, and the interaction between different classifiers and FS-methods. To enable a basis for comparisons, classification accuracy was measured without FS too.
 
-\section{Impact of factors: datasets, classifiers and FS-methods}
+\section{Impact of Factors: Datasets, Classifiers and FS-methods}
 \label{Variation_among_factors}
 
 Before analyzing the results we consider potential interactions between different factors involved in the experiment, these are:
@@ -13,9 +13,9 @@ Before analyzing the results we consider potential interactions between differen
   \item Feature selection methods
 \end{enumerate}
 
-Having four of each factor, there are 64 distinct combinations. In our scope we are particular interested in the interactions Classifiers:FS-methods. However, we will begin with looking at Datasets:FS-methods to evaluate the datasets influence on the classification accuracy.
+Having four of each factor, there are 64 distinct combinations. In our scope we are particular interested in the interaction Classifiers:FS-methods. However, we will begin with looking at Datasets:FS-methods to evaluate if the datasets' influence on the classification accuracy.
 
-\subsection{Datasets with larger dimensionality achieves better classification accuracy with feature selection}
+\subsection{Datasets with Larger Dimensionality Achieves Better Classification Accuracy with Feature Selection}
 
 Studying the interaction between datasets and FS-methods we regard these factors as independent variables. Each independent variable combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers.
 
@@ -34,10 +34,10 @@ Visualizing the values used in the ANOVA test, the correlation between datasets 
 
 \input{snippets/anova_plots}
 
-\subsection{Interaction between FS-methods and classifiers}
+\subsection{Interaction Between FS-methods and Classifiers}
 \label{sec:fs_methods_classifiers}
 
-To investigate the effect of feature selection on different classifiers we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The ANOVA result is presented in table \ref{table:anova_values_classif}.
+To investigate the effect of feature selection on different classifiers, we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The ANOVA result is presented in table \ref{table:anova_values_classif}.
 
 \input{snippets/anova_classif_fs}
 
@@ -51,22 +51,23 @@ The groups in Tukey's test which are significantly different while using same cl
 
 To conclude these results, they suggest one primarily has to carefully select the classifier as this factor has the largest impact on classification rate. If the classifier is NB or CART and the goal is to achieve a high classification accuracy SBS or SFS should be preferred over Chi2 and Entropy. If SVM is used, SBS is preferred over Chi2 and Entropy with regards to classification rate.
 
-
-\section{Classification improvements}
+\FloatBarrier
+\section{Classification Improvements}
 
 After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measured in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy.
 
 % --- Tables ---
 \input{snippets/combines_tables}
 
-\subsection{Classification improvements' significance}
+\FloatBarrier
+\subsection{Classification Improvements' Significance}
 \label{sec:Investigation_improvement}
 
 To study the effect of feature selection on classification accuracy we perform a t-test. The t-test values constitutes of the accuracies achieved without feature selection as one distribution. The other are the best accuracies achieved with feature selection. The t-test values are summarized in \ref{table:t_test_values}.
 
 \input{snippets/t_test_values}
 
-Running the test comparing results of all classifiers, t-stat value suggests a 28\% increased performance when applying feature selection, see table \ref{table:ttest_result}. However, significance is insufficient to reject the null hypothesis that distributions are equal. Consequently we can not conclude feature selection significantly improves classification accuracy based on our data.
+Comparing the t-test results of all classifiers, t-stat value suggests a 28\% increased performance when applying feature selection, see table \ref{table:ttest_result}. However, significance is insufficient to reject the null hypothesis that distributions are equal. Consequently we can not conclude feature selection significantly improves classification accuracy based on our data.
 
 To further analyze the differences, t-test is performed to compare each accuracy by each individual classifier, with and without feature selection. The tests concluded a significant improvement of accuracy using FS on ANN. A non significant improvement of NB and a non significant decline of CART when comparing feature selection to the full dataset.
 
@@ -75,7 +76,7 @@ To further analyze the differences, t-test is performed to compare each accuracy
 The absence in the significance among the t-test results may be a consequence of data shortage. However, t-stat indicates differences among classifiers that we'll analyze further.
 
 
-\subsection{Differences among classifiers}
+\subsection{Differences among Classifiers}
 
 As addressed in section \ref{Variation_among_factors} classifiers may behave differently depending on FS-method and datasets. We also found in \ref{sec:Investigation_improvement} t-test scores indicates such differences. Ranking the accumulated gain of each classifier from tables \ref{table:combines_tables}, we construct table \ref{table:gain_comparison}. We'll look at each classifier in turn:
 

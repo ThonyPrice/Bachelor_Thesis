@@ -1,35 +1,43 @@
 \chapter{Discussion}
 
-In the experiments ANN, DT, NB and SVM classifiers was used to classify begin or malignant breast tumors. The classification accuracy was compared between using or not using feature selection. The feature selection (FS) methods included in the tests were filter by Chi2 or Entropy and wrapping by SBS or SFS.
+In the experiments ANN, DT, NB and SVM classifiers was used to classify begin or malignant breast tumours. The classification accuracy was compared between using, or not using feature selection (FS). The FS-methods included in the tests were filter methods Chi2 and Entropy, and wrapper methods by SBS and SFS.
 
-The results could not prove there was a significant increase in classification accuracy using FS when considering all classifiers together. Studying usage of FS combined with ANN we found a significant increase in accuracy compared to using ANN without FS. It leaves the conclusion effect FS is dependent on classifier used.
+The results could not prove there was a significant increase in classification accuracy using FS, when considering all classifiers together. However, applying FS combined with ANN, we found a significant increase in accuracy compared to using ANN without FS. It leaves the conclusion effect FS is dependent on classifier used.
 
-\section{Influence of feature selection}
+\section{Influence of Feature Selection}
 
-As stated in the results all classifiers but CART had indication of improved classification accuracy. However, only ANN had a statistically significant increase. In our experiments ANN increased its accuracy on all datasets by using FS. The benefits of using FS when applying ANN consists of potentially lessened effort gathering and processing less attributes at data collection. Another benefit is lessened computation time, as found in the results section \ref{sec:cumtime}. As stated by \textcite{martei2018} there is a large demand of a more streamlined and efficient process when it comes to breast cancer classification, feature selection seems to offer benefits to ANN in such process.
+As stated in the results all classifiers but CART had indication of improved classification accuracy. However, only ANN had a statistically significant increase. In our experiments ANNs increased its accuracy on all datasets by using FS. The benefits of using FS when applying ANNs consists of potentially lessened effort gathering and processing less attributes at data collection. Another benefit is lessened computation time, as found in the results section \ref{sec:cumtime}. As stated by \textcite{martei2018}, there is a large demand of a more streamlined and efficient process when it comes to breast cancer classification. Feature selection seems to offer such benefits to ANNs in this process.
 
-Analytical tests of the results showed choosing the suitable classifier for the dataset rendered the largest effect on accuracy. Secondarily in the classifiers NB, CART and SVM, choice of FS-method made a significant difference. In these classifiers wrappers generated better accuracy than filter methods. However, it poses a dilemma. As filter methods proved computationally fast in comparison to wrappers, suitable classifiers can be investigated efficiently to find a good subset of features with filter methods. But the downside of this advantage is a heavily prolonged computation time at training as showed in table \ref{table:cpu}.
+Analytical tests of the results showed choosing the suitable classifier for the dataset rendered the largest effect on accuracy. In the classifiers NB, CART and SVM, choice of FS-method made a significant difference. In these classifiers, wrappers generated better accuracy than filter methods. However, it poses a dilemma. As filter methods proved computationally fast in comparison to wrappers, many various filter methods can be evaluated efficiently to find a good subset. But, wrappers provided a generally better result, although they manifested a heavily prolonged computation time at training as showed in table \ref{table:cpu}.
 
-If wrapper methods are to be used there may be a large benefit in constructing a search approach for the NP-hard part of the problem instead of evaluating the full search space. Such a study has been conducted by \textcite{panthong2015} and improved both classification accuracy and reduced runtime. Another approach is not searching the through all possible subset but with some domain knowledge narrow a span of parameters which in turn restricts number of computations.
+If wrapper methods are to be used there may be a large benefit in constructing a search approach for the NP-hard part of the problem, instead of evaluating the full search space. Such a study has been conducted by \textcite{panthong2015} and improved both classification accuracy, and reduced runtime. Another approach is not searching the through all possible subset but with some domain knowledge narrow a span of parameters which in turn restricts number of computations.
 
 As mentioned in source of errors \ref{sec:source_of_errors} using default classifiers might cause the observed fluctuation and variance in the results. A classifier with $n$ attributes might need very different parameters than the same classifier with $n + 1$ parameters to achieve optimal performance. This raises an important question, should a a classifier be tuned and optimized before applying feature selection, after or during features are selected. Before may raise the problem mentioned above, during logically offer the best results but in some cases infeasible computation time and after may miss feature subsets which could have performed better if search had been made with different parameters.
 
-\section{Comparing classification accuracy}
+\section{Comparing Classification Accuracy}
 
 Reports that achieve high classification accuracy such as \textcite{akay2009} decide on one classifier and FS-method and optimize the parameters of the classifier to both the FS-method and the dataset. It results in high performance but leaves the question how such classifier and FS combinations should be chosen and how they perform on other data.
 
 On average FS improved the result of the ANN classifier by 30\%. This result can be compared with the 28\% gain achieved by \textcite{karabulut2012}. The similar result can be explained by use of similar classifiers and although \textcite{karabulut2012} used different filter methods than this study in line with our findings the FS-method is not a deciding factor for accuracy. The SVM classifier received an average gain of 16\%. Comparing this results with \textcite{b20103177} our result shows a greater impact of FS using a SVM classifier. This is probably an effect of different datasets and FS methods being used as both these factor effect the accuracy. However, our result for improved classification accuracy using SVM is not significantly proven as mentioned above.
 
-\section{Limitations}
+\section{Further Research}
 
-Due to the limited amount of breast cancer datasets found and utilized in the study its difficult to confidently draw conclusions regarding all breast cancer classification at large as dataset may vary from the ones used in this report.
+Further investigation of a methodology of finding the best possible classifier and FS-method.
+
+As mentioned in the discussion an important question to be answered is wether a high performing classifier and FS-method be found first then optimized by tuning or it it the other way around.
+
+More recent strategies of diagnosing breast cancer involves sampling microRNA from patients. Other diseases have been diagnosed with by this strategy and presented promising results. As a sample of microRNA contains around 2 000 features, selection may offer a huge benefit in line with our findings that a increased number of feature benefits more from feature selection.
+
+\section{Effect of Limitations}
+
+Due to the limited amount of breast cancer datasets found and utilized in the study, it is difficult to confidently draw conclusions regarding all breast cancer classification at large as dataset may vary from the ones used in this report.
 
 Limited resources has also resulted in a reduced subset of FS-methods studied. While having two methods of each FS-family, filters and wrappers, there are many more which may have produced different results than we have achieved.
 
 
-\section{Ethical aspects}
+\section{Ethical Aspects}
 
-The best classification accuracy found in this report was 97\%. Studies show machine learning already outperforms medical experts in setting a correct diagnose of breast cancer \parencite{fnab}. When diagnostics progresses from being made by humans to machines many factors need to be considered. Do humans trust computers enough to allow this progression, should they even be informed their diagnose is set by algorithms? If so, how can we explain a certain output when many algorithms are truly hard to interpret. Lastly, what data should be used for training, only collecting data of those who have access to such healthcare may introduce a bias against other demographics of the population.
+The best classification accuracy found in this report was 97\%. Studies show machine learning already outperforms medical experts in setting a correct diagnose of breast cancer \parencite{fnab}. As diagnostics develops from being made by humans to machines, many factors need to be considered. Do humans trust computers enough to allow this development, should they be informed their diagnosis is set by algorithms? If so, how can we explain a certain output when many algorithms are truly hard to interpret. Lastly, what data should be used for training, only collecting data of those who have access to such healthcare may introduce a bias against other demographics of the population.
 
 The data used in this report origin from real patients that may be experience discomfort during mammographies, FNA sampling or with other method was used when collecting the data. The data also holds sensitive information ruling the patients future health. Data is to our knowledge never collected without a patients consent and carries no information that can allows any identification of the patient.
 

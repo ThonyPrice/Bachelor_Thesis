@@ -2,12 +2,12 @@
 
 \section{Datasets}
 \label{sec:Datasets}
-
+In this study four different datasets concerning breast cancer was used. An overview of their characteristics is presented in table \ref{table:datasets_info} and more detail on their respective content and origin is contained in the following subsections.
 \input{snippets/table_datasets}
 
 \subsection{Wisconsin}
 
-The Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 30 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 32 attributes describe ten real-value features.
+The Breast Cancer Wisconsin (Diagnostic) dataset, was donated 1995 to UCI  Machine Learning Repository \parencite{dua:2017} by one of its creators, Nick Street. It contains 569 instances with 30 attributes describing the features of breast cancer. Each instance is classified as benign (357) or malignant (212). The 30 attributes describe ten real-value features of FNA-samples.
 
 \subsection{Royal Hallamshire Hospital}
 
@@ -24,18 +24,19 @@ Dataset collected from a Breast Imaging-Reporting and Data System (BI-RADS) at t
 
 \section{Implementation}
 
-Each dataset will be split into training and test data. For each classifier each FS-method will select all possible subsets in turn. The classifier will be trained on the subset and evaluated on the test data. A compact pseudocode how results are produced is presented in algorithm \ref{alg:pseudo_code}. The steps is more thoroughly detailed below. Measurements of how results will be evaluated is contained in \ref{Evaluation}.
+Each dataset will be split into training and test data. For each classifier, each FS-method will select all possible number of features in turn. The classifier will be trained on the subset and evaluated on the test data. A compact pseudocode how results are produced is presented in algorithm \ref{alg:pseudo_code}. The steps is more thoroughly detailed below. Measurements of how results will be evaluated is contained in \ref{Evaluation}.
+
+The methodology is in line with previous research in the field such as \parencite{karabulut2012}. It's because it produces a foundation for comparing the impact of feature selection compared to using the full dataset.
 
 \input{snippets/implementation_pseudo}
 
-\subsection{Classifiers and parameters}
-All classifiers was imported from Scikit \parencite{scikit-learn}. All classifiers allow tuning by setting parameters of its behaviour. As tuning the parameters for any dataset and/or subset of attributes inflicts bias to the current state all parameters was left to default. Default parameters may cause suboptimal performance of a classifier. However, an optimal performance is not the intention of this experiment, the influence of feature selection is. Thus motivating the default parameter settings. Those values of the most influential parameters for each classifier can be found in appendix \ref{table:classifier_params}.
-% Move these setting to appendix as they don't contribute much here?
+\subsection{Classifiers and Parameters}
+All classifiers was imported from Scikit \parencite{scikit-learn}. All classifiers allow tuning, by setting parameters of its behaviour. As tuning the parameters for any dataset and/or subset of attributes inflicts bias to the current state all parameters is left to default \parencite{Daelemans2003}. Default parameters may cause suboptimal performance of a classifier. However, an optimal performance is not the intention of this experiment, the influence of feature selection is. Thus motivating the default parameter settings. Those values of the most influential parameters for each classifier can be found in appendix \ref{table:classifier_params}.
 
 
-\subsection{Feature selection}
+\subsection{Feature Selection}
 
-Feature selection with filtering methods was imported from  Scikit \parencite{scikit-learn}. The library contains the method ``SelectKBest'' which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
+Feature selection with filtering methods was imported from Scikit \parencite{scikit-learn}. The library contains the method ``SelectKBest'' which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
 
 Feature selection with wrapper methods was implemented with the ``SequentialFeatureSelector'' method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was classification accuracy as that is what should be used to compare methods at a later stage.
 
@@ -43,12 +44,12 @@ Feature selection with wrapper methods was implemented with the ``SequentialFeat
 \section{Evaluation}
 \label{Evaluation}
 
-\subsection{Test data and accuracy}
+\subsection{Test Data and Accuracy}
 
-To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correctly\:classified\:samples/all\_samples$. To ensure fair comparison classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. Test data consist of 30\% of dataset. It is maximized by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds.
+To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correctly\:classified\:samples/all\_samples$. To ensure fair comparison classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. These is standard methodology when it comes to evaluating classifiers \parencite{James:2014} Test data consist of 30\% of dataset. It is maximized by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds. In this way a more trustworthy estimate of the test accuracy is achieved than if classification were to be evaluated only once on the test set \parencite{James:2014}.
 
-To evaluate the impact of using feature selection the gain will be computed. The gain is computed as the ratio between best accuracy using FS and accuracy not using FS. The accumulated gains of a classifier gives a measure of how much it improved from feature selection and a basis to compare classifiers against each other.
+To evaluate the impact of using feature selection, a measure we will denote \textit{gain} should be computed. It is computed as the ratio between best accuracy using FS, and accuracy not using FS. The accumulated gains of a classifier on all datasets gives a measure of how much it improved from feature selection, and a basis to compare classifiers against each other.
 
-\subsection{Differences between datasets}
+\subsection{Datasets' Differences}
 
-It is needful to evaluate the difference between datasets. The differences among the datasets allows to study how effects of FS-methods generalises between different data and if results are consistent. To explain any inconsistencies analysis of variance (ANOVA) test will be performed \parencite{sthle1989}. ANOVA entails if differences in results between groups can be explained by variance or if there is a statistically significant difference between groups. The groups of interest are FS-methods, classifiers and datasets. ANOVA computations of groups and their interactions results in F-scores. F-score measures the probability of rejecting the null hypothesis, that some combination of groups are equal.
+It is needful to evaluate the difference between datasets. The differences among the datasets allows to study how effects of FS-methods generalises between different data and if results are consistent. To explain any inconsistencies analysis of variance (ANOVA) test will be performed \parencite{sthle1989}. ANOVA entails if differences in results between groups can be explained by variance or if there is a statistically significant difference between groups. The groups of interest are FS-methods, classifiers and datasets. ANOVA computations of groups and their interactions results in F-scores. F-score measures the probability of rejecting the null hypothesis, that some combination of groups are equal \parencite{sthle1989}.
