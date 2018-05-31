@@ -36,9 +36,9 @@ All classifiers was imported from Scikit \parencite{scikit-learn}. All classifie
 
 \subsection{Feature Selection}
 
-Feature selection with filtering methods was imported from Scikit \parencite{scikit-learn}. The library contains the method ``SelectKBest'' which tranforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
+Feature selection with filtering methods was imported from Scikit \parencite{scikit-learn}. The library contains the method "SelectKBest" which transforms data to a subset of $k$ attributes given a method such as Chi2 or Entropy.
 
-Feature selection with wrapper methods was implemented with the ``SequentialFeatureSelector'' method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was classification accuracy as that is what should be used to compare methods at a later stage.
+Feature selection with wrapper methods was implemented with the "SequentialFeatureSelector" method available in the a library by \textcite{mlextend}. As the wrapper evaluates the performance of each subset when selecting the best, a measurement method of evaluations must be set. The method implemented was classification accuracy as that is what should be used to compare methods at a later stage.
 
 
 \section{Evaluation}
@@ -46,7 +46,7 @@ Feature selection with wrapper methods was implemented with the ``SequentialFeat
 
 \subsection{Test Data and Accuracy}
 
-To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, $correctly\:classified\:samples/all\_samples$. To ensure fair comparison classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. These is standard methodology when it comes to evaluating classifiers \parencite{James:2014} Test data consist of 30\% of dataset. It is maximized by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds. In this way a more trustworthy estimate of the test accuracy is achieved than if classification were to be evaluated only once on the test set \parencite{James:2014}.
+To compare methods and classifiers a measurement is needed. Classification accuracy entails how many labels was correct on a test set, number of correctly classified samples divided by all samples. To ensure fair comparison classification the data split is kept consistent between classifiers by seeding. Test data is only introduced when accuracy is measured to avoid data leakage. These is standard methodology when it comes to evaluating classifiers \parencite{James:2014} Test data consist of 30\% of dataset. It is maximized by performing stratified 10-fold validation providing 10 accuracy scores on 10 distinct subsets of the test data. The overall performance is computed as the mean over the folds. In this way a more trustworthy estimate of the test accuracy is achieved than if classification were to be evaluated only once on the test set \parencite{James:2014}.
 
 To evaluate the impact of using feature selection, a measure we will denote \textit{gain} should be computed. It is computed as the ratio between best accuracy using FS, and accuracy not using FS. The accumulated gains of a classifier on all datasets gives a measure of how much it improved from feature selection, and a basis to compare classifiers against each other.
 

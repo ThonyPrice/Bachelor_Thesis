@@ -69,11 +69,11 @@ To study the effect of feature selection on classification accuracy we perform a
 
 Comparing the t-test results of all classifiers, t-stat value suggests a 28\% increased performance when applying feature selection, see table \ref{table:ttest_result}. However, significance is insufficient to reject the null hypothesis that distributions are equal. Consequently we can not conclude feature selection significantly improves classification accuracy based on our data.
 
-To further analyze the differences, t-test is performed to compare each accuracy by each individual classifier, with and without feature selection. The tests concluded a significant improvement of accuracy using FS on ANN. A non significant improvement of NB and a non significant decline of CART when comparing feature selection to the full dataset.
+To further analyze the differences, t-test is performed to compare each accuracy by each individual classifier, with and without feature selection. The tests concluded a significant improvement of accuracy using FS on ANN. No significant increase nor decrease in accuracy could be proven for the other classifiers; DT, CART and SVM.
 
 \input{snippets/table_ttest}
 
-The absence in the significance among the t-test results may be a consequence of data shortage. However, t-stat indicates differences among classifiers that we'll analyze further.
+The absence in the significance among the t-test results may be a consequence of data shortage. However, t-stat indicates some differences among classifiers that we'll analyze further.
 
 
 \subsection{Differences among Classifiers}
@@ -133,4 +133,4 @@ Because we use a multitude of datasets their differences may influence our resul
 
 Due to varying number of examples of the datasets where some are rather small, evaluation by kFold may infer very small test batches and lead to skewed results. The impact may be enlarged considering our classification is binary which means consistently predicting one class where that class is predominant archives non representable results for such predictor. This influence is minimized by using stratified kFold but as no check of distribution of classes in test batches was made this might be a source of error.
 
-In analysis of the results two-way anova is performed to evaluate the effect of two factors on accuracy. As mentioned in section \ref{Variation_among_factors} our experiments conclude of three factors leading us to regard one of these as independent to the accuracy. If this is not the case the results from analysis may suffer from bias of this parameter.
+In analysis of the results two-way ANOVA is performed to evaluate the effect of two factors on accuracy. As mentioned in section \ref{Variation_among_factors} our experiments conclude of three factors leading us to regard one of these as independent to the accuracy. If this is not the case the results from analysis may suffer from bias of this parameter.
