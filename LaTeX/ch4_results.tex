@@ -13,48 +13,31 @@ Before analyzing the results we consider potential interactions between differen
   \item Feature selection methods
 \end{enumerate}
 
-Having four of each factor, there are 64 distinct combinations. In our scope we are particular interested in the interaction Classifiers:FS-methods. However, we will begin with looking at Datasets:FS-methods to evaluate if the datasets' influence on the classification accuracy.
+Having four of each factor, there are 16 distinct combinations of classifiers and FS-methods with four measurements, one on each dataset. All datasets contain different information and therefore introduce necessary variance to the experiments. The variance allows us to suspect these results generalizes well onto other datasets in the domain of breast cancer, which are not included in this study. In our scope we are particular interested in the interaction of classifiers and FS-methods.
 
-\subsection{Datasets with Larger Dimensionality Achieves Better Classification Accuracy with Feature Selection}
+% \input{snippets/anova_plots}
 
-Studying the interaction between datasets and FS-methods we regard these factors as independent variables. Each independent variable combination is represented by four values, the best accuracy achieved with current FS-method by each of the four classifiers.
-
-Two-way analysis of variance (ANOVA) is performed on the independent variables. The results are presented in \ref{table:anova_values_data} and suggests three conclusions:
-
-% ANOVA computations, dataset-fs
-\input{snippets/anova_dataset_fs}
-
-First, the significance of Dataset allows to conclude a dependency between accuracies and datasets is present. This is to be expected because different datasets provide varying basis for prediction. However, as all accuracies used in this test was obtained by feature selection, this test gives no information on whether the correlation lies among the datasets themselves of the application of feature selection.
-
-Secondly, the absence of significance in Method mean we can not reject that there is no correlation between FS-method and accuracy.
-
-Thirdly, no significance of Dataset:Method indicates we can not reliably conclude that the interaction between datasets and methods has a correlation with achieved accuracy.
-
-Visualizing the values used in the ANOVA test, the correlation between datasets and accuracy is apparent in figure \ref{fig:comp_acc_datasets}. It is positive in respect to number of attributes suggesting either feature selection has a larger impact on classification accuracy when data has a higher dimensionality or higher dimensioned datasets on their own lead to better accuracy.
-
-\input{snippets/anova_plots}
-
-\subsection{Interaction Between FS-methods and Classifiers}
+\subsection{Evaluation of FS-methods and Classifiers}
 \label{sec:fs_methods_classifiers}
 
-To investigate the effect of feature selection on different classifiers, we performed two-way ANOVA. The values constitutes of each accuracy achieved of all distinct classifier and FS-method on all datasets. The ANOVA result is presented in table \ref{table:anova_values_classif}.
+To investigate the effect of feature selection on different classifiers, we performed two-way ANOVA. The values constitutes of each accuracy achieved by all distinct classifier and FS-method combinations, on all datasets. The ANOVA result is presented in table \ref{table:anova_values_classif}.
 
 \input{snippets/anova_classif_fs}
 
-The significance of both Classifier and Method concludes they independently effect what accuracy is achieved. Their interaction, Classifier:Method is significant too and allows to reason there is a dependency between accuracy and the interaction between classifiers and methods. Plotting the values used in the test visualizes this correlation, figure \ref{fig:comp_classif_datasets}.
+The **-significance of Classifier concludes that the selection of classifier effect what accuracy is achieved. The variance of the each respective classifier is visualized in figure \ref{fig:box_plots}. The box-plot entail that ANN on average perform worse than other classifiers. NB has the largest variance, with accuracy ranging from roughly 50\% to 100\%. CART performs the best, with the highest average accuracy.
 
-The results indicates that wrapper methods has a superior classification accuracy compared to filter methods in some cases. In table \ref{table:t_test_result} the classifiers who benefits from certain wrapper methods is compared to filter methods.
+The ANOVA result of Method conclude the selection of FS-method do not result in a significant difference in achieved accuracy. In figure \ref{fig:box_methods} all methods manifests a large variance but roughly in the same range, which emphasizes the result of the ANOVA. That is, there is no significant difference in accuracy when applying different FS-methods.
 
-The groups in Tukey's test which are significantly different while using same classifier are summarized in table \ref{table:t_test_result}. The diff indicates mean difference in accuracy between the first- and second group. From this we can conclude wrapper methods has a superior classification accuracy compared to filter methods in some cases. These cases concern the classifiers CART, NB and SVM.
+Analyzing these results together, first they suggest that the selection of classifier impacts the expected accuracy. Secondly, which FS-method is used together with the classifier do not effect expected accuracy. Lastly, no unique combination of classifier and FS-method are statistically superior to others.
 
-\input{snippets/table_t_test_results}
+It's important to note these measurements only include classification with FS-selection, they do not enable any conclusions regarding the impact of using, versus not using feature selection. Therefore, that is the next point of interest.
 
-To conclude these results, they suggest one primarily has to carefully select the classifier as this factor has the largest impact on classification rate. If the classifier is NB or CART and the goal is to achieve a high classification accuracy SBS or SFS should be preferred over Chi2 and Entropy. If SVM is used, SBS is preferred over Chi2 and Entropy with regards to classification rate.
+\input{snippets/boxplots}
 
 \FloatBarrier
 \section{Classification Improvements}
 
-After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measured in gain, it is the ratio between best achieved FS accuracy and full dataset accuracy.
+After performing classification with and without FS-methods, all results of each classifier was collected. Results are presented in tables for ANN \ref{table:ANN}, CART \ref{table:CART}, NB \ref{table:NB} and SVM \ref{table:SVM} where the highest achieved accuracy is highlighted in bold format. The improvement is measured in gain, the ratio between best achieved FS accuracy and full dataset accuracy.
 
 % --- Tables ---
 \input{snippets/combines_tables}
@@ -75,10 +58,10 @@ To further analyze the differences, t-test is performed to compare each accuracy
 
 The absence in the significance among the t-test results may be a consequence of data shortage. However, t-stat indicates some differences among classifiers that we'll analyze further.
 
-
+\FloatBarrier
 \subsection{Differences among Classifiers}
 
-As addressed in section \ref{Variation_among_factors} classifiers may behave differently depending on FS-method and datasets. We also found in \ref{sec:Investigation_improvement} t-test scores indicates such differences. Ranking the accumulated gain of each classifier from tables \ref{table:combines_tables}, we construct table \ref{table:gain_comparison}. We'll look at each classifier in turn:
+We found in \ref{sec:fs_methods_classifiers} that the selection of classifier affect the expected accuracy. In \ref{sec:Investigation_improvement} t-test scores concluded benefit of feature selection varies between different classifiers. Ranking the accumulated gain of each classifier from tables \ref{table:combines_tables}, we construct table \ref{table:gain_comparison} which clarifies variation of improved accuracy between classifiers. We'll now look at each classifier in turn:
 
 \begin{table}[hp]
   \input{snippets/gain_comparison}
@@ -93,9 +76,9 @@ Looking at the table \ref{table:gain_comparison} the accumulated gain was 1.2 wh
 
 \subsubsection{Support Vector Machine}
 
-SVM improves accuracy in two out of four datasets in table \ref{table:SVM}. In these datasets the best performance is achieved by using wrapper methods. These findings are in line with Tukeys's test, table \ref{table:t_test_result} where wrapper methods show superior performance.
+SVM improves accuracy in two out of four datasets in table \ref{table:SVM}. In these datasets the best performance is achieved by using wrapper methods.
 
-The SVM behaves differently in respect to each dataset. Improvements are seen with a larger subset of attributes in the EN dataset \ref{fig:SVM_EN}. A negative trend on accuracy is observed on the WBCD dataset \ref{fig:SVM_WBCD} which might indicate an issue with dimensionality. In \ref{fig:SVM_RHH} an improved accuracy is evident with maximal accuracy achieved on a subset suggesting a positive effect of feature selection.
+The SVM behaves differently in respect to each dataset which may conclude different kernels of the SVM is needed on different datasets. Improvements are seen with a larger subset of attributes in the EN dataset \ref{fig:SVM_EN}. A negative trend on accuracy is observed on the WBCD dataset \ref{fig:SVM_WBCD} which might indicate an issue with dimensionality. In \ref{fig:SVM_RHH} an improved accuracy is evident with maximal accuracy achieved on a subset suggesting a positive effect of feature selection.
 
 \subsubsection{Decision Tree}
 
@@ -103,7 +86,7 @@ The decision tree shows consistent performance, generally increasing accuracy wi
 
 \subsubsection{Naïve Bayes}
 
-In plot \ref{fig:NB_WBCD} the accuracy presents little to no improvement when increasing the number of attributes. From the plots it is difficult to determine the preference of wrapper methods which was suggested in section regarding ANOVA, \ref{Variation_among_factors}.
+In plot \ref{fig:NB_WBCD} the accuracy presents little to no improvement when increasing the number of attributes. In three out of four datasets NB produces the highest accuracy with very few attributes indicating benefits of feature selection.
 
 \input{snippets/plots_ANN}
 \input{snippets/plots_CART}
@@ -117,20 +100,3 @@ In plot \ref{fig:NB_WBCD} the accuracy presents little to no improvement when in
 Profiling the execution of running all experiments approximately 100\% of CPU-time was allocated to the Wrapper algorithms as showed in table \ref{table:cpu}. Finding the best possible subset of features is considered a NP-hard problem meaning a solution can not be found in polynomial time. This clearly suggest favouring filtering methods when choosing a feature selection method having limited computational resources.
 
 \input{snippets/cpu_table}
-
-\section{Source of errors}
-\label{sec:source_of_errors}
-
-There are two main factor that may risk propagate error into the results, libraries and datasets.
-
-\subsection{Libraries}
-
-The libraries provide all functionality of the classifiers, filter selection methods and analysis tools. A major part of the implementation therefore constitutes of these libraries. A implementation built upon faulty methods can not provide any trustworthy results. The Scikit library \parencite{scikit-learn} is well renowned and widely used in both industry and research thus inspire confidence in its robustness. The mlxtend library is used for SBS and SFS methods and is still a open source with less coverage than Scikit \parencite{mlextend}. Still it has a active community and many release versions indicating it's well managed.
-
-\subsection{Datasets}
-
-Because we use a multitude of datasets their differences may influence our results in a way that invalidates our findings. \textcite{c201416} claim that feature selection methods can only be compared on the same dataset. However our comparisons do not regard the performance of specific FS-methods but their impact at large. Also, these interactions is addressed in section \ref{Variation_among_factors}.
-
-Due to varying number of examples of the datasets where some are rather small, evaluation by kFold may infer very small test batches and lead to skewed results. The impact may be enlarged considering our classification is binary which means consistently predicting one class where that class is predominant archives non representable results for such predictor. This influence is minimized by using stratified kFold but as no check of distribution of classes in test batches was made this might be a source of error.
-
-In analysis of the results two-way ANOVA is performed to evaluate the effect of two factors on accuracy. As mentioned in section \ref{Variation_among_factors} our experiments conclude of three factors leading us to regard one of these as independent to the accuracy. If this is not the case the results from analysis may suffer from bias of this parameter.

@@ -50,6 +50,8 @@ To compare methods and classifiers a measurement is needed. Classification accur
 
 To evaluate the impact of using feature selection, a measure we will denote \textit{gain} should be computed. It is computed as the ratio between best accuracy using FS, and accuracy not using FS. The accumulated gains of a classifier on all datasets gives a measure of how much it improved from feature selection, and a basis to compare classifiers against each other.
 
-\subsection{Datasets' Differences}
+\subsection{Differences Among Classifiers and Feature Selection Methods}
 
-It is needful to evaluate the difference between datasets. The differences among the datasets allows to study how effects of FS-methods generalises between different data and if results are consistent. To explain any inconsistencies analysis of variance (ANOVA) test will be performed \parencite{sthle1989}. ANOVA entails if differences in results between groups can be explained by variance or if there is a statistically significant difference between groups. The groups of interest are FS-methods, classifiers and datasets. ANOVA computations of groups and their interactions results in F-scores. F-score measures the probability of rejecting the null hypothesis, that some combination of groups are equal \parencite{sthle1989}.
+The method includes four different classifiers and four different FS-methods, these can be considered as separate groups. This results in 16 distinct combinations of classifiers and FS-methods, that is, interaction between these groups. It is needful to evaluate the differences between these groups, and their interaction to fully understand the results.
+
+To evaluate this relationship analysis of variance (ANOVA) test will be performed \parencite{sthle1989}. ANOVA entails if differences in results between groups can be explained by variance or if there is a statistically significant difference between, or within groups. ANOVA computations of groups and their interactions results in F-scores. F-score measures the probability of rejecting the null hypothesis, that some combination of groups are equal \parencite{sthle1989}.
