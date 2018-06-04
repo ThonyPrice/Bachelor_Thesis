@@ -1,6 +1,6 @@
 \begin{figure*}[htbp]
-  \centering
-  \begin{subfigure}[b]{0.475\textwidth}
+  \noindent\makebox[1.2\textwidth]{
+  \begin{subfigure}[b]{0.7\textwidth}
       \centering
       \includegraphics[width=\textwidth]{../plots_with_std_fill/NBd1.png}
       \caption[]%
@@ -8,15 +8,19 @@
       \label{fig:NB_MIAS}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[b]{0.475\textwidth}
+  \begin{subfigure}[b]{0.7\textwidth}
       \centering
       \includegraphics[width=\textwidth]{../plots_with_std_fill/NBd2.png}
       \caption[]%
       {{\small}}
       \label{fig:NB_EN}
   \end{subfigure}
+  }
+  \vskip
+  \baselineskip
+  \noindent\makebox[1.2\textwidth]{
 
-  \begin{subfigure}[b]{0.475\textwidth}
+  \begin{subfigure}[b]{0.7\textwidth}
       \centering
       \includegraphics[width=\textwidth]{../plots_with_std_fill/NBd3.png}
       \caption[]%
@@ -24,16 +28,17 @@
       \label{fig:NB_RHH}
   \end{subfigure}
   \quad
-  \begin{subfigure}[b]{0.475\textwidth}
+  \begin{subfigure}[b]{0.7\textwidth}
       \centering
       \includegraphics[width=\textwidth]{../plots_with_std_fill/NBd4.png}
       \caption[]%
       {{\small}}
       \label{fig:NB_WBCD}
   \end{subfigure}
+  }
   \caption[]
   {\small
-    Classifier NB. Each plot corresponds to datasets (a) MIAS, (b) EN, (c) RHH and (d) WBCD. x-axis is number of features, y-axis is mean accuracy achieved by corresponding feature selection method.
+    Classifier NB. Each plot corresponds to datasets (a) MIAS, (b) EN, (c) RHH and (d) WBCD. x-axis is number of features, y-axis is mean accuracy achieved by corresponding feature selection method. Shaded area represent the standard error for each FS-method.
   }
   \label{fig:plots_NB}
 \end{figure*}
