@@ -117,10 +117,15 @@ def IV_classifier_method(datasets, path):
         for i in range(4):
             for j in range(4):
                 anova_results.append((
-                    classifier_accs[j][i],
+                    classifier_accs[i][j],
                     classifier,
                     methods[j]
                 ))
+                print(
+                    classifier_accs[i][j],
+                    classifier,
+                    methods[j]
+                )
         # - Save average and means for plotting
         avg, std = [0]*4, [0]*4
         for i in range(4):
@@ -241,13 +246,14 @@ def main():
     plt_show = False    # Show plot?
     files = getFilesByDataset(path)
 
-    plot_df, anova_df, x_axis = IV_dataset_method(files, path)
-    print('\n---*--- Plotting data - Dataset/method ---*---\n')
-    plotData(plot_df, x_axis, plt_show)
-    print('\n---*--- Computing anova - Dataset/method ---*---\n')
-    computeAnova(anova_df)
+    # plot_df, anova_df, x_axis = IV_dataset_method(files, path)
+    # print('\n---*--- Plotting data - Dataset/method ---*---\n')
+    # plotData(plot_df, x_axis, plt_show)
+    # print('\n---*--- Computing anova - Dataset/method ---*---\n')
+    # computeAnova(anova_df)
 
     plot_df, anova_df, x_axis = IV_classifier_method(files, path)
+    sys.exit(0)
     print('\n---*--- Plotting data - Classifier/method ---*---\n')
     plotData(plot_df, x_axis, plt_show)
     print('\n---*--- Computing anova - Classifier/method ---*---\n')
