@@ -3,6 +3,7 @@ import sys
 import numpy as np
 import DataLoader as DataLoader
 import matplotlib.pyplot as plt
+import math
 
 def getFilesByDataset(path):
     list_data_names = DataLoader.DataLoader().list_names[:-1]
@@ -87,8 +88,9 @@ def mk4plot(data, filename):
     for j, dataset in enumerate(data):
         for i, d in enumerate(dataset):
             features, mean, std = d
-            plot_fill(features, mean, std, methods[i])
-        plt.legend()
+            std_error = np.divide(std, 2) # sqrt(N_datasets) N_datasets = 4 => 2
+            plot_fill(features, mean, std_error, methods[i])
+        plt.legend(fontsize=14)
         plt.savefig(path + filename + dsets_name[j] + '.png')
         plt.close()
 
