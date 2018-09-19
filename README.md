@@ -1,4 +1,4 @@
-# Bachelor Thesis (Degree Project in Computer Science, First Cycle)
+# Degree Project in Computer Science, First Cycle
 
 ## Evaluation of Feature Selection Methods for Machine Learning Classification of Breast Cancer
 
@@ -16,5 +16,5 @@ We found that Artificial neural networks have a significant increase in classifi
 
 ### Authors
 
-Thony Price
-Niklas Lindqvist
++ Thony Price
++ Niklas Lindqvist
